@@ -12,6 +12,10 @@ Welcome and congratulations on joining the MDN HPCP Team! We are excited to have
 
 This repository contains the information, resources and links to help guide you through this series. Each directory will have a corresponding `README.md` file which is displayed when viewing that directory on GitHub. These files will give a synopsis of that directories contents. The weekly content can be found in the `content/` directory, which has been broken down into weekly directories with slides, examples and tasks for that week. Any other helpful information brought during meetups will be added to the `README.md` of each week.
 
+## Weekly Meetup
+
+TBD
+
 ## Links and External Resources
 
 - [Content](content/README.md)

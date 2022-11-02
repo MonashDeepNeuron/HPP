@@ -42,7 +42,6 @@ Welcome to Week 0 of MDN's High Performance Programming Workshop Series (HPP). T
 - Hello World on Compiler Explorer
 - Add Compiler Explorer Link to `README.md`
 
-
 ## Links
 
 - [Home](/README.md)
