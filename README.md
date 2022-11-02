@@ -1,6 +1,6 @@
-# HPC Programming Resources
+# High Performance Programming
 
-Resources and challenges for the Monash DeepNeuron (MDN) HPC Programming (HPCP) Team
+Resources and challenges for the Monash DeepNeuron High Performance Programming Team.
 
 ---
 
@@ -26,3 +26,7 @@ This repository contains the information, resources and links to help guide you 
 ## Contributors
 
 - Tyler Swann
+
+## Concerns
+
+Refer to the [Code of Conduct](CODE_OF_CONDUCT.md) and the [License](LICENSE) for this repository for the expected behavior of contributors and users of the repository. If you have any concerns reach out to me (Tyler Swann) on Teams or follow standard MDN procedures for issues you are having within the team, branch or MDN.
