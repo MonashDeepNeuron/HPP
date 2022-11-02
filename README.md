@@ -1,1 +1,1 @@
-# HPC-Programming
+# HPC Programming Resources
