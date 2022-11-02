@@ -33,3 +33,6 @@
 
 # Powerpoint Temporaries
 ~$*
+
+# Build Outputs
+**/build/*

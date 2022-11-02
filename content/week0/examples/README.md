@@ -1,4 +1,7 @@
 # Table of Contents
 
-- [`hello.cxx`](hello.cxx) - Basic 'hello world' example in C++.
-- [git-auth](git-auth.md) - Instructions for Authenticating Git and Github connection.
+- [Install WSL](WSL.md)
+- [Install Git](Git.md)
+- [Install Text Editor](editor.md)
+- [hello](hello/README.md) - Basic 'hello world' example in C++.
+- [hello-bpt](hello-bpt/README.md) - Hello World using bpt.
