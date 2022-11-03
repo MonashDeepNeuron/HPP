@@ -23,7 +23,8 @@ Welcome to Week 0 of MDN's High Performance Programming Workshop Series (HPP). T
     - Sonarlint
     - GitHub
     - Markdown Viewer
-    - Git Lens
+    - GitLens
+    - 
 - Basic Tutorial
   - Create new repo on GitHub
   - Clone to local machine

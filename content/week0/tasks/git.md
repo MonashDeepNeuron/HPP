@@ -7,7 +7,6 @@
 - [Git Setup](#git-setup)
   - [Contents](#contents)
   - [Download Git](#download-git)
-    - [Verify](#verify)
   - [Create a Github Account](#create-a-github-account)
     - [Get Access to MDN Organization](#get-access-to-mdn-organization)
     - [Joining HPP Team](#joining-hpp-team)
@@ -19,11 +18,9 @@
 
 ## Download Git
 
-sngjsd
+[Install (Windows)](https://git-scm.com/downloads)
 
-### Verify
-
-sklngsjng
+- Ensure to enable 
 
 ---
 
