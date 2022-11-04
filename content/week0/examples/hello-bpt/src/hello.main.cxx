@@ -12,8 +12,8 @@ auto main () -> int
     /// From the namespace `std`.
     /// Use `cout` (character out).
     /// Put (<<) the string literal to stream.
-    /// From `std` put a `endl` specifier. 
-    std::cout << "Hello World!" << std::endl;
+    /// From `std` put a `endl` specifier.
+    std::cout << "Hello World" << std::endl;
 
     /// Return 0 on successful termination.
     return 0;
