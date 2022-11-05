@@ -15,7 +15,7 @@
 
 ```sh
 mkdir build
-g++ -std=c++20 -o build/hello hello.cxx
+g++-12 -std=c++20 -o build/hello hello.cxx
 ```
 
 ## Makefiles
