@@ -8,12 +8,15 @@ bpt is a C++ build and packaging tool. It makes consuming C?++ libraries, runnin
 
 - [bpt](#bpt)
   - [Contents](#contents)
-  - [Installing](#installing)
+  - [Task 4](#task-4)
+    - [4.1 : Installing bpt](#41--installing-bpt)
   - [Links](#links)
 
 ---
 
-## Installing
+## Task 4
+
+### 4.1 : Installing bpt
 
 Installing bpt is relatively simple. Simply run.
 

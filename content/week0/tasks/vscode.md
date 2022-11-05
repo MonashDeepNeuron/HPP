@@ -9,11 +9,11 @@ VSCode is a text editor with rich extension ecosystem allowing developers to cus
 - [VSCode](#vscode)
   - [Contents](#contents)
   - [Note](#note)
-  - [Task 4](#task-4)
-    - [4.1 : Installing VSCode](#41--installing-vscode)
+  - [Task 5](#task-5)
+    - [5.1 : Installing VSCode](#51--installing-vscode)
       - [Note (WSL)](#note-wsl)
-    - [4.2 : WSL Extensions](#42--wsl-extensions)
-    - [4.3 : General Extensions](#43--general-extensions)
+    - [5.2 : WSL Extensions](#52--wsl-extensions)
+    - [5.3 : General Extensions](#53--general-extensions)
   - [Links](#links)
 
 ---
@@ -24,9 +24,9 @@ VSCode is a text editor with rich extension ecosystem allowing developers to cus
 
 ---
 
-## Task 4
+## Task 5
 
-### 4.1 : Installing VSCode
+### 5.1 : Installing VSCode
 
 Go to [VSCode's Download page](https://code.visualstudio.com/download) and install it for your host OS.
 
@@ -34,7 +34,7 @@ Go to [VSCode's Download page](https://code.visualstudio.com/download) and insta
 
 > For Windows/WSL users, this means install on the Windows side.
 
-### 4.2 : WSL Extensions
+### 5.2 : WSL Extensions
 
 On its own VSCode is just a text editor like Notepad but with colour text however, using extensions we can set it up nicely for developing with C++.
 
@@ -48,7 +48,7 @@ Open VSCode how you would any other app in Windows. In VSCode, open the extensio
 
 You can now close VSCode and continue.
 
-### 4.3 : General Extensions
+### 5.3 : General Extensions
 
 To open VSCode from the terminal, open a new terminal window and type.
 
@@ -79,6 +79,6 @@ And that is it, everything should be set up and ready to go. You next task is to
 ## Links
 
 - [Previous Page: bpt](/content/week0/tasks/bpt.md)
-- [Next Page: Hello World](/content/week0/examples/hello/README.md)
+- [Next Page: Hello World](/content/week0/tasks/helloworld.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

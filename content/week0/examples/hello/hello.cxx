@@ -1,6 +1,7 @@
-// This is a comment
+// This is a comment, these are ignored by the compiler
 
-/// Preprocessor statement
+/// Preprocessor statement using `#` symbol
+/// The preprocessor runs at compile time before the code is compiled
 /// `#include` copies the header `iostream` into the current file
 #include <iostream>
 

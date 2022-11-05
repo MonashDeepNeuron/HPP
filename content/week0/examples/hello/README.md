@@ -1,25 +1,28 @@
-# Hello World
+# Hello
+
+Example Hello World and Makefile
 
 ---
 
-## Contents
-
-- [Hello World](#hello-world)
-  - [Contents](#contents)
-  - [Direct Build](#direct-build)
-  - [Makefiles](#makefiles)
-
----
-
-## Direct Build
+## Build and Run
 
 ```sh
+# Directly
 mkdir build
 g++-12 -std=c++20 -o build/hello hello.cxx
-```
+./build/release/hello
 
-## Makefiles
+# Or...
 
-```sh
+# With Makefile
 make
 ```
+
+---
+
+## Links
+
+- [HOME](/README.md)
+- [Content](/content/README.md)
+- [Week 0](/content/week0/README.md)
+- [Examples](/content/week0/examples/README.md)
