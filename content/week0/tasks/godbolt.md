@@ -39,7 +39,7 @@ All the best and see you at the meetup.
 
 ## Links
 
-- [Previous Page: Hello World - bpt](/content/week0/examples/hello-bpt/README.md)
+- [Previous Page: Hello World](/content/week0/tesks/helloworld.md)
 - [Back to Week 0](/content/week0/README.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)
