@@ -21,7 +21,7 @@ You tasks this week are outlined in the following documents. Follow each in orde
 3. [Homebrew](/content/week0/tasks/homebrew.md)
 4. [bpt](/content/week0/tasks/bpt.md)
 5. [VSCode](/content/week0/tasks/vscode.md)
-6. [Hello World](/content/week0/examples/hello/README.md)
+6. [Hello World](/content/week0/tasks/helloworld.md)
 7. [Compiler Explorer](/content/week0/tasks/godbolt.md)
 
 ---
