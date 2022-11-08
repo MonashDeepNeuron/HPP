@@ -4,6 +4,12 @@
 # $2 End Range for Slides
 # $3 Week
 
-for n in {$1..$2}
-    echo "\![Slides $n](week-$n.jpg)" >> "content/week$3/slides/README.md"
+SLIDES="content/week$3/slides"
+
+echo "" > "$SLIDES/README.md"
+echo -e "# Slides\n" >> "$SLIDES/README.md"
+
+for n in $(eval echo {$1..$2})
+do
+    echo -e "![Slides $n](/$SLIDES/img/week$3-$n.jpg)" >> "$SLIDES/README.md"
 done
