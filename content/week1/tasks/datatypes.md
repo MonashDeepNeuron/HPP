@@ -1,27 +1,27 @@
-# A
+# Primitive Data Types
 
 ---
 
 ## Contents
 
-- [A](#a)
+- [Primitive Data Types](#primitive-data-types)
   - [Contents](#contents)
-  - [Task](#task)
-    - [.1 :](#1-)
+  - [Task 2](#task-2)
+    - [2.1 :](#21-)
   - [Links](#links)
 
 ---
 
-## Task 
+## Task 2
 
-### .1 : 
+### 2.1 : 
 
 
 ---
 
 ## Links
 
-- [Previous Page: ](/content/week/tasks/)
-- [Next Page: ](/content/week/tasks/)
+- [Previous Page : ](/content/week/tasks/)
+- [Next Page : ](/content/week/tasks/)
 - [Content](/content/README.md)
 - [HOME](/README.md)

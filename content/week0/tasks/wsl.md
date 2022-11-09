@@ -75,7 +75,7 @@ WSL should be installed and ready to go.
 
 ## Links
 
-- [Previous Page: Git & Github](/content/week0/tasks/github.md)
-- [Next Page: Homebrew](/content/week0/tasks/homebrew.md)
+- [Previous Page : Git & Github](/content/week0/tasks/github.md)
+- [Next Page : Homebrew](/content/week0/tasks/homebrew.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

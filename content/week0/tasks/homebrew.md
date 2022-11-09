@@ -118,7 +118,7 @@ git config --global user.email "<github-email>"
 
 ## Links
 
-- [Previous Page: WSL](/content/week0/tasks/wsl.md)
-- [Next Page: bpt](/content/week0/tasks/bpt.md)
+- [Previous Page : WSL](/content/week0/tasks/wsl.md)
+- [Next Page : bpt](/content/week0/tasks/bpt.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

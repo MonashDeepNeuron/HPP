@@ -253,7 +253,7 @@ Hello World!
 
 ## Links
 
-- [Previous Page: VSCode](/content/week0/tasks/vscode.md)
-- [Next Page: Compiler Explorer](/content/week0/tasks/godbolt.md)
+- [Previous Page : VSCode](/content/week0/tasks/vscode.md)
+- [Next Page : Compiler Explorer](/content/week0/tasks/godbolt.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

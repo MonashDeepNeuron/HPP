@@ -10,16 +10,24 @@ This week you will be introduced to C++ type system, how it differs from other l
 
 ## Tasks
 
-1. [Type System](/content/week1/tasks/typesystem.md)
-2. [Data Types](/content/week1/tasks/datatypes.md)
+1. [The C++ Type System](/content/week1/tasks/typesystem.md)
+2. [Primitive Data Types](/content/week1/tasks/datatypes.md)
 3. [Variables](/content/week1/tasks/variables.md)
 4. [Qualifiers](/content/week1/tasks/qualifiers.md)
 5. [Operators](/content/week1/tasks/operators.md)
 6. [Printing](/content/week1/tasks/)
 
+---
+
+## Weekly Meetup
+
+This weeks meetup will be on xx/xx/xx in Room: _, Building: _.
+
+---
+
 ## Links
 
-- [Task 1: ](/content/week1/tasks/)
+- [Task 1 : The C++ Type System](/content/week1/tasks/)
 - [Examples](/content/week1/examples/README.md)
 - [Slides](/content/week1/slides/README.md)
 - [Content](/content/README.md)

@@ -1,10 +1,10 @@
-# Type System
+# The C++ Type System
 
 ---
 
 ## Contents
 
-- [Type System](#type-system)
+- [The C++ Type System](#the-c-type-system)
   - [Contents](#contents)
   - [Task 1](#task-1)
     - [Task 1.1 : Strong vs Weak Typing](#task-11--strong-vs-weak-typing)
@@ -38,19 +38,19 @@ In a dynamically typed language, the type of a variable does not have to be expl
 
 Before we move on, there a some important definitions that are good to know going forward.
 
-- Literal - A literal is a constant that refers to a determined value. For example, the character for 'three', `3`, has the value of three.
-- Value - A value is the independent data of a type. Think of it as an instance or object.
-- Type - A type is the formal definition and classification of values that is exhibit particular properties related properties. Examples of types include primitive data; like `int` from Python, as well as user defined types, often called classes in many languages. In C++ types are created using the `struct` and `class` keywords.
-- Typeclass - A typeclass is a polymorphic type constraint. It defines the expected properties of a type including methods, functions and patterns. In C++ typeclasses are created using the `concept` keyword.
+- Literals - A literal is a constant that refers to a determined value. For example, the character for 'three', `3`, has the value of three.
+- Values - A value is the independent data of a type. Think of it as an instance or object.
+- Types - A type is the formal definition and classification of values that is exhibit particular properties related properties. Examples of types include primitive data; like `int` from Python, as well as user defined types, often called classes in many languages. In C++ types are created using the `struct` and `class` keywords.
+- Typeclasses - A typeclass is a polymorphic type constraint. It defines the expected properties of a type including methods, functions and patterns. In C++ typeclasses are created using the `concept` keyword.
 - Kinds - A kind is, well; to put it bluntly, a type of a type. It describes the type of a nullary type constructor, ie. the constructor of primitive data-types which take no parameters. What this basically means is something that can hold a value.
 
-We will go more into a little more depth during [Week 5](/content/week5/README.md)
+In C++ supports everything except Kinds. We will go more into a little more depth during [Week 5](/content/week5/README.md).
 
 ---
 
 ## Links
 
 - [Previous Page: Week 1](/content/week1/README.md)
-- [Next Page: Data Types](/content/week1/tasks/datatypes.md)
+- [Next Page: Primitive Data Types](/content/week1/tasks/datatypes.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

@@ -78,7 +78,7 @@ And that is it, everything should be set up and ready to go. You next task is to
 
 ## Links
 
-- [Previous Page: bpt](/content/week0/tasks/bpt.md)
-- [Next Page: Hello World](/content/week0/tasks/helloworld.md)
+- [Previous Page : bpt](/content/week0/tasks/bpt.md)
+- [Next Page : Hello World](/content/week0/tasks/helloworld.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

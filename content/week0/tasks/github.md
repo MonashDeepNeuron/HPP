@@ -39,7 +39,7 @@ During this weeks meetup we will gather your usernames to give you direct access
 
 ## Links
 
-- [Previous Page: Week 0](/content/week0/README.md)
-- [Next Page: WSL](/content/week0/tasks/wsl.md)
+- [Previous Page : Week 0](/content/week0/README.md)
+- [Next Page : WSL](/content/week0/tasks/wsl.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

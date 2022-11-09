@@ -36,7 +36,7 @@ chmod a+x bpt
 
 ## Links
 
-- [Previous Page: Homebrew](/content/week0/tasks/homebrew.md)
-- [Next Page: VSCode](/content/week0/tasks/vscode.md)
+- [Previous Page : Homebrew](/content/week0/tasks/homebrew.md)
+- [Next Page : VSCode](/content/week0/tasks/vscode.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)
