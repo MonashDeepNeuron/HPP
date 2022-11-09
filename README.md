@@ -2,8 +2,6 @@
 
 Resources and challenges for the Monash DeepNeuron High Performance Programming Team.
 
----
-
 ## Welcome
 
 Welcome and congratulations on joining the MDN HPCP Team! We are excited to have you as a part of this team and look forward to teaching some cool technologies and ideas to you. My name is Tyler Swann and I'll be the lead educator for this workshop series. During this series you will be learning the C++ programming language along with techniques for, computer memory, algorithm intuition and parallel computing techniques.
@@ -16,8 +14,6 @@ Each week has directories for the tasks, examples and meetup slides for that wee
 
 The links below can help direct you to the relevant pages.
 
----
-
 ## Weekly Meetups
 
 Each week, the team will meet at Monash Clayton Campus (location, day, time etc. are TBD) were we will go through the content, tackle any issues and misunderstandings, experiment, discuss ideas and showcase things people have built.
@@ -26,8 +22,6 @@ It is expected that all team members show up for the meetups in person unless pr
 
 Each Weeks `README.md` will contain the day, date, location and time of that weeks meetup however, it is expected to remain relatively consistent throughout the series. Any clashes will be dealt with in the meetup the week before and announced to all members.
 
----
-
 ## Links and External Resources
 
 - [Content](/content/README.md)
@@ -35,8 +29,6 @@ Each Weeks `README.md` will contain the day, date, location and time of that wee
 - [cppreference](https://en.cppreference.com/w/Main_Page)
 - [Compiler Explorer](https://www.godbolt.org/)
 - [bpt docs](https://bpt.pizza/docs/latest/index.html)
-
----
 
 ## Current Educators, Demonstrators and Managers
 

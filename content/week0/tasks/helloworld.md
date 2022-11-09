@@ -2,8 +2,6 @@
 
 If you've never programmed before, a "Hello World" program is a simplest program and is often used to introduce a language. The first Hello World was created in Brian Kernighan's 1972 "A Tutorial Introduction to the Language B".
 
----
-
 ## Contents
 
 - [Hello World!](#hello-world)
@@ -16,8 +14,6 @@ If you've never programmed before, a "Hello World" program is a simplest program
     - [6.5 : Debugging](#65--debugging)
     - [6.6 : Hello World - bpt](#66--hello-world---bpt)
   - [Links](#links)
-
----
 
 ## Task 6
 
@@ -89,8 +85,6 @@ auto main () -> int
 
 Don't worry too much about the details as we will discuss in greater detail during the meetup.
 
----
-
 ### 6.3 : Build and Run
 
 Press `` ctrl + ` `` to open an integrated terminal window in VSCode. Make a new directory called `build` and run the following command to compile the code.
@@ -109,8 +103,6 @@ Let's break this command down.
 - `-std=c++20` - This sets the C++ standard. The C++ standard is like the version of the language. C++20 is the most recent version.
 - `-o build/hello` - The `-o` flag indicates and output file name. Because we wrote it with a path in front of it (`build/*`), it will output to that path.
 - `hello.cxx` - The source file we want to compile.
-
----
 
 ### 6.4 : Makefiles
 
@@ -195,8 +187,6 @@ $ make
 Hello World!
 ```
 
----
-
 ### 6.5 : Debugging
 
 Debugging is the crux of fixing issues in code. Debuggers allow us to step through the running code and diagnose any issues that are occurring as they occur. Debugging a single executable is pretty trivial but a sufficiently large codebase can become quite complex.
@@ -204,8 +194,6 @@ Debugging is the crux of fixing issues in code. Debuggers allow us to step throu
 For that reason we are going to go into debugging a little bit more at the meetup as configuring VSCode is a bit tricky. The debugging also doesn't show anything particularly interesting for a simple "Hello World" program.
 
 If you know how a debugger works, you can have a play with VSCode and see if you can get it to work.
-
----
 
 ### 6.6 : Hello World - bpt
 
@@ -248,8 +236,6 @@ This will spit out the binary into `build/`, dropping both file extensions. To r
 $ ./build/hello
 Hello World!
 ```
-
----
 
 ## Links
 

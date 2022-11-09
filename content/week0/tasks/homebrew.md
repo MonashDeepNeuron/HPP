@@ -2,8 +2,6 @@
 
 Homebrew is a system package manager similar to `apt` however, it is cross platform allowing us to install packages on Linux and MacOS.
 
----
-
 ## Contents
 
 - [Homebrew](#homebrew)
@@ -15,8 +13,6 @@ Homebrew is a system package manager similar to `apt` however, it is cross platf
     - [3.3 : Installing Git (MacOS only)](#33--installing-git-macos-only)
     - [3.4 : Authenticating Git](#34--authenticating-git)
   - [Links](#links)
-
----
 
 ## Task 3
 
@@ -113,8 +109,6 @@ Now that any machine you could be working on has Git, we can authenticate its us
 git config --global user.name "<github-username>"
 git config --global user.email "<github-email>"
 ```
-
----
 
 ## Links
 

@@ -1,7 +1,5 @@
 # Git and GitHub
 
----
-
 ## Contents
 
 - [Git and GitHub](#git-and-github)
@@ -13,8 +11,6 @@
     - [1.2 : Get Access to MDN Organization](#12--get-access-to-mdn-organization)
   - [Links](#links)
 
----
-
 ## What is Git
 
 Git is a Software Control Management (SCM) tool. It keeps track of files current changes, keeps a history of files and has facilities to merge and distribute changes amongst contributors. Projects are managed in what is called a repository (repo). A repo is just a directory/folder that a software project lives. You are currently looking at a file in a repo.
@@ -22,8 +18,6 @@ Git is a Software Control Management (SCM) tool. It keeps track of files current
 ## What is GitHub
 
 GitHub is a website that hosts and helps manage remote/online repos. This makes it easier to collaborate and share repos as well as having many tools to automate project pipelines.
-
----
 
 ## Task 1
 
@@ -34,8 +28,6 @@ To start off, create a GitHub account. Use a personal email as you are likely to
 ### 1.2 : Get Access to MDN Organization
 
 During this weeks meetup we will gather your usernames to give you direct access the the MDN GitHub organization. This will allow you to access the discussion channels and direct access to the repos within.
-
----
 
 ## Links
 

@@ -4,8 +4,6 @@ This directory contains all the relevant content information for the workshop se
 
 The idea is that you will use this repository as your guide for the series, reading the relevant information in the markdown files. This should make it easier to follow along, copy commands and code and access the needed resources. The slides for each week are more of a brief overview designed to be a visual aid to the meetups and thus might not have all the necessary information in order to do the tasks.
 
----
-
 ## Weekly Synopsis
 
 - [Week 0](/content/week0/README.md) - Introduction

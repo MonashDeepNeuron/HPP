@@ -1,7 +1,5 @@
 # The C++ Type System
 
----
-
 ## Contents
 
 - [The C++ Type System](#the-c-type-system)
@@ -11,8 +9,6 @@
     - [Task 1.2 : Static vs Dynamic Type Systems](#task-12--static-vs-dynamic-type-systems)
     - [Task 1.3 : A Pinch of Type Theory](#task-13--a-pinch-of-type-theory)
   - [Links](#links)
-
----
 
 ## Task 1
 
@@ -45,8 +41,6 @@ Before we move on, there a some important definitions that are good to know goin
 - Kinds - A kind is, well; to put it bluntly, a type of a type. It describes the type of a nullary type constructor, ie. the constructor of primitive data-types which take no parameters. What this basically means is something that can hold a value.
 
 In C++ supports everything except Kinds. We will go more into a little more depth during [Week 5](/content/week5/README.md).
-
----
 
 ## Links
 

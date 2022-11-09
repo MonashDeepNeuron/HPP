@@ -2,8 +2,6 @@
 
 A 'hello world' program using bpt.
 
----
-
 ## Build
 
 ```sh

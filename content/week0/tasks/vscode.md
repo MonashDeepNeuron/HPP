@@ -2,8 +2,6 @@
 
 VSCode is a text editor with rich extension ecosystem allowing developers to customize a developer environment to their needs.
 
----
-
 ## Contents
 
 - [VSCode](#vscode)
@@ -16,13 +14,9 @@ VSCode is a text editor with rich extension ecosystem allowing developers to cus
     - [5.3 : General Extensions](#53--general-extensions)
   - [Links](#links)
 
----
-
 ## Note
 
 > We will be using VSCode throughout this series and as such, all debugging examples will be in reference to VSCode but you are free to use any text editor you want and we will do our best to adjust.
-
----
 
 ## Task 5
 
@@ -73,8 +67,6 @@ In VSCode, open the extension marketplace tab. In the search bar, search for the
 You may have to restart VSCode for the extensions to load. Finally, press `ctrl + ,` to open settings. in the search bar search for "cpp default standard". In the drop down select `c++20`.
 
 And that is it, everything should be set up and ready to go. You next task is to run your first C++ code.
-
----
 
 ## Links
 

@@ -2,8 +2,6 @@
 
 Example Hello World and Makefile
 
----
-
 ## Build and Run
 
 ```sh
@@ -17,8 +15,6 @@ g++-12 -std=c++20 -o build/hello hello.cxx
 # With Makefile
 make
 ```
-
----
 
 ## Links
 

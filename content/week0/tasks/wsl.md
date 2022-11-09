@@ -1,7 +1,5 @@
 # WSL
 
----
-
 ## Contents
 
 - [WSL](#wsl)
@@ -14,8 +12,6 @@
     - [2.3 : APT & Packages](#23--apt--packages)
   - [Links](#links)
 
----
-
 ## Operating System
 
 Developing C++ on Windows can be a bit of a hassle to setup and use beyond Windows. Instead, Microsoft offers virtualized OS called Windows Subsystem for Linux or WSL. WSL is a native Linux kernel running alongside your Windows OS but unlike dual booting, they share the same filesystem, allowing you to work on Linux inside Windows. Using Linux is much easier to develop C++ code.
@@ -23,8 +19,6 @@ Developing C++ on Windows can be a bit of a hassle to setup and use beyond Windo
 ### Note
 
 > If you currently are running MacOS or Linux already (including WSL) you can skip this tasks and move onto the next one.
-
----
 
 ## Task 2
 
@@ -70,8 +64,6 @@ sudo apt install git curl wget ca-certificates build-essential
 ```
 
 WSL should be installed and ready to go.
-
----
 
 ## Links
 
