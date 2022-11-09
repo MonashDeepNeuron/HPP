@@ -28,7 +28,7 @@ You tasks this week are outlined in the following documents. Follow each in orde
 
 ## Weekly Meetup
 
-This weeks meetup will be on xx/xx/xx in Room: _, Building: _.
+This weeks meetup will be on 10/12/22 in Room: _, Building: _.
 
 ---
 
@@ -36,5 +36,6 @@ This weeks meetup will be on xx/xx/xx in Room: _, Building: _.
 
 - [Task 1 : Git & GitHub](/content/week0/tasks/github.md)
 - [Examples](/content/week0/examples/README.md)
+- [Slides](/content/week0/slides/README.md)
 - [Content](/content/README.md)
 - [Home](/README.md)

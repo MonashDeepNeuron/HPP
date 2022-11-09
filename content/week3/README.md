@@ -1,4 +1,4 @@
-# Week 3
+# Week 
 
 
 
@@ -8,14 +8,24 @@
 
 
 
-## Planned Content
+---
+
+## Tasks
 
 
 
-## Links
+---
 
-- [Home](/README.md)
+## Weekly Meetup
+
+This weeks meetup will be on xx/xx/xx in Room: _, Building: _.
+
+---
+
+## Go To
+
+- [Task 1 : ](/content/week/tasks/)
+- [Examples](/content/week/examples/README.md)
+- [Slides](/content/week/slides/README.md)
 - [Content](/content/README.md)
-- [Slides](week3/slides/README.md)
-- [Examples](week3/examples/README.md)
-- [Tasks](week3/tasks/README.md)
+- [Home](/README.md)
