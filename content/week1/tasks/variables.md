@@ -58,7 +58,7 @@ float f;
 double d;
 void foo();
 std::nullptr_t;
-nullptr
+nullptr;
 std:: size_t sz;
 std::ptrdiff_t pd;
 auto a = {1};  ///< must have initialiser for type deduction.
