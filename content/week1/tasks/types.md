@@ -1,8 +1,8 @@
-# Primitive Data Types
+# Primitive Types
 
 ## Contents
 
-- [Primitive Data Types](#primitive-data-types)
+- [Primitive Types](#primitive-types)
   - [Contents](#contents)
   - [Task 2](#task-2)
     - [2.1 : Size and Width](#21--size-and-width)
