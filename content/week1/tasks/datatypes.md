@@ -65,6 +65,7 @@ There are two more types in C++ that are worth talking about. These are `std::si
 
 ### 2.6 : Auto
 
+While C++ is a statically typed language, it is able to infer and deduce the types of many things at compile time. This is achieve with a non-type keyword called `auto`. While `auto` is used in many places that type specifiers are used (more on this in the next section), it is important to note that it itself is not a type but rather a automatic type, essentially a placeholder for the to-be deduced type.
 
 ## Links
 
