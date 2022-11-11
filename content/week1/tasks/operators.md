@@ -8,7 +8,7 @@
     - [4.1 : Basic Arithmetic](#41--basic-arithmetic)
     - [4.2 : Bitwise Operations](#42--bitwise-operations)
       - [4.2.1 : A bit about shift operations](#421--a-bit-about-shift-operations)
-    - [4.3 : Operator Assignment](#43--operator-assignment)
+    - [4.3 : Arithmetic Assignment](#43--arithmetic-assignment)
   - [Links](#links)
 
 ## Task 4
@@ -180,7 +180,22 @@ auto main () -> int
 
 For the shift operations, the general pattern is as follows `<shifted> <shift-op> <additive>`. This means the value that is being shifted is always on the left-hand-side and is always shifted by the number indicated on the right-hand-side. For left-shifts, the bit pattern is moved `N` spot to the left, pushing zeros at the end of the right side and popping any bit off the left end. For right shifts, the opposite occurs. The bit pattern is move right by `N` spots, popping any bit off the right end and push the same bit as the sign bit of the number being shifted (1's if negative and 0's if positive).
 
-### 4.3 : Operator Assignment
+### 4.3 : Arithmetic Assignment
+
+There is one final set of arithmetic operators in C++. These are the arithmetic assignment operators. These will perform the operation between two points and assign the result to the left point.
+
+- `+=` - Add assign - `a = a + b == a += b`
+- `-=` - Subtract assign - `a = a - b == a -= b`
+- `*=` - Multiply assign - `a = a * b == a *= b`
+- `/=` - Divide assign - `a = a / b == a /= b`
+- `%=` - Modulo assign - `a = a % b == a %= b`
+- `&=` - And assign - `a = a & b == a &= b`
+- `|=` - Or assign - `a = a | b == a |= b`
+- `^=` - Xor assign - `a = a ^ b == a ^= b`
+- `<<=` - Left-shift assign - `a = a << b == a <<= b`
+- `>>=` - Right-shift assign - `a = a >> b == a >>= b`
+
+Have a play with this operators
 
 ## Links
 

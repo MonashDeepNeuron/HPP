@@ -18,10 +18,10 @@ Installing bpt is relatively simple. Simply run.
 
 ```sh
 # Linux
-curl bpt.pizza/get/linux –Lo bpt
+curl bpt.pizza/get/linux -Lo bpt
 
 # MacOS
-curl bpt.pizza/get/macos –Lo bpt
+curl bpt.pizza/get/macos -Lo bpt
 
 # Both
 chmod a+x bpt
