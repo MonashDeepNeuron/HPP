@@ -238,6 +238,6 @@ Literals are types that have a explicit value to them. The literal `0` has the v
 ## Links
 
 - [Previous Page : Primitive Types](/content/week1/tasks/types.md)
-- [Next Page : Qualifiers](/content/week1/tasks/qualifiers.md)
+- [Next Page : Operators](/content/week1/tasks/operators.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)
