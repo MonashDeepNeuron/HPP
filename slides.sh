@@ -11,5 +11,5 @@ echo -e "# Slides\n" >> "$SLIDES/README.md"
 
 for n in $(eval echo {$1..$2})
 do
-    echo -e "![Slides $n](/$SLIDES/img/week$3-$n.jpg)" >> "$SLIDES/README.md"
+    echo -e "![Slides $n](/$SLIDES/imgs/week$3-$n.jpg)" >> "$SLIDES/README.md"
 done

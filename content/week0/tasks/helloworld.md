@@ -10,9 +10,8 @@ If you've never programmed before, a "Hello World" program is a simplest program
     - [6.1 : Introducing C++](#61--introducing-c)
     - [6.2 : First C++](#62--first-c)
     - [6.3 : Build and Run](#63--build-and-run)
-    - [6.4 : Makefiles](#64--makefiles)
-    - [6.5 : Debugging](#65--debugging)
-    - [6.6 : Hello World - bpt](#66--hello-world---bpt)
+    - [6.4 : Debugging](#64--debugging)
+    - [6.5 : Hello World - bpt](#65--hello-world---bpt)
   - [Links](#links)
 
 ## Task 6
@@ -91,10 +90,13 @@ Press `` ctrl + ` `` to open an integrated terminal window in VSCode. Make a new
 
 ```sh
 # Make `build` directory
-mkdir build
+$ mkdir build
 
 # Compile with GCC
-g++-12 -std=c++20 -o build/hello hello.cxx
+$ g++-12 -std=c++20 -o build/hello hello.cxx
+
+$ ./build/hello
+Hello World!
 ```
 
 Let's break this command down.
@@ -104,90 +106,7 @@ Let's break this command down.
 - `-o build/hello` - The `-o` flag indicates and output file name. Because we wrote it with a path in front of it (`build/*`), it will output to that path.
 - `hello.cxx` - The source file we want to compile.
 
-### 6.4 : Makefiles
-
-But writing out these compile commands is tedious and error-prone. `make` is a tool that can read a Bash-like file and build your software for you based on pre-written commands. The command configurations are called recipes adn you can write them in such a way that different recipes can depend on each other and allowing you to break down the steps of building an application.
-
-Create a file called `Makefile` and copy the contents below.
-
-```sh
-touch Makefile
-```
-
-```Makefile
-# Variables
-
-# C++ compiler
-CXX = g++-12
-
-# C++ standard
-STDCXX = -std=c++20
-
-# Source file
-SRC = hello.cxx
-
-# Executable name
-EXE = hello
-
-# Build directory
-BUILDDIR = build
-
-# Recipes are a name followed by a colon and its dependencies
-# eg. `name: dep1 dep2`
-
-# Builds debug and release
-all: debug release
-
-# Builds release and runs
-run: all run-release
-
-# Cleans output files
-clean:
-    @echo "Cleaning..."
-    rm $(BUILDDIR)/**/*.o
-    rm $(BUILDDIR)/**/$(EXE)
-    @echo "Done!"
-
-# Runs the release build
-run-release: release
-    $(BUILDDIR)/release/$(EXE)
-
-# Builds release config
-release: dirs
-    @echo "Compiling Release..."
-    $(CXX) $(STDCXX) -o $(BUILDDIR)/release/$(EXE) $(SRC)
-    @echo  "Done!"
-
-# Runs debug build
-run-debug: debug
-    $(BUILDDIR)/debug/$(EXE)
-
-# Build debug config
-debug: dirs
-    @echo "Compiling Debug..."
-    $(CXX) -g $(STDCXX) -o $(BUILDDIR)/debug/$(EXE) $(SRC)
-    @echo  "Done!"
-
-# Create need directories
-dirs:
-    @echo "Making output directories..."
-    mkdir -p $(BUILDDIR)/debug
-    mkdir -p $(BUILDDIR)/release
-    @echo "Done!"
-```
-
-To build with make simply run
-
-```sh
-# Run make 
-$ make
-.
-.
-.
-Hello World!
-```
-
-### 6.5 : Debugging
+### 6.4 : Debugging
 
 Debugging is the crux of fixing issues in code. Debuggers allow us to step through the running code and diagnose any issues that are occurring as they occur. Debugging a single executable is pretty trivial but a sufficiently large codebase can become quite complex.
 
@@ -195,7 +114,7 @@ For that reason we are going to go into debugging a little bit more at the meetu
 
 If you know how a debugger works, you can have a play with VSCode and see if you can get it to work.
 
-### 6.6 : Hello World - bpt
+### 6.5 : Hello World - bpt
 
 `make` is a useful tool and paired with Cmake you can configure and build very large and complex code bases, but these configuration files are hard to read, tedious to write and error prone. Cmake is also a good and pretty standard in industry for C and C++ developers, but this standard is pretty outdated. So for the majority of this series we're going to be using a new tool called `bpt`. bpt is a lot like `pip` (Python), `gem` (Ruby), `hackage` (Haskell) and `cargo` (Rust) allow near seamless control over control over dependencies, testing and distribution of our software.
 
