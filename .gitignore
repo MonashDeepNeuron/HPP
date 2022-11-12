@@ -36,3 +36,6 @@
 
 # Build Outputs
 **/build/*
+
+# Misc.
+*:Zone.Identifier

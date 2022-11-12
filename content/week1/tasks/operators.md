@@ -195,7 +195,42 @@ There is one final set of arithmetic operators in C++. These are the arithmetic 
 - `<<=` - Left-shift assign - `a = a << b == a <<= b`
 - `>>=` - Right-shift assign - `a = a >> b == a >>= b`
 
-Have a play with this operators
+```cxx
+#include <iostream>
+
+auto main () -> int
+{
+    auto k{5};
+    auto l{2};
+
+    k += l;
+    std::cout << "k += l -> k = " << k << std::endl;    ///< k = 7
+
+    k *= l;
+    std::cout << "k *= l -> k = " << k << std::endl;    ///< k = 14
+
+    l |= k;
+    std::cout << "l |= k -> l = " << l << std::endl;    ///< l = 14
+
+    k <<= l;
+    std::cout << "k <<= l -> k = " << k << std::endl;   ///< k = 229376
+
+    l ^= k;
+    std::cout << "l ^= k -> l = " << l << std::endl;    ///< l = 229390
+
+    k &= l;
+    std::cout << "k &= l -> k = " << k << std::endl;    ///< k = 229376
+
+    l -= k;
+    std::cout << "l -= k -> l = " << l << std::endl;    ///< l = 14
+
+    return 0;
+}
+```
+
+[Godbolt](https://www.godbolt.org/z/33hP5o4v7)
+
+Have a play with these operators and try and perform some computations that you might do in another languages.
 
 ## Links
 

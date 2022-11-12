@@ -29,6 +29,8 @@ Before we begin, it is best to ensure we have the most recent Windows update ava
 
 Secondly, you will want to ensure that virtualization is enabled on your device. To do this open 'Task Manager', click more details, open the performance tab and make sure you are on the CPU performance section. In the details below the CPU's graph there should be an option called 'virtualization'. This should have the value 'Enabled' next to it. If it doesn't, you will need to enable a feature called SVM in your computers BIOS. If you are comfortable doing this; go for it but if you do not want to do this yourself do not worry. We will ensure everyone is setup correctly in the first meetup. Continue reading through as there will be a way you can start coding at the end of the tasks.
 
+![Task Manager Example](/content/week0/tasks/imgs/taskmanager.png)
+
 ### 2.2 : Windows Terminal
 
 To get started with WSL we will want a new terminal environment for the WSL shell. Fortunately, Microsoft has an awesome project called Windows Terminal (WT). It is able to hold many instances of different shells an dis fully customizable. To install it, simply open the [Microsoft Store](https://www.microsoft.com/store/productId/9N0DX20HK701) apps and search for "Windows Terminal" and click "install".
