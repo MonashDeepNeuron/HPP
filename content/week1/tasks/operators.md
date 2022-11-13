@@ -6,9 +6,11 @@
   - [Contents](#contents)
   - [Task 4](#task-4)
     - [4.1 : Basic Arithmetic](#41--basic-arithmetic)
-    - [4.2 : Bitwise Operations](#42--bitwise-operations)
-      - [4.2.1 : A bit about shift operations](#421--a-bit-about-shift-operations)
-    - [4.3 : Arithmetic Assignment](#43--arithmetic-assignment)
+    - [4.2 : Casts](#42--casts)
+    - [4.3 : Bitwise Operations](#43--bitwise-operations)
+      - [4.3.1 : A bit about shift operations](#431--a-bit-about-shift-operations)
+    - [4.4 : Arithmetic Assignment](#44--arithmetic-assignment)
+    - [4.5 : Size Operator](#45--size-operator)
   - [Links](#links)
 
 ## Task 4
@@ -117,7 +119,37 @@ auto main () -> int
 
 [Godbolt](https://www.godbolt.org/z/5Ps5ezhaT)
 
-### 4.2 : Bitwise Operations
+### 4.2 : Casts
+
+In C++ you can change the type of a variable via casting. There are quite a few different casting operators.
+
+- `const_cast<T>(expr)` - Changes cv-qualifications (cv := const-volatile)
+- `static_cast<T>(expr)` - Attempts to cast `expr` entirely different type `T`.
+- `reinterpret_cast<T>(expr)` - Reinterprets the underlying bit pattern of `expr`.
+- `dynamic_cast<T>(expr)` - Allows for casting up, down and sideways through class hierarchies.
+
+> Note: `T` is the type that the `expr` is being cast to.
+
+You will likely not come across needing to any of the casts except `static_cast<T>(expr)`. Reach for this first.
+
+```cxx
+#include <iostream>
+
+auto main () -> int
+{
+    auto a{10};
+    auto b{3};
+
+    /// Explicitly cast `b` to a `double`
+    std::cout << "a / b = " << a / static_cast<double>(b) << std::endl;  ///< a / b = 3.33333
+
+    return 0;
+}
+```
+
+[Godbolt](https://www.godbolt.org/z/E6GTExxEj)
+
+### 4.3 : Bitwise Operations
 
 In C++ there is another category of operators called bitwise operators. These operators only apply to integer types but allow for you to individually control the bits of an integer.
 
@@ -176,11 +208,11 @@ auto main () -> int
 
 [Godbolt](https://www.godbolt.org/z/37b58aTjf)
 
-#### 4.2.1 : A bit about shift operations
+#### 4.3.1 : A bit about shift operations
 
 For the shift operations, the general pattern is as follows `<shifted> <shift-op> <additive>`. This means the value that is being shifted is always on the left-hand-side and is always shifted by the number indicated on the right-hand-side. For left-shifts, the bit pattern is moved `N` spot to the left, pushing zeros at the end of the right side and popping any bit off the left end. For right shifts, the opposite occurs. The bit pattern is move right by `N` spots, popping any bit off the right end and push the same bit as the sign bit of the number being shifted (1's if negative and 0's if positive).
 
-### 4.3 : Arithmetic Assignment
+### 4.4 : Arithmetic Assignment
 
 There is one final set of arithmetic operators in C++. These are the arithmetic assignment operators. These will perform the operation between two points and assign the result to the left point.
 
@@ -232,9 +264,32 @@ auto main () -> int
 
 Have a play with these operators and try and perform some computations that you might do in another languages.
 
+### 4.5 : Size Operator
+
+Another useful operator is the `sizeof` and `sizeof...` operator. It returns the number of bytes if a type parameter pack (more on parameter packs later).
+
+```cxx
+#include <iostream>
+
+auto main () -> int
+{
+    auto a {10};
+    auto b {3.5};
+    auto c {'c'};
+
+    std::cout << "sizeof (a) = " << sizeof (a) << std::endl;  ///< sizeof (a) = 4
+    std::cout << "sizeof (b) = " << sizeof (b) << std::endl;  ///< sizeof (b) = 8
+    std::cout << "sizeof (c) = " << sizeof (c) << std::endl;  ///< sizeof (c) = 1
+
+    return 0;
+}
+```
+
+[Godbolt](https://www.godbolt.org/z/8E4vTdPbc)
+
 ## Links
 
 - [Previous Page : Variables](/content/week1/tasks/variables.md)
-- [Back to Week 0](/content/week1/README.md)
+- [Back to Week 1](/content/week1/README.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

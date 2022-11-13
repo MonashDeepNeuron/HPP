@@ -51,7 +51,7 @@ But what is an initialiser? This is something that creates a value for a variabl
 
 ```cxx
 /// Primitive Data Types
-bool b;
+bool b = true
 int i;
 char c;
 wchar_t wc;
@@ -60,7 +60,7 @@ double d;
 void foo();
 std::nullptr_t;
 nullptr;
-std:: size_t sz;
+std::size_t sz;
 std::ptrdiff_t pd;
 auto a = {1};  ///< must have initialiser for type deduction.
 ```
@@ -207,6 +207,8 @@ vi = 9;     ///< Ok
 cv = 10;    ///< Error
 ```
 
+> Note: The usage of `volatile` is highly discouraged.
+
 ### 3.4 : Automatic Types
 
 The final type we look at is an automatic type. As we will see later, declaring the type of variables can get cumbersome. Since C++11, a new type introducer was create with the keyword `auto`. Variables with type `auto` will have there true type deduced at compile time based on the initialiser.
@@ -221,7 +223,7 @@ auto acr = {'b', 'y', 'e'};     ///< `acr` deduced to have the type `char[]` (mo
 
 ### 3.5 : Value Categories
 
-In C++, there are different categories of values. These determine the operations that can be performed on them. There are two primary value categories called lvalues and rvalues.
+In C++, there are different categories of values. These determine the operations that can be performed on them. There are a few value categories in C++ but we will focus on only two of them, lvalues and rvalues.
 
 #### 3.5.2 : lvalues
 
