@@ -178,7 +178,7 @@ Storage qualifiers allow you to specify the lifetime of variables. All variables
 static int si = {1};  ///< static variables
 
 {
-    int li = {2};  ///< local automatic storage variable
+    int li = {2};  ///< local automatically dropped variable
 }
 ```
 
@@ -214,11 +214,10 @@ cv = 10;    ///< Error
 The final type we look at is an automatic type. As we will see later, declaring the type of variables can get cumbersome. Since C++11, a new type introducer was create with the keyword `auto`. Variables with type `auto` will have there true type deduced at compile time based on the initialiser.
 
 ```cxx
-auto ai = {1};                  ///< `ai` deduced to have the type `int`
+auto ai int{1};                 ///< `ai` deduced to have the type `int`
 auto al = {2L};                 ///< `al` deduced to have the type `long` or `long int` (uses 'L' literal)
-auto ac = {'c'};                ///< `ac` deduced to have the type `char`
+auto ac {'c'};                  ///< `ac` deduced to have the type `char`
 auto as = "hello";              ///< `as` deduced to have the type `const char*` (more on these later)
-auto acr = {'b', 'y', 'e'};     ///< `acr` deduced to have the type `char[]` (more on these later)
 ```
 
 ### 3.5 : Value Categories
