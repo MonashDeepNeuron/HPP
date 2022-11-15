@@ -24,7 +24,7 @@ In C++ there are a few pre-defined stream objects. This are mounted to the the C
 - `std::cin`  - Output stream to C's `stdin`
 - `std::cout` - Output stream to C's `stdout`
 - `std::cerr` - Output stream to C's `stderr`
-- `std::clog` - Output stream to C's `stderr`
+- `std::clog` - Output stream to C's `stderr` (not dependent on `stdout`)
 
 These are pre-existing objects of the type `std::istream` and `std::ostream` respectively. The use of streams allows for C++ developer to have a uniform way of addressing different IO devices. In particular the `<<` operator is available to all streams types allowing for similar usage of streams that may be mounted to alternative IO devices, eg. files, graphics card, cameras etc.
 
