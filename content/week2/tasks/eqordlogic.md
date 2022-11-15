@@ -1,8 +1,8 @@
-# Ordering and Equality
+# Equality, Ordering and Logical Operators
 
 ## Contents
 
-- [Ordering and Equality](#ordering-and-equality)
+- [Equality, Ordering and Logical Operators](#equality-ordering-and-logical-operators)
   - [Contents](#contents)
   - [Task 1](#task-1)
     - [Task 1.1 : Equality](#task-11--equality)
