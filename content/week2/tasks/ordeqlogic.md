@@ -11,6 +11,7 @@
       - [Task 1.3.1 : Strong Ordering](#task-131--strong-ordering)
       - [Task 1.3.2 : Weak Ordering](#task-132--weak-ordering)
       - [Task 1.3.3 : Partial Ordering](#task-133--partial-ordering)
+    - [Task 1.4 : Logical Operators](#task-14--logical-operators)
   - [Links](#links)
 
 ## Task 1
@@ -132,9 +133,81 @@ and can be implicitly converted into `std::partial_ordering`.
 - `std::strong_ordering::greater`
 - `std::strong_ordering::unordered`
 
+```cxx
+#include <compare>
+#include <iomanip>
+#include <iostream>
+
+auto main () -> int
+{
+    auto a {1};
+    auto b {2};
+
+    auto aa = a <=> a;
+    auto ab = a <=> b;
+
+    std::cout << std::boolalpha;
+    std::cout << "((a <=> a) < 0) => " << ((a <=> a) < 0) << std::endl;      ///< false
+    std::cout << "((a <=> a) == 0) => " << ((a <=> a) == 0) << std::endl;    ///< true
+    std::cout << "((a <=> a) > 0) => " << ((a <=> a) > 0) << std::endl;      ///< false
+
+    std::cout << "((a <=> b) < 0) => " << ((a <=> b) < 0) << std::endl;      ///< true
+    std::cout << "((a <=> b) == 0) => " << ((a <=> b) == 0) << std::endl;    ///< false
+    std::cout << "((a <=> b) > 0) => " << ((a <=> b) > 0) << std::endl;      ///< false
+
+    return 0;
+}
+```
+
+[Godbolt](https://www.godbolt.org/z/asKsxKc1W)
+
+### Task 1.4 : Logical Operators
+
+In programming, it is useful to be able to check a multitude of Boolean expression. This allows programs to have more complex conditional logic structures.
+
+- `!`  - Logical Not
+- `&&` - Logical And
+- `||` = Logical Or
+
+Logical And and Or have special short circuiting properties. This means that the outcome of a Boolean expressions can be evaluated early. For And, if one Boolean point is `false`, it doesn't matter what the second point evaluates to as the expression's condition has already failed, thus whole expression would `false`. Inversely for Or, if one Boolean point is `true` the whole expression is true
+
+> Note: There is no logical Xor. This is because Xor cannot short circuited as the result depends on the result of both points. However, we have already seen the logical Xor, it is the `!=`. If the two points of `!=` are either both `true` or both `false`, the inequality condition is not met and thus achieving the exclusivity properties of Xor. In C++ because `bool` can be implicitly converted to other integral types, it is best that logicalXor is used as: `!(a) != !(b)`.
+
+```cxx
+#include <iomanip>
+#include <iostream>
+
+auto main () -> int
+{
+    auto a {1};
+    auto b {2};
+    auto c {3};
+
+    std::cout << std::boolalpha;
+
+    /// if `a` is less than `b` and if `a` is less than `c`
+    std::cout << "((a < b) && (a < c)) => " << ((a < b) && (a < c)) << std::endl;       ///< true
+
+    /// if `c` is greater than `b` or if `a` is greater than `c`
+    std::cout << "((c > b) || (a > c)) => " << ((c > b) || (a > c)) << std::endl;       ///< true
+
+    /// if `a` is not greater than `b` or if `a` is equal to `c`
+    std::cout << "(!(a > b) || (a == c)) => " << (!(a > b) || (a == c)) << std::endl;   ///< true
+    /// if `a` is not greater than `b` is not equal to if `a` is not greater than `c`
+    /// if `a` is not greater than `b` xor if `a` is not greater than `c`
+    std::cout << "(!(a > b) != !(a < c)) => " << (!(a > b) != !(a > c)) << std::endl;   ///< false
+
+    std::cout << std::noboolalpha;
+
+    return 0;
+}
+```
+
+[Godbolt](https://www.godbolt.org/z/xqx3o4hW6)
+
 ## Links
 
 - [Previous Page : Week 2](/content/week2/README.md)
-- [Next Page : Logical Operators](/content/week2/tasks/logicops.md)
+- [Next Page : Conditional Expressions](/content/week2/tasks/condexpr.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

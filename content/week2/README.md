@@ -8,11 +8,10 @@ Over the last two weeks we have gone into quite considerable depth around C++'s 
 
 ## Tasks
 
-1. [Ordering and Equality](/content/week2/tasks/ord-eq.md)
-2. [Logical Operators](/content/week2/tasks/logicops.md)
-3. [Conditional Expressions](/content/week2/tasks/condexpr.md)
-4. [Loops](/content/week2/tasks/loops.md)
-5. [Functions & Scope](/content/week2/tasks/functions.md)
+1. [Equality, Ordering & Logical Operators](/content/week2/tasks/ord-eq.md)
+2. [Conditional Expressions](/content/week2/tasks/condexpr.md)
+3. [Loops](/content/week2/tasks/loops.md)
+4. [Functions & Scope](/content/week2/tasks/functions.md)
 
 ## Weekly Meetup
 
