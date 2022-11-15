@@ -12,7 +12,7 @@ This week you will be introduced to C++ type system, how it differs from other l
 2. [Primitive Types](/content/week1/tasks/types.md)
 3. [Variables](/content/week1/tasks/variables.md)
 4. [Operators](/content/week1/tasks/operators.md)
-5. [Printing](/content/week1/tasks/)
+5. [Streams](/content/week1/tasks/streams.md)
 
 ## Weekly Meetup
 

@@ -290,6 +290,6 @@ auto main () -> int
 ## Links
 
 - [Previous Page : Variables](/content/week1/tasks/variables.md)
-- [Back to Week 1](/content/week1/README.md)
+- [Next Page : Streams](/content/week1/tasks/streams.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)
