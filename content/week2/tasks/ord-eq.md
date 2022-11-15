@@ -8,6 +8,9 @@
     - [Task 1.1 : Equality](#task-11--equality)
     - [Task 1.2 : Ordering](#task-12--ordering)
     - [Task 1.3 : Spaceships and Ordering Types](#task-13--spaceships-and-ordering-types)
+      - [Task 1.3.1 : Strong Ordering](#task-131--strong-ordering)
+      - [Task 1.3.2 : Weak Ordering](#task-132--weak-ordering)
+      - [Task 1.3.3 : Partial Ordering](#task-133--partial-ordering)
   - [Links](#links)
 
 ## Task 1
@@ -45,13 +48,93 @@ auto main () -> int
 
 ### Task 1.2 : Ordering
 
-Checking for equality is pretty straight forward. Some more interesting operations are the ordering operators.
+Checking for equality is pretty straight forward. Some more interesting operations are the ordering operators. What is ordering? Ordering is a relationship of different values of the same type. Ordering is what gives numbers their sequence (`2 < 3`). Ordering operators allow use to check if some ordering condition is met.
+
+- `<`  - Less than
+- `>`  - Greater than
+- `<=` - Less than or Equal
+- `>=` - Greater than or Equal
+
+```cxx
+#include <iomanip>
+#include <iostream>
+
+auto main () -> int
+{
+    auto a {1};
+    auto b {2};
+
+    std::cout << std::boolalpha;
+    std::cout << "a < b => " << (a < b) << std::endl;       ///< true
+    std::cout << "a > b => " << (a > b) << std::endl;       ///< false
+
+    std::cout << "a <= a => " << (a <= a) << std::endl;     ///< true
+    std::cout << "a >= a => " << (a >= a) << std::endl;     ///< true
+
+    std::cout << "a <= b => " << (a <= b) << std::endl;     ///< true
+    std::cout << "a >= b => " << (a >= b) << std::endl;     ///< false
+    std::cout << std::noboolalpha;
+    return 0;
+}
+```
+
+[Godbolt](https://www.godbolt.org/z/v4EYf1n3j)
 
 ### Task 1.3 : Spaceships and Ordering Types
 
+As of C++20 there as a new ordering operator introduced called the three-way-comparison operator or, the spaceship operator `<=>`. The spaceship operator different ordering types based on the strictness of the ordering.
+
+- `(a <=> b) < 0` if `a < b`
+- `(a <=> b) > 0` if `a > b`
+- `(a <=> b) == 0` if `a == b`
+
+`<=>` also returns an ordering category. This indicates the level of strictness for the ordered type.
+
+|         Category        | Equivalent values are.. | Incomparable values are.. |
+|:-----------------------:|:-----------------------:|:-------------------------:|
+|  `std::strong_ordering` |    indistinguishable    |        not allowed        |
+|   `std::weak_ordering`  |     distinguishable     |        not allowed        |
+| `std::partial_ordering` |     distinguishable     |          allowed          |
+
+- indistinguishable : if `a == b` then `f(a) == f(b)`
+- distinguishable : if `a == b` then `f(a) != f(b)`
+- `std::partial_ordering` can return `std::partial_ordering::unordered` eg. `/* anything */ <=> NaN == std::partial_ordering::unordered`.
+
+> Note: floating point comparisons return `std::partial_ordering`
+
+#### Task 1.3.1 : Strong Ordering
+
+`std::strong_ordering` can have the values:
+
+- `std::strong_ordering::less`
+- `std::strong_ordering::equivalent`
+- `std::strong_ordering::equal`
+- `std::strong_ordering::greater`
+
+and can be implicitly converted into `std::partial_ordering` or `std::weak_ordering`.
+
+#### Task 1.3.2 : Weak Ordering
+
+`std::weak_ordering` can have the values:
+
+- `std::weak_ordering::less`
+- `std::weak_ordering::equivalent`
+- `std::weak_ordering::greater`
+
+and can be implicitly converted into `std::partial_ordering`.
+
+#### Task 1.3.3 : Partial Ordering
+
+`std::partial_ordering` can have the values:
+
+- `std::strong_ordering::less`
+- `std::strong_ordering::equivalent`
+- `std::strong_ordering::greater`
+- `std::strong_ordering::unordered`
+
 ## Links
 
-- [Previous Page : Week 2](/content/weekn/README.md)
-- [Next Page : ](/content/weekn/tasks/.md)
+- [Previous Page : Week 2](/content/week2/README.md)
+- [Next Page : Logical Operators](/content/week2/tasks/logicops.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)
