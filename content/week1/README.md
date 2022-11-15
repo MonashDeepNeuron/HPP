@@ -1,10 +1,10 @@
 # Week 1
 
-Types, Data, Variables, Qualifiers and Operators
+Types, Variables, Qualifiers, Operators and Streams
 
 ## Overview
 
-This week you will be introduced to C++ type system, how it differs from other languages and how types reflect machine architecture. You will also learn about variable declarations, type qualifiers and a few of the key operators in C++. You will also get a bit more exposure to printing with `std::cout`. Just a forewarning, the is a reasonable amount of reading this week as we delve deeper into the C++ type system.
+This week you will be introduced to C++ type system, how it differs from other languages and how types reflect machine architecture. You will also learn about variable declarations, type qualifiers and a few of the key operators in C++. You will also get a bit more exposure to printing with `std::cout`. Just a forewarning, the is a reasonable amount of reading this week as we delve deeper into C++'s type system.
 
 ## Tasks
 
