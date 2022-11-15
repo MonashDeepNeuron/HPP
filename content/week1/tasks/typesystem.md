@@ -44,7 +44,7 @@ In C++ supports everything except Kinds. We will go more into a little more dept
 
 ## Links
 
-- [Previous Page: Week 1](/content/week1/README.md)
-- [Next Page: Primitive Data Types](/content/week1/tasks/types.md)
+- [Previous Page : Week 1](/content/week1/README.md)
+- [Next Page : Primitive Data Types](/content/week1/tasks/types.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)
