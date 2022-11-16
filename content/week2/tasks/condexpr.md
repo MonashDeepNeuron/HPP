@@ -9,6 +9,7 @@
     - [Task 2.1.1 : else-expression](#task-211--else-expression)
     - [Task 2.2 : Ternary Operator](#task-22--ternary-operator)
     - [Task 2.3 : Switch Statements](#task-23--switch-statements)
+      - [Task 2.3.1 : Fallthroughs](#task-231--fallthroughs)
   - [Links](#links)
 
 ## Task 2
@@ -96,7 +97,89 @@ auto main () -> int
 
 ### Task 2.2 : Ternary Operator
 
+`if` statements are the first step to building much more complex programs however, they are quite bulky in syntax for short conditional expressions. Instead we can use the ternary operator `?:` to build short and concise conditional expressions. A ternary expression has the following syntax.
+
+`auto /* result */ = /* Boolean expression */ ? /* expression is true */ : /* expression is false */;`
+
+```cxx
+#include <iostream>
+
+auto main () -> int
+{
+    auto a {1};
+    auto b {2};
+
+    auto msg = a < b ? "a is less then b" : "b is less then a";
+
+    std::cout << msg << std::endl;
+
+    return 0;
+}
+```
+
+[Godbolt](https://www.godbolt.org/z/4n4xYh7T8)
+
 ### Task 2.3 : Switch Statements
+
+Another useful construct in C++ is a `switch` statement. `switch` statements encapsulate the idea of a jump table however, it is limited to integral types, thus the `switch` condition must be an integral type and have integral case labels.
+
+```cxx
+#include <iostream>
+
+auto main () -> int
+{
+    auto a {1};
+
+    switch (a)
+    {
+        case 1:
+            std::cout << "a + 1 = " << a + 1 << std::endl;
+            break;
+        case 2:
+            std::cout << "a * 2 = " << a * 2 << std::endl;
+            break;
+        case 3:
+            std::cout << "a - 3 = " << a - 3 << std::endl;
+            break;
+        default:
+            std::cout << "a / 5 = " << a / 5 << std::endl;
+            break;
+    }
+
+    return 0;
+}
+```
+
+[Godbolt](https://www.godbolt.org/z/nz6TYWodK)
+
+#### Task 2.3.1 : Fallthroughs
+
+You will note that at the end of each of the case blocks there are `break` statements. These are used to exit the switch statement entirely. If this weren't there, each case would run in sequence. This is called fallthrough. most compilers will warn you of this.
+
+```cxx
+#include <iostream>
+
+auto main () -> int
+{
+    auto a {1};
+
+    switch (a)
+    {
+        case 1:
+            std::cout << "a + 1 = " << a + 1 << std::endl;
+        case 2:
+            std::cout << "a * 2 = " << a * 2 << std::endl;
+        case 3:
+            std::cout << "a - 3 = " << a - 3 << std::endl;
+        default:
+            std::cout << "a / 5 = " << a / 5 << std::endl;
+    }
+
+    return 0;
+}
+```
+
+[Godbolt](https://www.godbolt.org/z/9oEfYrMMq)
 
 ## Links
 
