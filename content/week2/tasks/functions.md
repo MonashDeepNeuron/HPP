@@ -7,6 +7,7 @@
   - [Task 4](#task-4)
     - [Task 4.1 : What is a functions?](#task-41--what-is-a-functions)
     - [Task 4.2 : Function Syntax](#task-42--function-syntax)
+      - [Task 4.2.3 : Void Functions](#task-423--void-functions)
   - [Links](#links)
 
 ## Task 4
@@ -88,6 +89,8 @@ auto main () -> int
     return 0;
 }
 ```
+
+#### Task 4.2.3 : Void Functions
 
 [Godbolt](https://www.godbolt.org/z/radjo93bx)
 
