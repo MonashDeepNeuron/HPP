@@ -90,9 +90,30 @@ auto main () -> int
 }
 ```
 
+[Godbolt](https://www.godbolt.org/z/radjo93bx)
+
 #### Task 4.2.3 : Void Functions
 
-[Godbolt](https://www.godbolt.org/z/radjo93bx)
+Functions can also return nothing. This is often the case when functions have side effects. Side effects are operations that occur outside the input and outputs domains of a function. Printing with `std::cout` (or rather the underlying function that `std::cout calls) is an example of a function with side effects. It takes the string literal as input and returns, nothing but the effect of the text printing still occurs.
+
+In C++, the lack of a return type is denoted by the `void` literal.
+
+```cxx
+#include <iostream>
+
+void println(auto s)
+{ std::cout << s << std::endl; }
+
+auto main () -> int
+{
+
+    println("Hello World!");
+
+    return 0;
+}
+```
+
+[Godbolt](https://www.godbolt.org/z/PcW7zz89a)
 
 ## Links
 
