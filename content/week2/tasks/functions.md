@@ -106,14 +106,13 @@ void println(auto s)
 
 auto main () -> int
 {
-
     println("Hello World!");
 
     return 0;
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/PcW7zz89a)
+[Godbolt](https://www.godbolt.org/z/jeb77d165)
 
 ## Links
 

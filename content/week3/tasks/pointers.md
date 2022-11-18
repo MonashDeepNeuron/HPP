@@ -10,6 +10,8 @@
     - [Task 1.3 : const qualifications](#task-13--const-qualifications)
     - [Task 1.4 : void pointers](#task-14--void-pointers)
     - [Task 1.5 : Pointer Arithmetic](#task-15--pointer-arithmetic)
+    - [Task 1.6 : Dereferencing nullptr](#task-16--dereferencing-nullptr)
+    - [Task 1.7 : Pointers to Pointers](#task-17--pointers-to-pointers)
   - [Links](#links)
 
 ## Task 1
@@ -150,11 +152,11 @@ auto main () -> int
 
 ### Task 1.5 : Pointer Arithmetic
 
-Because pointers are just numbers (addresses) we can add and subtract from then as if they were integral types. We can use the increment, decrement, addition, subtraction and subscript (index) operator on pointers (`+`, `-`, `++`, `--` and `[]` respectively).
+Because pointers are just numbers (addresses) we can add and subtract from then as if they were integral types. We can use the increment, decrement, addition, subtraction and subscript (index) operators on pointers (`+`, `-`, `++`, `--` and `[]` respectively).
 
-This can used to create and access a sequence or memory. This is how a string literal (`""`) works in C++, they are really slice that decays into the type `const char*` or; in English, a pointer constant sequence of characters.
+This can used to create and access a sequence or memory. This is how a string literal (`""`) works in C++, they are really sequence of `char` that exist in your program statically. C++ then decays them into the type `const char*` so functions can refer to them such as `std::cout <<`.
 
-However, pointer arithmetic is very error prone. and leads to low readability and maintainability.
+However, pointer arithmetic is very error prone. and leads to low readability and maintainability, but is useful to understand and for highly controlled manipulation of data.
 
 ```cxx
 #include <iostream>
@@ -187,9 +189,55 @@ auto main () -> int
 
 [Godbolt](https://www.godbolt.org/z/qdx6csE7x)
 
+### Task 1.6 : Dereferencing nullptr
+
+In C++, any assignment and initialisation is is copy by default even when passed to functions. This can be really costly for variables that have a large amount of data stored in them. Pointers make it cheap to pass the data around as you now just have to pass a pointer to it instead of all the data. However, there is a catch to pointers. Pointers can point to nothing, this nothing value is actually the literal `nullptr` we saw in week 0. And you cannot dereference a pointer to `nullptr` as `nullptr` is nothing. This can be really dangerous as this is considered UB which may work, may not compile, may crash the entire program or do something entirely unexpected.
+
+```cxx
+#include <iostream>
+
+auto main () -> int
+{
+    int* p {nullptr};
+
+    std::cout << "p = " << p << std::endl;      ///< p = 0
+
+    /// Compiles (on Godbolt) but throws a runtime error (see return of program is not zero)
+    std::cout << "*p = " << *p << std::endl;
+
+    return 0;
+}
+```
+
+[Godbolt](https://www.godbolt.org/z/594hMbcz6)
+
+### Task 1.7 : Pointers to Pointers
+
+It is also possible in C++ to have a pointer to a pointer. This mostly a feature inherited from C and remains in for C++ to interoperate with C and for completeness. Pointers to pointers may seem daunting but are straight forward if you apply the concept of a pointer again. The pointer-to-pointer variable points to the address of the integral variable that holds the address of some other object. Pointer-to-pointers have the type `T**` and can be dereferenced to the their value, ie. the address the nested pointer points to or again to get the bottom value.
+
+```cxx
+#include <iostream>
+#include <memory>
+
+auto main () -> int
+{
+    int a {6};
+    int* p {std::addressof(a)};
+    int** pp {std::addressof(p)};
+
+    std::cout << "pp = " << pp << std::endl;
+    std::cout << "*pp = " << *pp << std::endl;
+    std::cout << "**pp = " << **pp << std::endl;
+
+    return 0;
+}
+```
+
+[Godbolt](https://www.godbolt.org/z/MPPczrWzd)
+
 ## Links
 
 - [Previous Page : Week 3](/content/week3/README.md)
-- [Next Page : References](/content/week3/tasks/references.md)
+- [Next Page : Slices](/content/week3/tasks/slices.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

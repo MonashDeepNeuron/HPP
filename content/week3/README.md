@@ -9,9 +9,9 @@ This week you will be introduced to C++'s memory model and how it allows us to h
 ## Tasks
 
 1. [Pointers](/content/week3/tasks/pointers.md)
-2. [References](/content/week3/tasks/references.md)
-3. [Slices](/content/week3/tasks/slices.md)
-4. [Dynamic Memory](/content/week3/tasks/memory.md)
+2. [Slices](/content/week3/tasks/slices.md)
+3. [Dynamic Memory](/content/week3/tasks/memory.md)
+4. [References](/content/week3/tasks/references.md)
 5. [Introduction to the Standard Library](/content/week3/tasks/stdlib.md)
 
 ## Weekly Meetup
