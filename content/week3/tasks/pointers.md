@@ -235,6 +235,8 @@ auto main () -> int
 
 [Example 36 (Godbolt)](https://www.godbolt.org/z/MPPczrWzd)
 
+> Note: `auto` is able to deduce the type if the right-hand-side is a rvalue however, the `const` qualifications cannot be specified. ie. `T* -> auto` and `T** -> auto`.
+
 ## Links
 
 - [Previous Page : Week 3](/content/week3/README.md)
