@@ -249,7 +249,32 @@ auto main () -> int
 
 #### Task 5.6.2 : Shared Pointer
 
+Sometimes it useful to have multiple pointers refer to the same dynamic memory resource. However, one issue of this is there is know way to know if the memory resource is still needed but another pointer meaning a memory resource can be released accidently leaving all other pointers to the now deleted resource a dangling pointer. This is where `std::shared_ptr` comes in handy. This pointer will maintain a count or how many pointers refer to it. Only when this count reaches zero, indicating no more pointers are using the resource will the resource get deleted. This gives the behavior of many garbage collected languages without the massive overhead of a global gabage collecting program.
+
+- Type signature - `std::shared_ptr<T, Deleter>`
+  - `T` - Element type
+  - `Deleter` - Deleter functor
+- [`std::shared_ptr` : cppreference](https://en.cppreference.com/w/cpp/memory/shared_ptr)
+
+```cxx
+
+```
+
+[Example 49 (Godbolt)]()
+
 #### Task 5.6.3 : Weak Pointer
+
+Sometimes it is useful to observe an existing resource that is managed by `std::shared_ptr` and only assume temporary ownership if the object still exists. This is where `std::weak_ptr` is used. It is constructed from an existing `std::shared_ptr` and observes the memory resource and is able to be converted to a `std::shared_ptr` when it needs to access the resource. This is useful for breaking reference cycles of `std::shared_ptr`'s and extend the lifetime of a memory resource to the scope of a `std::weak_ptr`. It is also able to check if the resource has been deleted already.
+
+- Type signature - `std::weak_ptr<T>`
+  - `T` - Element type
+- [`std::weak_ptr` : cppreference](https://en.cppreference.com/w/cpp/memory/weak_ptr)
+
+```cxx
+
+```
+
+[Example 50 (Godbolt)]()
 
 ## Links
 
