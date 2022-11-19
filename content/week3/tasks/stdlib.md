@@ -257,10 +257,33 @@ Sometimes it useful to have multiple pointers refer to the same dynamic memory r
 - [`std::shared_ptr` : cppreference](https://en.cppreference.com/w/cpp/memory/shared_ptr)
 
 ```cxx
+#include <iostream>
+#include <memory>
 
+void print(std::shared_ptr<int> ptr)
+{ 
+    std::cout << "ptr = " << ptr << std::endl;
+    std::cout << "*ptr = " << *ptr << std::endl;
+    std::cout << "ptr.use_count() = " << ptr.use_count() << std::endl;
+}
+
+void add_magic(std::shared_ptr<int>& ptr)
+{ *ptr += 42; }
+
+auto main () -> int
+{
+    auto p = std::make_shared<int>(7);
+
+    std::cout << "p.use_count() = " << p.use_count() << std::endl;
+
+    print(p);
+    add_magic(p);
+
+    return 0;
+}
 ```
 
-[Example 49 (Godbolt)]()
+[Example 49 (Godbolt)](https://www.godbolt.org/z/39dPYooTW)
 
 #### Task 5.6.3 : Weak Pointer
 
@@ -271,10 +294,36 @@ Sometimes it is useful to observe an existing resource that is managed by `std::
 - [`std::weak_ptr` : cppreference](https://en.cppreference.com/w/cpp/memory/weak_ptr)
 
 ```cxx
+#include <iostream>
+#include <memory>
 
+void print(std::weak_ptr<int> ptr)
+{ 
+    std::cout << "ptr.use_count() = " << ptr.use_count() << std::endl;
+
+    if (auto sp = ptr.lock())
+    {
+        std::cout << "sp.use_count() = " << sp.use_count() << std::endl;
+        std::cout << "sp = " << sp << std::endl;
+        std::cout << "*sp = " << *sp << std::endl;
+    }
+    else
+        std::cout << "ptr is expired" << std::endl;
+}
+
+auto main () -> int
+{
+    auto p = std::make_shared<int>(7);
+
+    std::cout << "p.use_count() = " << p.use_count() << std::endl;
+
+    print(p);
+
+    return 0;
+}
 ```
 
-[Example 50 (Godbolt)]()
+[Example 50 (Godbolt)](https://www.godbolt.org/z/PaonscnEG)
 
 ## Links
 
