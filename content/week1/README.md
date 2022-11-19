@@ -21,7 +21,6 @@ This weeks meetup will be on xx/xx/xx in Room: _, Building: _.
 ## Links
 
 - [Task 1 : The C++ Type System](/content/week1/tasks/typesystem.md)
-- [Examples](/content/week1/examples/README.md)
 - [Slides](/content/week1/slides/README.md)
 - [Content](/content/README.md)
 - [Home](/README.md)

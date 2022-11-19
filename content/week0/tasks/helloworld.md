@@ -82,6 +82,8 @@ auto main () -> int
 }
 ```
 
+[Example 1](/content/week0/examples/hello/hello.cxx)
+
 Don't worry too much about the details as we will discuss in greater detail during the meetup.
 
 ### 6.3 : Build and Run
@@ -155,6 +157,8 @@ This will spit out the binary into `build/`, dropping both file extensions. To r
 $ ./build/hello
 Hello World!
 ```
+
+[Example 2](/content/week0/examples/hello-bpt)
 
 ## Links
 

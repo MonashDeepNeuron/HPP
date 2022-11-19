@@ -45,7 +45,7 @@ auto main () -> int
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/xKMooTb4s)
+[Example 3 (Godbolt)](https://www.godbolt.org/z/xKMooTb4s)
 
 > Note: for those unaware, `%` returns the remained of the division of $\frac{a}{b}$
 
@@ -68,7 +68,7 @@ auto main () -> int
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/eeYqPbcaT)
+[Example 4 (Godbolt)](https://www.godbolt.org/z/eeYqPbcaT)
 
 > Note: The modulo operator does not work for floating point types as this illogical (can't return remainder of a floating point division as it is near impossible to regain the information).
 
@@ -91,7 +91,7 @@ auto main () -> int
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/o9afoszjP)
+[Example 5 (Godbolt)](https://www.godbolt.org/z/o9afoszjP)
 
 There are also in-place operators `++` and `--`. These allow you to increment/decrement integer types in place. There are two variations, prefix and postfix. Prefix will increment/decrement the value and then provide a lvalue of the new variables value to whatever is reading it (if any). Postfix will provide an lvalue to copy of the old value and then increment/decrement the value.
 
@@ -117,7 +117,7 @@ auto main () -> int
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/5Ps5ezhaT)
+[Example 6 (Godbolt)](https://www.godbolt.org/z/5Ps5ezhaT)
 
 ### 4.2 : Casts
 
@@ -147,7 +147,7 @@ auto main () -> int
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/E6GTExxEj)
+[Example 7 (Godbolt)](https://www.godbolt.org/z/E6GTExxEj)
 
 ### 4.3 : Bitwise Operations
 
@@ -206,7 +206,7 @@ auto main () -> int
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/37b58aTjf)
+[Example 8 (Godbolt)](https://www.godbolt.org/z/37b58aTjf)
 
 #### 4.3.1 : A bit about shift operations
 
@@ -260,7 +260,7 @@ auto main () -> int
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/33hP5o4v7)
+[Example 9 (Godbolt)](https://www.godbolt.org/z/33hP5o4v7)
 
 Have a play with these operators and try and perform some computations that you might do in another languages.
 
@@ -285,7 +285,7 @@ auto main () -> int
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/8E4vTdPbc)
+[Example 10 (Godbolt)](https://www.godbolt.org/z/8E4vTdPbc)
 
 ## Links
 

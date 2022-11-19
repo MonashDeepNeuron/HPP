@@ -29,6 +29,7 @@ Each Weeks `README.md` will contain the day, date, location and time of that wee
 - [cppreference](https://en.cppreference.com/w/Main_Page)
 - [Compiler Explorer](https://www.godbolt.org/)
 - [bpt docs](https://bpt.pizza/docs/latest/index.html)
+- [Godbolt Links](/GODBOLT.md)
 
 ## Current Educators, Demonstrators and Managers
 

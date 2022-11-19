@@ -90,7 +90,7 @@ auto main () -> int
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/aaf33YEYW)
+[Example 31 (Godbolt)](https://www.godbolt.org/z/aaf33YEYW)
 
 ### Task 1.3 : const qualifications
 
@@ -124,7 +124,7 @@ auto main () -> int
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/sed7Wcf7s)
+[Example 32 (Godbolt)](https://www.godbolt.org/z/sed7Wcf7s)
 
 ### Task 1.4 : void pointers
 
@@ -146,7 +146,7 @@ auto main () -> int
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/n9Ynd7fYq)
+[Example 33 (Godbolt)](https://www.godbolt.org/z/n9Ynd7fYq)
 
 [C's `malloc()`](https://en.cppreference.com/w/c/memory/malloc)
 
@@ -187,7 +187,7 @@ auto main () -> int
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/qdx6csE7x)
+[Example 34 (Godbolt)](https://www.godbolt.org/z/qdx6csE7x)
 
 ### Task 1.6 : Dereferencing nullptr
 
@@ -209,7 +209,7 @@ auto main () -> int
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/594hMbcz6)
+[Example 35 (Godbolt)](https://www.godbolt.org/z/594hMbcz6)
 
 ### Task 1.7 : Pointers to Pointers
 
@@ -233,7 +233,7 @@ auto main () -> int
 }
 ```
 
-[Godbolt](https://www.godbolt.org/z/MPPczrWzd)
+[Example 36 (Godbolt)](https://www.godbolt.org/z/MPPczrWzd)
 
 ## Links
 

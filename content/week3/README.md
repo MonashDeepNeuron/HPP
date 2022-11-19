@@ -20,8 +20,7 @@ This weeks meetup will be on xx/xx/xx in Room: _, Building: _.
 
 ## Go To
 
-- [Task 1 : Pointers & References](/content/week3/tasks/pointers.md)
-- [Examples](/content/week3/examples/README.md)
+- [Task 1 : Pointers](/content/week3/tasks/pointers.md)
 - [Slides](/content/week/slides/README.md)
 - [Content](/content/README.md)
 - [Home](/README.md)

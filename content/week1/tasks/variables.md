@@ -136,7 +136,7 @@ foo({1, 2, 3});             ///< Argument copy-list initialisation.
 W w({4, 5, 6});             ///< Direct constructor list initialisation.
 ```
 
-Have a play with with these and see what works with the compiler. In general, stick to using copy and direct initialisation. It might be easier to play with on [godbolt](https://www.godbolt.org/z/Y34xxoahz)
+Have a play with with these and see what works with the compiler. In general, stick to using copy and direct initialisation. It might be easier to play with on [Example _ (Godbolt)](https://www.godbolt.org/z/Y34xxoahz)
 
 [List Initialisation](https://en.cppreference.com/w/cpp/language/list_initialization)
 
