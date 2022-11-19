@@ -95,7 +95,7 @@ auto main () -> int
 
 References are also used to denote move semantics in functions. So far we have only seen value, pointer and reference semantics. Move semantics allow for a function to take ownership of a object from a variable. Move semantics are denoted using the `T&&` type signature, this is also called a rvalue. This allows us to rip out the guts of an object and use it how we please. To create a rvalue from an existing object we use the `std::move()` function from the `<utility>` header.
 
-The difficulty of move semantics is it only applies to objects that can move ie. types with move constructors and move assignments. Without these constructors `T&&` just becomes a regular reference. This is the case for primitive types in C++. We will cover more on moves in [Week 5](/content/week5/README.md).
+The difficulty of move semantics is it only applies to objects that can move ie. types with move constructors and move assignments. Without these constructors `T&&` just becomes a regular reference. This is the case for primitive types in C++. We will cover more on the specifics of moves in [Week 5](/content/week5/README.md) but there is an example on the next set of tasks.
 
 ## Links
 
