@@ -42,3 +42,5 @@ All Compiler Explorer links used.
 36. [Example 36](https://www.godbolt.org/z/MPPczrWzd)
 37. [Example 37](https://www.godbolt.org/z/eGs9PTvfb)
 38. [Example 38](https://www.godbolt.org/z/r7or3x7Tj)
+39. [Example 39](https://www.godbolt.org/z/v13hfhM54)
+40. [Example 40](https://www.godbolt.org/z/fx7136qnv)

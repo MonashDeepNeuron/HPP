@@ -16,7 +16,7 @@
 
 ### Task 2.1 : What is a slice?
 
-Working with single value variables can be be tedious and doesn't allow for collecting common data efficiently into a single, easy to refer to name. This is were C++ slices come in. Slices are contiguous sequences of values. The length of a slice must be known at compile time and cannot change.
+Working with single value variables can be be tedious and doesn't allow for collecting common data efficiently into a single, easy to refer to name. This is were C++ slices come in. Slices are contiguous sequences of values. The length of a slice must be known at compile time and cannot change. Slices can hold any type including primitive types, user-defined types or even pointers.
 
 We have already been using slices in C++ thus far. String literals are actually slices of `char`.
 
@@ -31,7 +31,8 @@ The syntax for a slice is strait forward and goes as follows: `T v[N] { ... };`,
 - `N` is the size of the array (at compile time)
 - `{ ... }` is the brace-list of literals that will be copied to the array. This list must be of the same size as `N`
 
-> Note: `N` can be elided if `{ ... }` is a fixed size.
+> - Note: `N` can be elided if `{ ... }` is a fixed size.
+> - Note: `{ ... }` is called an aggregate initialiser
 
 #### Task 2.2.1 :  Iteration
 
