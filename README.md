@@ -20,12 +20,12 @@ Each week, the team will meet at Monash Clayton Campus (location, day, time etc.
 
 It is expected that all team members show up for the meetups in person unless previously discussed with the management team. There will be online access and we have plans to record it for future reference but again, ideally everyone is present for the meetups.
 
-Each Weeks `README.md` will contain the day, date, location and time of that weeks meetup however, it is expected to remain relatively consistent throughout the series. Any clashes will be dealt with in the meetup the week before and announced to all members.
+Each week I will make an announcement containing any information regarding the weekly meetup. Meetup times and locations are expected to remain relatively consistent throughout the series. Any clashes will be dealt with in the meetup the week before and announced to all members.
 
 ## Links and External Resources
 
 - [Content](/content/README.md)
-- [Series Timeline](https://oraqlle.notion.site/4421929e24944bcfa4f3a771fb322a2b?v=924159b3db754c988d74bb9e31c436db)
+- [Series Timeline](https://oraqlle.notion.site/4421929e24944bcfa4f3a771fb322a2b?v=d844b80fad784a7a9dcc273442b222a1)
 - [cppreference](https://en.cppreference.com/w/Main_Page)
 - [Compiler Explorer](https://www.godbolt.org/)
 - [bpt docs](https://bpt.pizza/docs/latest/index.html)
