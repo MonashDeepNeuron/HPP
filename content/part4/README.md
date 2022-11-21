@@ -1,6 +1,6 @@
-# Week 
+# Part 4
 
-
+Functional Programming, Namespaces, Chrono, Unions and Enumerations
 
 ## Overview
 
@@ -8,7 +8,12 @@
 
 ## Tasks
 
-
+1. [Advanced Functions]()
+2. [Functional Programming]()
+3. [Namespaces]()
+4. [Chrono]()
+5. [Unions]()
+6. [Enumerations]()
 
 ## Weekly Meetup
 

@@ -1,6 +1,6 @@
-# Week 
+# Part 5
 
-
+Structures, Classes, Templates, Generics and Concepts
 
 ## Overview
 
@@ -8,7 +8,11 @@
 
 ## Tasks
 
-
+1. [Structures]()
+2. [Classes]()
+3. [Templates]()
+4. [Generics]()
+5. [Concepts]()
 
 ## Weekly Meetup
 

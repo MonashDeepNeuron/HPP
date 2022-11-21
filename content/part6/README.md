@@ -1,6 +1,6 @@
-# Week 
+# Part 6
 
-
+Iterators, Data Structures, Algorithms, Ranges and Views
 
 ## Overview
 
@@ -8,7 +8,11 @@
 
 ## Tasks
 
-
+1. [Iterators]()
+2. [Data Structures]()
+3. [Algorithms]()
+4. [Ranges]()
+5. [Views]()
 
 ## Weekly Meetup
 

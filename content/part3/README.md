@@ -1,6 +1,6 @@
-# Week 3
+# Part 3
 
-Pointers, References, Slices and Memory
+Pointers, References, Slices, Memory and The Standard Library
 
 ## Overview
 

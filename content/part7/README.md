@@ -1,14 +1,18 @@
-# Week 
+# Part 7
 
-
+Parallel Algorithms, Atomics, Threads, Mutexes, Semaphores and Async/Await
 
 ## Overview
 
 
-
 ## Tasks
 
-
+1. [Parallel Algorithms]()
+2. [Atomics]()
+3. [Thread]()
+4. [Mutexes]()
+5. [Semaphores]()
+6. [Async & Await]()
 
 ## Weekly Meetup
 
