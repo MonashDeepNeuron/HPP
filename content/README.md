@@ -6,15 +6,13 @@ The idea is that you will use this repository as your guide for the series, read
 
 ## Weekly Synopsis
 
-- [Week 0](/content/part1/README.md) - Introduction
-- [Week 1](/content/part2/README.md) - Data Types and Operators
-- [Week 2](/content/part2/README.md) - Loops and Conditionals
-- [Week 3](/content/week3/README.md) - Pointers, References, Slices and Memory
-- [Week 4](/content/week4/README.md) - Functions, Overloading and Scope
-- [Week 5](/content/week5/README.md) - Structures, Unions, Enumerations, Classes, Templates and Concepts
-- [Week 6](/content/week6/README.md) - Data Structures and Iterators
-- [Week 7](/content/week7/README.md) - Algorithms, Ranges, Views, Spans and Basic Parallelism
-- [Week 8](/content/week8/README.md) - Atomics, Mutexes, Semaphores, Futures and Threads
+- [Part 1](/content/part1/README.md) - Introduction
+- [Part 2](/content/part2/README.md) - Types, Variables, Operators, IO, Conditionals, Loops and Functions
+- [Part 3](/content/part3/README.md) - Pointers, Slices, References, Dynamic Memory and The Standard Library
+- [Part 4](/content/par4/README.md) - Functional Programming, Namespaces, Chrono, Unions and Enumerations
+- [Part 5](/content/part5/README.md) - Structures, Classes, Templates, Generics and Concepts
+- [Part 6](/content/part6/README.md) - Iterators, Data Structures, Algorithms, Ranges and Views
+- [Part 7](/content/part7/README.md) - Parallel Algorithms, Atomics, Threads, Mutexes, Semaphores and Async/Await
 
 ## Home
 

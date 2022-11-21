@@ -61,7 +61,7 @@ auto main () -> int
 
 [Example 25 (Godbolt)](https://www.godbolt.org/z/od31P37d7)
 
-> Note: You can break out of a `while` or `do-while` loop with `break`.
+> Note: You can break out of a `while` or `do-while` loop with `break` or a `return`-expression.
 
 ### Task 8.3 : For Loop
 
