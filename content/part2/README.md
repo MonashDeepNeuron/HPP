@@ -20,7 +20,7 @@ This week you will be introduced to C++ type system, how it differs from other l
 
 ## Weekly Meetup
 
-This weeks meetup will be on 10/12/22 in Room: _, Building: _.
+This weeks meetup will be on 9/12/22 in Room: _, Building: _.
 
 ## Links
 

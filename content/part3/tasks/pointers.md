@@ -240,7 +240,7 @@ auto main () -> int
 
 ## Links
 
-- [Previous Page : Week 3](/content/week3/README.md)
-- [Next Page : Slices](/content/week3/tasks/slices.md)
+- [Previous Page : Week 3](/content/part3/README.md)
+- [Next Page : Slices](/content/part3/tasks/slices.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

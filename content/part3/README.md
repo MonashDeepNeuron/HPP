@@ -8,11 +8,11 @@ This week you will be introduced to C++'s memory model and how it allows us to h
 
 ## Tasks
 
-1. [Pointers](/content/week3/tasks/pointers.md)
-2. [Slices](/content/week3/tasks/slices.md)
-3. [Dynamic Memory](/content/week3/tasks/memory.md)
-4. [References](/content/week3/tasks/references.md)
-5. [Introduction to the Standard Library](/content/week3/tasks/stdlib.md)
+1. [Pointers](/content/part3/tasks/pointers.md)
+2. [Slices](/content/part3/tasks/slices.md)
+3. [Dynamic Memory](/content/part3/tasks/memory.md)
+4. [References](/content/part3/tasks/references.md)
+5. [Introduction to the Standard Library](/content/part3/tasks/stdlib.md)
 
 ## Weekly Meetup
 
@@ -20,7 +20,7 @@ This weeks meetup will be on xx/xx/xx in Room: _, Building: _.
 
 ## Go To
 
-- [Task 1 : Pointers](/content/week3/tasks/pointers.md)
+- [Task 1 : Pointers](/content/part3/tasks/pointers.md)
 - [Slides](/content/week/slides/README.md)
 - [Content](/content/README.md)
 - [Home](/README.md)

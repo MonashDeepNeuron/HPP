@@ -99,7 +99,7 @@ The difficulty of move semantics is it only applies to objects that can move ie.
 
 ## Links
 
-- [Previous Page : Dynamic Memory](/content/week3/tasks/memory.md)
-- [Next Page : Introduction to the Standard Library](/content/week3/tasks/stdlib.md)
+- [Previous Page : Dynamic Memory](/content/part3/tasks/memory.md)
+- [Next Page : Introduction to the Standard Library](/content/part3/tasks/stdlib.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

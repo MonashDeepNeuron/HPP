@@ -80,7 +80,7 @@ Because we are know looking at some custom types from C++'s standard library it 
 
 ### Task 5.4 : Spans
 
-Another useful _slice-like_ structure is a `std::span`. Remember the `print()` function in [Task 2.2-2.3](/content//week3/tasks/slices.md#task-22--syntax) that took a slice and a size. This is common place in many old C and C++ libraries that used pointer for all buffers. `std::span` removes the need for pointers altogether. `std::span` is a non-owning view of any object that has some contiguous data and a size. This allows libraries to accept a multitude of different intpu types that resemble the shape and work seamlessly with them all.
+Another useful _slice-like_ structure is a `std::span`. Remember the `print()` function in [Task 2.2-2.3](/content//part3/tasks/slices.md#task-22--syntax) that took a slice and a size. This is common place in many old C and C++ libraries that used pointer for all buffers. `std::span` removes the need for pointers altogether. `std::span` is a non-owning view of any object that has some contiguous data and a size. This allows libraries to accept a multitude of different intpu types that resemble the shape and work seamlessly with them all.
 
 - Header - `<span>`
 - Type signature - `std::span<T, Extent>`
@@ -327,7 +327,7 @@ auto main () -> int
 
 ## Links
 
-- [Previous Page : References](/content/week3/tasks/references.md)
-- [Back to Week 3](/content/week3/README.md)
+- [Previous Page : References](/content/part3/tasks/references.md)
+- [Back to Week 3](/content/part3/README.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

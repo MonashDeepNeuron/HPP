@@ -78,7 +78,7 @@ Dynamic memory management is hard to get right and very easy to get wrong. Memor
 
 ## Links
 
-- [Previous Page : Slices](/content/week3/tasks/slices.md)
-- [Next Page : References](/content/week3/tasks/references.md)
+- [Previous Page : Slices](/content/part3/tasks/slices.md)
+- [Next Page : References](/content/part3/tasks/references.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

@@ -94,7 +94,7 @@ In C++, the string literal is a `char _[]` or can (usually) decay into a `const 
 
 ## Links
 
-- [Previous Page : Pointers](/content/week3/tasks/pointers.md)
-- [Next Page : Dynamic Memory](/content/week3/tasks/memory.md)
+- [Previous Page : Pointers](/content/part3/tasks/pointers.md)
+- [Next Page : Dynamic Memory](/content/part3/tasks/memory.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)
