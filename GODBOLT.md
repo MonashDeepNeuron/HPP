@@ -4,8 +4,8 @@ All Compiler Explorer links used.
 
 ---
 
-1. [Example 1](/content/week0/examples/hello/hello.cxx)
-2. [Example 2](/content/week0/examples/hello-bpt)
+1. [Example 1](/content/part1/examples/hello/hello.cxx)
+2. [Example 2](/content/part1/examples/hello-bpt)
 3. [Example 3](https://www.godbolt.org/z/xKMooTb4s)
 4. [Example 4](https://www.godbolt.org/z/eeYqPbcaT)
 5. [Example 5](https://www.godbolt.org/z/o9afoszjP)

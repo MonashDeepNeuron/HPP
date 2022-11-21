@@ -6,9 +6,9 @@ The idea is that you will use this repository as your guide for the series, read
 
 ## Weekly Synopsis
 
-- [Week 0](/content/week0/README.md) - Introduction
-- [Week 1](/content/week1/README.md) - Data Types and Operators
-- [Week 2](/content/week2/README.md) - Loops and Conditionals
+- [Week 0](/content/part1/README.md) - Introduction
+- [Week 1](/content/part2/README.md) - Data Types and Operators
+- [Week 2](/content/part2/README.md) - Loops and Conditionals
 - [Week 3](/content/week3/README.md) - Pointers, References, Slices and Memory
 - [Week 4](/content/week4/README.md) - Functions, Overloading and Scope
 - [Week 5](/content/week5/README.md) - Structures, Unions, Enumerations, Classes, Templates and Concepts
