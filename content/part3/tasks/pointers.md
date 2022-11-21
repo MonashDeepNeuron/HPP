@@ -63,9 +63,9 @@ This is the premise of a pointer. It is a numerical value that holds some addres
 
 To create a pointer in C++ is super simple. Given some type `T` the type of a pointer to a value of that type is `T*`.
 
-We can store the address in a variable like any other value in C++. To obtain the address of a variable you can use the unary `&` operator prefixed to a variable name or use the `std::addressof()` function found in the header `<memory>`. Using the function is highly recommended as it is more consistent with more complex types.
+We can store the address in an object like any other value in C++. To obtain the address of an object you can use the unary `&` operator prefixed to an objects name or use the `std::addressof()` function found in the header `<memory>`. Using the function is highly recommended as it is more consistent with more complex types.
 
-To obtain the value pointed to by a pointer, we use the unary indirection operator (often called the dereference operator) `*` prefixed to a variable name.
+To obtain the value pointed to by a pointer, we use the unary indirection operator (often called the dereference operator) `*` prefixed to an object name.
 
 ```cxx
 #include <iostream>
@@ -91,6 +91,7 @@ auto main () -> int
 ```
 
 [Example 31 (Godbolt)](https://www.godbolt.org/z/aaf33YEYW)
+[`std::addressof` : cppreference](https://en.cppreference.com/w/cpp/memory/addressof)
 
 ### Task 1.3 : const qualifications
 
@@ -191,7 +192,7 @@ auto main () -> int
 
 ### Task 1.6 : Dereferencing nullptr
 
-In C++, any assignment and initialisation is is copy by default even when passed to functions. This can be really costly for variables that have a large amount of data stored in them. Pointers make it cheap to pass the data around as you now just have to pass a pointer to it instead of all the data. However, there is a catch to pointers. Pointers can point to nothing, this nothing value is actually the literal `nullptr` we saw in week 0. And you cannot dereference a pointer to `nullptr` as `nullptr` is nothing. This can be really dangerous as this is considered UB which may work, may not compile, may crash the entire program or do something entirely unexpected.
+In C++, any assignment and initialisation is is copy by default even when passed to functions. This can be really costly for objects that have a large amount of data stored in them. Pointers make it cheap to pass the data around as you now just have to pass a pointer to it instead of all the data. However, there is a catch to pointers. Pointers can point to nothing, this nothing value is actually the literal `nullptr` we saw in week 0. And you cannot dereference a pointer to `nullptr` as `nullptr` is nothing. This can be really dangerous as this is considered UB which may work, may not compile, may crash the entire program or do something entirely unexpected.
 
 ```cxx
 #include <iostream>
@@ -213,7 +214,7 @@ auto main () -> int
 
 ### Task 1.7 : Pointers to Pointers
 
-It is also possible in C++ to have a pointer to a pointer. This mostly a feature inherited from C and remains in for C++ to interoperate with C and for completeness. Pointers to pointers may seem daunting but are straight forward if you apply the concept of a pointer again. The pointer-to-pointer variable points to the address of the integral variable that holds the address of some other object. Pointer-to-pointers have the type `T**` and can be dereferenced to the their value, ie. the address the nested pointer points to or again to get the bottom value.
+It is also possible in C++ to have a pointer to a pointer. This mostly a feature inherited from C and remains in for C++ to interoperate with C and for completeness. Pointers to pointers may seem daunting but are straight forward if you apply the concept of a pointer again. The pointer-to-pointer object points to the address of the pointer object that holds the address of some other object. Pointer-to-pointers have the type `T**` and can be dereferenced to the their value, ie. the address the nested pointer points to or again to get the bottom value.
 
 ```cxx
 #include <iostream>

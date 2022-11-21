@@ -93,7 +93,7 @@ auto main () -> int
 
 [Example 5 (Godbolt)](https://www.godbolt.org/z/o9afoszjP)
 
-There are also in-place operators `++` and `--`. These allow you to increment/decrement integer types in place. There are two variations, prefix and postfix. Prefix will increment/decrement the value and then provide a lvalue of the new variables value to whatever is reading it (if any). Postfix will provide an lvalue to copy of the old value and then increment/decrement the value.
+There are also in-place operators `++` and `--`. These allow you to increment/decrement integer types in place. There are two variations, prefix and postfix. Prefix will increment/decrement the value and then provide a lvalue of the new value of the object to whatever is reading it (if any). Postfix will provide an lvalue to copy of the old value and then increment/decrement the value.
 
 ```cxx
 #include <iostream>
@@ -121,7 +121,7 @@ auto main () -> int
 
 ### 4.2 : Casts
 
-In C++ you can change the type of a variable via casting. There are quite a few different casting operators.
+In C++ you can change the type of an object via casting. There are quite a few different casting operators.
 
 - `const_cast<T>(expr)` - Changes cv-qualifications (cv := const-volatile)
 - `static_cast<T>(expr)` - Attempts to cast `expr` entirely different type `T`.

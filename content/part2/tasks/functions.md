@@ -36,7 +36,7 @@ T f(A1 a1, A2 a2)
 - `A2` is the type of argument one stored in parameter `a2`
 - `return ...;` is the return expression
 
-Functions have to be invoked to be used. This involves using the invocation operator `()` on the functions name. You can pass literals and variables to functions. You can also initialise and assign variables from the return of a function.
+Functions have to be invoked to be used. This involves using the invocation operator `()` on the functions name. You can pass literals and objects to functions. You can also initialise and assign variables from the return of a function.
 
 ```cxx
 #include <iostream>

@@ -16,7 +16,7 @@
 
 ### Task 2.1 : What is a slice?
 
-Working with single value variables can be be tedious and doesn't allow for collecting common data efficiently into a single, easy to refer to name. This is were C++ slices come in. Slices are contiguous sequences of values. The length of a slice must be known at compile time and cannot change. Slices can hold any type including primitive types, user-defined types or even pointers.
+Working with single value objects and variables can be be tedious and doesn't allow for collecting common data efficiently into a single, easy to refer to name. This is were C++ slices come in. Slices are contiguous sequences of values. The length of a slice must be known at compile time and cannot change. Slices can hold any type including primitive types, user-defined types or even pointers.
 
 We have already been using slices in C++ thus far. String literals are actually slices of `char`.
 

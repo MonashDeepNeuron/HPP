@@ -4,7 +4,7 @@ Pointers, Slices, References, Dynamic Memory and The Standard Library
 
 ## Overview
 
-This week you will be introduced to C++'s memory model and how it allows us to have precise control over memory resources in C++. You will also cover the difference in stack and heap based memory and the facilities for obtaining memory. You will learn about pointers, references and how they allow you to reference data located elsewhere. You will also be introduced to C++'s slice type allowing to store multiple values in a single variable. Finally, you get and introduction into a few fundamental types found in C++'s standard library that make working with memory and collections far easier.
+This week you will be introduced to C++'s memory model and how it allows us to have precise control over memory resources in C++. You will also cover the difference in stack and heap based memory and the facilities for obtaining memory. You will learn about pointers, references and how they allow you to reference data located elsewhere. You will also be introduced to C++'s slice type allowing to store multiple values in a single object. Finally, you get and introduction into a few fundamental types found in C++'s standard library that make working with memory and collections far easier.
 
 ## Tasks
 
