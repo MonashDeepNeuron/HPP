@@ -1,6 +1,6 @@
 # Part 3
 
-Pointers, Slices, References, Dynamic Memory and The Standard Library
+Pointers, Slices, Dynamic Memory, References and The Standard Library
 
 ## Overview
 

@@ -328,6 +328,6 @@ auto main () -> int
 ## Links
 
 - [Previous Page : References](/content/part3/tasks/references.md)
-- [Back to Week 3](/content/part3/README.md)
+- [Back to Part 3](/content/part3/README.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

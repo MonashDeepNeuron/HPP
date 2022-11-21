@@ -18,7 +18,7 @@
 
 So far we have learnt about pointers and how they are useful in distributing access to a memory resource that is expensive to copy as well as create contiguous sequences of values or slices. We have also seen how to get larger memory resources from the OS using `new` and `delete` expressions. However, we have also seen that pointers have caveats. They can lead to memory leaks and other various issues about ownership and lifetime of objects.
 
-In C++ there is another facility that allows for you to refer to data in different scopes that do not feature the same pitfalls of pointers. These are called references. References are; as the the name suggests a reference to an existing object or in other words an alias for an existing object. Operations done on a reference are truly done on the original object. This helps to avoid the cumbersome and error prone nature of pointers.
+In C++ there is another facility that allows for you to refer to objects in different scopes that do not feature the same pitfalls of pointers. These are called references. References are; as the the name suggests a reference to an existing object or in other words an alias for an existing object. Operations done on a reference are truly done on the original object. This helps to avoid the cumbersome and error prone nature of pointers.
 
 ### Task 4.1.1 : Pointers vs References
 
