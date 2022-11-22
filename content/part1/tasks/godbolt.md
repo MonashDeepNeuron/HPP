@@ -31,7 +31,7 @@ All the best and see you at the meetup.
 
 ## Links
 
-- [Previous Page : Hello World](/content/part1/tesks/helloworld.md)
+- [Previous Page : Hello World](/content/part1/tasks/helloworld.md)
 - [Back to Part 1](/content/part1/README.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)
