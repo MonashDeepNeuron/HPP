@@ -72,7 +72,7 @@ auto main () -> int
 }
 ```
 
-[Example 43 (Godbolt)](https://www.godbolt.org/z/dbcKqx53f)
+[Example 43](https://www.godbolt.org/z/dbcKqx53f)
 
 ### Task 5.3.1 : Member Access
 
@@ -113,7 +113,7 @@ auto main () -> int
 }
 ```
 
-[Example 44 (Godbolt)](https://www.godbolt.org/z/4Yo93e7Tr)
+[Example 44](https://www.godbolt.org/z/4Yo93e7Tr)
 
 ### Task 5.5 : Strings
 
@@ -141,7 +141,7 @@ auto main () -> int
 }
 ```
 
-[Example 45 (Godbolt)](https://www.godbolt.org/z/hqT44PM7M)
+[Example 45](https://www.godbolt.org/z/hqT44PM7M)
 
 #### Task 5.5.1 : String Views
 
@@ -166,7 +166,7 @@ auto main () -> int
 }
 ```
 
-[Example 46 (Godbolt)](https://www.godbolt.org/z/cbb95YWWj)
+[Example 46](https://www.godbolt.org/z/cbb95YWWj)
 
 #### Task 5.5.2 : Literal Operators
 
@@ -196,7 +196,7 @@ auto main () -> int
 }
 ```
 
-[Example 47 (Godbolt)](https://www.godbolt.org/z/jcMfrG76c)
+[Example 47](https://www.godbolt.org/z/jcMfrG76c)
 
 ### Task 5.6 : Smart Pointers
 
@@ -245,7 +245,7 @@ auto main () -> int
 }
 ```
 
-[Example 48 (Godbolt)](https://www.godbolt.org/z/G1T1j84nE)
+[Example 48](https://www.godbolt.org/z/G1T1j84nE)
 
 #### Task 5.6.2 : Shared Pointer
 
@@ -283,7 +283,7 @@ auto main () -> int
 }
 ```
 
-[Example 49 (Godbolt)](https://www.godbolt.org/z/39dPYooTW)
+[Example 49](https://www.godbolt.org/z/39dPYooTW)
 
 #### Task 5.6.3 : Weak Pointer
 
@@ -323,7 +323,7 @@ auto main () -> int
 }
 ```
 
-[Example 50 (Godbolt)](https://www.godbolt.org/z/PaonscnEG)
+[Example 50](https://www.godbolt.org/z/PaonscnEG)
 
 ## Links
 

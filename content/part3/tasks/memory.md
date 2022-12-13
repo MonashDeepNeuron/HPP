@@ -40,7 +40,7 @@ auto main () -> int
 }
 ```
 
-[Example 39 (Godbolt)](https://www.godbolt.org/z/v13hfhM54)
+[Example 39](https://www.godbolt.org/z/v13hfhM54)
 
 ### Task 3.3 : Dynamic Slices
 
@@ -70,7 +70,7 @@ auto main () -> int
 }
 ```
 
-[Example 40 (Godbolt)](https://www.godbolt.org/z/fx7136qnv)
+[Example 40](https://www.godbolt.org/z/fx7136qnv)
 
 ### Task 3.4 : Forewarning on Dynamic Memory Management
 

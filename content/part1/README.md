@@ -22,7 +22,7 @@ You tasks this week are outlined in the following documents. Follow each in orde
 
 ## Weekly Meetup
 
-This weeks meetup will be on 22/11/22 in Room: _, Building: _.
+This weeks meetup will be on 09/12/22 in Room: 135B, Building: LTB (Learning and Teaching Building), Location: 19 Ancora Imparo Way, Clayton.
 
 ## Go To
 

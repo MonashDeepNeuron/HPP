@@ -4,16 +4,15 @@ Functional Programming, Namespaces, Chrono, Enumerations and Unions
 
 ## Overview
 
-Throughout this part you will delve deeper into the practical abilities of C++ from advanced function usage and functional programming idioms to logical code separation and modularization. You will also be exposed to the first sub-library within the Standard Library, the Chrono-Library and learn its uses and features. You will also be introduced to a features that allow for the creation of custom types.
+Throughout this part you will delve deeper into the practical abilities of C++ from advanced function usage and functional programming idioms to logical code separation and modularization. You will also be introduced to a features that allow for the creation of custom types.
 
 ## Tasks
 
 1. [Advanced Functions](/content/part4/tasks/advfunc.md)
 2. [Functional Programming](/content/part4/tasks/functional.md)
 3. [Namespaces](/content/part4/tasks/namespaces.md)
-4. [Chrono](/content/part4/tasks/chrono.md)
-5. [Enumerations](/content/part4/tasks/enums.md)
-6. [Unions](/content/part4/tasks/unions.md)
+4. [Enumerations](/content/part4/tasks/enums.md)
+5. [Unions](/content/part4/tasks/unions.md)
 
 ## Weekly Meetup
 

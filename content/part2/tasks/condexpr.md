@@ -39,7 +39,7 @@ auto main () -> int
 }
 ```
 
-[Example 17 (Godbolt)](https://www.godbolt.org/z/57hne667f)
+[Example 17](https://www.godbolt.org/z/57hne667f)
 
 Scope blocks (or sometimes code blocks) allow us to encapsulate expressions.
 
@@ -74,7 +74,7 @@ auto main () -> int
 }
 ```
 
-[Example 18 (Godbolt)](https://www.godbolt.org/z/4dK3P17ax)
+[Example 18](https://www.godbolt.org/z/4dK3P17ax)
 
 We can also use an `else` clause at the end. This indicates that if and `if` expression fails, the `else` clause will execute instead.
 
@@ -95,7 +95,7 @@ auto main () -> int
 }
 ```
 
-[Example 19 (Godbolt)](https://www.godbolt.org/z/31TcjvYrP)
+[Example 19](https://www.godbolt.org/z/31TcjvYrP)
 
 ### Task 7.2.1 : else-expression
 
@@ -122,7 +122,7 @@ auto main () -> int
 }
 ```
 
-[Example 20 (Godbolt)](https://www.godbolt.org/z/Md3Mfx3MK)
+[Example 20](https://www.godbolt.org/z/Md3Mfx3MK)
 
 ### Task 7.3 : Ternary Operator
 
@@ -146,7 +146,7 @@ auto main () -> int
 }
 ```
 
-[Example 21 (Godbolt)](https://www.godbolt.org/z/4n4xYh7T8)
+[Example 21](https://www.godbolt.org/z/4n4xYh7T8)
 
 ### Task 7.4 : Switch Statements
 
@@ -179,7 +179,7 @@ auto main () -> int
 }
 ```
 
-[Example 22 (Godbolt)](https://www.godbolt.org/z/nz6TYWodK)
+[Example 22](https://www.godbolt.org/z/nz6TYWodK)
 
 #### Task 7.4.1 : Fallthroughs
 
@@ -208,7 +208,7 @@ auto main () -> int
 }
 ```
 
-[Example 23 (Godbolt)](https://www.godbolt.org/z/9oEfYrMMq)
+[Example 23](https://www.godbolt.org/z/9oEfYrMMq)
 
 ## Links
 

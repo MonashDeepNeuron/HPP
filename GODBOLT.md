@@ -54,4 +54,7 @@ All Compiler Explorer links used.
 48. [Example 48](https://www.godbolt.org/z/G1T1j84nE)
 49. [Example 49](https://www.godbolt.org/z/39dPYooTW)
 50. [Example 50](https://www.godbolt.org/z/PaonscnEG)
-51. [Example 51](https://www.godbolt.org/z/8e3nYeM5z)
+51. [Example 51](https://www.godbolt.org/z/jaevh6dna)
+52. [Example 52](https://www.godbolt.org/z/6Gco6zsvs)
+53. [Example 53](https://www.godbolt.org/z/sfaq6c9Yf)
+54. 

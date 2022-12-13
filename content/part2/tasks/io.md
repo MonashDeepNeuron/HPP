@@ -55,7 +55,7 @@ auto main () -> int
 }
 ```
 
-[Example 11 (Godbolt)](https://www.godbolt.org/z/3zoz1517r)
+[Example 11](https://www.godbolt.org/z/3zoz1517r)
 
 ### Task 5.3 : IO Manipulators
 
@@ -83,7 +83,7 @@ auto main () -> int
 }
 ```
 
-[Example 12 (Godbolt)](https://www.godbolt.org/z/s8rGc4heM)
+[Example 12](https://www.godbolt.org/z/s8rGc4heM)
 
 ## Links
 

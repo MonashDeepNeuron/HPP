@@ -90,7 +90,7 @@ auto main () -> int
 }
 ```
 
-[Example 31 (Godbolt)](https://www.godbolt.org/z/aaf33YEYW)
+[Example 31](https://www.godbolt.org/z/aaf33YEYW)
 [`std::addressof` : cppreference](https://en.cppreference.com/w/cpp/memory/addressof)
 
 ### Task 1.3 : const qualifications
@@ -125,7 +125,7 @@ auto main () -> int
 }
 ```
 
-[Example 32 (Godbolt)](https://www.godbolt.org/z/sed7Wcf7s)
+[Example 32](https://www.godbolt.org/z/sed7Wcf7s)
 
 ### Task 1.4 : void pointers
 
@@ -147,7 +147,7 @@ auto main () -> int
 }
 ```
 
-[Example 33 (Godbolt)](https://www.godbolt.org/z/n9Ynd7fYq)
+[Example 33](https://www.godbolt.org/z/n9Ynd7fYq)
 
 [C's `malloc()`](https://en.cppreference.com/w/c/memory/malloc)
 
@@ -188,7 +188,7 @@ auto main () -> int
 }
 ```
 
-[Example 34 (Godbolt)](https://www.godbolt.org/z/qdx6csE7x)
+[Example 34](https://www.godbolt.org/z/qdx6csE7x)
 
 ### Task 1.6 : Dereferencing nullptr
 
@@ -210,7 +210,7 @@ auto main () -> int
 }
 ```
 
-[Example 35 (Godbolt)](https://www.godbolt.org/z/594hMbcz6)
+[Example 35](https://www.godbolt.org/z/594hMbcz6)
 
 ### Task 1.7 : Pointers to Pointers
 
@@ -234,7 +234,7 @@ auto main () -> int
 }
 ```
 
-[Example 36 (Godbolt)](https://www.godbolt.org/z/MPPczrWzd)
+[Example 36](https://www.godbolt.org/z/MPPczrWzd)
 
 > Note: `auto` is able to deduce the type if the right-hand-side is a rvalue however, the `const` qualifications cannot be specified. ie. `T* -> auto` and `T** -> auto`.
 
