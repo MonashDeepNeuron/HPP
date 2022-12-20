@@ -16,11 +16,11 @@ This week you will be introduced to C++'s memory model and how it allows us to h
 
 ## Weekly Meetup
 
-This weeks meetup will be on xx/xx/xx in Room: _, Building: _.
+This weeks meetup will be on 14/12/2022 & 04/01/2023
 
 ## Go To
 
 - [Task 1 : Pointers](/content/part3/tasks/pointers.md)
-- [Slides](/content/week/slides/README.md)
+- [Slides](/content/part3/slides/README.md)
 - [Content](/content/README.md)
 - [Home](/README.md)
