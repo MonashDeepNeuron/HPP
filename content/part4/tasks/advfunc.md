@@ -14,8 +14,10 @@
     - [Task 1.3 : Function Utilities](#task-13--function-utilities)
       - [Task 1.3.1 : Perfect Forwarding](#task-131--perfect-forwarding)
       - [Task 1.3.2 : Value and Type Helpers](#task-132--value-and-type-helpers)
-    - [Task 1.4 : Function Types](#task-14--function-types)
-      - [Task 1.4.1 : Function as a Type](#task-141--function-as-a-type)
+    - [Task 1.4 : Functional Programming](#task-14--functional-programming)
+      - [Task 1.4.1 : Function Types](#task-141--function-types)
+      - [Task 1.4.2 : Lambdas and Closures](#task-142--lambdas-and-closures)
+      - [Task 1.4.3 : Partial Application](#task-143--partial-application)
   - [Links](#links)
 
 ## Task 1
@@ -151,9 +153,9 @@ auto main() -> int
 
 [`std::declval<T>` : cppreference](https://en.cppreference.com/w/cpp/utility/declval)
 
-### Task 1.4 : Function Types
+### Task 1.4 : Functional Programming
 
-#### Task 1.4.1 : Function as a Type
+#### Task 1.4.1 : Function Types
 
 Functions; like variables, have a type. This makes it possible to use functions are variables that can be passed to other functions. But what is the type of a function? In general the type of a function is composed of its return type and the type of its arguments, ie. `R(P1, P2, P3, ...)`. In C functions are passed as function pointers. It is a powerful utility but can be error prone due to the nature of pointers. Instead, C++ has `std::function<R(Args...)>` which is able to bind to a function to a variable that can be easily passed around to other functions, copied and moved.
 
@@ -189,9 +191,135 @@ auto main() -> int
 
 [`std::function<R(Args...)>` : cppreference](https://en.cppreference.com/w/cpp/utility/functional/function)
 
+#### Task 1.4.2 : Lambdas and Closures
+
+Sometimes functions need to be able to enclose information about the global environment. This requires the use of closures, a local environment that can access the parent environment in which the closure exists in. In C++ this is accomplished with a lambda. Lambdas are anonymous functions that can capture local variables. Anonymous functions are able to be created and passed to other functions without having to exist as a stored function. Lambdas have a unique syntax consisting of three distinct sets of brackets. `[]` is used to specified the captured variables, `()` is the same as regular functions indicating the formal parameters of the lambda that are used when the lambda is invoked, and finally `{}` holds the body of the lambda.
+
+The capture parameters can either capture by value or by reference. Value captures simply specify the variable names while reference captures prefix an `&` to the variable name. You can also elide the names of captures and implicitly capture variables by using them in the body of the lambda and indicate whether all (or some) of the implicit captures are by value or reference using the symbols `=` or `&` respectively.
+
+```cxx
+#include <functional>
+#include <iostream>
+
+auto fmult(int x, float y, std::function<void(double)> f)
+    -> void
+{ f(x * y); }
+
+auto main() -> int
+{
+    /// Use `std::function<R(Args...)>` for lambda type
+    std::function<double(int, float)> add_f = [](int x, float y) -> double{ return x + y; };
+
+    /// Lambda declared with `auto`
+    auto print_f = [](double i){ std::cout << i << '\n'; };
+
+    /// Lambda capture `print_f` by value
+    auto print_mult = [=](int x, float y){ return fmult(x, y, print_f); };
+
+    int a {7};
+    int b {5};
+
+    /// Capture `print_mult` and `a` by value and `b` by reference
+    /// Elide names of `mult_print` and `a` with `=`
+    auto print_7mult5 = [=, &b](){ return print_mult(a, b); };
+
+    /// Invoke lambdas like functions
+    print_f(add_f(4, 6.6));
+    fmult(7, 8.9, [](double i){ std::cout << i << '\n'; });     ///< Use lambda as anonymous function,
+    print_mult(7, 8.9);                                         ///< or use captured version
+    
+    
+    print_7mult5();     ///< 35
+    b = 9;              ///< Modify `b`
+    print_7mult5();     ///< 63
+
+    return 0;
+}
+```
+
+[Example 55](https://www.godbolt.org/z/he59bKxPf)
+
+[Lambdas : cppreference](https://en.cppreference.com/w/cpp/language/lambda)
+
+#### Task 1.4.3 : Partial Application
+
+Another useful technique when working with functions is a technique known as partial application. This is similar to how closures with lambda work with a few key differences. Partial application allows you to partially apply the certain parameters of a function while leaving other empty to be passed at a later invocation. This is done with with the `std::bind` function which takes the function and a variable list of arguments that will be bound to the function in their respective order. The returned function can be invoked like any other function and will be invoked as if the bound variables were passed to it. The power of `std::bind` comes from its ability to accept placeholder values. These values follow the pattern of `_N` where N is any number starting at `1`. Placeholders are passed to `std::bind` can can be placed anywhere in the variable argument list. When the resulting function is invoked, any arguments passed to it will be passed to the underlying function. The first passed argument from the partially applied function will be passed to all instances of the `_1` placeholder and so on.
+
+> Note: `std::bind` cannot bind (const) reference arguments functions take. For this, parameters must be wrapped in `std::ref` or `std::cref` to bind to references.
+
+```cxx
+#include <functional>
+#include <iostream>
+
+auto fn(int n1, int n2, int n3, const int& n4, int n5)
+{ 
+    std::cout << n1 << ' ' 
+              << n2 << ' ' 
+              << n3 << ' ' 
+              << n4 << ' ' 
+              << n5 << '\n';
+}
+
+/// Import placeholders
+using namespace std::placeholders;
+
+auto main() -> int
+{
+    auto f1 = std::bind(fn, 1, _1, 4, _2, 6);
+    auto f2 = std::bind(fn, _1, _1, _1, _1, _1);
+
+    auto a {47676};
+    auto f3 = std::bind(fn, _4, _3, _2, std::cref(a), _1);
+
+    f3(4, 3, 2, 1);     ///< 1 2 3 47676 4
+    f1(4, a);           ///< 1 4 4 47676 6
+    a = 777; 
+    f3(11, 10, 9, 8);   ///< 8 9 10 777 11
+    f1(3, a);           ///< 1 3 4 777 6
+
+    f2(6);              ///< 6 6 6 6 6
+
+    return 0;
+}
+```
+
+[Example 56](https://www.godbolt.org/z/79T3hYvea)
+
+[`std::bind` : cppreference](https://en.cppreference.com/w/cpp/utility/functional/bind)
+[`std::placeholders` : cppreference](https://en.cppreference.com/w/cpp/utility/functional/placeholders)
+[`std::ref` & `std::cref` : cppreference](https://en.cppreference.com/w/cpp/utility/functional/ref)
+
+There is also two new functions that have been added to the standard library. These are `std::bind_front` (C++20) and `std::bind_back` (C++23) that allow for efficiently binding parameters to the front or back of a function. These functions do not support the placeholder values like `std::bind`.
+
+```cxx
+#include <functional>
+#include <iostream>
+
+auto fn(int n1, int n2, int n3, const int& n4, int n5)
+{ 
+    std::cout << n1 << ' ' 
+              << n2 << ' ' 
+              << n3 << ' ' 
+              << n4 << ' ' 
+              << n5 << '\n';
+}
+
+auto main() -> int
+{
+    auto f = std::bind_front(fn, 1, 2, 3);
+    f(4, 5);  ///< 1 2 3 4 5
+
+    return 0;
+}
+```
+
+[Example 57](https://www.godbolt.org/z/vfxG95Eqr)
+
+[`std::bind_front` & `std::bind_back`](https://en.cppreference.com/w/cpp/utility/functional/bind_front)
+
 ## Links
 
 - [Previous Page : Part 4](/content/part4/README.md)
-- [Next Page : Functional Programming](/content/part4/tasks/functional.md)
+- [Next Page : Namespaces](/content/part4/tasks/namespaces.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)
