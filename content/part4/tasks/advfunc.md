@@ -286,7 +286,9 @@ auto main() -> int
 [Example 56](https://www.godbolt.org/z/79T3hYvea)
 
 [`std::bind` : cppreference](https://en.cppreference.com/w/cpp/utility/functional/bind)
+
 [`std::placeholders` : cppreference](https://en.cppreference.com/w/cpp/utility/functional/placeholders)
+
 [`std::ref` & `std::cref` : cppreference](https://en.cppreference.com/w/cpp/utility/functional/ref)
 
 There is also two new functions that have been added to the standard library. These are `std::bind_front` (C++20) and `std::bind_back` (C++23) that allow for efficiently binding parameters to the front or back of a function. These functions do not support the placeholder values like `std::bind`.
