@@ -175,6 +175,6 @@ auto main() -> int
 ## Links
 
 - [Previous Page : Enumerations](/content/part4/tasks/enums.md)
-- [Back to Part 4](/content/part4/README.md)
+- [Next Page : Unions](/content/part4/tasks/structs.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)
