@@ -60,34 +60,23 @@ namespace A
     { std::cout << n << '\n'; }
 }
 
-namespace B
+namespace A
 {
-    auto f(int n)
+    auto g(int n)
         -> void
     { std::cout << "3 + n:(" << n << ") = " << 3 + n << '\n'; }
 }
 
 auto main() -> int
 {
-    // using namespace A;  ///< Error: overload is ambiguous (redefinition)
     A::f(8);
-    B::f(8);
-
-    {
-        using namespace A;
-        f(7);
-    }
-
-    {
-        using namespace B;
-        f(6);
-    }
+    A::g(8);
 
     return 0;
 }
 ```
 
-[Example 59](https://www.godbolt.org/z/nW7Pjo3PW)
+[Example 59](https://www.godbolt.org/z/r9PPxbYh5)
 
 ### Task 2.3 : Nested Namespaces
 

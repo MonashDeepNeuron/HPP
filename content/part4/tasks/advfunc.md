@@ -142,14 +142,14 @@ Sometimes though, it is impossible to find the return type of objects method cal
 
 auto main() -> int
 {
-    static_assert(std::is_same_v<decltype(std::declval<int>()), int&&>, "Result is not rvalue");
-    static_assert(std::is_same_v<decltype(std::declval<int>()), int>, "Result is rvalue");
+    static_assert(std::is_same_v<decltype(std::declval<int>()), int&&>, "Result is rvalue");
+    static_assert(std::is_same_v<decltype(std::declval<int>()), int>, "Result is not rvalue");
 
     return 0;
 }
 ```
 
-[Example 53](https://www.godbolt.org/z/sfaq6c9Yf)
+[Example 53](https://www.godbolt.org/z/qbzqKcffa)
 
 [`std::declval<T>` : cppreference](https://en.cppreference.com/w/cpp/utility/declval)
 
@@ -208,7 +208,7 @@ auto fmult(int x, float y, std::function<void(double)> f)
 auto main() -> int
 {
     /// Use `std::function<R(Args...)>` for lambda type
-    std::function<double(int, float)> add_f = [](int x, float y) -> double{ return x + y; };
+    std::function<double(int, float)> add_f = [](int x, float y) -> double { return x + y; };
 
     /// Lambda declared with `auto`
     auto print_f = [](double i){ std::cout << i << '\n'; };

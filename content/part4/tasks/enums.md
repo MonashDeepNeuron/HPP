@@ -14,7 +14,7 @@
 
 ### Task 3.1 : Enumerations
 
-Enumerations (enums) are distinct types whose value is one of a restricted range of named integral constants called enumerators. Enums allow for specify a type that may have a value of one of many possible named values. Enums have an underlying integral type where each enumerator is of the underlying type. Enums allow for the restriction of the possible values a type can hold. The value of the enumerators of an enum have begin at 0 and increment.
+Enumerations (enums) are a distinct types whose value is one of a restricted range of named integral constants called enumerators. Enums allow for specify a type that may have a value of one of many possible named values. Enums have an underlying integral type where each enumerator is of the underlying type. Enums allow for the restriction of the possible values a type can hold. The value of the enumerators of an enum have begin at 0 and increment.
 
 ```cxx
 #include <iostream>

@@ -1,6 +1,6 @@
 # Part 4
 
-Functional Programming, Namespaces, Chrono, Enumerations and Unions
+Advanced Functions, Namespaces, Enumerations, Unions and Structures
 
 ## Overview
 
@@ -9,9 +9,10 @@ Throughout this part you will delve deeper into the practical abilities of C++ f
 ## Tasks
 
 1. [Advanced Functions](/content/part4/tasks/advfunc.md)
-3. [Namespaces](/content/part4/tasks/namespaces.md)
-4. [Enumerations](/content/part4/tasks/enums.md)
-5. [Unions](/content/part4/tasks/unions.md)
+2. [Namespaces](/content/part4/tasks/namespaces.md)
+3. [Enumerations](/content/part4/tasks/enums.md)
+4. [Unions](/content/part4/tasks/unions.md)
+5. [Structures](/content/part4/tasks/structs.md)
 
 ## Weekly Meetup
 
