@@ -1,4 +1,3 @@
-
 # Slides
 
 ![Slides 01](/content/part1/slides/imgs/hpp_part1-01.jpg)
