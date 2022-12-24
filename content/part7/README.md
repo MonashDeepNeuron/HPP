@@ -16,12 +16,15 @@ Parallel Algorithms, Atomics, Threads, Mutexes, Semaphores and Async/Await
 
 ## Weekly Meetup
 
-This weeks meetup will be on xx/xx/xx in Room: _, Building: _.
+Meetups will be help on:
+
+- 8/02/2023
+- 15/02/2023
 
 ## Go To
 
-- [Task 1 : ](/content/week/tasks/)
-- [Examples](/content/week/examples/README.md)
-- [Slides](/content/week/slides/README.md)
+- [Task 1 : ](/content/part/tasks/)
+- [Examples](/content/part/examples/README.md)
+- [Slides](/content/part/slides/README.md)
 - [Content](/content/README.md)
 - [Home](/README.md)

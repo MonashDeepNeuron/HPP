@@ -16,7 +16,7 @@
 
 ## Links
 
-- [Previous Page : Week 2](/content/weekn/README.md)
-- [Next Page : Primitive Data Types](/content/weekn/tasks/.md)
+- [Previous Page : Week 2](/content/part2/README.md)
+- [Next Page : Primitive Data Types](/content/part2/tasks/.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)
