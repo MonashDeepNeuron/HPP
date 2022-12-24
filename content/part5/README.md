@@ -16,7 +16,7 @@ Structures, Classes, Templates, Generics and Concepts
 
 ## Weekly Meetup
 
-This weeks meetup will be on xx/xx/xx in Room: _, Building: _.
+This weeks meetup will be on 11/01/2023 from 1:30pm.
 
 ## Go To
 

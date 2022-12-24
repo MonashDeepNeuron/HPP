@@ -27,7 +27,7 @@ struct PairInt
     int first;
     int second;
 
-    /// Adds memebrs of two `PairInt`
+    /// Adds members of two `PairInt`
     constexpr auto
     add(const PairInt& o)
         const noexcept
@@ -70,7 +70,7 @@ auto main() -> int
 }
 ```
 
-[Example 68](https://www.godbolt.org/z/h8Tejvnsx)
+[Example 68](https://www.godbolt.org/z/6MbYMGGMz)
 
 > Note: Ignore the `friend` keyword for now.
 
@@ -103,7 +103,9 @@ You can use Godbolt or bpt to build and test your struct. Once you have created 
 - Change the branches in the drop down so that your branch is going into `main` and `Create new pull request.
 - Give the pull request a title and briefly describe what you were able to implement and any struggles you had.
 - On the right side-panel, under the 'Assignees' section, click the cog and assign me.
-- Click 'Create pull request' and I'll take it from there
+- Click 'Create pull request' and I'll take it from there.
+
+This, ideally should be submitted before our meetup on 04/01/2023.
 
 ## Links
 

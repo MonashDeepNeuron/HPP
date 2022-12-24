@@ -71,5 +71,5 @@ All Compiler Explorer links used.
 65. [Example 65](https://www.godbolt.org/z/rqPz5hK45)
 66. [Example 66](https://www.godbolt.org/z/aGvnrYPzn)
 67. [Example 67](https://www.godbolt.org/z/fzMKbjWW3)
-68. [Example 68](https://www.godbolt.org/z/h8Tejvnsx)
+68. [Example 68](https://www.godbolt.org/z/6MbYMGGMz)
 69. [Example 69]()

@@ -16,11 +16,11 @@ Throughout this part you will delve deeper into the practical abilities of C++ f
 
 ## Weekly Meetup
 
-This weeks meetup will be on xx/xx/xx in Room: _, Building: _.
+This weeks meetup will be on 04/01/2023 from 1:30pm.
 
 ## Go To
 
-- [Task 1 : ](/content/week/tasks/)
+- [Task 1 : Advanced Functions](/content/part4/tasks/advfunc.md)
 - [Slides](/content/part4/slides/README.md)
 - [Content](/content/README.md)
 - [Home](/README.md)
