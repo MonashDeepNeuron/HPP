@@ -80,16 +80,17 @@ Having learnt a massive chunk of C++ now I want you to try and right some code f
 
 #### Requirements
 
-- Must have three members of type `int`, `float` or `double`
+- Must have three members of the same type (either `int`, `float` or `double`)
 - A way to add two points
 - A way to subtract two points
-- A way to multiply a point by a scalar (of all the types `int`, `float` and `double`)
-- A way to divide a point by a scalar (of all the types `int`, `float` and `double`)
+- A way to multiply a point by a scalar (of the same underlying type)
+- A way to divide a point by a scalar (of the same underlying type)
 - A way to be print a formatted output using `std::cout`
 
 #### Bonus
 
 - A way to be created using input from `std::cin`
+- Create a 'triple' structure for the other underlying types.
 
 #### Submitting
 
