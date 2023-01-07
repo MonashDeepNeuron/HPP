@@ -3,8 +3,9 @@
 #include <ostream>
 #include <utility>
 
-namespace v1
+namespace v2
 {
+    template<typename T>
     class Point
     {
     public:
@@ -12,7 +13,7 @@ namespace v1
         constexpr Point() = default;
 
         explicit constexpr
-        Point(int x, int y) noexcept
+        Point(T x, T y) noexcept
             : x{ x }, y{ y }
         { }
 
@@ -51,21 +52,27 @@ namespace v1
 
         ~Point() noexcept = default;
 
+        template<typename U>
         constexpr auto
-        operator+ (const Point& p) noexcept -> Point
-        { return Point{ x + p.x, y + p.y }; }
+        operator+ (const Point<U>& p) 
+            noexcept -> Point<typename std::common_type<T, U>::type>
+        { return Point<typename std::common_type<T, U>::type>{ x + p.x, y + p.y }; }
 
+        template<typename U>
         constexpr auto
-        operator- (const Point& p) noexcept -> Point
-        { return Point{ x - p.x, y - p.y }; }
+        operator- (const Point<U>& p) 
+            noexcept -> Point<typename std::common_type<T, U>::type>
+        { return Point<typename std::common_type<T, U>::type>{ x - p.x, y - p.y }; }
 
+        template<typename U>
         constexpr auto
-        operator== (const Point& p)
+        operator== (const Point<U>& p)
             noexcept -> bool
         { return (x == p.x) && (y == p.y); }
 
+        template<typename U>
         constexpr auto
-        operator!= (const Point& p)
+        operator!= (const Point<U>& p)
         noexcept -> bool
         { return !(*this == p); }
 
@@ -78,8 +85,8 @@ namespace v1
         }
 
     private:
-        int x;
-        int y;
+        T x;
+        T y;
 
     };  /// class Point
 
