@@ -3,9 +3,10 @@
 #include <ostream>
 #include <utility>
 
-namespace v2
+namespace v3
 {
     template<typename T>
+        requires std::integral<T> || std::floating_point<T>
     class Point
     {
     public:
@@ -53,12 +54,20 @@ namespace v2
         ~Point() noexcept = default;
 
         template<typename U>
+            requires requires (T a, U b)
+            {
+                { a + b } -> std::same_as<typename std::common_type<T, U>::type>;
+            }
         constexpr auto
         operator+ (const Point<U>& p) 
             noexcept -> Point<typename std::common_type<T, U>::type>
         { return Point<typename std::common_type<T, U>::type>{ x + p.x, y + p.y }; }
 
         template<typename U>
+            requires requires (T a, U b)
+            {
+                { a - b } -> std::same_as<typename std::common_type<T, U>::type>;
+            }
         constexpr auto
         operator- (const Point<U>& p) 
             noexcept -> Point<typename std::common_type<T, U>::type>
@@ -90,8 +99,6 @@ namespace v2
 
         template<typename U>
         friend class Point;
+    };
 
-    };  /// class Point
-
-}  /// namespace v1
-
+}  /// namespace v3

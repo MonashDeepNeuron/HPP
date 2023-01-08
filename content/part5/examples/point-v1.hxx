@@ -84,4 +84,3 @@ namespace v1
     };  /// class Point
 
 }  /// namespace v1
-
