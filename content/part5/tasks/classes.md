@@ -38,7 +38,9 @@ What is a class? Classes are the same as types. They allow for defining a set of
 
 ### Task 1.2 : Defining a Class
 
-A class is defined identically to a structure. In fact, to C++ they are identical. You can use either keyword to create a class type. Typically however, `struct` is reserved for simple structures while classes are use for more complex types. There is one distinction between the two type declarators, classes will make all of its members (methods and variables) private while structures are public by default. From now on I'll refer to structures and classes as classes or types.
+A class is defined identically to a structure. In fact, to C++ they are identical. You can use either keyword to create a class type. Typically however, `struct` is reserved for simple structures while `class` are use for more complex types by convention. There is one distinction between the two declarations, `class` will make all class members (methods and variables) private by default while `struct` will make them public by default.
+
+> Note: From now on I'll refer to structures and classes as classes or types.
 
 ```cxx
 #include <iostream>
@@ -103,9 +105,9 @@ auto main() -> int
 
 ##### Task 1.2.1.2 : Access in Derived Classes
 
-When deriving from another classes (more on inheritance [here](#task-15--dynamic-inheritance)), you can specify the access rights of the parent classes members through the base class.
+When deriving from another classes (more on inheritance [here](#task-16--dynamic-inheritance)), you can specify the access rights of the parent classes members through the base class.
 
-| Base Classes Access policy |                    `private`                   |                           `protected`                          | `public`                                                       |
+| Base Classes Access Policy |                    `private`                   |                           `protected`                          | `public`                                                       |
 |:--------------------------:|:----------------------------------------------:|:--------------------------------------------------------------:|----------------------------------------------------------------|
 |                            | Always inaccessible with any derivation access |   `private` in derived class if you use `private` derivation   | `private` in derived class if you use `private` derivation     |
 |                            |                                                | `protected` in derived class if you use `protected` derivation | `protected` in derived class if you use `protected` derivation |
