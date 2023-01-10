@@ -42,7 +42,7 @@ auto main() -> int
 }
 ```
 
-[Example 58](https://www.godbolt.org/z/9oon3r944)
+[Example](https://www.godbolt.org/z/9oon3r944)
 
 [Namespaces : cppreference](https://en.cppreference.com/w/cpp/language/namespace)
 
@@ -76,7 +76,7 @@ auto main() -> int
 }
 ```
 
-[Example 59](https://www.godbolt.org/z/r9PPxbYh5)
+[Example](https://www.godbolt.org/z/r9PPxbYh5)
 
 ### Task 2.3 : Nested Namespaces
 
@@ -108,7 +108,7 @@ auto main() -> int
 }
 ```
 
-[Example 60](https://www.godbolt.org/z/afj6eEYe7)
+[Example](https://www.godbolt.org/z/afj6eEYe7)
 
 ## Links
 

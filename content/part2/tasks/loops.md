@@ -36,7 +36,7 @@ auto main () -> int
 }
 ```
 
-[Example 24](https://www.godbolt.org/z/Pxa3G8T4o)
+[Example](https://www.godbolt.org/z/Pxa3G8T4o)
 
 ### Task 8.2 : Do-While Loop
 
@@ -59,7 +59,7 @@ auto main () -> int
 }
 ```
 
-[Example 25](https://www.godbolt.org/z/od31P37d7)
+[Example](https://www.godbolt.org/z/od31P37d7)
 
 > Note: You can break out of a `while` or `do-while` loop with `break` or a `return`-expression.
 
@@ -79,7 +79,7 @@ auto main () -> int
 }
 ```
 
-[Example 26](https://www.godbolt.org/z/KKTrYP5Pe)
+[Example](https://www.godbolt.org/z/KKTrYP5Pe)
 
 As we can see, loops  through the power of conditional checking make programs much smaller and allow us to abstract repeated actions into a single statement.
 
@@ -105,7 +105,7 @@ auto main () -> int
 }
 ```
 
-[Example 27](https://www.godbolt.org/z/P78T9c1Ev)
+[Example](https://www.godbolt.org/z/P78T9c1Ev)
 
 ## Links
 

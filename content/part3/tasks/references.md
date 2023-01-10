@@ -55,7 +55,7 @@ auto main () -> int
 }
 ```
 
-[Example 41](https://www.godbolt.org/z/7TWjK5rKe)
+[Example](https://www.godbolt.org/z/7TWjK5rKe)
 
 ### Task 4.3 : const qualifications
 
@@ -87,7 +87,7 @@ auto main () -> int
 }
 ```
 
-[Example 42](https://www.godbolt.org/z/as3rTWavj)
+[Example](https://www.godbolt.org/z/as3rTWavj)
 
 > Note: You can substitute just the type `T` of a reference for `auto` ie. `T& -> auto&` and `const T& -> const auto&`
 

@@ -82,7 +82,7 @@ auto main () -> int
 }
 ```
 
-[Example 1](/content/part1/examples/hello/hello.cxx)
+[Example](/content/part1/examples/hello/hello.cxx)
 
 Don't worry too much about the details as we will discuss in greater detail during the meetup.
 
@@ -158,7 +158,7 @@ $ ./build/hello
 Hello World!
 ```
 
-[Example 2](/content/part1/examples/hello-bpt)
+[Example](/content/part1/examples/hello-bpt)
 
 ## Links
 

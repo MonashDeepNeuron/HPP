@@ -20,14 +20,15 @@
       - [Task 1.3.6 : RAII](#task-136--raii)
       - [Task 1.3.7 : Letting the compiler do the work for you](#task-137--letting-the-compiler-do-the-work-for-you)
     - [Task 1.4 : Members \& Methods](#task-14--members--methods)
-      - [Task 1.4.1 : This](#task-141--this)
-      - [Task 1.4.2 : Operator Overloading](#task-142--operator-overloading)
+      - [Task 1.4.1 : Const and Ref Qualifiers](#task-141--const-and-ref-qualifiers)
+      - [Task 1.4.2 : This](#task-142--this)
+      - [Task 1.4.3 : Operator Overloading](#task-143--operator-overloading)
       - [Task 1.4.3.1 : Assignment Overloads](#task-1431--assignment-overloads)
-      - [Task 1.4.3 : Friend Methods](#task-143--friend-methods)
-    - [Task 1.6 : Dynamic Inheritance](#task-16--dynamic-inheritance)
-      - [Task 1.6.1 : Virtual Methods](#task-161--virtual-methods)
-      - [Task 1.6.2 : Virtual Inheritance](#task-162--virtual-inheritance)
-      - [Task 1.6.3 : Abstract Classes](#task-163--abstract-classes)
+      - [Task 1.4.4 : Friend Methods](#task-144--friend-methods)
+    - [Task 1.5 : Dynamic Inheritance](#task-15--dynamic-inheritance)
+      - [Task 1.5.1 : Virtual Methods](#task-151--virtual-methods)
+      - [Task 1.5.2 : Virtual Inheritance](#task-152--virtual-inheritance)
+      - [Task 1.5.3 : Abstract Classes](#task-153--abstract-classes)
   - [Links](#links)
 
 ## Task 1
@@ -61,7 +62,7 @@ auto main() -> int
 }
 ```
 
-[Example 69](https://www.godbolt.org/z/MrorPKKxW)
+[Example](https://www.godbolt.org/z/MrorPKKxW)
 
 #### Task 1.2.1 : Member Access
 
@@ -101,7 +102,7 @@ auto main() -> int
 }
 ```
 
-[Example 70](https://www.godbolt.org/z/1hWjrhee7)
+[Example](https://www.godbolt.org/z/1hWjrhee7)
 
 ##### Task 1.2.1.2 : Access in Derived Classes
 
@@ -143,7 +144,7 @@ auto main() -> int
 }
 ```
 
-[Example 71](https://www.godbolt.org/z/Wr8av57cz)
+[Example](https://www.godbolt.org/z/Wr8av57cz)
 
 > Note: Classes can access their own members regardless of the access policy even if it is a different instance.
 
@@ -197,7 +198,7 @@ auto main() -> int
 }
 ```
 
-[Example 72](https://www.godbolt.org/z/748dx3vG1)
+[Example](https://www.godbolt.org/z/748dx3vG1)
 
 > Note: Even though it is taught often in; OOP centric or even OOP enabled languages, to define 'getters' and 'setters' for member variables. This is bad practice as it often leads to users of types and classes manually mutating the data themselves instead of defining access patterns and stateful transitions through methods or algorithms. If you must use 'getter' or 'setter' access patterns then you member variables should be publicly accessible.
 
@@ -262,7 +263,7 @@ auto main() -> int
 }
 ```
 
-[Example 73](https://www.godbolt.org/z/Wrne3b1nd)
+[Example](https://www.godbolt.org/z/Wrne3b1nd)
 
 #### Task 1.3.3 : Copy Constructors
 
@@ -325,7 +326,7 @@ auto main() -> int
 }
 ```
 
-[Example 74](https://www.godbolt.org/z/YYhf9baW3)
+[Example](https://www.godbolt.org/z/YYhf9baW3)
 
 #### Task 1.3.4 : Move Constructors
 
@@ -395,7 +396,7 @@ auto main() -> int
 }
 ```
 
-[Example 75](https://www.godbolt.org/z/TfGEWW7qM)
+[Example](https://www.godbolt.org/z/TfGEWW7qM)
 
 - [`std::move()` : cppreference](https://en.cppreference.com/w/cpp/utility/move)
 - [`<utility>` : cppreference](https://en.cppreference.com/w/cpp/header/utility)
@@ -464,7 +465,71 @@ Y() noexcept -> int&
 /// ... Point details
 ```
 
-#### Task 1.4.1 : This
+#### Task 1.4.1 : Const and Ref Qualifiers
+
+Members can restrict and customize their usage on particular instances of its class through the class objects value category and cv-qualifiers. By postfixing the symbols `const`, `&` and `&&` to a member function we can restrict the usage of that member function to instances of the class object to being a constant object and/or having either value category of lvalue or rvalue respectively.
+
+> Note: A combination of cv- and ref- qualifiers can be used ie `const&` or `const&&` but not both
+
+```cxx
+#include <iostream>
+#include <utility>
+
+auto print(auto n) -> void
+{ std::cout << n << std::endl; }
+
+class A
+{
+public:
+
+    auto f() & -> int&
+    { 
+        print("lvalue");
+        return n; 
+    }
+
+    auto f() const& -> int
+    { 
+        print("const lvalue");
+        return n; 
+    }
+
+    auto f() && -> int
+    { 
+        print("rvalue");
+        return std::move(n); 
+    }
+
+    auto f() const&& -> int
+    { 
+        print("const rvalue");
+        return std::move(n); 
+    }
+
+private:
+    
+    int n = 0;
+};
+
+auto main() -> int
+{
+    A a;
+    const A ca;
+
+    a.f();
+    std::move(a).f();
+    A().f();
+
+    ca.f();
+    std::move(ca).f();
+
+    return 0;
+}
+```
+
+[Example](https://www.godbolt.org/z/TGoh9Yrjc)
+
+#### Task 1.4.2 : This
 
 It is useful for a class to be self aware and have some means of referring to itself, for example when working with another instance of the same class in a method it can be ambiguous when you are using members from your instance and from the other objects instance. Classes in C++ implicitly have a member called `this`. `this` is a pointer to the current instance of a class in memory. Using `this` allows for qualified lookup of names for the current object. Like any other pointer it can be dereferenced so that it can be used as a reference or have its members accessed using `this->`. `this` can only be used in methods and has the type of the class type the method was called with including cv-qualifications.
 
@@ -484,7 +549,7 @@ Y() noexcept -> int&
 
 [The `this` pointer](https://en.cppreference.com/w/cpp/language/this)
 
-#### Task 1.4.2 : Operator Overloading
+#### Task 1.4.3 : Operator Overloading
 
 Much like how you can overload operators as free functions, classes can define there own overloads for operators. operator overloads for classes are defined just like regular methods for classes however, the first argument is implicitly `this` object.
 
@@ -512,7 +577,7 @@ noexcept -> bool
 /// ... Point details
 ```
 
-[Example 75](https://www.godbolt.org/z/TG9WW74bo)
+[Example](https://www.godbolt.org/z/TG9WW74bo)
 
 #### Task 1.4.3.1 : Assignment Overloads
 
@@ -550,9 +615,9 @@ operator= (Point&& p) noexcept -> Point&
 
 > Note: The `if (p != *this)` check ensures self assignment does not occur.
 
-[Example 76](https://www.godbolt.org/z/xvcf57xcT)
+[Example](https://www.godbolt.org/z/xvcf57xcT)
 
-#### Task 1.4.3 : Friend Methods
+#### Task 1.4.4 : Friend Methods
 
 Sometimes it is useful to access the internal `private` and `protected` data of a class without having to make it exposed to everyone. This is were friends come in handy. The `friend` keyword can be attached to nested class forward specifications and functions. This makes free functions able to access and modify the internal data of a class. Friendship is most useful for creating relationships between hierarchal unrelated classes interoperate with each other such as in certain operator overloads.
 
@@ -575,11 +640,11 @@ operator<< (std::ostream& os, const Point& p)
 /// ... Point details
 ```
 
-[Example 77](https://www.godbolt.org/z/MxacvscTY)
+[Example](https://www.godbolt.org/z/MxacvscTY)
 
 [Version 1 of `Point`](/content/part5/examples/point-v1.hxx)
 
-### Task 1.6 : Dynamic Inheritance
+### Task 1.5 : Dynamic Inheritance
 
 You are able to inherit the members of another class into your own class. This allows for many OOP concepts to be applied such as inheritance and polymorphism. Base classes are specified after the derived classes name specification. All classes can be inherited from (unless declared as `final`).
 
@@ -619,9 +684,9 @@ auto main() -> int
 }
 ```
 
-[Example 78](https://www.godbolt.org/z/xvMdeq3n5)
+[Example](https://www.godbolt.org/z/xvMdeq3n5)
 
-#### Task 1.6.1 : Virtual Methods
+#### Task 1.5.1 : Virtual Methods
 
 A method can be marked as virtual with the `virtual` specifier. This means that classes that derive this method can override them by specifying them as overridden with the `override` keyword in the derived class.
 
@@ -657,12 +722,12 @@ auto main() -> int
 - > Note: `virtual` and `override` methods cannot have deduced return types
 - > Note: The definition of virtual functions must be defined separate from the declaration.
 
-[Example 79](https://www.godbolt.org/z/zrMs4EhKn)
+[Example](https://www.godbolt.org/z/zrMs4EhKn)
 
 - [`virtual` function specifier : cppreference](https://en.cppreference.com/w/cpp/language/virtual)
 - [`override` specifier : cppreference](https://en.cppreference.com/w/cpp/language/override)
 
-#### Task 1.6.2 : Virtual Inheritance
+#### Task 1.5.2 : Virtual Inheritance
 
 Classes can also inherit base classes virtually. For each base class that is specified as virtual, the most derived object will contain only one sub-object of that `virtual` base class, even if the class appears many times in the inheritance hierarchy (as long as it is inherited `virtual` every time)*.
 
@@ -698,13 +763,13 @@ auto main() -> int
 }
 ```
 
-[Example 80](https://www.godbolt.org/z/qT5v7aEPx)
+[Example](https://www.godbolt.org/z/qT5v7aEPx)
 
 [Derived Classes : cppreference](https://en.cppreference.com/w/cpp/language/derived_class)
 
 > *Note: This is an adaptation (paraphrase) from [cppreference](https://en.cppreference.com/w/cpp/language/derived_class#:~:text=initializer%20list.-,Virtual%20base%20classes,-For%20each%20distinct)
 
-#### Task 1.6.3 : Abstract Classes
+#### Task 1.5.3 : Abstract Classes
 
 Abstract classes are classes which define or inherit at least one 'pure' `virtual` methods. Pure `virtual` methods are `virtual` methods whose declaration are suffixed by the `= 0;` pure-specifier expression. Abstract classes cannot be instantiated but can be pointer to or referred to.
 
@@ -741,7 +806,7 @@ auto main() -> int
 }
 ```
 
-[Example 81](https://www.godbolt.org/z/axj9Tbr4v)
+[Example](https://www.godbolt.org/z/axj9Tbr4v)
 
 [Abstract class : cppreference](https://en.cppreference.com/w/cpp/language/abstract_class)
 

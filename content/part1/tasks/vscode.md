@@ -32,7 +32,7 @@ Go to [VSCode's Download page](https://code.visualstudio.com/download) and insta
 
 On its own VSCode is just a text editor like Notepad but with colour text however, using extensions we can set it up nicely for developing with C++.
 
-For WSL users, you need to install some extensions on the Windows installation of VSCode in order for VSCode to access the correct permissions. MacOS and Linux users, you can skip to [4.3](#43--general-extensions).
+For WSL users, you need to install some extensions on the Windows installation of VSCode in order for VSCode to access the correct permissions. MacOS and Linux users, you can skip to [4.3](#53--general-extensions).
 
 Open VSCode how you would any other app in Windows. In VSCode, open the extension marketplace tab. In the search bar, search for the following extensions click on the extension and click and click the install button for them.
 

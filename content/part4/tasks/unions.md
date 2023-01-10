@@ -43,7 +43,7 @@ auto main() -> int
 }
 ```
 
-[Example 64](https://www.godbolt.org/z/zGeTs8ozn)
+[Example](https://www.godbolt.org/z/zGeTs8ozn)
 
 [Unions : cppreference](https://en.cppreference.com/w/cpp/language/union)
 
@@ -86,7 +86,7 @@ int main()
 }
 ```
 
-[Example 65](https://www.godbolt.org/z/rqPz5hK45)
+[Example](https://www.godbolt.org/z/rqPz5hK45)
 
 ### Task 4.3 : Type Safe Algebraic Data Types
 
@@ -130,7 +130,7 @@ auto main() -> int
 }
 ```
 
-[Example 66](https://www.godbolt.org/z/aGvnrYPzn)
+[Example](https://www.godbolt.org/z/aGvnrYPzn)
 
 [`std::optional<T>` : cppreference](https://en.cppreference.com/w/cpp/utility/optional)
 
@@ -166,11 +166,11 @@ auto main() -> int
 }
 ```
 
-[Example 67](https://www.godbolt.org/z/fzMKbjWW3)
+[Example](https://www.godbolt.org/z/fzMKbjWW3)
 
 [`std::variant<Ts..>` : cppreference](https://en.cppreference.com/w/cpp/utility/variant)
 
-[`std::visit()` : cppreference](https://www.godbolt.org/z/aGvnrYPzn)
+[`std::visit()` : cppreference](https://en.cppreference.com/w/cpp/utility/variant/visit)
 
 ## Links
 

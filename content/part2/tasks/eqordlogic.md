@@ -45,7 +45,7 @@ auto main () -> int
 }
 ```
 
-[Example 13](https://www.godbolt.org/z/EK14h6fhd)
+[Example](https://www.godbolt.org/z/EK14h6fhd)
 
 ### Task 6.2 : Ordering
 
@@ -79,7 +79,7 @@ auto main () -> int
 }
 ```
 
-[Example 14](https://www.godbolt.org/z/v4EYf1n3j)
+[Example](https://www.godbolt.org/z/v4EYf1n3j)
 
 ### Task 6.3 : Spaceships and Ordering Types
 
@@ -159,7 +159,7 @@ auto main () -> int
 }
 ```
 
-[Example 15](https://www.godbolt.org/z/asKsxKc1W)
+[Example](https://www.godbolt.org/z/asKsxKc1W)
 
 ### Task 6.4 : Logical Operators
 
@@ -203,7 +203,7 @@ auto main () -> int
 }
 ```
 
-[Example 16](https://www.godbolt.org/z/xqx3o4hW6)
+[Example](https://www.godbolt.org/z/xqx3o4hW6)
 
 ## Links
 

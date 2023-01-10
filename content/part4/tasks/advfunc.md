@@ -100,7 +100,7 @@ auto main() -> int
 }
 ```
 
-[Example 51](https://www.godbolt.org/z/jaevh6dna)
+[Example](https://www.godbolt.org/z/jaevh6dna)
 
 ### Task 1.3 : Function Utilities
 
@@ -129,7 +129,7 @@ auto main() -> int
 }
 ```
 
-[Example 52](https://www.godbolt.org/z/6Gco6zsvs)
+[Example](https://www.godbolt.org/z/6Gco6zsvs)
 
 [`<type_traits>` : cppreference](https://en.cppreference.com/w/cpp/header/type_traits)
 
@@ -149,7 +149,7 @@ auto main() -> int
 }
 ```
 
-[Example 53](https://www.godbolt.org/z/qbzqKcffa)
+[Example](https://www.godbolt.org/z/qbzqKcffa)
 
 [`std::declval<T>` : cppreference](https://en.cppreference.com/w/cpp/utility/declval)
 
@@ -187,7 +187,7 @@ auto main() -> int
 }
 ```
 
-[Example 54](https://www.godbolt.org/z/TjrWfM5Th)
+[Example](https://www.godbolt.org/z/TjrWfM5Th)
 
 [`std::function<R(Args...)>` : cppreference](https://en.cppreference.com/w/cpp/utility/functional/function)
 
@@ -237,7 +237,7 @@ auto main() -> int
 }
 ```
 
-[Example 55](https://www.godbolt.org/z/he59bKxPf)
+[Example](https://www.godbolt.org/z/he59bKxPf)
 
 [Lambdas : cppreference](https://en.cppreference.com/w/cpp/language/lambda)
 
@@ -283,7 +283,7 @@ auto main() -> int
 }
 ```
 
-[Example 56](https://www.godbolt.org/z/79T3hYvea)
+[Example](https://www.godbolt.org/z/79T3hYvea)
 
 [`std::bind` : cppreference](https://en.cppreference.com/w/cpp/utility/functional/bind)
 
@@ -315,7 +315,7 @@ auto main() -> int
 }
 ```
 
-[Example 57](https://www.godbolt.org/z/vfxG95Eqr)
+[Example](https://www.godbolt.org/z/vfxG95Eqr)
 
 [`std::bind_front` & `std::bind_back`](https://en.cppreference.com/w/cpp/utility/functional/bind_front)
 

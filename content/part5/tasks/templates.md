@@ -23,7 +23,7 @@ Everything we have learnt about C++ relies on the fact the type of any object mu
 
 ### Task 2.2 : What are templates?
 
-A more formal definition of a template is they are a blueprint for function, variable or class. They allow for defining interfaces in terms of template parameters which can be types or compile-time variables. Templates can then be instantiated for a given set of valid template parameters which results in the function, variable or class being fully defined meaning they can now be instantiated themselves. Templates are created by using a `template<>` declaration above the definition of a function, variable or class with the template parameters being specified within the angle brackets (`<>`).
+Templates can be thought of as blueprints for function, variable or class. They allow for defining interfaces in terms of template parameters which can be types or compile-time variables. Templates can then be instantiated for a given set of valid template parameters which results in the function, variable or class being fully defined meaning they can now be instantiated themselves. Templates are created by using a `template<>` declaration above the definition of a function, variable or class with the template parameters being specified within the angle brackets (`<>`).
 
 [Templates : cppreference](https://en.cppreference.com/w/cpp/language/templates)
 
@@ -77,7 +77,7 @@ auto main() -> int
 }
 ```
 
-[Example 82](https://www.godbolt.org/z/WxsGsfna4)
+[Example](https://www.godbolt.org/z/WxsGsfna4)
 
 [Function template : cppreference](https://en.cppreference.com/w/cpp/language/function_template)
 
@@ -196,7 +196,7 @@ auto main() -> int
 
 > Note: We could define `Point::x` and `Point::y` to be different types but this is unnecessary for now.
 
-[Example 83](https://www.godbolt.org/z/nhbsbnE9b)
+[Example](https://www.godbolt.org/z/nhbsbnE9b)
 
 [Class Template : cppreference](https://en.cppreference.com/w/cpp/language/class_template)
 
@@ -246,7 +246,7 @@ private:
 
 > Note: The template argument names must be different then the outer template classes template argument names as this name (symbol) is still very much in scope.
 
-[Example 84](https://www.godbolt.org/z/4WKKrMsqn)
+[Example](https://www.godbolt.org/z/4WKKrMsqn)
 
 - [Member templates](https://en.cppreference.com/w/cpp/language/member_template)
 - [`std::common_type` : cppreference](https://en.cppreference.com/w/cpp/types/common_type)
@@ -280,14 +280,14 @@ auto main() -> int
 
 > Note: Consequently, this is a good showcase of how quickly `float` and `double` loose precision.
 
-[Example 85](https://www.godbolt.org/z/4eqKcTT4s)
+[Example](https://www.godbolt.org/z/4eqKcTT4s)
 
 - [Variable Templates : cppreference](https://en.cppreference.com/w/cpp/language/variable_template)
 - [`std::numeric_limits` : cppreference](https://en.cppreference.com/w/cpp/types/numeric_limits)
 
 ### Task 2.7 : Template Metaprogramming Basics
 
-We've seen a bit of metaprogramming in C++ already. Metaprogramming is the ability to influence the structure of your code at compile time using the language itself. Templates are a simple form of metaprogramming and allow us to change the behaviour of our code based on the types and values we instantiate our templates with. Using templates, the C++ standard library has many metaprogramming objects that allow us to customize our code even more. Most of the standard  libraries metaprogramming objects are in the form of type analysis from the `<type_traits>` header. These allow us to inspect the properties of any type (template or known) and customize based on the results. There is much more to metaprogramming that is beyond the scope 
+We've seen a bit of metaprogramming in C++ already. Metaprogramming is the ability to influence the structure of your code at compile time using the language itself. Templates are a simple form of metaprogramming and allow us to change the behaviour of our code based on the types and values we instantiate our templates with. Using templates, the C++ standard library has many metaprogramming objects that allow us to customize our code even more. Most of the standard  libraries metaprogramming objects are in the form of type analysis from the `<type_traits>` header. These allow us to inspect the properties of any type (template or known) and customize based on the results. There is much more to metaprogramming that is beyond the scope of this course.
 
 - [Metaprogramming Library : cppreference](https://en.cppreference.com/w/cpp/meta)
 - [Compile-time rational arithmetic : cppreference](https://en.cppreference.com/w/cpp/numeric/ratio)

@@ -53,7 +53,7 @@ auto main() -> int
 }
 ```
 
-[Example 86](https://www.godbolt.org/z/sMxWcd1fM)
+[Example](https://www.godbolt.org/z/sMxWcd1fM)
 
 [Parameter Packs : cppreference](https://en.cppreference.com/w/cpp/language/parameter_pack)
 
@@ -76,7 +76,7 @@ auto main() -> int
 }
 ```
 
-[Example 87](https://www.godbolt.org/z/nhnj3Ehne)
+[Example](https://www.godbolt.org/z/nhnj3Ehne)
 
 [`sizeof...` : cppreference](https://en.cppreference.com/w/cpp/language/sizeof...)
 
@@ -105,7 +105,7 @@ auto main() -> int
 }
 ```
 
-[Example 88](https://www.godbolt.org/z/zh97vevo3)
+[Example](https://www.godbolt.org/z/zh97vevo3)
 
 [Fold expressions : cppreference](https://en.cppreference.com/w/cpp/language/fold)
 
@@ -148,7 +148,7 @@ auto main() -> int
 }
 ```
 
-[Example 89](https://www.godbolt.org/z/v5sP6TjYs)
+[Example](https://www.godbolt.org/z/v5sP6TjYs)
 
 [`std::tuple` : cppreference](https://en.cppreference.com/w/cpp/utility/tuple)
 
@@ -180,7 +180,7 @@ auto main() -> int
 }
 ```
 
-[Example 90](https://www.godbolt.org/z/ax688eds3)
+[Example](https://www.godbolt.org/z/ax688eds3)
 
 [`std::pair` : cppreference](https://en.cppreference.com/w/cpp/utility/pair)
 
@@ -209,7 +209,7 @@ auto main() -> int
 }
 ```
 
-[Example 91](https://www.godbolt.org/z/5v8zb998o)
+[Example](https://www.godbolt.org/z/5v8zb998o)
 
 [Structured bindings : cppreference](https://en.cppreference.com/w/cpp/language/structured_binding)
 

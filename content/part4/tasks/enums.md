@@ -57,7 +57,7 @@ auto main() -> int
 }
 ```
 
-[Example 61](https://www.godbolt.org/z/8PMbxxehb)
+[Example](https://www.godbolt.org/z/8PMbxxehb)
 
 [Enumerations : cppreference](https://en.cppreference.com/w/cpp/language/enum)
 
@@ -114,7 +114,7 @@ auto main() -> int
 }
 ```
 
-[Example 62](https://www.godbolt.org/z/c6E1vjzoK)
+[Example](https://www.godbolt.org/z/c6E1vjzoK)
 
 ### Task 3.2 : Enum Class
 
@@ -165,7 +165,7 @@ auto main() -> int
 }
 ```
 
-[Example 63](https://www.godbolt.org/z/Kqs6rvvMr)
+[Example](https://www.godbolt.org/z/Kqs6rvvMr)
 
 ## Links
 

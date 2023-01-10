@@ -63,7 +63,7 @@ auto main () -> int
 }
 ```
 
-[Example 28](https://www.godbolt.org/z/Gx4P9jTej)
+[Example](https://www.godbolt.org/z/Gx4P9jTej)
 
 Functions allow us to abstract any common pattern into reusable code.
 
@@ -90,7 +90,7 @@ auto main () -> int
 }
 ```
 
-[Example 29](https://www.godbolt.org/z/radjo93bx)
+[Example](https://www.godbolt.org/z/radjo93bx)
 
 #### Task 9.2.3 : Void Functions
 
@@ -112,7 +112,7 @@ auto main () -> int
 }
 ```
 
-[Example 30](https://www.godbolt.org/z/jeb77d165)
+[Example](https://www.godbolt.org/z/jeb77d165)
 
 ## Links
 

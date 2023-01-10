@@ -59,7 +59,7 @@ auto main () -> int
 }
 ```
 
-[Example 37](https://www.godbolt.org/z/eGs9PTvfb)
+[Example](https://www.godbolt.org/z/eGs9PTvfb)
 
 ### Task 2.3 : Slices vs Pointers
 
@@ -86,7 +86,7 @@ auto main () -> int
 }
 ```
 
-[Example 38](https://www.godbolt.org/z/r7or3x7Tj)
+[Example](https://www.godbolt.org/z/r7or3x7Tj)
 
 ### Task 2.3.1 : String Literals and Character Slices
 
