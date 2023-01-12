@@ -22,19 +22,6 @@ An iterator is an abstraction for representing an item, element, value etc. in a
 
 There are 6 main iterator categories considered in C++. Each subsequent iterator category builds upon the previous categories requirements with increasingly more requirements.
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-kuap{background-color:#34ff34;border-color:#000000;color:#000000;text-align:center;vertical-align:top}
-.tg .tg-ayxq{background-color:#fe0000;border-color:#000000;color:#000000;text-align:center;vertical-align:top}
-.tg .tg-wp8o{border-color:#000000;text-align:center;vertical-align:top}
-.tg .tg-mqa1{border-color:#000000;font-weight:bold;text-align:center;vertical-align:top}
-.tg .tg-jdzo{border-color:#000000;font-size:small;text-align:center;vertical-align:top}
-.tg .tg-y7v3{background-color:#f8ff00;border-color:#000000;color:#000000;text-align:center;vertical-align:top}
-</style>
 <table class="tg">
 <thead>
   <tr>
