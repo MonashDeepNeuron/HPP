@@ -22,82 +22,82 @@ An iterator is an abstraction for representing an item, element, value etc. in a
 
 There are 6 main iterator categories considered in C++. Each subsequent iterator category builds upon the previous categories requirements with increasingly more requirements.
 
-<table class="tg">
+<table>
 <thead>
   <tr>
-    <th class="tg-mqa1" rowspan="2">Iterator Category</th>
-    <th class="tg-mqa1" colspan="7">Valid Operations</th>
+    <th rowspan="2">Iterator Category</th>
+    <th colspan="7">Valid Operations</th>
   </tr>
   <tr>
-    <th class="tg-wp8o">write</th>
-    <th class="tg-wp8o">read</th>
-    <th class="tg-wp8o">increment</th>
-    <th class="tg-wp8o">multiple passes</th>
-    <th class="tg-wp8o">decrement</th>
-    <th class="tg-wp8o">random access</th>
-    <th class="tg-wp8o">contiguous storage</th>
+    <th>write</th>
+    <th>read</th>
+    <th>increment</th>
+    <th>multiple passes</th>
+    <th>decrement</th>
+    <th>random access</th>
+    <th>contiguous storage</th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td class="tg-jdzo">Output</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-ayxq"></td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-ayxq"></td>
-    <td class="tg-ayxq"></td>
-    <td class="tg-ayxq"></td>
-    <td class="tg-ayxq"></td>
+    <td>Output</td>
+    <td>✅</td>
+    <td></td>
+    <td>✅</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td class="tg-jdzo">Input</td>
-    <td class="tg-y7v3">Only if mutable</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-ayxq"></td>
-    <td class="tg-ayxq"></td>
-    <td class="tg-ayxq"></td>
-    <td class="tg-ayxq"></td>
+    <td>Input</td>
+    <td>❓</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td class="tg-jdzo">Forward<br>(Satisfies Input)</td>
-    <td class="tg-ayxq"></td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-ayxq"></td>
-    <td class="tg-ayxq"></td>
-    <td class="tg-ayxq"></td>
+    <td>Forward<br>(Satisfies Input)</td>
+    <td></td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td class="tg-jdzo">Bidirectional<br>(Satisfies Forward)</td>
-    <td class="tg-ayxq"></td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-ayxq"></td>
-    <td class="tg-ayxq"></td>
+    <td>Bidirectional<br>(Satisfies Forward)</td>
+    <td></td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td class="tg-jdzo">Random Access<br>(Satisfies Bidirectional)</td>
-    <td class="tg-ayxq"></td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-ayxq"></td>
+    <td>Random Access<br>(Satisfies Bidirectional)</td>
+    <td></td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td></td>
   </tr>
   <tr>
-    <td class="tg-jdzo">Contiguous<br>(Satisfies Random Access)</td>
-    <td class="tg-ayxq"></td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
-    <td class="tg-kuap">Required</td>
+    <td>Contiguous<br>(Satisfies Random Access)</td>
+    <td></td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
   </tr>
 </tbody>
 </table>
