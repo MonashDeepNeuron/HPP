@@ -85,6 +85,8 @@ auto main() -> int
 
 Template classes allow us to define generic types. Almost all of C++ standard library types are template classes, even `std::cout` which is a static instance of the class `std::basic_ostream<char>`. Template classes allow us to create a blueprint of a class and then instantiate the class definition which a particular type. We can see this with out `Point` class from the previous task section. Now we define `Point` in terms of a template type `T` which we will specify later. This allows us to create `Point` objects of `float` and `double` as well while still only defining a single interface.
 
+> Note: For copy and move constructors, the template type parameters can be elided as copy and move semantics must preserve the type. Converting constructors (a type of explicit constructor) are used to convert between template types.
+
 ```cxx
 #include <iostream>
 #include <utility>
@@ -170,7 +172,6 @@ public:
 private:
     T x;
     T y;
-
 };
 
 
