@@ -19,7 +19,7 @@
 
 ### Task 1.1 : What is an iterator?
 
-An iterator is an abstraction for representing an item, element, value etc. in a collection or sequence of values that also has some notion how to get to a obtain or yield a new item from the sequence. In C++ iterators a lot like pointers in the sense that they hold some value, usually the location of it and has a means of either yielding the value for reading or allows for writing to that value.
+An iterator is an abstraction for representing an item, element, value etc. in a collection or container of values that also has some notion how to get to a obtain or yield a new item from the container. In C++ iterators a lot like pointers in the sense that they hold some value, usually the location of it and has a means of either yielding the value for reading or allows for writing to that value.
 
 ### Task 1.2 : Iterator Categories
 
@@ -111,7 +111,7 @@ Before C++, there were empty structs used as tags to help categorise an iterator
 
 ### Task 1.3 : Obtaining Iterators
 
-Almost all collections or sequences have iterators to their first and last element. To obtain these iterator from any sequence kinds we call the `std::begin()` and `std::end` functions from the `<iterator>` header respectively. There are also constant and reverse and constant reverse versions of the functions.
+Almost all collections or containers have iterators to their first and last element. To obtain these iterator from any container kinds we call the `std::begin()` and `std::end` functions from the `<iterator>` header respectively. There are also constant and reverse and constant reverse versions of the functions.
 
 ```cxx
 #include <array>
@@ -233,7 +233,7 @@ auto main() -> int
 
 ### Task 1.5 : Sentinels
 
-Iterators are able to move through a sequence indefinitely however this can lead to iterators being dereferenced for a value that doesn't belong to the container. To fix this, we need some notion of the end of a sequence. Sentinels are a kind that behaves like a marker representing the end of a sequence. There are many different things you can use as a sentinel from specific values that appear in a sequence (`\0` is used as a sentinel for char slices in C), to iterators. Before C++20, the 'end' iterator was the most common sentinel kind used. The iterator holds the item that is one-past-the-end of a sequence. When another iterator reaches it the sequence has been exhausted. Since C++20, the notion of the end of a sequence has been formalised to be sentinels over 'end' iterators. This allows for sequences to be infinite with an unreachable sentinel type or have regular bounds.
+Iterators are able to move through a container indefinitely however this can lead to iterators being dereferenced for a value that doesn't belong to the container. To fix this, we need some notion of the end of a container. Sentinels are a kind that behaves like a marker representing the end of a container. There are many different things you can use as a sentinel from specific values that appear in a container (`\0` is used as a sentinel for char slices in C), to iterators. Before C++20, the 'end' iterator was the most common sentinel kind used. The iterator holds the item that is one-past-the-end of a container. When another iterator reaches it the container has been exhausted. Since C++20, the notion of the end of a container has been formalised to be sentinels over 'end' iterators. This allows for containers to be infinite with an unreachable sentinel type or have regular bounds.
 
 ```cxx
 #include <array>
@@ -260,7 +260,7 @@ auto main() -> int
 
 ### Task 1.6 : Iterator Adaptors
 
-There are a few iterator adaptors in the C++ standard library allowing for regular iterators, often supplied by sequence kind types have certain operational semantics. This include a reverse, inserter, counted and move iterators. This allows for efficient operations between sequences and containers to be implemented through iterators. Many of these iterators come with a factory function (often prefixed with `make_`) that can make the desired iterator and perform the necessary argument type deductions.
+There are a few iterator adaptors in the C++ standard library allowing for regular iterators, often supplied by container kind types have certain operational semantics. This include a reverse, inserter, counted and move iterators. This allows for efficient operations between containers and containers to be implemented through iterators. Many of these iterators come with a factory function (often prefixed with `make_`) that can make the desired iterator and perform the necessary argument type deductions.
 
 - [`std::reverse_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/reverse_iterator)
 - [`std::move_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/move_iterator)
