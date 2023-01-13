@@ -7,9 +7,12 @@
   - [Task 1](#task-1)
     - [Task 1.1 : What is an iterator?](#task-11--what-is-an-iterator)
     - [Task 1.2 : Iterator Categories](#task-12--iterator-categories)
-    - [Task 1.3 : Iterator Functionalities](#task-13--iterator-functionalities)
-      - [Task 1.3.1 : Common Operator Interface](#task-131--common-operator-interface)
-      - [Task 1.3.2 : Iterator Functions](#task-132--iterator-functions)
+    - [Task 1.3 : Obtaining Iterators](#task-13--obtaining-iterators)
+    - [Task 1.4 : Iterator Functionalities](#task-14--iterator-functionalities)
+      - [Task 1.4.1 : Common Operator Interface](#task-141--common-operator-interface)
+      - [Task 1.4.2 : Iterator Functions](#task-142--iterator-functions)
+    - [Task 1.5 : Sentinels](#task-15--sentinels)
+    - [Task 1.6 : Iterator Adaptors](#task-16--iterator-adaptors)
   - [Links](#links)
 
 ## Task 1
@@ -104,11 +107,43 @@ There are 6 main iterator categories considered in C++. Each subsequent iterator
 
 > Note: A pointer actually satisfies the Contiguous Iterator Category
 
-### Task 1.3 : Iterator Functionalities
+Before C++, there were empty structs used as tags to help categorise an iterator into its respective category. Since C++ there have been concepts introduces to perform this check more elegantly along with other iterator-related concepts to all for anything modelling an iterator to satisfy the constraints.
+
+### Task 1.3 : Obtaining Iterators
+
+Almost all collections or sequences have iterators to their first and last element. To obtain these iterator from any sequence kinds we call the `std::begin()` and `std::end` functions from the `<iterator>` header respectively. There are also constant and reverse and constant reverse versions of the functions.
+
+```cxx
+#include <array>
+#include <iostream>
+#include <iterator>
+
+auto main() -> int
+{
+    auto a = std::to_array<int>({1, 3, 4, 565, 868, 5, 46});
+    
+    std::cout << std::begin(a) << std::endl;
+    std::cout << *std::begin(a) << std::endl;
+    std::cout << std::end(a) << std::endl;
+    std::cout << *(std::end(a) - 1) << std::endl;
+
+    return 0;
+}
+```
+
+[Example](https://www.godbolt.org/z/MG7q3d63a)
+
+- [`<iterator>` : cppreference](https://en.cppreference.com/w/cpp/header/iterator)
+- [`std::begin()` & `std::cbegin()` : cppreference](https://en.cppreference.com/w/cpp/iterator/begin)
+- [`std::end()` & std::cend()` : cppreference](https://en.cppreference.com/w/cpp/iterator/end)
+- [`std::rbegin()` & std::crbegin()` : cppreference](https://en.cppreference.com/w/cpp/iterator/rbegin)
+- [`std::rend()` & std::crend()` : cppreference](https://en.cppreference.com/w/cpp/iterator/rend)
+
+### Task 1.4 : Iterator Functionalities
 
 There are a few ways to interact with an iterator directly. One is to use the overloaded operators for the iterator object. Most iterators implement and overload the same operator set that is used by pointers. The other way is to use functions to interact with iterators, allowing for a more generic interface if a iterator doesn't support the common operator overload set and the implementer preferred to overload the functions. The only way to yield or write to the item held by an iterator is to use the dereference operator `*`.
 
-#### Task 1.3.1 : Common Operator Interface
+#### Task 1.4.1 : Common Operator Interface
 
 |  Operations |         |          |          |
 |:-----------:|:-------:|:--------:|:--------:|
@@ -152,7 +187,7 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/jeGjnrWvn)
 
-#### Task 1.3.2 : Iterator Functions
+#### Task 1.4.2 : Iterator Functions
 
 There are four functions involved in manipulating an object of iterator kind. These are used to move an iterator between elements.
 
@@ -191,11 +226,49 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/P17PEnsaE)
 
-- [`<iterator>` : cppreference](https://en.cppreference.com/w/cpp/header/iterator)
 - [`std::next()` : cppreference](https://en.cppreference.com/w/cpp/iterator/next)
 - [`std::prev()` : cppreference](https://en.cppreference.com/w/cpp/iterator/prev)
 - [`std::distance()` : cppreference](https://en.cppreference.com/w/cpp/iterator/distance)
 - [`std::advance()` : cppreference](https://en.cppreference.com/w/cpp/iterator/advance)
+
+### Task 1.5 : Sentinels
+
+Iterators are able to move through a sequence indefinitely however this can lead to iterators being dereferenced for a value that doesn't belong to the container. To fix this, we need some notion of the end of a sequence. Sentinels are a kind that behaves like a marker representing the end of a sequence. There are many different things you can use as a sentinel from specific values that appear in a sequence (`\0` is used as a sentinel for char slices in C), to iterators. Before C++20, the 'end' iterator was the most common sentinel kind used. The iterator holds the item that is one-past-the-end of a sequence. When another iterator reaches it the sequence has been exhausted. Since C++20, the notion of the end of a sequence has been formalised to be sentinels over 'end' iterators. This allows for sequences to be infinite with an unreachable sentinel type or have regular bounds.
+
+```cxx
+#include <array>
+#include <iostream>
+#include <iterator>
+
+auto main() -> int
+{
+    auto a = std::to_array<int>({1, 3, 4, 565, 868, 5, 46});
+    
+    /// Uses the iterator obtained by `std::end` from `a` as sentinel
+    for (auto it = std::begin(a); it != std::end(a); ++it)
+        std::cout << *it << (std::distance(it, std::end(a)) - 1 ? ", " : "");
+
+    return 0;
+}
+```
+
+[Example](https://www.godbolt.org/z/9dzsjn1eM)
+
+- [`std::default_sentinel_t` : cppreference](https://en.cppreference.com/w/cpp/iterator/default_sentinel_t)
+- [`std::unreachable_sentinel_t` : cppreference](https://en.cppreference.com/w/cpp/iterator/unreachable_sentinel_t)
+- [`std::move_sentinel<S>` : cppreference](https://en.cppreference.com/w/cpp/iterator/move_sentinel)
+
+### Task 1.6 : Iterator Adaptors
+
+There are a few iterator adaptors in the C++ standard library allowing for regular iterators, often supplied by sequence kind types have certain operational semantics. This include a reverse, inserter, counted and move iterators. This allows for efficient operations between sequences and containers to be implemented through iterators. Many of these iterators come with a factory function (often prefixed with `make_`) that can make the desired iterator and perform the necessary argument type deductions.
+
+- [`std::reverse_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/reverse_iterator)
+- [`std::move_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/move_iterator)
+- [`std::common_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/common_iterator)
+- [`std::counted_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/counted_iterator)
+- [`std::back_insert_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/back_insert_iterator)
+- [`std::front_insert_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/front_insert_iterator)
+- [`std::insert_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/insert_iterator)
 
 ## Links
 
