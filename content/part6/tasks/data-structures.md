@@ -268,39 +268,152 @@ auto main() -> int
 
 ### Task 2.3 : Associative Containers
 
+Associative containers are used for sorted data. They allow for very fast searching as well as efficient insertion, erasure and access. Associative containers work by ordering keys and (sometimes) mapping values to these keys.
+
 #### Task 2.3.1 : Set
 
-~
+`std::set` is an ordered collections of unique keys usually sorted in ascending order. Search, insertion and erasure occur in logarithmic time ($O(\log{n})$). Sets also offer merging operations for combining two sets into a single set with all elements merged and sorted. Sets can be accessed using extraction methods that moves the _node-type_ that owns the key value out of the set and gives it to the caller.
+
+> _node-type_ is an exposition only type that is implemented as part of the set. It is not to be used as an independent type.
 
 ```cxx
+#include <iostream>
+#include <set>
 
+template<typename T>
+auto println(const std::set<T>& st) -> void
+{
+    std::cout << "{ ";
+    for (auto i { st.size() }; const auto& e : st)
+        std::cout << e << (--i ? ", " : "");
+    std::cout << " }" << std::endl;
+}
+
+auto main() -> int
+{
+    auto st = std::set<int>{ 1, 2, 3, 4, 5 };
+
+    st.insert(77);
+    println(st);
+    st.erase(++st.begin());
+    println(st);
+
+    std::cout << "st.extract(++st.begin()).value() = " << st.extract(++st.begin()).value() << std::endl;
+    std::cout << "st.extract(5).value() = " << st.extract(5).value() << std::endl;
+    println(st);
+
+    st.merge(std::set<int>{ -1, 5, 4, 2, 0, 8, 6 });
+    std::cout << "After st.merge(...): " << std::endl;
+    println(st);
+
+    st.clear();
+    std::cout << "After st.clear()" << std::endl;
+    std::cout << "Size: " << st.size() << std::endl;
+    println(st);
+
+    return 0;
+}
 ```
 
-[Exmaple]()
+[Exmaple](https://www.godbolt.org/z/P8E99q43c)
 
 [`std::set` : cppreference](https://en.cppreference.com/w/cpp/container/set)
 
 #### Task 2.3.2 : Map
 
-~
+`std::map` is the most general associative container available in C++. Maps are made up of ordered key value pairs with strictly unique key values. Searching, key-indexing, insertion and erasure of elements is logarithmic ($O(\log{n})$) in time. Values are obtained using the associated key using indexing syntax. It also offers similar extraction and merging functionalities as sets. Maps in C++ are typically implemented as [Red-Black Trees](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree).
 
 ```cxx
+#include <iostream>
+#include <map>
+#include <string>
 
+template<typename K, typename V>
+auto println(const std::map<K, V>& m) -> void
+{
+    std::cout << "[ ";
+    for (auto i { m.size() }; const auto& [k, v] : m)
+        std::cout << k << ": " << v << (--i ? ", " : "");
+    std::cout << " ]" << std::endl;
+}
+
+auto main() -> int
+{
+    auto m = std::map<std::string, int>{ {"z", 1}, {"f", 2}, {"a", 3}, {"g", 4}, {"x", 5} };
+
+    println(m);
+    m["a"] = 5;         ///< Can read, write and insert
+    println(m);
+    m["q"] = 7;
+    println(m);
+    m.at("g") = 265;    ///< Can only be used for read or write, not insert
+    println(m);
+    m.insert({"w", 77});
+    println(m);
+    m.insert_or_assign("w", 354658);
+    println(m);
+
+    m.erase("a");
+    println(m);
+    m.erase(++m.begin());
+    println(m);
+
+    m.clear();
+    std::cout << "After m.clear()" << std::endl;
+    std::cout << "Size: " << m.size() << std::endl;
+    println(m);
+
+    return 0;
+}
 ```
 
-[Exmaple]()
+> Note: In the _range-for_ if `println()`, you may notice a weird syntax for the element. Because iterators to `std::map` yield a `std::pair` we can destructure it straight into individual variables using structured bindings.
+
+[Exmaple](https://www.godbolt.org/z/vEj7MPfc6)
 
 [`std::map` : cppreference](https://en.cppreference.com/w/cpp/container/map)
 
 #### Task 2.3.3 : Multiset & Multimap
 
-~
+Along with the regular set and map classes, C++ offers `std::multiset` and `std::multimap` which hold ordered keys (and values) but allow for duplicate keys. They offer pretty much the exact same interface as the key-exclusive counterparts except that the order of duplicate keys is the same order as their insertion. This order between duplicates remains constant unless the node holding a particular key (and value) is extracted and it's ownership given to the caller. Searching, insertion and erasure take logarithmic time ($O(\log{n})$).
 
 ```cxx
+#include <iostream>
+#include <map>
+#include <string>
 
+template<typename K, typename V>
+auto println(const std::multimap<K, V>& m) -> void
+{
+    std::cout << "[ ";
+    for (auto i { m.size() }; const auto& [k, v] : m)
+        std::cout << k << ": " << v << (--i ? ", " : "");
+    std::cout << " ]" << std::endl;
+}
+
+auto main() -> int
+{
+    auto mm = std::multimap<std::string, int>{ {"z", 12}, {"f", 2}, {"a", 3}, {"g", 4}, {"x", 5} };
+
+    println(mm);
+    mm.insert({"z", 77});
+    println(mm);
+
+    mm.erase("a");
+    println(mm);
+    mm.erase(++mm.begin());
+    println(mm);
+
+    mm.clear();
+    std::cout << "After mm.clear()" << std::endl;
+    std::cout << "Size: " << mm.size() << std::endl;
+    println(mm);
+
+    return 0;
+}
 ```
 
-[Exmaple]()
+[Exmaple](https://www.godbolt.org/z/8j7P4zjYv)
 
 [`std::multiset` : cppreference](https://en.cppreference.com/w/cpp/container/multiset)
 [`std::multimap` : cppreference](https://en.cppreference.com/w/cpp/container/multimap)
