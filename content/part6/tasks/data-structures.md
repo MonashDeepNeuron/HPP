@@ -11,6 +11,7 @@
       - [Task 2.2.2 : Deque](#task-222--deque)
       - [Task 2.2.3 : Forward List](#task-223--forward-list)
       - [Task 2.2.4 : List](#task-224--list)
+      - [Task 2.2.5 : A harsh truth](#task-225--a-harsh-truth)
     - [Task 2.3 : Associative Containers](#task-23--associative-containers)
       - [Task 2.3.1 : Set](#task-231--set)
       - [Task 2.3.2 : Map](#task-232--map)
@@ -22,7 +23,6 @@
     - [Task 2.5 : Miscellaneous](#task-25--miscellaneous)
       - [Task 2.5.1 : Bitset](#task-251--bitset)
       - [Task 2.5.2 : Any](#task-252--any)
-    - [Task 2.6 : A harsh truth](#task-26--a-harsh-truth)
   - [Links](#links)
 
 ## Task 2
@@ -265,6 +265,12 @@ auto main() -> int
 [Exmaple](https://www.godbolt.org/z/YfoWacKcK)
 
 [`std::list` : cppreference](https://en.cppreference.com/w/cpp/container/list)
+
+#### Task 2.2.5 : A harsh truth
+
+While many of these sequences offer a variety of different ways to organise data and offer different performance guarantees to fit different needs when it comes to searching, insertion and erasure, the harsh reality is often this doesn't matter outside of semantics. 99.9% of the time (I'm exaggerating a bit) the best data structure; particularly for sequences based organisation of data, are vectors. Even for searching, sorting, insertion and erasure. This is because computers are so much faster then they were two decades ago and CPU's have much larger (L2) caches. What does this have to do with it? Well, computer memory is sequential in nature meaning that all data that is stored contiguously. Copying, allocating and transfer of sequential memory is almost always faster as the CPU will often vectorize the operation, assuming that it can move sequential from memory to the cache even if it doesn't explicitly know this. Compare this to other data structures, particularly linked-lists which 'optimise' insertion and erasure by having nodes of data spread out throughout memory, removing the restriction on the data needing to be contiguous. What this actually does is prevent the CPU from predicting what memory it might use maximizing the opportunity for a cache miss to occur which is much slower than copying more data. Copies are cheap, especially for `std::vector` as it contains only three pointers. One to the start of the data, one to the end of the used memory and one to the end of the owned memory. All of this pointers are reachable from each other. To get to the data, it costs one pointer indirection to the data and one jump of size `n` to the desired value. This jump happens in constant time as the CPU will already know exactly how many bytes over this is (exactly $n \cdot sizeof(element)$) and can add this directly to the pointer to the start of the data. If the CPU can figure out that memory near the current memory being fetched will ned to be fetched as well it will take as much as it can from the region, optimising the IO the CPU does which is one of the largest bottlenecks of performance. Compare this to many pointer indirections that have to go into getting a single node from a linked list. Not to mention the CPU has no way of determining where the next memory it needs might be, increasing the fetching time the CPU execute. Not to mention that is has to make room in its cache and eject memory every time it reads.
+
+What does this all mean? Don't think too much about which data structure is best based on the $O()$ complexities. Start with using vectors and arrays and adapt your programs to use specific data structures as you need. After all; for C++, the $O()$ complexity are minimum requirements that must be met by an implementation not their real world or best performance. That is not to say that linked lists or deques do not have there uses. Linked lists are used in the Linux kernel to connect and organise related data. It looks very different to lists in C++ but has a pretty intuitive implementation and use. It is implemented as a intrusive linked list. How this works is that a data structure will have a member that is node containing a pointer to the previous and next node. The benefit to this is that the list is not tied to any type as the nodes don't hold any data themselves, instead the data holds information on how to get to the nxe or previous node. This list structure is used everywhere in the Linux kernel and is very efficient.
 
 ### Task 2.3 : Associative Containers
 
@@ -693,8 +699,6 @@ auto main() -> int
 [Exmaple](https://www.godbolt.org/z/n57nYonqs)
 
 [`std::any` : cppreference](https://en.cppreference.com/w/cpp/utility/any)
-
-### Task 2.6 : A harsh truth
 
 ## Links
 

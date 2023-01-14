@@ -269,6 +269,10 @@ There are a few iterator adaptors in the C++ standard library allowing for regul
 - [`std::back_insert_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/back_insert_iterator)
 - [`std::front_insert_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/front_insert_iterator)
 - [`std::insert_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/insert_iterator)
+- [`std::istream_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/istream_iterator)
+- [`std::ostream_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/ostream_iterator)
+- [`std::istreambuf_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/istreambuf_iterator)
+- [`std::ostreambuf_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/ostreambuf_iterator)
 
 ## Links
 
