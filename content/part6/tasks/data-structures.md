@@ -369,7 +369,7 @@ auto main() -> int
 
 > Note: In the _range-for_ if `println()`, you may notice a weird syntax for the element. Because iterators to `std::map` yield a `std::pair` we can destructure it straight into individual variables using structured bindings.
 
-[Exmaple](https://www.godbolt.org/z/vEj7MPfc6)
+[Exmaple](https://www.godbolt.org/z/Wb5xPhraq)
 
 [`std::map` : cppreference](https://en.cppreference.com/w/cpp/container/map)
 
@@ -385,10 +385,10 @@ Along with the regular set and map classes, C++ offers `std::multiset` and `std:
 template<typename K, typename V>
 auto println(const std::multimap<K, V>& m) -> void
 {
-    std::cout << "[ ";
+    std::cout << "{ ";
     for (auto i { m.size() }; const auto& [k, v] : m)
         std::cout << k << ": " << v << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
+    std::cout << " }" << std::endl;
 }
 
 auto main() -> int
@@ -413,46 +413,201 @@ auto main() -> int
 }
 ```
 
-[Exmaple](https://www.godbolt.org/z/8j7P4zjYv)
+[Exmaple](https://www.godbolt.org/z/ro5MaxeEG)
 
 [`std::multiset` : cppreference](https://en.cppreference.com/w/cpp/container/multiset)
 [`std::multimap` : cppreference](https://en.cppreference.com/w/cpp/container/multimap)
 
 ### Task 2.4 : Unordered Associative Containers
 
+Unordered associative containers are data structures that do not sort their key values but instead use a hashing function to create bucket based access to elements. Hashing functions are designed to avoid hash collisions however, many hashed data structures account for hash collisions. Hashing is the process of computing a discrete hash value for a key indicating the index in an internalised array or _bucket_. Which bucket a key (and value) is placed in relies solely on the result of hashing that key, with keys creating duplicate hash results being placed in the same bucket (typically).
+
 #### Task 2.4.1 : Unordered Set
 
-~
+`std::unordered_set` is the first of our unordered associative containers. Unlike sets, hashed sets do not need to order their keys. Searching, insertion and erasure in a hashed set occurs in constant time ($O(n)$). Elements of a hashed set cannot be changes as this would invalidate the hash table. Instead erasure and insertion must be used instead.
 
 ```cxx
+#include <iostream>
+#include <unordered_set>
+#include <string>
 
+template<typename K>
+auto println(const std::unordered_set<K>& ust) -> void
+{
+    std::cout << "{ ";
+    for (auto i { ust.size() }; const auto& k : ust)
+        std::cout << k << (--i ? ", " : "");
+    std::cout << " }" << std::endl;
+}
+
+auto main() -> int
+{
+    auto ust = std::unordered_set<std::string>{ "z", "f", "a", "g", "x" };
+
+    println(ust);
+    ust.insert("k");
+    println(ust);
+
+    ust.erase("a");
+    println(ust);
+    ust.erase(++ust.begin());
+    println(ust);
+
+    std::cout << "Loading Factor: " << ust.load_factor() << std::endl;
+    std::cout << "Max Loading Factor: " << ust.max_load_factor() << std::endl;
+
+    std::cout << "Size: " << ust.size() << std::endl;
+    std::cout << "# Buckets: " << ust.bucket_count() << std::endl;
+    ust.insert("m");
+    println(ust);
+    std::cout << "Size: " << ust.size() << std::endl;
+    std::cout << "# Buckets: " << ust.bucket_count() << std::endl;
+
+    auto bckt = ust.bucket("f");  ///< returns index of bucket
+    std::cout << "Bucket Size: " << ust.bucket_size(bckt) << std::endl;
+
+    ust.clear();
+    std::cout << "After ust.clear()" << std::endl;
+    std::cout << "Size: " << ust.size() << std::endl;
+    println(ust);
+
+    return 0;
+}
 ```
 
-[Exmaple]()
+[Exmaple](https://www.godbolt.org/z/G97n97r3G)
 
 [`std::unordered_set` : cppreference](https://en.cppreference.com/w/cpp/container/unordered_set)
 
 #### Task 2.4.2 : Unordered Map
 
-~
+`std::unordered_map` is a hashed version of a regular map but like its hash set counterpart, instead of ordering keys it uses a hashing functions to create an index into buckets. Search, insertion and erasure all happen in constant time ($O(n)$). Unlike hashed sets, values can be accessed and inserted using key-based indexing.
 
 ```cxx
+#include <iostream>
+#include <unordered_map>
+#include <string>
 
+template<typename K, typename V>
+auto println(const std::unordered_map<K, V>& umap) -> void
+{
+    std::cout << "{ ";
+    for (auto i { umap.size() }; const auto& [k, v] : umap)
+        std::cout << k << ": " << v << (--i ? ", " : "");
+    std::cout << " }" << std::endl;
+}
+
+auto main() -> int
+{
+    auto umap = std::unordered_map<std::string, int>{ {"z", 12}, {"f", 2}, {"a", 3}, {"g", 4}, {"x", 5} };
+
+    println(umap);
+    umap["h"] = 576;
+    println(umap);
+    umap.at("f") = 368548;
+    println(umap);
+
+    println(umap);
+    umap.insert({"k", 56});
+    println(umap);
+
+    umap.erase("a");
+    println(umap);
+    umap.erase(++umap.begin());
+    println(umap);
+
+    std::cout << "Loading Factor: " << umap.load_factor() << std::endl;
+    std::cout << "Max Loading Factor: " << umap.max_load_factor() << std::endl;
+
+    std::cout << "Size: " << umap.size() << std::endl;
+    std::cout << "# Buckets: " << umap.bucket_count() << std::endl;
+    umap.insert({"m", 78});
+    println(umap);
+    std::cout << "Size: " << umap.size() << std::endl;
+    std::cout << "# Buckets: " << umap.bucket_count() << std::endl;
+
+    auto bckt = umap.bucket("f");  ///< returns index of bucket
+    std::cout << "Bucket Size: " << umap.bucket_size(bckt) << std::endl;
+
+    umap.clear();
+    std::cout << "After umap.clear()" << std::endl;
+    std::cout << "Size: " << umap.size() << std::endl;
+    println(umap);
+
+    return 0;
+}
 ```
 
-[Exmaple]()
+[Exmaple](https://www.godbolt.org/z/qj5bq9fze)
 
 [`std::unordered_map` : cppreference](https://en.cppreference.com/w/cpp/container/unordered_map)
 
 #### Task 2.4.3 : Unordered Multiset & Multimap
 
-~
+Much like how there are sets and maps that can store duplicate keys, there are hashed versions of these data structures called `std::unordered_multiset` and `std::unordered_multimap` respectively. Search, insertion and erasure occur in constant time ($O(n)$). Hashed multimaps cannot be accessed using key-based indexing as it cannot be determined which key to return if duplicates exist.
 
 ```cxx
+#include <iostream>
+#include <unordered_map>
+#include <string>
 
+template<typename K, typename V>
+auto println(const std::unordered_multimap<K, V>& ummap) -> void
+{
+    std::cout << "{ ";
+    for (auto i { ummap.size() }; const auto& [k, v] : ummap)
+        std::cout << k << ": " << v << (--i ? ", " : "");
+    std::cout << " }" << std::endl;
+}
+
+auto main() -> int
+{
+    auto ummap = std::unordered_multimap<std::string, int>{ {"z", 1}, {"f", 2}, {"a", 3}, {"g", 4}, {"x", 5} };
+
+    println(ummap);
+    ummap.insert({"w", 77});
+    println(ummap);
+    ummap.insert({"w", 879});
+    println(ummap);
+    ummap.insert({"w", -23});
+    println(ummap);
+    ummap.insert({"w", 209538});
+    println(ummap);
+
+    std::cout << "Loading Factor: " << ummap.load_factor() << std::endl;
+    std::cout << "Max Loading Factor: " << ummap.max_load_factor() << std::endl;
+
+    std::cout << "Size: " << ummap.size() << std::endl;
+    std::cout << "# Buckets: " << ummap.bucket_count() << std::endl;
+    ummap.insert({"m", 78});
+    println(ummap);
+    std::cout << "Size: " << ummap.size() << std::endl;
+    std::cout << "# Buckets: " << ummap.bucket_count() << std::endl;
+
+    auto bckt = ummap.bucket("w");  ///< returns index of bucket
+    std::cout << "Bucket Size: " << ummap.bucket_size(bckt) << std::endl;
+
+    std::cout << "w: { ";
+    auto i { ummap.bucket_size(bckt) };
+    for (auto it = ummap.begin(bckt); it != ummap.end(bckt); ++it)
+        std::cout << it->first << ": " << it->second << (--i ? ", " : "");
+    std::cout << " }" << std::endl;
+
+    ummap.erase("a");
+    println(ummap);
+    ummap.erase(++ummap.begin());
+    println(ummap);
+
+    ummap.clear();
+    std::cout << "After ummap.clear()" << std::endl;
+    std::cout << "Size: " << ummap.size() << std::endl;
+    println(ummap);
+
+    return 0;
+}
 ```
 
-[Exmaple]()
+[Exmaple](https://www.godbolt.org/z/heKfcz6K1)
 
 [`std::unordered_multiset` : cppreference](https://en.cppreference.com/w/cpp/container/unordered_multiset)
 [`std::unordered_multimap` : cppreference](https://en.cppreference.com/w/cpp/container/unordered_multimap)
@@ -461,25 +616,81 @@ auto main() -> int
 
 #### Task 2.5.1 : Bitset
 
-~
+`std::bitset` allows for efficient storage of individually addressable bits. The size of a bitset is fixed at compile time allowing for bitsets to be evaluated in `constexpr` context. The standard bit manipulation operators are available for bitwise manipulation between bitsets. Bitset also allow for single bit access as well as testing of single or all bits in the bitset. Bitsets also have conversion methods for obtaining the string, and integral representations of the bits. Bitsets can be constructed from string representations of bits or or from binary literal integrals. The bit to the right is the least significant bit ie. the first bit.
 
 ```cxx
+#include <iostream>
+#include <bitset>
+#include <string>
 
+template<std::size_t N>
+auto println(const std::bitset<N>& b) -> void
+{ std::cout << "0b" << b << std::endl; }
+
+auto main() -> int
+{
+    auto b = std::bitset<6>(0b011010uLL);
+
+    println(b);
+    b[2] = true;
+    println(b);
+    b.set(4) = false;
+
+    b.flip(0);
+    println(b);
+    b.flip();
+    println(b);
+    b.reset();
+    println(b);
+
+    std::cout << std::boolalpha;
+    std::cout << (b.test(5) == false) << std::endl;
+    std::cout << b.any() << std::endl;
+    std::cout << b.all() << std::endl;
+    std::cout << b.none() << std::endl;
+    std::cout << std::noboolalpha;
+
+    return 0;
+}
 ```
 
-[Exmaple]()
+[Exmaple](https://www.godbolt.org/z/1qnYTWxMb)
 
 [`std::bitset` : cppreference](https://en.cppreference.com/w/cpp/utility/bitset)
 
 #### Task 2.5.2 : Any
 
-~
+`std::any` is a unique data structure that can hold any _Copy-Constructable_ type. It can also be changed to any new type simply through assignment. You can introspect the type contained as well as destroy the contained object. The only way to access the contained value is through an `std::any_cast<>` which will yield the value which is cast to the template type of the any cast. Any also comes with a factory function for creating a any object.
 
 ```cxx
+#include <iostream>
+#include <any>
 
+template<typename T>
+auto println(const std::any& a) -> void
+{ std::cout << std::any_cast<T>(a) << std::endl; }
+
+auto main() -> int
+{
+    auto a = std::make_any<int>(6);
+
+    println<int>(a);
+    a.emplace<double>(6.797898);
+    println<double>(a);    
+
+    std::cout << a.type().name() << std::endl; 
+
+    std::cout << std::boolalpha;
+    std::cout << a.has_value() << std::endl;
+    a.reset();
+    std::cout << a.has_value() << std::endl;
+    std::cout << std::noboolalpha;
+
+    return 0;
+}
 ```
 
-[Exmaple]()
+[Exmaple](https://www.godbolt.org/z/n57nYonqs)
 
 [`std::any` : cppreference](https://en.cppreference.com/w/cpp/utility/any)
 
