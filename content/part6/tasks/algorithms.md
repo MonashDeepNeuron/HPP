@@ -101,15 +101,6 @@ Sorting is a very common operation in programming. It allows us to more efficien
 #include <iostream>
 #include <vector>
 
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
-
 auto main() -> int
 {
     auto v = std::vector<int>{ 2, 576, -3, 678, 3, -2543, 6 };
@@ -139,15 +130,6 @@ Partitioning is the process of sorting elements based on a predicate such that a
 #include <iostream>
 #include <vector>
 
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
-
 auto main() -> int
 {
     auto v = std::vector<int>{ -1, 2, -3, -4, 5 };
@@ -176,15 +158,6 @@ auto main() -> int
 #include <functional>
 #include <iostream>
 #include <vector>
-
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
 
 auto main() -> int
 {
@@ -217,15 +190,6 @@ Finds the first mismatch between two ranges returning an `std::pair` of the iter
 #include <functional>
 #include <iostream>
 #include <vector>
-
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
 
 auto main() -> int
 {
@@ -263,15 +227,6 @@ More often than not, you do not know anything about which values actually exists
 #include <iostream>
 #include <vector>
 
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
-
 auto main() -> int
 {
     auto v = std::vector<int>{ 1, 2, 3, 4, 5 };
@@ -304,15 +259,6 @@ auto main() -> int
 #include <iostream>
 #include <vector>
 
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
-
 auto main() -> int
 {
     auto v = std::vector<int>{ 1, 2, 3, 4, 5 };
@@ -343,15 +289,6 @@ auto main() -> int
 #include <functional>
 #include <iostream>
 #include <vector>
-
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
 
 auto main() -> int
 {
@@ -385,15 +322,6 @@ Everyone knows the binary search algorithm however, `std::binary_search` is a li
 #include <functional>
 #include <iostream>
 #include <vector>
-
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
 
 auto main() -> int
 {
@@ -430,15 +358,6 @@ These algorithms work on partitioned ranges with respect to some value (similar 
 #include <functional>
 #include <iostream>
 #include <vector>
-
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
 
 auto main() -> int
 {
@@ -479,15 +398,6 @@ The copy and move algorithms are pretty self explanatory, they well copy of move
 #include <iostream>
 #include <string>
 #include <vector>
-
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
 
 auto main() -> int
 {
@@ -531,15 +441,6 @@ auto main() -> int
 #include <string>
 #include <vector>
 
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
-
 auto main() -> int
 {
     auto v1 = std::vector<std::string>{ "a", "b", "c", "d", "e" };
@@ -570,15 +471,6 @@ auto main() -> int
 #include <algorithm>
 #include <iostream>
 #include <vector>
-
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
 
 auto main() -> int
 {
@@ -613,15 +505,6 @@ auto main() -> int
 #include <iostream>
 #include <vector>
 
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
-
 auto main() -> int
 {
     auto v = std::vector<int>{ 1, 2, 3, 4, 5 };
@@ -646,15 +529,6 @@ auto main() -> int
 #include <algorithm>
 #include <iostream>
 #include <vector>
-
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
 
 auto main() -> int
 {
@@ -693,15 +567,6 @@ auto main() -> int
 #include <iostream>
 #include <vector>
 
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
-
 auto main() -> int
 {
     auto v = std::vector<int>{ 0, 1, 2, 3, 4, 5, 6 };
@@ -727,15 +592,6 @@ Unique logically removes all duplicate elements that occur in a series. This is 
 #include <algorithm>
 #include <iostream>
 #include <vector>
-
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
 
 auto main() -> int
 {
@@ -765,15 +621,6 @@ auto main() -> int
 #include <iostream>
 #include <random>
 #include <vector>
-
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
 
 auto main() -> int
 {
@@ -806,15 +653,6 @@ auto main() -> int
 #include <iostream>
 #include <random>
 #include <vector>
-
-template<typename T>
-auto println(const std::vector<T>& v) -> void
-{
-    std::cout << "[ ";
-    for (auto i { v.size() }; const auto& e : v)
-        std::cout << e << (--i ? ", " : "");
-    std::cout << " ]" << std::endl;
-}
 
 auto main() -> int
 {
