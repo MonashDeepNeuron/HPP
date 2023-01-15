@@ -19,19 +19,15 @@
       - [Task 3.5.2 : Search](#task-352--search)
       - [Task 3.5.3 : Adjacent Find](#task-353--adjacent-find)
       - [Task 3.5.4 : Binary Search](#task-354--binary-search)
-      - [Task 3.5.5 : Lower Bound](#task-355--lower-bound)
-      - [Task 3.5.6 : Upper Bound](#task-356--upper-bound)
-      - [Task 3.5.7 : Equal Range](#task-357--equal-range)
+      - [Task 3.5.5 : Equal Range, Lower Bound \& Upper Bound](#task-355--equal-range-lower-bound--upper-bound)
     - [Task 3.6 : Modifiers](#task-36--modifiers)
-      - [Task 3.6.1 : Copy](#task-361--copy)
-      - [Task 3.6.2 : Move](#task-362--move)
-      - [Task 3.6.3 : Swap Range](#task-363--swap-range)
-      - [Task 3.6.4 : Remove](#task-364--remove)
-      - [Task 3.6.5 : Replace](#task-365--replace)
-      - [Task 3.6.6 : Reverse](#task-366--reverse)
-      - [Task 3.6.7 : Transform](#task-367--transform)
-      - [Task 3.6.8 : Rotate](#task-368--rotate)
-      - [Task 3.6.9 : Unique](#task-369--unique)
+      - [Task 3.6.1 : Copy \& Move](#task-361--copy--move)
+      - [Task 3.6.2 : Swap Range](#task-362--swap-range)
+      - [Task 3.6.3 : Remove \& Replace](#task-363--remove--replace)
+      - [Task 3.6.4 : Reverse](#task-364--reverse)
+      - [Task 3.6.5 : Transform](#task-365--transform)
+      - [Task 3.6.6 : Rotate](#task-366--rotate)
+      - [Task 3.6.7 : Unique](#task-367--unique)
       - [Task 3.6.10 : Sample](#task-3610--sample)
       - [Task 3.6.11 : Shuffle](#task-3611--shuffle)
     - [Task 3.7 : Numeric](#task-37--numeric)
@@ -97,7 +93,7 @@ Sorting is a very common operation in programming. It allows us to more efficien
 
 #### Task 3.4.1 : Sort
 
-`std::sort` is C++ sorting algorithm. Along with the input range, it can also take in a predicate (a function returning a Boolean) which is used for the comparison. This defaults to `<` making `std::sort` sort in ascending order. `std::sort` sorts in-place and is often implemented as an Introsort algorithm.
+`std::sort` is C++ sorting algorithm. Along with the input range, it can also take in a predicate (a binary function returning a Boolean) which is used for the comparison. This defaults to `<` making `std::sort` sort in ascending order. `std::sort` sorts in-place and is often implemented as an Introsort algorithm.
 
 ```cxx
 #include <algorithm>
@@ -340,197 +336,499 @@ auto main() -> int
 
 #### Task 3.5.3 : Adjacent Find
 
-~
+`std::adjacent_find` returns the location of the first pair of adjacent elements in a ranges that satisfy a predicate. The default predicate is `==`.
 
 ```cxx
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <vector>
 
+template<typename T>
+auto println(const std::vector<T>& v) -> void
+{
+    std::cout << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        std::cout << e << (--i ? ", " : "");
+    std::cout << " ]" << std::endl;
+}
+
+auto main() -> int
+{
+    auto v = std::vector<int>{ 1, 2, 3, 3, 4, 5 };
+
+    println(v);
+    auto result = std::adjacent_find(v.begin(), v.end());
+    
+    (result == v.end() ? std::cout << "no equal adjacent elemnts" << std::endl
+                       : std::cout << "first equal adjacent elements occured at offset: " 
+                                   << std::distance(v.begin(), result) 
+                                   << " with *result = "
+                                   << *result
+                                   << std::endl);
+
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/WMxqEezfn)
 
 [`std::adjacent_find` : cppreference](https://en.cppreference.com/w/cpp/algorithm/adjacent_find)
 
 #### Task 3.5.4 : Binary Search
 
-~
+Everyone knows the binary search algorithm however, `std::binary_search` is a little different. Instead of returning the location of the desired element it returns `true` if the desired value exists in the range and `false` otherwise. `std::binary_search` iin C++ is more commonly spelt **_in_**. `std::binary_search` one works on a partially ordered ranged with respect to the desired value. Partitioning with respect to the desired value is the minimum sorting requirement.
 
 ```cxx
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <vector>
 
+template<typename T>
+auto println(const std::vector<T>& v) -> void
+{
+    std::cout << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        std::cout << e << (--i ? ", " : "");
+    std::cout << " ]" << std::endl;
+}
+
+auto main() -> int
+{
+    auto v = std::vector<int>{ 1, 2, 3, 4, 5 };
+
+    println(v);
+    
+    std::cout << std::boolalpha
+              << "Found 2? -- " 
+              << std::binary_search(v.begin(), v.end(), 2)
+              << std::endl
+              << "Found 6? -- "
+              << std::binary_search(v.begin(), v.end(), 6)
+              << std::noboolalpha
+              << std::endl;
+
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/xq7cerxYf)
 
 [`std::binary_search` : cppreference](https://en.cppreference.com/w/cpp/algorithm/binary_search)
 
-#### Task 3.5.5 : Lower Bound
+#### Task 3.5.5 : Equal Range, Lower Bound & Upper Bound
 
-~
+These algorithms work on partitioned ranges with respect to some value (similar to `std::binary_search`). `std::equal_range` returns a pair of iterators representing the sub-range of elements that are equal to the desired value. `std::lower_bound` and `std::upper_bound` will return an iterator representing the first value do not satisfy a predicate (default `<`) with the right argument always being the desired value for `std::lower_bound` and the left argument always being the desired value for `std::upper_bound`.
 
-```cxx
-
-```
-
-[Example]()
-
-[`std::lower_bound` : cppreference](https://en.cppreference.com/w/cpp/algorithm/lower_bound)
-
-#### Task 3.5.6 : Upper Bound
-
-~
+> Note: These algorithms are also member functions of all associative containers and some of the unordered associative containers.
 
 ```cxx
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <vector>
 
+template<typename T>
+auto println(const std::vector<T>& v) -> void
+{
+    std::cout << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        std::cout << e << (--i ? ", " : "");
+    std::cout << " ]" << std::endl;
+}
+
+auto main() -> int
+{
+    auto v = std::vector<int>{ 1, 2, 3, 4, 4, 4, 5 };
+
+    println(v);
+
+    auto [eq1, eq2] = std::equal_range(v.begin(), v.end(), 4);
+    auto lwbnd4 = std::lower_bound(v.begin(), v.end(), 4);
+    auto upbnd4 = std::upper_bound(v.begin(), v.end(), 4);
+    
+    std::cout << "Range containing 4:" << std::endl;
+    println(std::vector<int>(eq1, eq2));
+    std::cout << "Lower bound of 4: " << *lwbnd4 << std::endl;
+    std::cout << "Upper bound of 4: " << *upbnd4 << std::endl;
+
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/eTK3jaKb7)
 
-[`std::upper_bound` : cppreference](https://en.cppreference.com/w/cpp/algorithm/upper_bound)
-
-#### Task 3.5.7 : Equal Range
-
-~
-
-```cxx
-
-```
-
-[Example]()
-
-[`std::equal_range` : cppreference](https://en.cppreference.com/w/cpp/algorithm/equal_range)
+- [`std::equal_range` : cppreference](https://en.cppreference.com/w/cpp/algorithm/equal_range)
+- [`std::lower_bound` : cppreference](https://en.cppreference.com/w/cpp/algorithm/lower_bound)
+- [`std::upper_bound` : cppreference](https://en.cppreference.com/w/cpp/algorithm/upper_bound)
 
 ### Task 3.6 : Modifiers
 
-~
+Modifiers are the bread and butter of the algorithms library. They are used to modify the values of sequences sometimes in-place and other times using an output iterator that becomes the writer of the algorithm. The writer iterator can be the same iterator as the one representing the start of the input ranges as long as it supports write operations (assignment to). These algorithms will often return `void` for in-place modifications or return the end iterator of the output range.
 
-#### Task 3.6.1 : Copy
+#### Task 3.6.1 : Copy & Move
 
-~
-
-```cxx
-
-```
-
-[Example]()
-
-[`std::copy` : cppreference](https://en.cppreference.com/w/cpp/algorithm/copy)
-
-#### Task 3.6.2 : Move
-
-~
+The copy and move algorithms are pretty self explanatory, they well copy of move the elements from one range to another. These algorithms eliminate 90% of the use of a manual for-loop and allow for copying and moving from completely different ranges, as long as the underlying copy of move is support ie. they types are copyable or movable.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
 
+template<typename T>
+auto println(const std::vector<T>& v) -> void
+{
+    std::cout << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        std::cout << e << (--i ? ", " : "");
+    std::cout << " ]" << std::endl;
+}
+
+auto main() -> int
+{
+    auto v1 = std::vector<std::string>{ "a", "b", "c", "d", "e" };
+    auto v2 = std::vector<std::string>{};       ///< Empty vector
+    auto v3 = std::vector<std::string>(5, "");  ///< Preallocated memory
+
+    println(v1);
+    println(v2);
+    println(v3);
+
+    /// Use back inserted to push copies to the back 
+    /// of the vector as v2 has no allocated memory
+    std::copy(v1.begin(), v1.end(), std::back_inserter(v2));
+
+    /// Can us v3 iterator directly as it has
+    /// preallocated memory
+    std::move(v1.begin(), v1.end(), v3.begin());
+    std::cout << std::endl;
+
+    println(v1);
+    println(v2);
+    println(v3);
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/jrhM39hz4)
 
-[`std::move` : cppreference](https://en.cppreference.com/w/cpp/algorithm/move)
+- [`std::copy` : cppreference](https://en.cppreference.com/w/cpp/algorithm/copy)
+- [`std::move` : cppreference](https://en.cppreference.com/w/cpp/algorithm/move)
 
-#### Task 3.6.3 : Swap Range
+#### Task 3.6.2 : Swap Range
 
-~
+`std::swap_range` is a range based form of `std::swap`. It will swap the values of two ranges until the end of the first rnage is reached.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
 
+template<typename T>
+auto println(const std::vector<T>& v) -> void
+{
+    std::cout << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        std::cout << e << (--i ? ", " : "");
+    std::cout << " ]" << std::endl;
+}
+
+auto main() -> int
+{
+    auto v1 = std::vector<std::string>{ "a", "b", "c", "d", "e" };
+    auto v2 = std::vector<std::string>{ "v", "w", "x", "y", "z" };
+
+    println(v1);
+    println(v2);
+
+    std::swap_ranges(v1.begin(), v1.end(), v2.begin());
+    std::cout << std::endl;
+
+    println(v1);
+    println(v2);
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/3eqcdfG4f)
 
 [`std::swap_ranges` : cppreference](https://en.cppreference.com/w/cpp/algorithm/swap_ranges)
 
-#### Task 3.6.4 : Remove
+#### Task 3.6.3 : Remove & Replace
 
-~
-
-```cxx
-
-```
-
-[Example]()
-
-[`std::` : cppreference](https://en.cppreference.com/w/cpp/algorithm/remove)
-
-#### Task 3.6.5 : Replace
-
-~
+`std::remove` and `std::replace` are also fairly simple algorithms. They will remove or replace all instances of a particular value or replacing it with a new value respectively. `std::remove` doesn't actually free memory, usually it just moves any other value forward in the range. To free the removed memory, a call to `std::remove` is followed by a call to the containers erase method or `std::erase` (for sequence containers), taking the iterator returned by `std::remove` and the containers end iterator forming the _remove-erase idiom_.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <vector>
 
+template<typename T>
+auto println(const std::vector<T>& v) -> void
+{
+    std::cout << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        std::cout << e << (--i ? ", " : "");
+    std::cout << " ]" << std::endl;
+}
+
+auto main() -> int
+{
+    auto v = std::vector<int>{ 2, 3, 5, 1, 2, 2, 3, 4, 2, 5, 3 };
+
+    println(v);
+    auto r = std::remove(v.begin(), v.end(), 3);
+    std::cout << std::endl;
+    println(v);
+    v.erase(r, v.end());
+    std::cout << std::endl;
+    println(v);
+    std::replace(v.begin(), v.end(), 2, -2);
+    std::cout << std::endl;
+    println(v);
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/Er64q3T3b)
 
-[`std::replace` : cppreference](https://en.cppreference.com/w/cpp/algorithm/replace)
+- [`std::remove` : cppreference](https://en.cppreference.com/w/cpp/algorithm/remove)
+- [`std::replace` : cppreference](https://en.cppreference.com/w/cpp/algorithm/replace)
 
-#### Task 3.6.6 : Reverse
+#### Task 3.6.4 : Reverse
 
-~
+`std::reverse` is an in-place modifier that reverses the elements of the container by swapping iterators.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <vector>
 
+template<typename T>
+auto println(const std::vector<T>& v) -> void
+{
+    std::cout << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        std::cout << e << (--i ? ", " : "");
+    std::cout << " ]" << std::endl;
+}
+
+auto main() -> int
+{
+    auto v = std::vector<int>{ 1, 2, 3, 4, 5 };
+
+    println(v);
+    std::reverse(v.begin(), v.end());
+    println(v);
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/cjT6vEd7M)
 
 [`std::reverse` : cppreference](https://en.cppreference.com/w/cpp/algorithm/reverse)
 
-#### Task 3.6.7 : Transform
+#### Task 3.6.5 : Transform
 
-~
+`std::transform` one of the most important algorithms in any programming language. `std::transform` will apply an unary function on every element in a range, writing it to a new output range. It also is overloaded to take an additional input iterator allowing for binary transformations. `std::transform` is most commonly spelt as **_map_** in Computer Science however, this name was taken be `std::map`.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <vector>
 
+template<typename T>
+auto println(const std::vector<T>& v) -> void
+{
+    std::cout << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        std::cout << e << (--i ? ", " : "");
+    std::cout << " ]" << std::endl;
+}
+
+auto main() -> int
+{
+    auto v1 = std::vector<int>{ 0, 1, 2, 3, 4 };
+    auto v2 = std::vector<int>{ 9, 8, 7, 6, 5 };
+
+    println(v1);
+    std::transform(v1.begin(), v1.end(), v1.begin(), [](const auto& x){ return x * x; });
+    println(v1);
+    std::cout << std::endl;
+    std::cout << "  ";
+    println(v1);
+    std::cout << "+ ";
+    println(v2);
+    std::transform(v1.begin(), v1.end(),
+                   v2.begin(), v1.begin(),
+                   [](const auto& x, const auto& y){ return x + y; });
+    std::cout << "= ";
+    println(v1);
+
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/9n9WjerzG)
 
 [`std::transform` : cppreference](https://en.cppreference.com/w/cpp/algorithm/transform)
 
-#### Task 3.6.8 : Rotate
+#### Task 3.6.6 : Rotate
 
-~
+`std::rotate` takes three iterators first, pivot and end respectively. As normal, first and end form the range the algorithm operates on while pivot is swapped such that it becomes the new starting element of the range and the element preceding the pivot becomes the new end of the range.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <vector>
 
+template<typename T>
+auto println(const std::vector<T>& v) -> void
+{
+    std::cout << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        std::cout << e << (--i ? ", " : "");
+    std::cout << " ]" << std::endl;
+}
+
+auto main() -> int
+{
+    auto v = std::vector<int>{ 0, 1, 2, 3, 4, 5, 6 };
+
+    println(v);
+    std::rotate(v.begin(), v.begin() + 3, v.end());
+    println(v);
+
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/YTnEn1o7d)
 
 [`std::rotate` : cppreference](https://en.cppreference.com/w/cpp/algorithm/rotate)
 
-#### Task 3.6.9 : Unique
+#### Task 3.6.7 : Unique
 
-~
+Unique logically removes all duplicate elements that occur in a series. This is done by moving the duplicates to the back of the range where they hold an undeterminable value. Returns an iterator indicated the start for the sub-range of undetermined elements. Like `std::remove`, `std::unique` is often paired with a call to an erasure method to actually clear the elements. `std::unique` defaults to using `==` as the default predicate but can take any kind of predicate.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <vector>
 
+template<typename T>
+auto println(const std::vector<T>& v) -> void
+{
+    std::cout << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        std::cout << e << (--i ? ", " : "");
+    std::cout << " ]" << std::endl;
+}
+
+auto main() -> int
+{
+    auto v = std::vector<int>{ 0, 0, 0, 1, 1, 1, 2, 2, 2 };
+
+    println(v);
+    auto r = std::unique(v.begin(), v.end());
+    println(v);
+    v.erase(r, v.end());
+    println(v);
+
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/Kf1vv8G8E)
 
-[`std::` : cppreference](https://en.cppreference.com/w/cpp/algorithm/unique)
+[`std::unique` : cppreference](https://en.cppreference.com/w/cpp/algorithm/unique)
 
 #### Task 3.6.10 : Sample
 
-~
+`std::sample` will sample $n$ random elements a range without replacement such that each sampled element has an equal probability of appearing. `std::sample` takes in a random number generator from the `<random>` header in order to generate the random access.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <random>
+#include <vector>
 
+template<typename T>
+auto println(const std::vector<T>& v) -> void
+{
+    std::cout << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        std::cout << e << (--i ? ", " : "");
+    std::cout << " ]" << std::endl;
+}
+
+auto main() -> int
+{
+    auto v = std::vector<int>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    auto s = std::vector<int>(4);
+
+    println(v);
+    std::sample(v.begin(), v.end(),
+                s.begin(), s.size(),
+                std::mt19937{ std::random_device{}() });
+    println(s);
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/rr6PPbb8a)
 
-[`std::sample` : cppreference](https://en.cppreference.com/w/cpp/algorithm/sample)
+- [`std::sample` : cppreference](https://en.cppreference.com/w/cpp/algorithm/sample)
+- [`<random>` : cppreference](https://en.cppreference.com/w/cpp/header/random)
+- [Pseudo-random number generation : cppreference](https://en.cppreference.com/w/cpp/numeric/random)
+- [`std::mersenne_twister_engine` : cppreference](https://en.cppreference.com/w/cpp/numeric/random/mersenne_twister_engine)
 
 #### Task 3.6.11 : Shuffle
 
-~
+`std::shuffle` will randomly reorganize a range. Like `std::sample`, `std::shuffle` takes in a random number generator in order to randomly generate the index sequence.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <random>
+#include <vector>
 
+template<typename T>
+auto println(const std::vector<T>& v) -> void
+{
+    std::cout << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        std::cout << e << (--i ? ", " : "");
+    std::cout << " ]" << std::endl;
+}
+
+auto main() -> int
+{
+    auto v = std::vector<int>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    println(v);
+    std::shuffle(v.begin(), v.end(), std::mt19937{ std::random_device{}() });
+    println(v);
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/cjY6W7cPe)
 
 [`std::shuffle` : cppreference](https://en.cppreference.com/w/cpp/algorithm/)
 
