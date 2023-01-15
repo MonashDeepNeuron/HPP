@@ -40,7 +40,8 @@
       - [Task 3.7.7 : Adjacent Difference](#task-377--adjacent-difference)
     - [Task 3.8 : Comparisons](#task-38--comparisons)
       - [Task 3.8.1 : Equal](#task-381--equal)
-      - [Task 3.8.2 : All, Any \& None](#task-382--all-any--none)
+      - [Task 3.8.2 : Lexicographical Compare](#task-382--lexicographical-compare)
+      - [Task 3.8.3 : All, Any \& None](#task-383--all-any--none)
     - [Task 3.9 : Generators](#task-39--generators)
       - [Task 3.9.1 : Fill](#task-391--fill)
       - [Task 3.9.2 : Iota](#task-392--iota)
@@ -762,67 +763,182 @@ auto main() -> int
 
 ### Task 3.8 : Comparisons
 
+The following algorithms are used to perform comparisons and conditional checks both between ranges and within a range. They all return a Boolean indicating the result of the comparison.
+
 #### Task 3.8.1 : Equal
 
-~
+`std::equal` performs applies a predicate to two ranges. The default predicate is `==` but any can be used.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <vector>
 
+auto main() -> int
+{
+    auto v1 = std::vector<int>{ 0, 1, 2, 3, 4, 5 };
+    auto v2 = std::vector<int>{ 1, 2, 3, 4, 5, 6 };
+
+    println(v1);
+    println(v2);
+
+    std::cout << std::boolalpha 
+              << std::equal(v1.begin(), v1.end(), v2.begin(), std::less<>{})
+              << std::endl;
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/fs1T64vq5)
 
 [`std::equal` : cppreference](https://en.cppreference.com/w/cpp/algorithm/equal)
 
-#### Task 3.8.2 : All, Any & None
+#### Task 3.8.2 : Lexicographical Compare
 
-~
+`std::lexicographical_compare` checks if the first range is lexicographically less then the second range. The predicate _less_ can be changed.
 
 ```cxx
+#include <algorithm>
+#include <iomanip>
+#include <iostream>
+#include <string>
 
+auto main() -> int
+{
+    auto s1 = std::string{ "Hello" };
+    auto s2 = std::string{ "Hi" };
+
+    std::cout << std::quoted(s1) << std::endl;
+    std::cout << std::quoted(s2) << std::endl;
+
+    std::cout << std::boolalpha 
+              << std::lexicographical_compare(s1.begin(), s1.end(),
+                                              s2.begin(), s2.end())
+              << std::endl;
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/YqovzcTYM)
+
+[`std::equal` : cppreference](https://en.cppreference.com/w/cpp/algorithm/equal)
+
+#### Task 3.8.3 : All, Any & None
+
+The three algorithms `std::all_of`, `std::any_of` and `std::none_of` will apply an unary predicate on a range returning `true` if all of, any of or none of the elements satisfy the predicate and `false` otherwise.
+
+```cxx
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+auto main() -> int
+{
+    auto v = std::vector<int>{ 0, 1, 2, 3, 4, 5 };
+
+    println(v);
+
+    std::cout << std::boolalpha 
+              << "All Odd? -- "
+              << std::all_of(v.begin(), v.end(), [](const auto& e){ return !(e % 2 == 0); })
+              << std::endl
+              << "Any Even? -- "
+              << std::any_of(v.begin(), v.end(), [](const auto& e){ return e % 2 == 0; })
+              << std::endl
+              << "None are 7? -- "
+              << std::none_of(v.begin(), v.end(), [](const auto& e){ return e == 7; })
+              << std::endl;
+    
+    return 0;
+}
+```
+
+[Example](https://www.godbolt.org/z/hddx535Wj)
 
 [`std::all_of`, `std::any_of` & `std::none_of` : cppreference](https://en.cppreference.com/w/cpp/algorithm/all_any_none_of)
 
 ### Task 3.9 : Generators
 
-~
+Generators allow for ranges to be filled with values after their initial construction. They are useful for manufacturing values without the need of literals.
 
 #### Task 3.9.1 : Fill
 
-~
+`std::fill` is the most simple generator. It fills an entire range with a single value, modifying the range in-place.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <vector>
 
+auto main() -> int
+{
+    auto v = std::vector<int>{ 0, 1, 2, 3, 4, 5 };
+
+    println(v);
+    std::fill(v.begin(), v.end(), 8);
+    println(v);
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/57ssP7P36)
 
 [`std::fill` : cppreference](https://en.cppreference.com/w/cpp/algorithm/fill)
 
 #### Task 3.9.2 : Iota
 
-~
+`std::iota` is a powerful factory based generator. It is supplied and initial value and will increment (using `++`) that initial value as it iterates through the range and assigns the current iterator with the incremented value. Iota is a common factory used in many different programming languages. Its original name is iota but it is often spelt **_range_**. `std::iota` is part of the `<numeric>` header. Like `std::fill`, `std::iota` modifies a sequence in-place.
 
 ```cxx
+#include <iostream>
+#include <numeric>
+#include <vector>
 
+auto main() -> int
+{
+    auto v = std::vector<int>{ 0, 1, 2, 3, 4, 5 };
+
+    println(v);
+    std::iota(v.begin(), v.end(), -2);
+    println(v);
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/oz1179Gn6)
 
 [`std::iota` : cppreference](https://en.cppreference.com/w/cpp/algorithm/iota)
 
 #### Task 3.9.3 : Generate
 
-~
+`std::generate` is the most primitive generator algorithm. Instead of taking an initial value, it takes a function that gets called repeatedly on each iteration. This algorithm modifies the range in-place.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <random>
+#include <vector>
 
+auto main() -> int
+{
+    auto v    = std::vector<int>(10);
+    auto rd   = std::random_device{};
+    auto gn   = std::mt19937{ rd() };
+    auto dist = std::uniform_int_distribution<>{ 0, 10 };
+
+    println(v);
+    std::generate(v.begin(), v.end(), [&]() { return dist(gn); });
+    println(v);
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/s3GrYnv1a)
 
 [`std::generate` : cppreference](https://en.cppreference.com/w/cpp/algorithm/generate)
 
