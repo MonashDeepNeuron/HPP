@@ -673,17 +673,44 @@ auto main() -> int
 
 ### Task 3.7 : Numeric
 
-~
+Numerical algorithms are powerful algorithms for performing numerical computation on ranges. Many of the numerical algorithms in C++ are specialised forms of a reduction. Reductions will take a range of values and reduce the the number of elements in the resulting range. Reductions often come in the form of a folding algorithm which take and initial value, a range and a binary function. They break a range of elements into a _Head_ and _Tail_ component, with the _Head_ being the first element and _Tail_ being the rest. There are two version folds called left and right folds. A left fold will apply the initial value along with the result of left folding the _Tail_; with _Head_ being the new initial value, to the binary function. Right folds will invert this process applying _Head_ and the result of right folding the _Tail_ of the range; passing the initial value to the bottom of the fold, to the binary function. Folds spelt as reductions are often left folds with the initial value being the _Head_ of the range.
+
+[Fold](https://docs.google.com/spreadsheets/d/16isUb2rsuzSmkJLO_FtjGCzsQJOAeRKWARBUGn_mrHI/edit#gid=631619717)
 
 #### Task 3.7.1 : Minimums & Maximums
 
-~
+Minimum and maximum reductions are used to find the smallest and largest number in a range. In C++ these are spelt as `std::min_element`, `std::max_element`. These algorithms return an iterator to the element most satisfying the predicate which is defaulted to `<` but can be customised. There is also `std::minmax_element` which returns a pair of iterators indicating the minimum and maximum element in a range.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <vector>
 
+auto main() -> int
+{
+    auto v = std::vector<int>{ 1, 3, 5, 0, 2, 6 };
+
+    println(v);
+    auto min1 = std::min_element(v.begin(), v.end());
+    auto max1 = std::max_element(v.begin(), v.end());
+    auto [min2, max2] = std::minmax_element(v.begin(), v.end());
+    
+    std::cout << "Min: " << *min1 << " @ " << std::distance(v.begin(), min1) << std::endl;
+    std::cout << "Max: " << *max1 << " @ " << std::distance(v.begin(), max1) << std::endl;
+    std::cout << "Min, Max: [" 
+              << *min2 << ", " << *max2 
+              << "] @ [" 
+              << std::distance(v.begin(), min2)
+              << ", "
+              << std::distance(v.begin(), max2)
+              << "]"
+              << std::endl;
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/G8Y9dchEv)
 
 [`std::min_element` : cppreference](https://en.cppreference.com/w/cpp/algorithm/min_element)
 [`std::max_element` : cppreference](https://en.cppreference.com/w/cpp/algorithm/max_element)
@@ -691,73 +718,183 @@ auto main() -> int
 
 #### Task 3.7.2 : Count
 
-~
+`std::count` will count that number of occurrences of a particular value. The default predicate is `==` but it can be customised.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <vector>
 
+auto main() -> int
+{
+    auto v = std::vector<int>{ 2, 1, 3, 5, 2, 2, 3, 0, 2, 6, 2 };
+    auto e = int{ 2 };
+
+    println(v);
+    std::cout << "Number of " << e << "'s = " << std::count(v.begin(), v.end(), e) << std::endl;
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/5xejqWf6s)
 
 [`std::count` : cppreference](https://en.cppreference.com/w/cpp/algorithm/count)
 
 #### Task 3.7.3 : Clamp
 
-~
+`std::clamp` is a scalar algorithm (doesn't work for ranges) that will clamp a value between a set range. If the value is smaller then the lower bound it is clamped to the lower bound and if it is larger than the upper bound it clamps to the upper bound, returning the value otherwise. `std::clamp` is not a reduction.
+
+> Note: If the return value is bound to a reference and the value is a temporary to the call to `std::clamp` the reference is dangling.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <vector>
 
+auto main() -> int
+{
+    auto low = int{ 2 };
+    auto high = int{ 3 };
+
+
+    auto v = std::vector<int>{ 0, 1, 2, 3, 4, 5, 6 };
+
+    println(v);
+    std::transform(v.begin(), v.end(), v.begin(),
+                   [&](const auto& x){ return std::clamp(x, low, high); });
+    println(v);
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/q5sWsrK1x)
 
 [`std::clamp` : cppreference](https://en.cppreference.com/w/cpp/algorithm/clamp)
 
 #### Task 3.7.4 : Accumulate
 
-~
+`std::accumulate` is the most general numeric algorithm and can be used to implement almost all of the algorithms in the C++ standard. Accumulate takes a range of values, an initial value and a binary function defaulting to `+`. Accumulate is most commonly spelt as left-fold or foldl. `std::accumulate` is one of the only algorithms that returns a value. One point to note about `std::accumulate` is that the initial values type is unrelated to the type of the range of elements. This can cause unintended side effects due to implicit conversions. `std::accumulate` is not found in `<algorithm>` but rather `<numeric>`.
+
+> One algorithm `std::accumulate` should not try and model is function application of maps (ie. `std::transform`).
 
 ```cxx
+#include <functional>
+#include <iostream>
+#include <numeric>
+#include <vector>
 
+auto main() -> int
+{
+    auto v = std::vector<int>{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+    println(v);
+
+    auto sum     = std::accumulate(v.begin(), v.end(), 0);
+    auto product = std::accumulate(v.begin(), v.end(), 1, std::multiplies<>{});
+    std::cout << "Sum of v = " << sum << std::endl;
+    std::cout << "Product of v = " << product << std::endl;
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/v3jEMP4c1)
 
 [`std::accumulate` : cppreference](https://en.cppreference.com/w/cpp/algorithm/accumulate)
 
 #### Task 3.7.5 : Inner Product
 
-~
+`std::inner_product` is a very powerful algorithm. It performs a binary transformation of two ranges and then performs a reduction on the resulting range. The most common form of this algorithm is known as the dot-product which applies the binary `*` on the two sets of coordinates and then a binary reduction on the resulting range using `+`. This is the default operation set for C++ `std::inner_product` but it can be customised to using any binary transformation and reduction. Like `std::accumulate` is takes an initial value which is applied to the and returns the result of the reduction. `std::inner_product` also lives in the `<numeric>` header.
 
 ```cxx
+#include <iostream>
+#include <numeric>
+#include <vector>
 
+auto main() -> int
+{
+    auto v = std::vector<int>{ 1, 3, 5, 7, 9 };
+    auto u = std::vector<int>{ 0, 2, 4, 6, 8 };
+
+    auto r = std::inner_product(v.begin(), v.end(), u.begin(), 0);
+
+    std::cout << "v: ";
+    println(v);
+    std::cout << "     x  x  x  x  x   + => " << r << std::endl;
+    std::cout << "u: ";
+    println(u);
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/schxqWbo3)
 
 [`std::inner_product` : cppreference](https://en.cppreference.com/w/cpp/algorithm/inner_product)
 
 #### Task 3.7.6 : Partial Sum
 
-~
+`std::partial_sum` is another reduction algorithm but with a twist. Instead of reducing the range to a scalar, it partially reduces the range, saving the intermediate accumulation values. This algorithm is most commonly spelt as left scan or `scanl`. `std::partial_sum` does not take an initial but does take an iterator to the beginning of the output range. Returns the element pointing to one-past-the-end element of the output range. `std::partial_sum` is in the `<numeric>` header. The default binary function is `+`.
 
 ```cxx
+#include <functional>
+#include <iostream>
+#include <numeric>
+#include <vector>
 
+auto main() -> int
+{
+    auto v = std::vector<int>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    auto u = std::vector<int>(v.size(), 0);
+    auto w = std::vector<int>(v.size() - 1, 0);
+
+    std::partial_sum(v.begin(), v.end(), u.begin());
+    std::partial_sum(v.begin() + 1, v.end(), w.begin(), std::multiplies<>{});
+
+    println(v);
+    println(u);
+    println(w);
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/YnWdvq1nv)
 
 [`std::partial_sum` : cppreference](https://en.cppreference.com/w/cpp/algorithm/partial_sum)
 
 #### Task 3.7.7 : Adjacent Difference
 
-~
+`std::adjacent_difference` applies the the binary function `-` (by default) to every pair of neighboring elements writing them to a new range. This range begins at one after the passed output iterator.
 
 ```cxx
+#include <functional>
+#include <iostream>
+#include <numeric>
+#include <vector>
 
+auto main() -> int
+{
+    auto v = std::vector<int>{ 4, 6, 9, 13, 18, 19, 19, 15, 10 };
+    auto u = std::vector<int>(v.size(), 0);
+    auto w = std::vector<int>(v.size(), 0);
+    w[0] = 1;
+
+    std::adjacent_difference(v.begin(), v.end(), u.begin());
+    std::adjacent_difference(w.begin(), std::prev(w.end()), std::next(w.begin()), std::plus<>{});
+
+    println(v);
+    println(u);
+    std::cout << std::endl << "Fibonacci: ";
+    println(w);
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/rbvK3P1ah)
 
 [`std::adjacent_difference` : cppreference](https://en.cppreference.com/w/cpp/algorithm/adjacent_difference)
 
