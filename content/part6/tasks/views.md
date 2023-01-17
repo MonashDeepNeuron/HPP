@@ -9,15 +9,7 @@
     - [Task 5.2 : Lazy Evaluation](#task-52--lazy-evaluation)
     - [Task 5.3 : Factories](#task-53--factories)
     - [Task 5.4 : Range Adaptors, Composition \& The Pipe Operators](#task-54--range-adaptors-composition--the-pipe-operators)
-      - [Task 5.4.1 : Transform](#task-541--transform)
-      - [Task 5.4.2 : Filter](#task-542--filter)
-      - [Task 5.4.3 : Reverse](#task-543--reverse)
-      - [Task 5.4.4 : Take \& Take While](#task-544--take--take-while)
-      - [Task 5.4.5 : Drop \& Drop While](#task-545--drop--drop-while)
-      - [Task 5.4.6 : Join](#task-546--join)
-      - [Task 5.4.7 : Split](#task-547--split)
-      - [Task 5.4.8 : Common](#task-548--common)
-      - [Task 5.4.9 : Associative Container Views](#task-549--associative-container-views)
+      - [Task 5.5 : Standard View Range Adaptors](#task-55--standard-view-range-adaptors)
   - [Links](#links)
 
 ## Task 5
@@ -88,118 +80,62 @@ auto main() -> int
 
 So far views aren't all that interesting. The true power of views comes from their ability to be composed. Composition allows for views to be combined to build more complex views over data while still adhering to lazy evaluation. Instead of evaluating each function one at a time a single function, which is the composition of all the view functions gets evaluated once for every access to the element. Views are composed using the pipe operator (`|`) and are read from left-to-right as opposed to inside-out. This makes function composition far more expressible and extensible. Range (including containers) or view object are 'piped' to the range adaptor with the resulting view; when evaluated, applying the range adaptor on the every element.
 
-#### Task 5.4.1 : Transform
+#### Task 5.5 : Standard View Range Adaptors
 
-The `std::views::transform` range adapter takes an unary function as its argument, applying it to every element in the view.
-
-```cxx
-
-```
-
-[Example]()
-
-[`std::views::transform` : cppreference](https://en.cppreference.com/w/cpp/ranges/transform_view)
-
-#### Task 5.4.2 : Filter
-
-`std::views::filter` will exclude elements based on a unary predicate, keeping the elements for which the predicate evaluates as `true`.
-
-```cxx
-
-```
-
-[Example]()
-
-[`std::views::filter` : cppreference](https://en.cppreference.com/w/cpp/ranges/filter_view)
-
-#### Task 5.4.3 : Reverse
-
-`std::views::reverse` returns are view of the range as if its order was reversed.
+- `std::views::transform` - a range adapter whose resulting view maps an unary function to the input range.
+- `std::views::filter` - a range adaptor that whose resulting view excludes any element that do not satisfy an unary predicate.
+- `std::views::reverse`  - a range adaptor returning a view of the input range as if its order was reversed.
+- `std::views::take` - a range adaptor whose resulting view take only $n$ elements from the input range. Performs bound checks to ensure that it doesn't take more elements then the view can see.
+- `std::views::take_while` - a range adaptor whose resulting view contains every element until an unary predicate returns `false`.
+- `std::views::drop` - a range adapter whose resulting view skips the first $n$ elements from a input range.
+- `std::views::drop_while` -  a range adaptor whose resulting view starts at the first element for which the unary predicate evaluates `false`.
+- `std::views::join` - a range adaptor whose resulting view will flatten nested range or view object a single view.
+- `std::views::split` - a range adaptor whose resulting view contains subranges split by a given deliminator. Is not entirely lazy and will eagerly move forward through the view at each iteration during evaluation.
+- `std::views::lazy_split` - a range adaptor whose resulting view contains subranges split by a given deliminator Is entirely lazy evaluated but is unable to model the subranges as a [common range](https://en.cppreference.com/w/cpp/ranges/common_range)(a range with the same type for the iterator and sentinel) and cannot be used in algorithms expecting a bidirectional range (or higher).
+- `std::views::common` - a range adaptor whose resulting view adapts the input range to have the same type for its iterator and sentinels.
+- `std::views::element` - a range adaptor that accepts an input range with _Tuple-Like_ elements and whose resulting view contains the $Nth$ entry from every _Tuple-Like_ element of the input range.
+- `std::views::keys` - a range adaptor who is a specialisations of `std::views::elements` taking the $0th$ entry of a view of _Tuple-Like_ elements. This can be used to obtain a view of just the keys of an associative container.
+- `std::views::values` - a range adaptor who is a specialisations of `std::views::elements` taking the $1st$ entry of a view of _Tuple-Like_ elements. This can be used to obtain a view of just the values of an associative container.
 
 ```cxx
+#include <algorithm>
+#include <iostream>
+#include <ranges>
 
+auto square = [](const auto& x){ return x * x; };
+auto even = [](const auto& x){ return x % 2 == 0; };
+
+auto main() -> int
+{
+    auto nums = std::views::iota(0) 
+              | std::views::transform(square)
+              | std::views::filter(even)
+              | std::views::take(10);
+
+    std::ranges::copy(nums, std::ostream_iterator<int>(std::cout, " "));
+
+    std::cout << std::endl;
+    
+    return 0;
+}
 ```
 
-[Example]()
+[Example](https://www.godbolt.org/z/3fdW1P7hj)
 
-[`std::views::reverse` : cppreference](https://en.cppreference.com/w/cpp/ranges/reverse_view)
-
-#### Task 5.4.4 : Take & Take While
-
-`std::views::take` will take $n$ elements from the piped range or view object. `std::views::take` performs bound checks to ensure that it doesn't take elements past the end of the view. `std::views::take_while` is similar to `std::views::Take` in that it will take elements as long as an unary predicate evaluates to `true`.
-
-```cxx
-
-```
-
-[Example]()
-
-[`std::views::take` : cppreference](https://en.cppreference.com/w/cpp/ranges/take_view)
-[`std::views::take_while` : cppreference](https://en.cppreference.com/w/cpp/ranges/take_while_view)
-
-#### Task 5.4.5 : Drop & Drop While
-
-`std::views::drop` drops $n$ elements from a piped view. `std::views::drop_while` drops elements as long as an unary predicate evaluates to `true`.
-
-```cxx
-
-```
-
-[Example]()
-
-[`std::views::drop` : cppreference](https://en.cppreference.com/w/cpp/ranges/drop_view)
-[`std::views::drop_while` : cppreference](https://en.cppreference.com/w/cpp/ranges/drop_while_view)
-
-#### Task 5.4.6 : Join
-
-`std::views::join` will flatten a range or view object that have nested range or view objects into a single view.
-
-```cxx
-
-```
-
-[Example]()
-
-[`std::views::join` : cppreference](https://en.cppreference.com/w/cpp/ranges/join_view)
-
-#### Task 5.4.7 : Split
-
-`std::views::split` will a range or view object based on a specified deliminator into a view object of subranges. `std::views::split` is not entirely lazy and will eagerly move forward through the view at each iteration during evaluation. For full lazy evaluation use `std::views::lazy_split` which is entirely lazy. However, `std::views::lazy_split` is unable to model the subranges as a [common range](https://en.cppreference.com/w/cpp/ranges/common_range)(a range with the same type for the iterator and sentinel) and cannot be used in algorithms expecting a bidirectional range (or higher).
-
-```cxx
-
-```
-
-[Example]()
-
-[`std::views::split` : cppreference](https://en.cppreference.com/w/cpp/ranges/split_view)
-[`std::views::lazy_split` : cppreference](https://en.cppreference.com/w/cpp/ranges/lazy_split_view)
-
-#### Task 5.4.8 : Common
-
-`std::views::common` adapts a view of range object with different iterator and sentinel types to a view that has the same type for the iterator and sentinel.
-
-```cxx
-
-```
-
-[Example]()
-
-[`std::views::common` : cppreference](https://en.cppreference.com/w/cpp/ranges/common_view)
-
-#### Task 5.4.9 : Associative Container Views
-
-Most range adaptors operate on ranges as if they are sequences. This can make working with views of _Tuple-Like_ elements or associative containers cumbersome. C++ offers some range adaptors for working with the views and range objects of _Tuple-Like_ elements (eg. _key-value_ pairs from associative containers) to make this easier and more expressible. The range adaptor `std::views::element` accepts a view of _Tuple-Like_ elements and creates a view object that contains the $Nth$ entry from every _Tuple-Like_ element of the input range or view object. `std::views::keys` and `std::views::values` are specialisations of `std::views::elements` taking the $0th$ and $1st$ entry of a view of _Tuple-Like_ elements respectively. This can be used to obtain a view of just the keys or values of an associative container respectively.
-
-```cxx
-
-```
-
-[Example]()
-
-[`std::views::elements` : cppreference](https://en.cppreference.com/w/cpp/ranges/elements_view)
-[`std::views::keys` : cppreference](https://en.cppreference.com/w/cpp/ranges/keys_view)
-[`std::views::values` : cppreference](https://en.cppreference.com/w/cpp/ranges/values_view)
+- [`std::views::transform` : cppreference](https://en.cppreference.com/w/cpp/ranges/transform_view)
+- [`std::views::filter` : cppreference](https://en.cppreference.com/w/cpp/ranges/filter_view)
+- [`std::views::reverse` : cppreference](https://en.cppreference.com/w/cpp/ranges/reverse_view)
+- [`std::views::take` : cppreference](https://en.cppreference.com/w/cpp/ranges/take_view)
+- [`std::views::take_while` : cppreference](https://en.cppreference.com/w/cpp/ranges/take_while_view)
+- [`std::views::drop` : cppreference](https://en.cppreference.com/w/cpp/ranges/drop_view)
+- [`std::views::drop_while` : cppreference](https://en.cppreference.com/w/cpp/ranges/drop_while_view)
+- [`std::views::join` : cppreference](https://en.cppreference.com/w/cpp/ranges/join_view)
+- [`std::views::split` : cppreference](https://en.cppreference.com/w/cpp/ranges/split_view)
+- [`std::views::lazy_split` : cppreference](https://en.cppreference.com/w/cpp/ranges/lazy_split_view)
+- [`std::views::common` : cppreference](https://en.cppreference.com/w/cpp/ranges/common_view)
+- [`std::views::elements` : cppreference](https://en.cppreference.com/w/cpp/ranges/elements_view)
+- [`std::views::keys` : cppreference](https://en.cppreference.com/w/cpp/ranges/keys_view)
+- [`std::views::values` : cppreference](https://en.cppreference.com/w/cpp/ranges/values_view)
 
 ## Links
 
