@@ -1086,6 +1086,6 @@ Many algorithms have customised counterparts. These customisations include varia
 ## Links
 
 - [Previous Page : Data Structures](/content/part6/tasks/data-structures.md)
-- [Next Page : Primitive Data Types](/content/part6/tasks/ranges.md)
+- [Next Page : Ranges](/content/part6/tasks/ranges.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)
