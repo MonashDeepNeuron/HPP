@@ -41,7 +41,7 @@
     - [Task 3.8 : Comparisons](#task-38--comparisons)
       - [Task 3.8.1 : Equal](#task-381--equal)
       - [Task 3.8.2 : Lexicographical Compare](#task-382--lexicographical-compare)
-      - [Task 3.8.3 : All, Any \& None](#task-383--all-any--none)
+      - [Task 3.8.3 : All, Any \& None Of](#task-383--all-any--none-of)
     - [Task 3.9 : Generators](#task-39--generators)
       - [Task 3.9.1 : Fill](#task-391--fill)
       - [Task 3.9.2 : Iota](#task-392--iota)
@@ -53,7 +53,7 @@
 
 ### Task 3.1 : What is an algorithm?
 
-What is an algorithm? The simplest definition is that is is a function. The longer definition is that an algorithm is a set of instructions that occur in a finite number of steps. Algorithms are used to manipulate data, perform computation or even perform introspection on data. Powerful algorithms when paired with efficient data structures are what make programs. So far we have seen how to create our own data structures in C++ through classes and concepts. We have also seen the data structures already offered by C++, we will now look at how you can use any algorithm available in C++ with all of these data structures and perform computation entirely (almost) independent of how it is organised.
+What is an algorithm? The simplest definition is that is is a function. The longer definition is that an algorithm is a set of instructions that occur in a finite number of steps. Algorithms are used to manipulate data, perform computation or even perform introspection on data. Powerful algorithms when paired with efficient data structures are what make programs. So far we have seen how to create our own data structures in C++ through classes and concepts. We have also seen the data structures already offered by C++, we will now look at how you can use any algorithm available in C++ with all of these data structures and perform computation (almost) entirely independent of how it is organised.
 
 #### Task 3.1.1 : Algorithm Intuition
 
@@ -962,7 +962,7 @@ auto main() -> int
 
 [`std::equal` : cppreference](https://en.cppreference.com/w/cpp/algorithm/equal)
 
-#### Task 3.8.3 : All, Any & None
+#### Task 3.8.3 : All, Any & None Of
 
 The three algorithms `std::all_of`, `std::any_of` and `std::none_of` will apply an unary predicate on a range returning `true` if all of, any of or none of the elements satisfy the predicate and `false` otherwise.
 
