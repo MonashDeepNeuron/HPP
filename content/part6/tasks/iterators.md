@@ -107,7 +107,7 @@ There are 6 main iterator categories considered in C++. Each subsequent iterator
 
 > Note: A pointer actually satisfies the Contiguous Iterator Category
 
-Before C++, there were empty structs used as tags to help categorise an iterator into its respective category. Since C++ there have been concepts introduces to perform this check more elegantly along with other iterator-related concepts to all for anything modelling an iterator to satisfy the constraints.
+Before C++20, there were empty structs used as tags to help categorise an iterator into its respective category. Since C++ there have been concepts introduces to perform this check more elegantly along with other iterator-related concepts to all for anything modelling an iterator to satisfy the constraints.
 
 ### Task 1.3 : Obtaining Iterators
 
@@ -145,7 +145,7 @@ There are a few ways to interact with an iterator directly. One is to use the ov
 
 #### Task 1.4.1 : Common Operator Interface
 
-|  Operations |         |          |          |
+|  Operation  |         |          |          |
 |:-----------:|:-------:|:--------:|:--------:|
 | dereference |   `*i`  | `*i = v` | `v = *i` |
 |  increment  |  `i++`  |   `++i`  |          |
@@ -153,7 +153,6 @@ There are a few ways to interact with an iterator directly. One is to use the ov
 |  difference | `i - j` |          |          |
 |   advance   | `i + n` |  `i - n` |          |
 |    index    |  `i[n]` |          |          |
-|             |         |          |          |
 
 > Where `i` is an iterator object
 
