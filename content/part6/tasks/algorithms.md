@@ -13,7 +13,6 @@
       - [Task 3.4.1 : Sort](#task-341--sort)
       - [Task 3.4.2 : Partition](#task-342--partition)
       - [Task 3.4.3 : Nth Element](#task-343--nth-element)
-      - [Task 3.4.4 : Mismatch](#task-344--mismatch)
     - [Task 3.5 : Searching](#task-35--searching)
       - [Task 3.5.1 : Find](#task-351--find)
       - [Task 3.5.2 : Search](#task-352--search)
@@ -27,9 +26,8 @@
       - [Task 3.6.4 : Reverse](#task-364--reverse)
       - [Task 3.6.5 : Transform](#task-365--transform)
       - [Task 3.6.6 : Rotate](#task-366--rotate)
-      - [Task 3.6.7 : Unique](#task-367--unique)
-      - [Task 3.6.10 : Sample](#task-3610--sample)
-      - [Task 3.6.11 : Shuffle](#task-3611--shuffle)
+      - [Task 3.6.7 : Sample](#task-367--sample)
+      - [Task 3.6.8 : Shuffle](#task-368--shuffle)
     - [Task 3.7 : Numeric](#task-37--numeric)
       - [Task 3.7.1 : Minimums \& Maximums](#task-371--minimums--maximums)
       - [Task 3.7.2 : Count](#task-372--count)
@@ -42,6 +40,7 @@
       - [Task 3.8.1 : Equal](#task-381--equal)
       - [Task 3.8.2 : Lexicographical Compare](#task-382--lexicographical-compare)
       - [Task 3.8.3 : All, Any \& None Of](#task-383--all-any--none-of)
+      - [Task 3.8.4 : Mismatch](#task-384--mismatch)
     - [Task 3.9 : Generators](#task-39--generators)
       - [Task 3.9.1 : Fill](#task-391--fill)
       - [Task 3.9.2 : Iota](#task-392--iota)
@@ -181,38 +180,6 @@ auto main() -> int
 [Example](https://www.godbolt.org/z/GM1rrW68P)
 
 [`std::nth_element` : cppreference](https://en.cppreference.com/w/cpp/algorithm/nth_element)
-
-#### Task 3.4.4 : Mismatch
-
-Finds the first mismatch between two ranges returning an `std::pair` of the iterators to the mismatch in the ranges. The binary predicate (default `==`) can be changed so that mismatch triggers on the first evaluation of `false` from the predicate.
-
-```cxx
-#include <algorithm>
-#include <functional>
-#include <iostream>
-#include <vector>
-
-auto main() -> int
-{
-    auto v1 = std::vector<int>{ 1, 2, 3, 4, 5 };
-    auto v2 = v1;
-    v2[3] = 465;
-
-    println(v1);
-    println(v2);
-    std::cout << std::endl;
-
-    const auto [v1ms, v2ms] = std::mismatch(v1.begin(), v1.end(), v2.begin());
-    
-    std::cout << "v1: " << *v1ms << ", v2: " << *v2ms << std::endl;    
-
-    return 0;
-}
-```
-
-[Example](https://www.godbolt.org/z/jj69vr5qe)
-
-[`std::mismatch` : cppreference](https://en.cppreference.com/w/cpp/algorithm/mismatch)
 
 ### Task 3.5 : Searching
 
@@ -585,35 +552,7 @@ auto main() -> int
 
 [`std::rotate` : cppreference](https://en.cppreference.com/w/cpp/algorithm/rotate)
 
-#### Task 3.6.7 : Unique
-
-Unique logically removes all duplicate elements that occur in a series. This is done by moving the duplicates to the back of the range where they hold an undeterminable value. Returns an iterator indicated the start for the sub-range of undetermined elements. Like `std::remove`, `std::unique` is often paired with a call to an erasure method to actually clear the elements. `std::unique` defaults to using `==` as the default predicate but can take any kind of predicate.
-
-```cxx
-#include <algorithm>
-#include <iostream>
-#include <vector>
-
-auto main() -> int
-{
-    auto v = std::vector<int>{ 0, 0, 0, 1, 1, 1, 2, 2, 2 };
-
-    println(v);
-    auto r = std::unique(v.begin(), v.end());
-    println(v);
-    v.erase(r, v.end());
-    println(v);
-
-    
-    return 0;
-}
-```
-
-[Example](https://www.godbolt.org/z/Kf1vv8G8E)
-
-[`std::unique` : cppreference](https://en.cppreference.com/w/cpp/algorithm/unique)
-
-#### Task 3.6.10 : Sample
+#### Task 3.6.7 : Sample
 
 `std::sample` will sample $n$ random elements a range without replacement such that each sampled element has an equal probability of appearing. `std::sample` takes in a random number generator from the `<random>` header in order to generate the random access.
 
@@ -645,7 +584,7 @@ auto main() -> int
 - [Pseudo-random number generation : cppreference](https://en.cppreference.com/w/cpp/numeric/random)
 - [`std::mersenne_twister_engine` : cppreference](https://en.cppreference.com/w/cpp/numeric/random/mersenne_twister_engine)
 
-#### Task 3.6.11 : Shuffle
+#### Task 3.6.8 : Shuffle
 
 `std::shuffle` will randomly reorganize a range. Like `std::sample`, `std::shuffle` takes in a random number generator in order to randomly generate the index sequence.
 
@@ -960,7 +899,7 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/YqovzcTYM)
 
-[`std::equal` : cppreference](https://en.cppreference.com/w/cpp/algorithm/equal)
+[`std::lexicographical_compare` : cppreference](https://en.cppreference.com/w/cpp/algorithm/lexicographical_compare)
 
 #### Task 3.8.3 : All, Any & None Of
 
@@ -995,6 +934,38 @@ auto main() -> int
 [Example](https://www.godbolt.org/z/hddx535Wj)
 
 [`std::all_of`, `std::any_of` & `std::none_of` : cppreference](https://en.cppreference.com/w/cpp/algorithm/all_any_none_of)
+
+#### Task 3.8.4 : Mismatch
+
+Finds the first mismatch between two ranges returning an `std::pair` of the iterators to the mismatch in the ranges. The binary predicate (default `==`) can be changed so that mismatch triggers on the first evaluation of `false` from the predicate.
+
+```cxx
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <vector>
+
+auto main() -> int
+{
+    auto v1 = std::vector<int>{ 1, 2, 3, 4, 5 };
+    auto v2 = v1;
+    v2[3] = 465;
+
+    println(v1);
+    println(v2);
+    std::cout << std::endl;
+
+    const auto [v1ms, v2ms] = std::mismatch(v1.begin(), v1.end(), v2.begin());
+    
+    std::cout << "v1: " << *v1ms << ", v2: " << *v2ms << std::endl;    
+
+    return 0;
+}
+```
+
+[Example](https://www.godbolt.org/z/jj69vr5qe)
+
+[`std::mismatch` : cppreference](https://en.cppreference.com/w/cpp/algorithm/mismatch)
 
 ### Task 3.9 : Generators
 
