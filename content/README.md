@@ -9,8 +9,8 @@ The idea is that you will use this repository as your guide for the series, read
 - [Part 1](/content/part1/README.md) - Introduction
 - [Part 2](/content/part2/README.md) - Types, Variables, Operators, IO, Conditionals, Loops and Functions
 - [Part 3](/content/part3/README.md) - Pointers, Slices, References, Dynamic Memory and The Standard Library
-- [Part 4](/content/part4/README.md) - Functional Programming, Namespaces, Unions and Enumerations
-- [Part 5](/content/part5/README.md) - Structures, Classes, Templates, Generics and Concepts
+- [Part 4](/content/part4/README.md) - Functional Programming, Namespaces, Enumerations, Unions, Structures
+- [Part 5](/content/part5/README.md) - Classes, Templates, Generics and Concepts
 - [Part 6](/content/part6/README.md) - Iterators, Data Structures, Algorithms, Ranges and Views
 - [Part 7](/content/part7/README.md) - Parallel Algorithms, Atomics, Threads, Mutexes, Semaphores and Async/Await
 

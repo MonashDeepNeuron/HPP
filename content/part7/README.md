@@ -4,27 +4,27 @@ Parallel Algorithms, Atomics, Threads, Mutexes, Semaphores and Async/Await
 
 ## Overview
 
+The focus of this part is parallelism and concurrency. Parallelism allows for large amount data to be broken into smaller chunks and processed at the same time. Even undergoing different transformations. Concurrency is the ability to run multiple jobs, tasks or functions simultaneously and communicate data and transfer between the states of the jobs. Together, these allow programs to expand the amount of work they are able to do and separate a program into multiple moving pieces. C++ has many primitives that make parallel and concurrent programming simple and effective.
 
 ## Tasks
 
-1. [Parallel Algorithms]()
-2. [Atomics]()
-3. [Thread]()
-4. [Mutexes]()
-5. [Semaphores]()
-6. [Async & Await]()
+1. [Parallel Algorithms](/content/part7/tasks/parallel-alg.md)
+2. [Atomics](/content/part7/tasks/atomics.md)
+3. [Thread](/content/part7/tasks/threads.md)
+4. [Mutexes](/content/part7/tasks/mutexes.md)
+5. [Semaphores](/content/part7/tasks/semaphores.md)
+6. [Async & Await](/content/part7/tasks/async-await.md)
 
 ## Weekly Meetup
 
-Meetups will be help on:
+Meetups will be held on:
 
 - 8/02/2023
 - 15/02/2023
 
 ## Go To
 
-- [Task 1 : ](/content/part/tasks/)
-- [Examples](/content/part/examples/README.md)
+- [Task 1 : Parallel Algorithms](/content/part7/tasks/parallel-alg.md)
 - [Slides](/content/part/slides/README.md)
 - [Content](/content/README.md)
 - [Home](/README.md)

@@ -16,7 +16,7 @@ So far you have learnt a lot about the C++ language from user-defined types with
 
 ## Weekly Meetup
 
-Meetups will be help on:
+Meetups will be held on:
 
 This weeks meetup will be on 25/01/2023 from 1:30pm.
 
