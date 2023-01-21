@@ -41,7 +41,7 @@ auto main() -> int
 
 Like iterators, there are different categories describing the requirements of a range type. These categories have concept definitions so you can constrain your own algorithms. Here is a table of different sequence containers and how they match up against the different range concepts.
 
-|                                    | `std::forward_list` | `std::list` | `std::deque` | `std::array` | `std::vector` |
+|               Concept              | `std::forward_list` | `std::list` | `std::deque` | `std::array` | `std::vector` |
 |:----------------------------------:|:-------------------:|:-----------:|:------------:|:------------:|:-------------:|
 |     `std::ranges::input_range`     |          ✅          |      ✅      |       ✅      |       ✅      |       ✅       |
 |    `std::ranges::forward_range`    |          ✅          |      ✅      |       ✅      |       ✅      |       ✅       |
