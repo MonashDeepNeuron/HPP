@@ -9,7 +9,10 @@
     - [Task 5.2 : Lazy Evaluation](#task-52--lazy-evaluation)
     - [Task 5.3 : Factories](#task-53--factories)
     - [Task 5.4 : Range Adaptors, Composition \& The Pipe Operators](#task-54--range-adaptors-composition--the-pipe-operators)
-      - [Task 5.5 : Standard View Range Adaptors](#task-55--standard-view-range-adaptors)
+    - [Task 5.5 : Standard View Range Adaptors](#task-55--standard-view-range-adaptors)
+    - [Task 5.6 : Assignment 3](#task-56--assignment-3)
+      - [Requirements](#requirements)
+      - [Optional](#optional)
   - [Links](#links)
 
 ## Task 5
@@ -80,7 +83,7 @@ auto main() -> int
 
 So far views aren't all that interesting. The true power of views comes from their ability to be composed. Composition allows for views to be combined to build more complex views over data while still adhering to lazy evaluation. Instead of evaluating each function one at a time a single function, which is the composition of all the view functions gets evaluated once for every access to the element. Views are composed using the pipe operator (`|`) and are read from left-to-right as opposed to inside-out. This makes function composition far more expressible and extensible. Range (including containers) or view object are 'piped' to the range adaptor with the resulting view; when evaluated, applying the range adaptor on the every element.
 
-#### Task 5.5 : Standard View Range Adaptors
+### Task 5.5 : Standard View Range Adaptors
 
 - `std::views::transform` - a range adapter whose resulting view maps an unary function to the input range.
 - `std::views::filter` - a range adaptor that whose resulting view excludes any element that do not satisfy an unary predicate.
@@ -136,6 +139,44 @@ auto main() -> int
 - [`std::views::elements` : cppreference](https://en.cppreference.com/w/cpp/ranges/elements_view)
 - [`std::views::keys` : cppreference](https://en.cppreference.com/w/cpp/ranges/keys_view)
 - [`std::views::values` : cppreference](https://en.cppreference.com/w/cpp/ranges/values_view)
+
+### Task 5.6 : Assignment 3
+
+This assignment is a tricker one. Your job is to implement a [circular buffer](https://en.wikipedia.org/wiki/Circular_buffer) or a ring buffer. Circular buffers are First-In-First-Out buffers
+
+#### Requirements
+
+- Must be a `class` (or `struct`).
+- Must have these constructors
+  - Default
+  - Copy
+  - Move
+  - Assignment Copy
+  - Assignment Move
+  - A destructor
+- Must be templated for any element type `T`.
+- Must have a begin and end iterator (_hint: can just be pointers_) with the relevant methods for obtaining them.
+- Can either be dynamic in size (adds memory as it needs) or semi-static (fixed maximum but variable current size)
+- Methods for pushing in a new element to the front and popping the oldest from the back.
+- Introspection methods
+  - Current size
+  - Current capacity
+  - One that returns a pointer to the first element
+- Element access
+  - _at-like_ method with index checking
+  - subscript operator overload (`[]`)
+
+You can manually create and destroy the memory, use smart pointers or use a container to store the underlying memory.
+
+#### Optional
+
+- front and and back element access.
+- Equality (`==`) and inequality (`!=`) operator overloads.
+- Output stream operator overload (`>>`).
+- Constructor and assignment operator overload (`=`) that take an `std::initializer_list`.
+- Uses an allocator (eg. `std::allocator`) to allocate memory.
+- Takes an additional template argument that correlates to a generic allocator type.
+- Takes an additional template parameter that correlates to the type of the underlying container used to for storage of elements (eg. `std::vector`) making the circular buffer an adaptor.
 
 ## Links
 
