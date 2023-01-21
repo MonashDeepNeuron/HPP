@@ -8,9 +8,9 @@
     - [Task 1.1 : Execution Policies](#task-11--execution-policies)
     - [Task 1.2 : Alternative Algorithms](#task-12--alternative-algorithms)
       - [Task 1.2.1 : Reduce](#task-121--reduce)
-      - [Task 1.2.2 : Exclusive Scan](#task-122--exclusive-scan)
-      - [Task 1.2.3 : Inclusive Scan](#task-123--inclusive-scan)
-      - [Task 1.2.4 : Transform Reduce](#task-124--transform-reduce)
+      - [Task 1.2.2 : Transform Reduce](#task-122--transform-reduce)
+      - [Task 1.2.3 : Exclusive Scan](#task-123--exclusive-scan)
+      - [Task 1.2.4 : Inclusive Scan](#task-124--inclusive-scan)
       - [Task 1.2.5 : Transform Exclusive Scan](#task-125--transform-exclusive-scan)
       - [Task 1.2.6 : Transform Inclusive Scan](#task-126--transform-inclusive-scan)
   - [Links](#links)
@@ -36,13 +36,97 @@ There are a few algorithms in C++ that did not get parallel overloads. Namely a 
 
 #### Task 1.2.1 : Reduce
 
-`std::reduce` 
+`std::reduce` is the parallel form of `std::accumulate`. It performs a regular left-fold and can take an optional initial value.
 
-#### Task 1.2.2 : Exclusive Scan
+```cxx
+#include <algorithm>
+#include <chrono>
+#include <execution>
+#include <iomanip>
+#include <iostream>
+#include <numeric>
+#include <utility>
+#include <vector>
 
-#### Task 1.2.3 : Inclusive Scan
+template <typename time_t = std::chrono::microseconds>
+struct measure
+{
+    template <typename F, typename... Args>
+    static auto execution(F func, Args&&... args) 
+        -> std::pair<typename time_t::rep, std::invoke_result_t<F, Args...>>
+    {
+        auto start = std::chrono::system_clock::now();
+        auto result = std::invoke(func, std::forward<Args>(args)...);
+        auto duration = std::chrono::duration_cast<time_t>(std::chrono::system_clock::now() - start);
+        return std::pair<typename time_t::rep, std::invoke_result_t<F, Args...>>{ duration.count(), result };
+    }
+};
 
-#### Task 1.2.4 : Transform Reduce
+auto main() -> int
+{
+    auto dv = std::vector<double>(100'000'007, 0.1);
+    std::cout.imbue(std::locale("en_US.UTF-8"));
+    std::cout << std::fixed << std::setprecision(1);
+    
+    std::cout << "+-----------------+-------------+-----------+--------+------------+----------------+" << std::endl;
+    std::cout << "|    Algorithm    | Exec Policy | Binary-Op |  Type  |    Time    |     Result     |" << std::endl;
+    std::cout << "+-----------------+-------------+-----------+--------+------------+----------------+" << std::endl;
+
+    std::cout << "| std::accumulate |   Serial    |     +     | double | ";
+    auto [acc_time, acc_result] = measure<>::execution([](const auto& v){ return std::accumulate(v.begin(), v.end(), 0.0); }, dv);
+    std::cout << std::setw(7) << acc_time << " us |  " << acc_result << "  |" << std::endl;
+    std::cout << "+-----------------+-------------+-----------+--------+------------+----------------+" << std::endl;
+
+    std::cout << "|   std::reduce   | Sequencial  |     +     | double | ";
+    auto [seq_time, seq_result] = measure<>::execution([](const auto& v){ return std::reduce(std::execution::seq, v.begin(), v.end(), 0.0); }, dv);
+    std::cout << std::setw(7) << seq_time << " us |  " << seq_result << "  |" << std::endl;
+    std::cout << "+-----------------+-------------+-----------+--------+------------+----------------+" << std::endl;
+
+    std::cout << "|   std::reduce   |  Parallel   |     +     | double | ";
+    auto [par_time, par_result] = measure<>::execution([](const auto& v){ return std::reduce(std::execution::par, v.begin(), v.end(), 0.0); }, dv);
+    std::cout << std::setw(7) << par_time << " us |  " << par_result << "  |" << std::endl;
+    std::cout << "+-----------------+-------------+-----------+--------+------------+----------------+" << std::endl;
+
+    std::cout << "|   std::reduce   | Unsequenced |     +     | double | ";
+    auto [unseq_time, unseq_result] = measure<>::execution([](const auto& v){ return std::reduce(std::execution::unseq, v.begin(), v.end(), 0.0); }, dv);
+    std::cout << std::setw(7) << unseq_time << " us |  " << unseq_result << "  |" << std::endl;
+    std::cout << "+-----------------+-------------+-----------+--------+------------+----------------+" << std::endl;
+
+    std::cout << "|   std::reduce   |  Par-Unseq  |     +     | double | ";
+    auto [par_unseq_time, par_unseq_result] = measure<>::execution([](const auto& v){ return std::reduce(std::execution::par_unseq, v.begin(), v.end(), 0.0); }, dv);
+    std::cout << std::setw(7) << par_unseq_time << " us |  " << par_unseq_result << "  |" << std::endl;
+    std::cout << "+-----------------+-------------+-----------+--------+------------+----------------+" << std::endl;
+    
+    return 0;
+}
+```
+
+```sh
+$ ./build/reduce
++-----------------+-------------+-----------+--------+------------+----------------+
+|    Algorithm    | Exec Policy | Binary-Op |  Type  |    Time    |     Result     |
++-----------------+-------------+-----------+--------+------------+----------------+
+| std::accumulate |   Serial    |     +     | double | 151,861 us |  10,000,000.7  |
++-----------------+-------------+-----------+--------+------------+----------------+
+|   std::reduce   | Sequencial  |     +     | double |  76,011 us |  10,000,000.7  |
++-----------------+-------------+-----------+--------+------------+----------------+
+|   std::reduce   |  Parallel   |     +     | double |  21,098 us |  10,000,000.7  |
++-----------------+-------------+-----------+--------+------------+----------------+
+|   std::reduce   | Unsequenced |     +     | double | 135,906 us |  10,000,000.7  |
++-----------------+-------------+-----------+--------+------------+----------------+
+|   std::reduce   |  Par-Unseq  |     +     | double |  23,752 us |  10,000,000.7  |
++-----------------+-------------+-----------+--------+------------+----------------+
+```
+
+[Example](/content/part7/examples/par-algs/src/reduce.main.cxx)
+
+[`std::reduce` : cppreference](https://en.cppreference.com/w/cpp/algorithm/reduce)
+
+#### Task 1.2.2 : Transform Reduce
+
+#### Task 1.2.3 : Exclusive Scan
+
+#### Task 1.2.4 : Inclusive Scan
 
 #### Task 1.2.5 : Transform Exclusive Scan
 
