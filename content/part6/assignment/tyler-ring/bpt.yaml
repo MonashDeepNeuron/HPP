@@ -1,0 +1,8 @@
+# Project 'tyler-ring' created by 'bpt new'
+name: tyler-ring
+version: 0.1.0
+
+readme: README.md
+
+description: |
+  Ring Class

@@ -775,7 +775,7 @@ auto main() -> int
 
 #### Task 3.7.6 : Partial Sum
 
-`std::partial_sum` is another reduction algorithm but with a twist. Instead of reducing the range to a scalar, it partially reduces the range, saving the intermediate accumulation values. This algorithm is most commonly spelt as left scan or `scanl`. `std::partial_sum` does not take an initial but does take an iterator to the beginning of the output range. Returns the element pointing to one-past-the-end element of the output range. `std::partial_sum` is in the `<numeric>` header. The default binary function is `+`.
+`std::partial_sum` is another reduction algorithm but with a twist. Instead of reducing the range to a scalar, it partially reduces the range, saving the intermediate accumulation values. `std::partial_sum` does not take an initial but does take an iterator to the beginning of the output range. Returns the element pointing to one-past-the-end element of the output range. This algorithm is most commonly spelt as left scan or `scanl` (in particular `scanl1` due to it not taking an initial accumulator value).`std::partial_sum` is in the `<numeric>` header. The default binary function is `+`.
 
 ```cxx
 #include <functional>

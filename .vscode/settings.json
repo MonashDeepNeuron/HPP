@@ -59,6 +59,8 @@
         "thread": "cpp",
         "cfenv": "cpp",
         "iomanip": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "optional": "cpp",
+        "ranges": "cpp"
     }
 }

@@ -102,6 +102,10 @@ auto main() -> int
 ```
 
 ```sh
+$ bpt build -t build.yaml -o build
+
+# ...
+
 $ ./build/reduce
 +-----------------+-------------+-----------+--------+------------+----------------+
 |    Algorithm    | Exec Policy | Binary-Op |  Type  |    Time    |     Result     |
@@ -124,13 +128,516 @@ $ ./build/reduce
 
 #### Task 1.2.2 : Transform Reduce
 
+`std::transform_reduce` is akin to `std::inner_product` performing the same default unary transformation (`*`) and reduction (`+`). Takes an initial value that is used as the base accumulator.
+
+```cxx
+#include <algorithm>
+#include <chrono>
+#include <execution>
+#include <iomanip>
+#include <iostream>
+#include <numeric>
+#include <utility>
+#include <vector>
+
+template <typename time_t = std::chrono::microseconds>
+struct measure
+{
+    template <typename F, typename... Args>
+    static auto execution(F func, Args&&... args) 
+        -> std::pair<typename time_t::rep, std::invoke_result_t<F, Args...>>
+    {
+        auto start = std::chrono::system_clock::now();
+        auto result = std::invoke(func, std::forward<Args>(args)...);
+        auto duration = std::chrono::duration_cast<time_t>(std::chrono::system_clock::now() - start);
+        return std::pair<typename time_t::rep, std::invoke_result_t<F, Args...>>{ duration.count(), result };
+    }
+};
+
+auto main() -> int
+{
+    auto v1 = std::vector<double>(100'000'007, 0.145);
+    auto v2 = std::vector<double>(100'000'007, 0.524);
+    std::cout.imbue(std::locale("en_US.UTF-8"));
+    std::cout << std::fixed << std::setprecision(4);
+    
+    std::cout << "+-----------------------+-------------+------------+--------+------------+----------------+" << std::endl;
+    std::cout << "|       Algorithm       | Exec Policy | Binary-Ops |  Type  |    Time    |     Result     |" << std::endl;
+    std::cout << "+-----------------------+-------------+------------+--------+------------+----------------+" << std::endl;
+
+    std::cout << "|  std::inner_product   |   Serial    | (*) -> (+) | double | ";
+    auto [in_prod_time, in_prod_result] = measure<>::execution([](const auto& v1, const auto& v2){ return std::inner_product(v1.begin(), v1.end(), v2.begin(), 0.0); }, v1, v2);
+    std::cout << std::setw(7) << in_prod_time << " us | " << in_prod_result << " |" << std::endl;
+    std::cout << "+-----------------------+-------------+------------+--------+------------+----------------+" << std::endl;
+
+    std::cout << "| std::transform_reduce | Sequencial  | (*) -> (+) | double | ";
+    auto [seq_time, seq_result] = measure<>::execution([](const auto& v1, const auto& v2){ return std::transform_reduce(std::execution::seq, v1.begin(), v1.end(), v2.begin(), 0.0); }, v1, v2);
+    std::cout << std::setw(7) << seq_time << " us | " << seq_result << " |" << std::endl;
+    std::cout << "+-----------------------+-------------+------------+--------+------------+----------------+" << std::endl;
+
+    std::cout << "| std::transform_reduce |  Parallel   | (*) -> (+) | double | ";
+    auto [par_time, par_result] = measure<>::execution([](const auto& v1, const auto& v2){ return std::transform_reduce(std::execution::par, v1.begin(), v1.end(), v2.begin(), 0.0); }, v1, v2);
+    std::cout << std::setw(7) << par_time << " us | " << par_result << " |" << std::endl;
+    std::cout << "+-----------------------+-------------+------------+--------+------------+----------------+" << std::endl;
+
+    std::cout << "| std::transform_reduce | Unsequenced | (*) -> (+) | double | ";
+    auto [unseq_time, unseq_result] = measure<>::execution([](const auto& v1, const auto& v2){ return std::transform_reduce(std::execution::unseq, v1.begin(), v1.end(), v2.begin(), 0.0); }, v1, v2);
+    std::cout << std::setw(7) << unseq_time << " us | " << unseq_result << " |" << std::endl;
+    std::cout << "+-----------------------+-------------+------------+--------+------------+----------------+" << std::endl;
+
+    std::cout << "| std::transform_reduce |  Par-Unseq  | (*) -> (+) | double | ";
+    auto [par_unseq_time, par_unseq_result] = measure<>::execution([](const auto& v1, const auto& v2){ return std::transform_reduce(std::execution::par_unseq, v1.begin(), v1.end(), v2.begin(), 0.0); }, v1, v2);
+    std::cout << std::setw(7) << par_unseq_time << " us | " << par_unseq_result << " |" << std::endl;
+    std::cout << "+-----------------------+-------------+------------+--------+------------+----------------+" << std::endl;
+
+    return 0;
+}
+```
+
+```sh
+$ bpt build -t build.yaml -o build
+
+# ...
+
+./build/transform_reduce
++-----------------------+-------------+------------+--------+------------+----------------+
+|       Algorithm       | Exec Policy | Binary-Ops |  Type  |    Time    |     Result     |
++-----------------------+-------------+------------+--------+------------+----------------+
+|  std::inner_product   |   Serial    | (*) -> (+) | double | 144,255 us | 7,598,000.5455 |
++-----------------------+-------------+------------+--------+------------+----------------+
+| std::transform_reduce | Sequencial  | (*) -> (+) | double | 119,467 us | 7,598,000.5455 |
++-----------------------+-------------+------------+--------+------------+----------------+
+| std::transform_reduce |  Parallel   | (*) -> (+) | double |  53,172 us | 7,598,000.5318 |
++-----------------------+-------------+------------+--------+------------+----------------+
+| std::transform_reduce | Unsequenced | (*) -> (+) | double | 131,677 us | 7,598,000.5455 |
++-----------------------+-------------+------------+--------+------------+----------------+
+| std::transform_reduce |  Par-Unseq  | (*) -> (+) | double |  51,095 us | 7,598,000.5319 |
++-----------------------+-------------+------------+--------+------------+----------------+
+```
+
+[Example](/content/part7/examples/par-algs/src/transform_reduce.main.cxx)
+
+[`std::transform_reduce` : cppreference](https://en.cppreference.com/w/cpp/algorithm/transform_reduce)
+
 #### Task 1.2.3 : Exclusive Scan
+
+`std::exclusive_scan` is akin to `std::partial_sum` except is takes in an initial value and excludes the $ith$ input element from the $ith$ sum (reduction).
+
+```cxx
+#include <algorithm>
+#include <chrono>
+#include <execution>
+#include <iomanip>
+#include <iostream>
+#include <numeric>
+#include <utility>
+#include <vector>
+
+template <typename time_t = std::chrono::microseconds>
+struct measure
+{
+    template <typename F, typename... Args>
+    static auto execution(F func, Args&&... args) 
+        -> typename time_t::rep
+    {
+        auto start = std::chrono::system_clock::now();
+        std::invoke(func, std::forward<Args>(args)...);
+        auto duration = std::chrono::duration_cast<time_t>(std::chrono::system_clock::now() - start);
+        return duration.count();
+    }
+};
+
+template<typename T>
+auto operator<< 
+(std::ostream& os, const std::vector<T>& v) -> std::ostream&
+{
+    os << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        if (--i > (v.size() - 3))
+            os << e << ", ";
+
+    auto last = v.end() - 3;
+    os << "..., " << *++last << ", ";
+    os << *++last << " ]";
+    return os;
+}
+
+auto main() -> int
+{
+    auto v = std::vector<double>(100'000'007, 0.1);
+    auto r = std::vector<double>(100'000'007, 0.0);
+    std::cout.imbue(std::locale("en_US.UTF-8"));
+    std::cout << std::fixed << std::setprecision(1);
+    
+    std::cout << "+---------------------+-------------+-----------+--------+------------+-----------------------------------------------+" << std::endl;
+    std::cout << "|      Algorithm      | Exec Policy | Binary-Op |  Type  |    Time    |                    Result                     |" << std::endl;
+    std::cout << "+---------------------+-------------+-----------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "|  std::partial_sum   |   Serial    |     +     | double | ";
+    auto scan_time = measure<>::execution([](const auto& v, auto& r){ std::partial_sum(v.begin(), v.end(), r.begin()); }, v, r);
+    std::cout << std::setw(7) << scan_time << " us | " << r << " |" << std::endl;
+    std::cout << "+---------------------+-------------+-----------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::exclusive_scan | Sequencial  |     +     | double | ";
+    auto seq_time = measure<>::execution([](const auto& v, auto& r){ std::exclusive_scan(std::execution::seq, v.begin(), v.end(), r.begin(), 0.0); }, v, r);
+    std::cout << std::setw(7) << seq_time << " us | " << r << " |" << std::endl;
+    std::cout << "+---------------------+-------------+-----------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::exclusive_scan |  Parallel   |     +     | double | ";
+    auto par_time = measure<>::execution([](const auto& v, auto& r){ std::exclusive_scan(std::execution::par, v.begin(), v.end(), r.begin(), 0.0); }, v, r);
+    std::cout << std::setw(7) << par_time << " us | " << r << " |" << std::endl;
+    std::cout << "+---------------------+-------------+-----------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::exclusive_scan | Unsequenced |     +     | double | ";
+    auto unseq_time = measure<>::execution([](const auto& v, auto& r){ std::exclusive_scan(std::execution::unseq, v.begin(), v.end(), r.begin(), 0.0); }, v, r);
+    std::cout << std::setw(7) << unseq_time << " us | " << r << " |" << std::endl;
+    std::cout << "+---------------------+-------------+-----------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::exclusive_scan |  Par-Unseq  |     +     | double | ";
+    auto par_unseq_time = measure<>::execution([](const auto& v, auto& r){ std::exclusive_scan(std::execution::par_unseq, v.begin(), v.end(), r.begin(), 0.0); }, v, r);
+    std::cout << std::setw(7) << par_unseq_time << " us | " << r << " |" << std::endl;
+    std::cout << "+---------------------+-------------+-----------+--------+------------+-----------------------------------------------+" << std::endl;
+    
+    return 0;
+}
+```
+
+```sh
+$ bpt build -t build.yaml -o build
+
+# ...
+
+./build/exclusive_scan
++---------------------+-------------+-----------+--------+------------+-----------------------------------------------+
+|      Algorithm      | Exec Policy | Binary-Op |  Type  |    Time    |                    Result                     |
++---------------------+-------------+-----------+--------+------------+-----------------------------------------------+
+|  std::partial_sum   |   Serial    |     +     | double | 119,096 us | [ 0.1, 0.2, ..., 10,000,000.6, 10,000,000.7 ] |
++---------------------+-------------+-----------+--------+------------+-----------------------------------------------+
+| std::exclusive_scan | Sequencial  |     +     | double | 143,338 us | [ 0.0, 0.1, ..., 10,000,000.5, 10,000,000.6 ] |
++---------------------+-------------+-----------+--------+------------+-----------------------------------------------+
+| std::exclusive_scan |  Parallel   |     +     | double | 146,967 us | [ 0.0, 0.1, ..., 10,000,000.5, 10,000,000.6 ] |
++---------------------+-------------+-----------+--------+------------+-----------------------------------------------+
+| std::exclusive_scan | Unsequenced |     +     | double | 140,900 us | [ 0.0, 0.1, ..., 10,000,000.5, 10,000,000.6 ] |
++---------------------+-------------+-----------+--------+------------+-----------------------------------------------+
+| std::exclusive_scan |  Par-Unseq  |     +     | double | 145,098 us | [ 0.0, 0.1, ..., 10,000,000.5, 10,000,000.6 ] |
++---------------------+-------------+-----------+--------+------------+-----------------------------------------------+
+```
+
+[Example](/content/part7/examples/par-algs/src/exclusive_scan.main.cxx)
+
+[`std::exclusive_scan` : cppreference](https://en.cppreference.com/w/cpp/algorithm/exclusive_scan)
 
 #### Task 1.2.4 : Inclusive Scan
 
+`std::inclusive_scan` is identical to `std::partial_sum`. It does not take an initial value and unlike `std::exclusive_scan` includes the $ith$ element from the input range in the $ith$ reduction.
+
+```cxx
+#include <algorithm>
+#include <chrono>
+#include <execution>
+#include <iomanip>
+#include <iostream>
+#include <numeric>
+#include <utility>
+#include <vector>
+
+template <typename time_t = std::chrono::microseconds>
+struct measure
+{
+    template <typename F, typename... Args>
+    static auto execution(F func, Args&&... args) 
+        -> typename time_t::rep
+    {
+        auto start = std::chrono::system_clock::now();
+        std::invoke(func, std::forward<Args>(args)...);
+        auto duration = std::chrono::duration_cast<time_t>(std::chrono::system_clock::now() - start);
+        return duration.count();
+    }
+};
+
+template<typename T>
+auto operator<< 
+(std::ostream& os, const std::vector<T>& v) -> std::ostream&
+{
+    os << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        if (--i > (v.size() - 3))
+            os << e << ", ";
+
+    auto last = v.end() - 3;
+    os << "..., " << *++last << ", ";
+    os << *++last << " ]";
+    return os;
+}
+
+auto main() -> int
+{
+    auto v = std::vector<double>(100'000'007, 0.1);
+    auto r = std::vector<double>(100'000'007);
+    std::cout.imbue(std::locale("en_US.UTF-8"));
+    std::cout << std::fixed << std::setprecision(1);
+    
+    std::cout << "+---------------------+-------------+-----------+--------+------------+-----------------------------------------------+" << std::endl;
+    std::cout << "|      Algorithm      | Exec Policy | Binary-Op |  Type  |    Time    |                    Result                     |" << std::endl;
+    std::cout << "+---------------------+-------------+-----------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "|  std::partial_sum   |   Serial    |     +     | double | ";
+    auto scan_time = measure<>::execution([](const auto& v, auto& r){ std::partial_sum(v.begin(), v.end(), r.begin()); }, v, r);
+    std::cout << std::setw(7) << scan_time << " us | " << r << " |" << std::endl;
+    std::cout << "+---------------------+-------------+-----------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::inclusive_scan | Sequencial  |     +     | double | ";
+    auto seq_time = measure<>::execution([](const auto& v, auto& r){ std::inclusive_scan(std::execution::seq, v.begin(), v.end(), r.begin()); }, v, r);
+    std::cout << std::setw(7) << seq_time << " us | " << r << " |" << std::endl;
+    std::cout << "+---------------------+-------------+-----------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::inclusive_scan |  Parallel   |     +     | double | ";
+    auto par_time = measure<>::execution([](const auto& v, auto& r){ std::inclusive_scan(std::execution::par, v.begin(), v.end(), r.begin()); }, v, r);
+    std::cout << std::setw(7) << par_time << " us | " << r << " |" << std::endl;
+    std::cout << "+---------------------+-------------+-----------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::inclusive_scan | Unsequenced |     +     | double | ";
+    auto unseq_time = measure<>::execution([](const auto& v, auto& r){ std::inclusive_scan(std::execution::unseq, v.begin(), v.end(), r.begin()); }, v, r);
+    std::cout << std::setw(7) << unseq_time << " us | " << r << " |" << std::endl;
+    std::cout << "+---------------------+-------------+-----------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::inclusive_scan |  Par-Unseq  |     +     | double | ";
+    auto par_unseq_time = measure<>::execution([](const auto& v, auto& r){ std::inclusive_scan(std::execution::par_unseq, v.begin(), v.end(), r.begin()); }, v, r);
+    std::cout << std::setw(7) << par_unseq_time << " us | " << r << " |" << std::endl;
+    std::cout << "+---------------------+-------------+-----------+--------+------------+-----------------------------------------------+" << std::endl;
+    
+    return 0;
+}
+```
+
+```sh
+$ bpt build -t build.yaml -o build
+
+# ...
+
+./build/inclusive_scan
++---------------------+-------------+-----------+--------+------------+-----------------------------------------------+
+|      Algorithm      | Exec Policy | Binary-Op |  Type  |    Time    |                    Result                     |
++---------------------+-------------+-----------+--------+------------+-----------------------------------------------+
+|  std::partial_sum   |   Serial    |     +     | double | 121,801 us | [ 0.1, 0.2, ..., 10,000,000.6, 10,000,000.7 ] |
++---------------------+-------------+-----------+--------+------------+-----------------------------------------------+
+| std::inclusive_scan | Sequencial  |     +     | double | 120,705 us | [ 0.1, 0.2, ..., 10,000,000.6, 10,000,000.7 ] |
++---------------------+-------------+-----------+--------+------------+-----------------------------------------------+
+| std::inclusive_scan |  Parallel   |     +     | double | 150,662 us | [ 0.1, 0.2, ..., 10,000,000.6, 10,000,000.7 ] |
++---------------------+-------------+-----------+--------+------------+-----------------------------------------------+
+| std::inclusive_scan | Unsequenced |     +     | double | 120,440 us | [ 0.1, 0.2, ..., 10,000,000.6, 10,000,000.7 ] |
++---------------------+-------------+-----------+--------+------------+-----------------------------------------------+
+| std::inclusive_scan |  Par-Unseq  |     +     | double | 145,441 us | [ 0.1, 0.2, ..., 10,000,000.6, 10,000,000.7 ] |
++---------------------+-------------+-----------+--------+------------+-----------------------------------------------+
+```
+
+[Example](/content/part7/examples/par-algs/src/inclusive_scan.main.cxx)
+
+[`std::inclusive_scan` : cppreference](https://en.cppreference.com/w/cpp/algorithm/inclusive_scan)
+
 #### Task 1.2.5 : Transform Exclusive Scan
 
+`std::transform_exclusive_scan` will perform a unary transformation and then performs a left exclusive scan on a range.
+
+```cxx
+#include <algorithm>
+#include <chrono>
+#include <execution>
+#include <iomanip>
+#include <iostream>
+#include <numeric>
+#include <utility>
+#include <vector>
+
+template <typename time_t = std::chrono::microseconds>
+struct measure
+{
+    template <typename F, typename... Args>
+    static auto execution(F func, Args&&... args) 
+        -> typename time_t::rep
+    {
+        auto start = std::chrono::system_clock::now();
+        std::invoke(func, std::forward<Args>(args)...);
+        auto duration = std::chrono::duration_cast<time_t>(std::chrono::system_clock::now() - start);
+        return duration.count();
+    }
+};
+
+template<typename T>
+auto operator<< 
+(std::ostream& os, const std::vector<T>& v) -> std::ostream&
+{
+    os << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        if (--i > (v.size() - 3))
+            os << e << ", ";
+
+    auto last = v.end() - 3;
+    os << "..., " << *++last << ", ";
+    os << *++last << " ]";
+    return os;
+}
+
+auto main() -> int
+{
+    auto v = std::vector<double>(100'000'007, 0.1);
+    auto r = std::vector<double>(100'000'007, 0.0);
+    auto times2 = [](const auto& x){ return x * 2; };
+    std::cout.imbue(std::locale("en_US.UTF-8"));
+    std::cout << std::fixed << std::setprecision(1);
+    
+    std::cout << "+-------------------------------+-------------+-------------+--------+------------+-----------------------------------------------+" << std::endl;
+    std::cout << "|           Algorithm           | Exec Policy | Operations  |  Type  |    Time    |                    Result                     |" << std::endl;
+    std::cout << "+--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::transform_inclusive_scan | Sequencial  | (*2) -> (+) | double | ";
+    auto seq_time = measure<>::execution([&](const auto& v, auto& r){  std::transform_inclusive_scan(std::execution::seq, v.begin(), v.end(), r.begin(), std::plus<>{}, times2, 0.0); }, v, r);
+    std::cout << std::setw(7) << seq_time << " us | " << r << " |" << std::endl;
+    std::cout << "+--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::transform_inclusive_scan |  Parallel   | (*2) -> (+) | double | ";
+    auto par_time = measure<>::execution([&](const auto& v, auto& r){  std::transform_inclusive_scan(std::execution::par, v.begin(), v.end(), r.begin(), std::plus<>{}, times2, 0.0); }, v, r);
+    std::cout << std::setw(7) << par_time << " us | " << r << " |" << std::endl;
+    std::cout << "+--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::transform_inclusive_scan | Unsequenced | (*2) -> (+) | double | ";
+    auto unseq_time = measure<>::execution([&](const auto& v, auto& r){  std::transform_inclusive_scan(std::execution::unseq, v.begin(), v.end(), r.begin(), std::plus<>{}, times2, 0.0); }, v, r);
+    std::cout << std::setw(7) << unseq_time << " us | " << r << " |" << std::endl;
+    std::cout << "+--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::transform_inclusive_scan |  Par-Unseq  | (*2) -> (+) | double | ";
+    auto par_unseq_time = measure<>::execution([&](const auto& v, auto& r){  std::transform_inclusive_scan(std::execution::par_unseq, v.begin(), v.end(), r.begin(), std::plus<>{}, times2, 0.0); }, v, r);
+    std::cout << std::setw(7) << par_unseq_time << " us | " << r << " |" << std::endl;
+    std::cout << "+--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+" << std::endl;
+    
+    return 0;
+}
+```
+
+```sh
+$ bpt build -t build.yaml -o build
+
+# ...
+
+./build/transform_exclusive_scan
++-------------------------------+-------------+-------------+--------+------------+-----------------------------------------------+
+|           Algorithm           | Exec Policy | Operations  |  Type  |    Time    |                    Result                     |
++--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+
+| std::transform_exclusive_scan | Sequencial  | (*2) -> (+) | double | 125,675 us | [ 0.0, 0.2, ..., 20,000,001.0, 20,000,001.2 ] |
++--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+
+| std::transform_exclusive_scan |  Parallel   | (*2) -> (+) | double | 150,095 us | [ 0.0, 0.2, ..., 20,000,001.0, 20,000,001.2 ] |
++--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+
+| std::transform_exclusive_scan | Unsequenced | (*2) -> (+) | double | 167,813 us | [ 0.0, 0.2, ..., 20,000,001.0, 20,000,001.2 ] |
++--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+
+| std::transform_exclusive_scan |  Par-Unseq  | (*2) -> (+) | double | 146,167 us | [ 0.0, 0.2, ..., 20,000,001.0, 20,000,001.2 ] |
++--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+
+```
+
+[Example](/content/part7/examples/par-algs/src/transform_exclusive_scan.main.cxx)
+
+[`std::transform_exclusive_scan` : cppreference](https://en.cppreference.com/w/cpp/algorithm/transform_exclusive_scan)
+
 #### Task 1.2.6 : Transform Inclusive Scan
+
+`std::transform_inclusive_scan` will perform a unary transformation and then performs a left inclusive scan on a range.
+
+```cxx
+#include <algorithm>
+#include <chrono>
+#include <execution>
+#include <iomanip>
+#include <iostream>
+#include <numeric>
+#include <utility>
+#include <vector>
+
+template <typename time_t = std::chrono::microseconds>
+struct measure
+{
+    template <typename F, typename... Args>
+    static auto execution(F func, Args&&... args) 
+        -> typename time_t::rep
+    {
+        auto start = std::chrono::system_clock::now();
+        std::invoke(func, std::forward<Args>(args)...);
+        auto duration = std::chrono::duration_cast<time_t>(std::chrono::system_clock::now() - start);
+        return duration.count();
+    }
+};
+
+template<typename T>
+auto operator<< 
+(std::ostream& os, const std::vector<T>& v) -> std::ostream&
+{
+    os << "[ ";
+    for (auto i { v.size() }; const auto& e : v)
+        if (--i > (v.size() - 3))
+            os << e << ", ";
+
+    auto last = v.end() - 3;
+    os << "..., " << *++last << ", ";
+    os << *++last << " ]";
+    return os;
+}
+
+auto main() -> int
+{
+    auto v = std::vector<double>(100'000'007, 0.1);
+    auto r = std::vector<double>(100'000'007, 0.0);
+    auto times2 = [](const auto& x){ return x * 2; };
+    std::cout.imbue(std::locale("en_US.UTF-8"));
+    std::cout << std::fixed << std::setprecision(1);
+    
+    std::cout << "+-------------------------------+-------------+-------------+--------+------------+-----------------------------------------------+" << std::endl;
+    std::cout << "|           Algorithm           | Exec Policy | Operations  |  Type  |    Time    |                    Result                     |" << std::endl;
+    std::cout << "+--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::transform_exclusive_scan | Sequencial  | (*2) -> (+) | double | ";
+    auto seq_time = measure<>::execution([&](const auto& v, auto& r){  std::transform_exclusive_scan(std::execution::seq, v.begin(), v.end(), r.begin(), 0.0, std::plus<>{}, times2); }, v, r);
+    std::cout << std::setw(7) << seq_time << " us | " << r << " |" << std::endl;
+    std::cout << "+--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::transform_exclusive_scan |  Parallel   | (*2) -> (+) | double | ";
+    auto par_time = measure<>::execution([&](const auto& v, auto& r){  std::transform_exclusive_scan(std::execution::par, v.begin(), v.end(), r.begin(), 0.0, std::plus<>{}, times2); }, v, r);
+    std::cout << std::setw(7) << par_time << " us | " << r << " |" << std::endl;
+    std::cout << "+--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::transform_exclusive_scan | Unsequenced | (*2) -> (+) | double | ";
+    auto unseq_time = measure<>::execution([&](const auto& v, auto& r){  std::transform_exclusive_scan(std::execution::unseq, v.begin(), v.end(), r.begin(), 0.0, std::plus<>{}, times2); }, v, r);
+    std::cout << std::setw(7) << unseq_time << " us | " << r << " |" << std::endl;
+    std::cout << "+--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+" << std::endl;
+
+    std::cout << "| std::transform_exclusive_scan |  Par-Unseq  | (*2) -> (+) | double | ";
+    auto par_unseq_time = measure<>::execution([&](const auto& v, auto& r){  std::transform_exclusive_scan(std::execution::par_unseq, v.begin(), v.end(), r.begin(), 0.0, std::plus<>{}, times2); }, v, r);
+    std::cout << std::setw(7) << par_unseq_time << " us | " << r << " |" << std::endl;
+    std::cout << "+--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+" << std::endl;
+    
+    return 0;
+}
+```
+
+```sh
+$ bpt build -t build.yaml -o build
+
+# ...
+
+./build/transform_inclusive_scan
++-------------------------------+-------------+-------------+--------+------------+-----------------------------------------------+
+|           Algorithm           | Exec Policy | Operations  |  Type  |    Time    |                    Result                     |
++--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+
+| std::transform_inclusive_scan | Sequencial  | (*2) -> (+) | double | 120,220 us | [ 0.2, 0.4, ..., 20,000,001.2, 20,000,001.4 ] |
++--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+
+| std::transform_inclusive_scan |  Parallel   | (*2) -> (+) | double | 148,472 us | [ 0.2, 0.4, ..., 20,000,001.2, 20,000,001.4 ] |
++--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+
+| std::transform_inclusive_scan | Unsequenced | (*2) -> (+) | double | 135,489 us | [ 0.2, 0.4, ..., 20,000,001.2, 20,000,001.4 ] |
++--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+
+| std::transform_inclusive_scan |  Par-Unseq  | (*2) -> (+) | double | 150,443 us | [ 0.2, 0.4, ..., 20,000,001.2, 20,000,001.4 ] |
++--------------------+----------+-------------+-------------+--------+------------+-----------------------------------------------+
+```
+
+[Example](/content/part7/examples/par-algs/src/transform_inclusive_scan.main.cxx)
+
+[`std::transform_inclusive_scan` : cppreference](https://en.cppreference.com/w/cpp/algorithm/transform_inclusive_scan)
 
 ## Links
 

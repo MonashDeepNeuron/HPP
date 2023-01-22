@@ -155,13 +155,14 @@ This assignment is a tricker one. Your job is to implement a [circular buffer](h
   - Assignment Move
   - A destructor
 - Must be templated for any element type `T`.
-- Must have a begin and end iterator (_hint: can just be pointers_) with the relevant methods for obtaining them.
 - Can either be dynamic in size (adds memory as it needs) or semi-static (fixed maximum but variable current size)
 - Methods for pushing in a new element to the front and popping the oldest from the back.
 - Introspection methods
   - Current size
   - Current capacity
   - One that returns a pointer to the first element
+  - A method to check if the buffer is full
+  - A method to check if the buffer is empty
 - Element access
   - _at-like_ method with index checking
   - subscript operator overload (`[]`)
@@ -170,6 +171,7 @@ You can manually create and destroy the memory, use smart pointers or use a cont
 
 #### Optional
 
+- Have a custom iterator type with the relevant methods in the circular buffer for obtaining them.
 - front and and back element access.
 - Equality (`==`) and inequality (`!=`) operator overloads.
 - Output stream operator overload (`>>`).
