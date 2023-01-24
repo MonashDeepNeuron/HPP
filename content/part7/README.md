@@ -11,7 +11,7 @@ The focus of this part is parallelism and concurrency. Parallelism allows for la
 1. [Parallel Algorithms](/content/part7/tasks/parallel-alg.md)
 2. [Atomics](/content/part7/tasks/atomics.md)
 3. [Thread](/content/part7/tasks/threads.md)
-4. [Mutexes](/content/part7/tasks/mutexes.md)
+4. [Mutexes & Locks](/content/part7/tasks/mutexes.md)
 5. [Semaphores](/content/part7/tasks/semaphores.md)
 6. [Async & Await](/content/part7/tasks/async-await.md)
 

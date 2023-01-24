@@ -1,22 +1,22 @@
-# A
+# Mutexes
 
 ## Contents
 
-- [A](#a)
+- [Mutexes](#mutexes)
   - [Contents](#contents)
-  - [Task n](#task-n)
-    - [Task n.1 :](#task-n1-)
+  - [Task 4](#task-4)
+    - [Task 4.1 : What is a Mutex?](#task-41--what-is-a-mutex)
   - [Links](#links)
 
-## Task n
+## Task 4
 
-### Task n.1 : 
+### Task 4.1 : What is a Mutex?
 
-
+A mutex is a _mutually-exclusive-object_
 
 ## Links
 
-- [Previous Page : Week 2](/content/part2/README.md)
-- [Next Page : Primitive Data Types](/content/part2/tasks/.md)
+- [Previous Page : Threads](/content/part7/tasks/threads.md)
+- [Next Page : Semaphores](/content/part7/tasks/semaphores.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

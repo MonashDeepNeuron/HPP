@@ -4,6 +4,5 @@ cxx_compiler: 'g++'
 cxx_version: c++20
 
 link_flags: [
-  '-ltbb',
-  '-latomic'
+  '-ltbb'
 ]

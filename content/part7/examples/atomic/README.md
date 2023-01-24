@@ -1,5 +1,13 @@
-<!-- README.md created by 'bpt new' -->
-# `atomic` - A Great New Project
+# Atomic Type Example
 
-Add introductory information about your project to this file, which will likely
-be the first thing that potential new users will see.
+Examples from Part 7 - [Atomics](/content/part7/tasks/atomics.md). You will have to build and compile on your own machine as Godbolt doesn't support linking with TBB or atomic.
+
+## Build & Run
+
+```sh
+$ bpt build -t build.yaml -o build
+
+# ...
+
+./build/atomic
+```
