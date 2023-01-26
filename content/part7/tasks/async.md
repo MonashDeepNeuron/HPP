@@ -255,7 +255,7 @@ Took: 300 ms
 
 ## Links
 
-- [Previous Page : Week 2](/content/part2/README.md)
-- [Next Page : Primitive Data Types](/content/part2/tasks/.md)
+- [Previous Page : Mutexes & Locks](/content/part7/tasks/mutexes.md)
+- [Back to Part 7](/content/part7/README.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)
