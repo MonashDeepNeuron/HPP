@@ -3,6 +3,10 @@ c_compiler: 'gcc'
 cxx_compiler: 'g++'
 cxx_version: c++20
 
+flags: [
+  '-O3'
+]
+
 link_flags: [
   '-ltbb'
 ]

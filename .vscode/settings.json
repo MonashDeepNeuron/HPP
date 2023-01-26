@@ -72,6 +72,7 @@
         "variant": "cpp",
         "latch": "cpp",
         "*.ipp": "cpp",
-        "barrier": "cpp"
+        "barrier": "cpp",
+        "future": "cpp"
     }
 }
