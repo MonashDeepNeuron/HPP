@@ -7,8 +7,8 @@ format: <part.task.subsections~unnamed>
 ---
 
 1. [Example : 1.6.2](/content/part1/examples/hello/hello.cxx)
-2. [Example 1.6.5](/content/part1/examples/hello-bpt)
-3. [Example 1.7.1](https://www.godbolt.org/z/GKxzfees6)
+2. [Example : 1.6.5](/content/part1/examples/hello-bpt)
+3. [Example : 1.7.1](https://www.godbolt.org/z/GKxzfees6)
 4. [Example : 2.4.1~1](https://www.godbolt.org/z/xKMooTb4s)
 5. [Example : 2.4.1~2](https://www.godbolt.org/z/eeYqPbcaT)
 6. [Example : 2.4.1~3](https://www.godbolt.org/z/o9afoszjP)
@@ -158,6 +158,3 @@ format: <part.task.subsections~unnamed>
 150. [Example : 6.5.1](https://www.godbolt.org/z/sE5Eq5a3z)
 151. [Example : 6.5.3](https://www.godbolt.org/z/brff8rY5T)
 152. [Example : 6.5.5](https://www.godbolt.org/z/3fdW1P7hj)
-153. [Example : ..]()
-154. [Example : ..]()
-155. [Example : ..]()

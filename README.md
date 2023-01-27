@@ -1,8 +1,6 @@
 # High Performance Programming
 
-## Welcome
-
-Welcome and congratulations on joining the MDN HPP Team! We are excited to have you as a part of this team and look forward to teaching some cool technologies and ideas to you. My name is Tyler Swann and I'll be the lead educator for this workshop series. During this series you will be learning the C++ programming language along with techniques for, computer memory, algorithm intuition and parallel computing techniques.
+~ <!-- What is HPP -->
 
 ## About this Repository
 
@@ -26,6 +24,8 @@ The links below can help direct you to the relevant pages.
 - Tyler Swann
 - Nikhil Kannachel
 
-## License and Contributing
+## Code of Conduct, License & Contributing
 
 Refer to the [Code of Conduct](/CODE_OF_CONDUCT.md) and the [License](/LICENSE) for this repository for the expected behavior of contributors and users of the repository. If you have any concerns reach out to me (Tyler Swann) on Teams or follow standard MDN procedures for issues you are having within the team, branch or MDN.
+
+<!-- Contributing -->
