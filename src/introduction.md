@@ -1,4 +1,4 @@
-# Content
+# Introduction
 
 This directory contains all the relevant content information for the workshop series as well as a brief overview of the week-by-week content that will be covered. Below are links to the `README.md` for each week. These will guide you through the content, examples and tasks for each week.
 
@@ -13,7 +13,3 @@ The idea is that you will use this repository as your guide for the series, read
 - [Part 5](/content/part5/README.md) - Classes, Templates, Generics and Concepts
 - [Part 6](/content/part6/README.md) - Iterators, Data Structures, Algorithms, Ranges and Views
 - [Part 7](/content/part7/README.md) - Parallel Algorithms, Atomics, Threads, Mutexes & Locks and Async
-
-## Home
-
-- [Home](/README.md)

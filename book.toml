@@ -1,0 +1,8 @@
+[book]
+authors = ["oraqlle"]
+language = "en"
+multilingual = false
+src = "src"
+title = "High Performance Programming"
+[output.html]
+mathjax-support = true
