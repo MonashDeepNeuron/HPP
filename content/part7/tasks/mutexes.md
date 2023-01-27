@@ -446,6 +446,6 @@ All cleaned up.
 ## Links
 
 - [Previous Page : Threads](/content/part7/tasks/threads.md)
-- [Next Page : Async/Await](/content/part7/tasks/async.md)
+- [Next Page : Async](/content/part7/tasks/async.md)
 - [Content](/content/README.md)
 - [HOME](/README.md)

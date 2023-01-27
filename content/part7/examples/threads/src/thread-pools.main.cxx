@@ -20,7 +20,7 @@ auto job = [](auto job_id)
 auto main() -> int
 {    
     auto thr_count { std::thread::hardware_concurrency() };
-    auto pool = std::vector<std::thread>(thr_count);
+    auto pool = std::vector<std::thread>();
 
     /// Queue jobs
     for (auto i { 0u }; i < thr_count; ++i)

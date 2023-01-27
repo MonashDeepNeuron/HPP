@@ -7,8 +7,8 @@
   - [Task 3](#task-3)
     - [Task 3.1 : What are Threads?](#task-31--what-are-threads)
     - [Task 3.2 : Thread](#task-32--thread)
-    - [Automatic Threads](#automatic-threads)
-    - [Task 3.3 : Thread Pools](#task-33--thread-pools)
+    - [Task 3.3 : Automatic Threads](#task-33--automatic-threads)
+    - [Task 3.4 : Thread Pools](#task-34--thread-pools)
   - [Links](#links)
 
 ## Task 3
@@ -87,7 +87,7 @@ Thread 139836174186048 Done!
 
 [`std::thread` : cppreference](https://en.cppreference.com/w/cpp/thread/thread)
 
-### Automatic Threads
+### Task 3.3 : Automatic Threads
 
 Since C++20 there has been a thread type that automatically joins on destruction. This is called `std::jthread`. `std::jthread` also supports the use of `std::stop_token` and `std::stop_source`. These are primitives for preemptively cancelling a `std::jthread` from other threads. The `std::stop_source` is obtained from a `std::jthread` object and can be passed to other threads. For a `std::jthread` to be able to listen for stop requests, the function it runs must takes as its first argument a `std::stop_token`.
 
@@ -158,7 +158,7 @@ Request stop for worker via source
 
 [`std::jthread` : cppreference](https://en.cppreference.com/w/cpp/thread/jthread)
 
-### Task 3.3 : Thread Pools
+### Task 3.4 : Thread Pools
 
 A thread pool is a very common idiom in Computer Science. It involves creating a pool or array of threads that sit idle, waiting for work. Jobs are then pushed to the pool which get assigned to an available thread. Once the thread has finished the task the thread goes idle again. The most basic way to create a thread pool is to use a vector of threads and emplace jobs at the back of the vector and then join all joinable threads.
 
@@ -185,7 +185,7 @@ auto job = [](auto job_id)
 auto main() -> int
 {    
     auto thr_count { std::thread::hardware_concurrency() };
-    auto pool = std::vector<std::thread>(thr_count);
+    auto pool = std::vector<std::thread>();
 
     /// Queue jobs
     for (auto i { 0u }; i < thr_count; ++i)

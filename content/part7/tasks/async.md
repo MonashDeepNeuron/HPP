@@ -14,7 +14,7 @@
 
 ### Task 5.1 : Futures and Promises
 
-A promise, represented by the class `std::promise`, is a object that stores a value or exception that is retrieved by a `std::future` object. Semantically, this means that a; generally asynchronous function has promised a value to the caller of the asynchronous function but however, does not yet have the value. The future of a promised value is obtained directly from the `std::promise` object. The caller of the promised value can query, wait for or extract the value from the corresponding `std::future` object however, these may block if the result is not yet ready. The timeout methods will return a `std::future_status` object which is an enum indicating if the wait timed out, if the future is deferred (_lazy_ loading) or ready. The value of a promise is communicated via a shared memory state between the `std::future` and `std::promise` objects. This shared state cannot be shared between different threads meaning that only one `std::future` can be used to obtain the result of a promised value. To enforce this `std::future` is move-only. A shared future can be obtained by called `std::future::share` to create a `std::shared_future` which claims ownership of the shared state such that the future can be copied between different threads. Promises and futures are found in the `<future>` header.
+A promise; represented by the class `std::promise`, is a object that stores a value or exception that is retrieved by a `std::future` object. Semantically, this means that a; generally asynchronous function has promised a value to the caller of the asynchronous function but however, does not yet have the value. The future of a promised value is obtained directly from the `std::promise` object. The caller of the promised value can query, wait for or extract the value from the corresponding `std::future` object however, these may block if the result is not yet ready. The timeout methods will return a `std::future_status` object which is an enum indicating if the wait timed out, if the future is deferred (_lazy_ loading) or ready. The value of a promise is communicated via a shared memory state between the `std::future` and `std::promise` objects. This shared state cannot be shared between different threads meaning that only one `std::future` can be used to obtain the result of a promised value. To enforce this `std::future` is move-only. A shared future can be obtained by called `std::future::share` to create a `std::shared_future` which claims ownership of the shared state such that the future can be copied between different threads. Promises and futures are found in the `<future>` header.
 
 ```cxx
 #include <chrono>
@@ -249,7 +249,7 @@ Result: 9
 Took: 300 ms
 ```
 
-[Example](/content/part7/examples/async/src/packaged_tasks.main.cxx)
+[Example](/content/part7/examples/async/src/packaged_task.main.cxx)
 
 [`std::packaged_task` : cppreference](https://en.cppreference.com/w/cpp/thread/packaged_task)
 
