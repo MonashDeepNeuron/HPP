@@ -2,12 +2,12 @@
 
 All Compiler Explorer links used.
 
-format: <part.task.subsections~unnamed>
+format: <chapter.task.subsections~unnamed>
 
 ---
 
-1. [Example : 1.6.2](/content/part1/examples/hello/hello.cxx)
-2. [Example : 1.6.5](/content/part1/examples/hello-bpt)
+1. [Example : 1.6.2](/content/chapter1/examples/hello/hello.cxx)
+2. [Example : 1.6.5](/content/chapter1/examples/hello-bpt)
 3. [Example : 1.7.1](https://www.godbolt.org/z/GKxzfees6)
 4. [Example : 2.4.1~1](https://www.godbolt.org/z/xKMooTb4s)
 5. [Example : 2.4.1~2](https://www.godbolt.org/z/eeYqPbcaT)

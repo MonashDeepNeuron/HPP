@@ -4,7 +4,7 @@ Resources and challenges for the Monash DeepNeuron High Performance Programming 
 
 ## Welcome
 
-Welcome and congratulations on joining the MDN HPP Team! We are excited to have you as a part of this team and look forward to teaching some cool technologies and ideas to you. My name is Tyler Swann and I'll be the lead educator for this workshop series. During this series you will be learning the C++ programming language along with techniques for, computer memory, algorithm intuition and parallel computing techniques.
+Welcome and congratulations on joining the MDN HPP Team! We are excited to have you as a chapter of this team and look forward to teaching some cool technologies and ideas to you. My name is Tyler Swann and I'll be the lead educator for this workshop series. During this series you will be learning the C++ programming language along with techniques for, computer memory, algorithm intuition and parallel computing techniques.
 
 ## How to use this book
 
