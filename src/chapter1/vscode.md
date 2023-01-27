@@ -2,23 +2,7 @@
 
 VSCode is a text editor with rich extension ecosystem allowing developers to customize a developer environment to their needs.
 
-## Contents
-
-- [VSCode](#vscode)
-  - [Contents](#contents)
-  - [Note](#note)
-  - [Task 5](#task-5)
-    - [5.1 : Installing VSCode](#51--installing-vscode)
-      - [Note (WSL)](#note-wsl)
-    - [5.2 : WSL Extensions](#52--wsl-extensions)
-    - [5.3 : General Extensions](#53--general-extensions)
-  - [Links](#links)
-
-## Note
-
-> We will be using VSCode throughout this series and as such, all debugging examples will be in reference to VSCode but you are free to use any text editor you want and we will do our best to adjust.
-
-## Task 5
+## Section 5
 
 ### 5.1 : Installing VSCode
 
@@ -66,11 +50,4 @@ In VSCode, open the extension marketplace tab. In the search bar, search for the
 
 You may have to restart VSCode for the extensions to load. Finally, press `ctrl + ,` to open settings. in the search bar search for "cpp default standard". In the drop down select `c++20`.
 
-And that is it, everything should be set up and ready to go. You next task is to run your first C++ code.
-
-## Links
-
-- [Previous Page : bpt](/content/chapter1/tasks/bpt.md)
-- [Next Page : Hello World](/content/chapter1/tasks/helloworld.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)
+And that is it, everything should be set up and ready to go. You next section is to run your first C++ code.

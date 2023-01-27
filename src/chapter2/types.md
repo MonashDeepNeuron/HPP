@@ -1,23 +1,6 @@
 # Primitive Types
 
-## Contents
-
-- [Primitive Types](#primitive-types)
-  - [Contents](#contents)
-  - [Task 2](#task-2)
-    - [2.1 : Size and Width](#21--size-and-width)
-    - [2.2 : Integral Types](#22--integral-types)
-      - [2.2.1 : Boolean Type](#221--boolean-type)
-      - [2.2.2 : Character Types](#222--character-types)
-      - [2.2.3 : Number Types](#223--number-types)
-    - [2.3 : Float Point Types](#23--float-point-types)
-    - [2.4 : Void](#24--void)
-    - [2.5 : Nullptr](#25--nullptr)
-    - [2.6 : Other Types](#26--other-types)
-    - [2.6 : Auto](#26--auto)
-  - [Links](#links)
-
-## Task 2
+## Section 2
 
 ### 2.1 : Size and Width
 
@@ -66,10 +49,3 @@ There are two more types in C++ that are worth talking about. These are `std::si
 ### 2.6 : Auto
 
 While C++ is a statically typed language, it is able to infer and deduce the types of many things at compile time. This is achieve with a non-type keyword called `auto`. While `auto` is used in many places that type specifiers are used (more on this in the next section), it is important to note that it itself is not a type but rather a automatic type, essentially a placeholder for the to-be deduced type.
-
-## Links
-
-- [Previous Page : The C++ Type System](/content/chapter2/tasks/typesystem.md)
-- [Next Page : Variables](/content/chapter2/tasks/variables.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

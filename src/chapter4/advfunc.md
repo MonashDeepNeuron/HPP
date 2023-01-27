@@ -1,28 +1,8 @@
 # Advanced Functions
 
-## Contents
+## Section 1
 
-- [Advanced Functions](#advanced-functions)
-  - [Contents](#contents)
-  - [Task 1](#task-1)
-    - [Task 1.1 : Advanced Functions Specification](#task-11--advanced-functions-specification)
-      - [Task 1.1.1 : No exception optimization](#task-111--no-exception-optimization)
-      - [Task 1.1.2 : Attributes](#task-112--attributes)
-      - [Task 1.1.3 : Auto Function](#task-113--auto-function)
-    - [Task 1.2 : Function Overloading](#task-12--function-overloading)
-      - [Task 1.2.1 : Operator Overloading](#task-121--operator-overloading)
-    - [Task 1.3 : Function Utilities](#task-13--function-utilities)
-      - [Task 1.3.1 : Perfect Forwarding](#task-131--perfect-forwarding)
-      - [Task 1.3.2 : Value and Type Helpers](#task-132--value-and-type-helpers)
-    - [Task 1.4 : Functional Programming](#task-14--functional-programming)
-      - [Task 1.4.1 : Function Types](#task-141--function-types)
-      - [Task 1.4.2 : Lambdas and Closures](#task-142--lambdas-and-closures)
-      - [Task 1.4.3 : Chapterial Application](#task-143--chapterial-application)
-  - [Links](#links)
-
-## Task 1
-
-### Task 1.1 : Advanced Functions Specification
+### Section 1.1 : Advanced Functions Specification
 
 We saw in [chapter 2](/content/chapter2/README.md) how to create functions to abstract usable pieces of code into smaller and more modular components. This is the bare-bones of functions of C++. Functions come in a lot of forms in C++ and have to make different guarantees about how they operate. This is done with various specifiers and labels that indicate to the compiler what a function is expected to do. Some of these we have seen including parameter and return value types along with these types various there CV-qualifications however, there are a few that have not been covered yet. Throughout this page we will build up a function signature from the blueprint below by adding new specifiers to showcase the syntax.
 
@@ -31,7 +11,7 @@ int f(int n)
 { return n; }
 ```
 
-#### Task 1.1.1 : No exception optimization
+#### Section 1.1.1 : No exception optimization
 
 WE won't be covering exceptions in this course as they are quite an advanced topic that is hard to use and costly to get wrong. We may cover exceptions at a later date. In C++ some functions may throw exceptions when ill-formed behavior occurs and but it can be handled so the system can remain operational. However, some functions we can make guarantees at compile time that they will not throw an exception. This allows the compiler to optimise the execution path knowing that it will not need to recover the stack. To do this, we mark a function `noexcept` keyword. If a `noexcept` functions does throw, the program calls `std::terminate`.
 
@@ -42,7 +22,7 @@ int f(int n) noexcept
 
 [`noexcept` : cppreference](https://en.cppreference.com/w/cpp/language/noexcept_spec)
 
-#### Task 1.1.2 : Attributes
+#### Section 1.1.2 : Attributes
 
 Attributes are a declarator that indicates a condition of a function. Attributes are prefixed before the return type of the function using the double square-bracket notation `[[attribute-name]]`. C++ only has a few standard attributes so far but compilers often introduce their own for optimisation of the compiler.
 
@@ -59,7 +39,7 @@ int f(int n) noexcept
 
 [**_attributes_** : cppreference](https://en.cppreference.com/w/cpp/language/attributes)
 
-#### Task 1.1.3 : Auto Function
+#### Section 1.1.3 : Auto Function
 
 Sometimes the return value of a function is a complicated type or depends on the type of the parameters of the function. This can be solved using an `auto` declared function with a trailing-return-type.
 
@@ -74,11 +54,11 @@ auto f(int n) noexcept
 
 > Note: The styling used above is my own personal syntax styling. You are free to use your own.
 
-### Task 1.2 : Function Overloading
+### Section 1.2 : Function Overloading
 
 One difficulty in many programing languages is that you cannot have function symbols with the same name. This creates clashes and ambiguity meaning the compiler doesn't know which function to use. In C++ however, you can have functions with the same symbol (name) as long as there parameters are different. This is called function overloading. This is is achieved due to what is called name mangling. Function names are not simply just the name, say `f` from above but are mangled to include the type of the parameters the function takes. Thus `int f(int n)` is a different function to `float f(float n)`. This powerful feature allows us to create multiple functions that perform the same action but for multiple different types and move type resolution to compile time.
 
-#### Task 1.2.1 : Operator Overloading
+#### Section 1.2.1 : Operator Overloading
 
 Function overloading opens the opportunity to create user defined operators. This means you can overload the `+` or `<<` operators to work for custom types or introduce new functionality. This is how the `<<` and `>>` works for stream in C++. The `<<` and `>>` are overloaded to work differently for stream objects.
 
@@ -102,15 +82,15 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/jaevh6dna)
 
-### Task 1.3 : Function Utilities
+### Section 1.3 : Function Utilities
 
-#### Task 1.3.1 : Perfect Forwarding
+#### Section 1.3.1 : Perfect Forwarding
 
 Often in C++ we want to pass arguments from one function to another without modification. An example of this is passing arguments to a wrapper function that might call some old legacy API. However, there can be issues with value categories, const-ness and reference values of parameters that create undefined behaviour, compiler errors etc. To fix this, C++ introduced perfect forwarding, a way to perfectly pass arguments from on function call to another without losing or changing the value category of the parameters. This is done with `std::forward<T>`. I am glossing over the details of this but if you are interested, this [SO answer](https://stackoverflow.com/a/3582313/13429386) gives a great explanation of the problem, attempted solutions and the solution in C++ now.
 
 [`std::forward<T>` : cppreference](https://en.cppreference.com/w/cpp/utility/forward)
 
-#### Task 1.3.2 : Value and Type Helpers
+#### Section 1.3.2 : Value and Type Helpers
 
 Sometimes it is useful to work with the type of an object, not the value. To obtain the type of an object the `decltype` keyword. This declares the type of the entity or expression passed to the keyword in a function call style. This is useful for deducing the type of an expression once it has been evaluated.
 
@@ -153,9 +133,9 @@ auto main() -> int
 
 [`std::declval<T>` : cppreference](https://en.cppreference.com/w/cpp/utility/declval)
 
-### Task 1.4 : Functional Programming
+### Section 1.4 : Functional Programming
 
-#### Task 1.4.1 : Function Types
+#### Section 1.4.1 : Function Types
 
 Functions; like variables, have a type. This makes it possible to use functions are variables that can be passed to other functions. But what is the type of a function? In general the type of a function is composed of its return type and the type of its arguments, ie. `R(P1, P2, P3, ...)`. In C functions are passed as function pointers. It is a powerful utility but can be error prone due to the nature of pointers. Instead, C++ has `std::function<R(Args...)>` which is able to bind to a function to a variable that can be easily passed around to other functions, copied and moved.
 
@@ -191,7 +171,7 @@ auto main() -> int
 
 [`std::function<R(Args...)>` : cppreference](https://en.cppreference.com/w/cpp/utility/functional/function)
 
-#### Task 1.4.2 : Lambdas and Closures
+#### Section 1.4.2 : Lambdas and Closures
 
 Sometimes functions need to be able to enclose information about the global environment. This requires the use of closures, a local environment that can access the parent environment in which the closure exists in. In C++ this is accomplished with a lambda. Lambdas are anonymous functions that can capture local variables. Anonymous functions are able to be created and passed to other functions without having to exist as a stored function. Lambdas have a unique syntax consisting of three distinct sets of brackets. `[]` is used to specified the captured variables, `()` is the same as regular functions indicating the formal parameters of the lambda that are used when the lambda is invoked, and finally `{}` holds the body of the lambda.
 
@@ -241,7 +221,7 @@ auto main() -> int
 
 [Lambdas : cppreference](https://en.cppreference.com/w/cpp/language/lambda)
 
-#### Task 1.4.3 : Chapterial Application
+#### Section 1.4.3 : Chapterial Application
 
 Another useful technique when working with functions is a technique known as chapterial application. This is similar to how closures with lambda work with a few key differences. Chapterial application allows you to chapterially apply the certain parameters of a function while leaving other empty to be passed at a later invocation. This is done with with the `std::bind` function which takes the function and a variable list of arguments that will be bound to the function in their respective order. The returned function can be invoked like any other function and will be invoked as if the bound variables were passed to it. The power of `std::bind` comes from its ability to accept placeholder values. These values follow the pattern of `_N` where N is any number starting at `1`. Placeholders are passed to `std::bind` can can be placed anywhere in the variable argument list. When the resulting function is invoked, any arguments passed to it will be passed to the underlying function. The first passed argument from the chapterially applied function will be passed to all instances of the `_1` placeholder and so on.
 
@@ -318,10 +298,3 @@ auto main() -> int
 [Example](https://www.godbolt.org/z/vfxG95Eqr)
 
 [`std::bind_front` & `std::bind_back`](https://en.cppreference.com/w/cpp/utility/functional/bind_front)
-
-## Links
-
-- [Previous Page : Chapter 4](/content/chapter4/README.md)
-- [Next Page : Namespaces](/content/chapter4/tasks/namespaces.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

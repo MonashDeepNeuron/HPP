@@ -1,22 +1,8 @@
 # Pointers
 
-## Contents
+## Section 1
 
-- [Pointers](#pointers)
-  - [Contents](#contents)
-  - [Task 1](#task-1)
-    - [Task 1.1 : What is a pointer?](#task-11--what-is-a-pointer)
-    - [Task 1.2 : Syntax](#task-12--syntax)
-    - [Task 1.3 : const qualifications](#task-13--const-qualifications)
-    - [Task 1.4 : void pointers](#task-14--void-pointers)
-    - [Task 1.5 : Pointer Arithmetic](#task-15--pointer-arithmetic)
-    - [Task 1.6 : Dereferencing nullptr](#task-16--dereferencing-nullptr)
-    - [Task 1.7 : Pointers to Pointers](#task-17--pointers-to-pointers)
-  - [Links](#links)
-
-## Task 1
-
-### Task 1.1 : What is a pointer?
+### Section 1.1 : What is a pointer?
 
 Many people seem to struggle with the concept of a pointer. This is mostly due to either, bad teaching or that someone learning C++ (or C or Rust) do not have a concise understanding of memory. Memory can be thought of as a cell that has some value and lives at some address or location in the physical memory. Cells can be as small as a byte and as large a single machine register, typically 8-bytes.
 
@@ -59,7 +45,7 @@ As we can see, address `0x00007fff59ae6e9d` stores the value `0x00007fff59ae6e94
 
 This is the premise of a pointer. It is a numerical value that holds some address in memory. This is address of another value in a program.
 
-### Task 1.2 : Syntax
+### Section 1.2 : Syntax
 
 To create a pointer in C++ is super simple. Given some type `T` the type of a pointer to a value of that type is `T*`.
 
@@ -93,7 +79,7 @@ auto main () -> int
 [Example](https://www.godbolt.org/z/aaf33YEYW)
 [`std::addressof` : cppreference](https://en.cppreference.com/w/cpp/memory/addressof)
 
-### Task 1.3 : const qualifications
+### Section 1.3 : const qualifications
 
 Because pointers are an independent type, they are able to have to have `const` (among other) qualifications however, the ordering of the qualifications can matter.
 
@@ -127,7 +113,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/sed7Wcf7s)
 
-### Task 1.4 : void pointers
+### Section 1.4 : void pointers
 
 Because of C++'s static type system, the type of a pointer must be declared however you can circumvent the type system using `void`. A pointer can be a `void*`, meaning that the type it points to is unbound. When you need to use the type you can then use `static_cast<>()` to create the type that you need. This is actually how C's `malloc()` function works. It returns a `void*` and it is up to the user to cast it to the desired type.
 
@@ -151,7 +137,7 @@ auto main () -> int
 
 [C's `malloc()`](https://en.cppreference.com/w/c/memory/malloc)
 
-### Task 1.5 : Pointer Arithmetic
+### Section 1.5 : Pointer Arithmetic
 
 Because pointers are just numbers (addresses) we can add and subtract from then as if they were integral types. We can use the increment, decrement, addition, subtraction and subscript (index) operators on pointers (`+`, `-`, `++`, `--` and `[]` respectively).
 
@@ -190,7 +176,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/qdx6csE7x)
 
-### Task 1.6 : Dereferencing nullptr
+### Section 1.6 : Dereferencing nullptr
 
 In C++, any assignment and initialisation is is copy by default even when passed to functions. This can be really costly for objects that have a large amount of data stored in them. Pointers make it cheap to pass the data around as you now just have to pass a pointer to it instead of all the data. However, there is a catch to pointers. Pointers can point to nothing, this nothing value is actually the literal `nullptr` we saw in week 0. And you cannot dereference a pointer to `nullptr` as `nullptr` is nothing. This can be really dangerous as this is considered UB which may work, may not compile, may crash the entire program or do something entirely unexpected.
 
@@ -212,7 +198,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/594hMbcz6)
 
-### Task 1.7 : Pointers to Pointers
+### Section 1.7 : Pointers to Pointers
 
 It is also possible in C++ to have a pointer to a pointer. This mostly a feature inherited from C and remains in for C++ to interoperate with C and for completeness. Pointers to pointers may seem daunting but are straight forward if you apply the concept of a pointer again. The pointer-to-pointer object points to the address of the pointer object that holds the address of some other object. Pointer-to-pointers have the type `T**` and can be dereferenced to the their value, ie. the address the nested pointer points to or again to get the bottom value.
 
@@ -237,10 +223,3 @@ auto main () -> int
 [Example](https://www.godbolt.org/z/MPPczrWzd)
 
 > Note: `auto` is able to deduce the type if the right-hand-side is a rvalue however, the `const` qualifications cannot be specified. ie. `T* -> auto` and `T** -> auto`.
-
-## Links
-
-- [Previous Page : Week 3](/content/chapter3/README.md)
-- [Next Page : Slices](/content/chapter3/tasks/slices.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

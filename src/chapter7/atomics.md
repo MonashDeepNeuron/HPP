@@ -1,21 +1,12 @@
 # Atomics
 
-## Contents
+## Section 2
 
-- [Atomics](#atomics)
-  - [Contents](#contents)
-  - [Task 2](#task-2)
-    - [Task 2.1 : Data Races \& Shared Resources](#task-21--data-races--shared-resources)
-    - [Task 2.2 : Atomic Types](#task-22--atomic-types)
-  - [Links](#links)
-
-## Task 2
-
-### Task 2.1 : Data Races & Shared Resources
+### Section 2.1 : Data Races & Shared Resources
 
 In any program, data is shared across multiple chapters of the system. This is largely not a problem because there is only a single thread accessing the data meaning all operations occur sequentially. This guarantees that data will only every be read from or written to but not both at the same time. However, when a program starts to introduce concurrency data now may be shared between different execution processes. This means that data can be read from or written at the same time causing a _Race Condition_. _Race Conditions_ are UB in almost all programming languages as there is no way for the compiler or interpreter to tell which operation will happen first. There are many techniques to prevent and outright disallow race conditions from occur while still allowing for data to exist in a shared state. The first of which we will look at is `std::atomic`.
 
-### Task 2.2 : Atomic Types
+### Section 2.2 : Atomic Types
 
 `std::atomic` is a template class type that represents an _atomic-object_. Reading from and writing to an _atomic-object_ at the same time is considered well defined. This is because operations are performed atomically meaning that no race conditions can occur as the [memory order](https://en.cppreference.com/w/cpp/atomic/memory_order) must be specified. `std::atomic` can accept template types that are integrals, floating-points, pointers, `std::shared_ptr` or `std::weak_ptr`. It can also accept custom types that are trivially copyable and copy and move constructible/assignable. `std::atomic` also can be used to synchronize execution by blocking and notifying different executions processes. `std::atomic` itself cannot be copied or move. There is also `std::atomic_ref` which creates a reference to existing data for which all operations are atomic. The referred object's lifetime must exceed that of the atomic reference the underlying object can only be access through atomic references for the lifetime of all atomic references. `std::atomic_ref` can by copied.
 
@@ -89,14 +80,7 @@ Time: 1,699,214 us
 Atomic Count: 100,000,007
 ```
 
-[Example](/content/chapter7/examples/atomic/src/atomic.main.cxx)
+[Example](./examples/atomic/src/atomic.main.cxx)
 
 - [`std::atomic` : cppreference](https://en.cppreference.com/w/cpp/atomic/atomic)
 - [`std::atomic_ref` : cppreference](https://en.cppreference.com/w/cpp/atomic/atomic_ref)
-
-## Links
-
-- [Previous Page : Parallel Algorithms](/content/chapter7/tasks/parallel-alg.md)
-- [Next Page : Threads](/content/chapter7/tasks/threads.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

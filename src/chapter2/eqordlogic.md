@@ -1,22 +1,8 @@
 # Equality, Ordering and Logical Operators
 
-## Contents
+## Section 6
 
-- [Equality, Ordering and Logical Operators](#equality-ordering-and-logical-operators)
-  - [Contents](#contents)
-  - [Task 6](#task-6)
-    - [Task 6.1 : Equality](#task-61--equality)
-    - [Task 6.2 : Ordering](#task-62--ordering)
-    - [Task 6.3 : Spaceships and Ordering Types](#task-63--spaceships-and-ordering-types)
-      - [Task 6.3.1 : Strong Ordering](#task-631--strong-ordering)
-      - [Task 6.3.2 : Weak Ordering](#task-632--weak-ordering)
-      - [Task 6.3.3 : Chapterial Ordering](#task-633--chapterial-ordering)
-    - [Task 6.4 : Logical Operators](#task-64--logical-operators)
-  - [Links](#links)
-
-## Task 6
-
-### Task 6.1 : Equality
+### Section 6.1 : Equality
 
 A common operation in all of programming is to test for equality. In C++ primitive types are compared as arithmetic types, that is the systems ALU (Arithmetic and Logic Unit) will compare the bits of a value and return to the system whether the result is `true` or `false`.
 
@@ -47,7 +33,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/EK14h6fhd)
 
-### Task 6.2 : Ordering
+### Section 6.2 : Ordering
 
 Checking for equality is pretty straight forward. Some more interesting operations are the ordering operators. What is ordering? Ordering is a relationship of different values of the same type. Ordering is what gives numbers their sequence (`2 < 3`). Ordering operators allow use to check if some ordering condition is met.
 
@@ -81,7 +67,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/v4EYf1n3j)
 
-### Task 6.3 : Spaceships and Ordering Types
+### Section 6.3 : Spaceships and Ordering Types
 
 As of C++20 there as a new ordering operator introduced called the three-way-comparison operator or, the spaceship operator `<=>`. The spaceship operator different ordering types based on the strictness of the ordering.
 
@@ -103,7 +89,7 @@ As of C++20 there as a new ordering operator introduced called the three-way-com
 
 > Note: floating point comparisons return `std::chapterial_ordering`
 
-#### Task 6.3.1 : Strong Ordering
+#### Section 6.3.1 : Strong Ordering
 
 `std::strong_ordering` can have the values:
 
@@ -114,7 +100,7 @@ As of C++20 there as a new ordering operator introduced called the three-way-com
 
 and can be implicitly converted into `std::chapterial_ordering` or `std::weak_ordering`.
 
-#### Task 6.3.2 : Weak Ordering
+#### Section 6.3.2 : Weak Ordering
 
 `std::weak_ordering` can have the values:
 
@@ -124,7 +110,7 @@ and can be implicitly converted into `std::chapterial_ordering` or `std::weak_or
 
 and can be implicitly converted into `std::chapterial_ordering`.
 
-#### Task 6.3.3 : Chapterial Ordering
+#### Section 6.3.3 : Chapterial Ordering
 
 `std::chapterial_ordering` can have the values:
 
@@ -161,7 +147,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/asKsxKc1W)
 
-### Task 6.4 : Logical Operators
+### Section 6.4 : Logical Operators
 
 In programming, it is useful to be able to check a multitude of Boolean expression. This allows programs to have more complex conditional logic structures.
 
@@ -204,10 +190,3 @@ auto main () -> int
 ```
 
 [Example](https://www.godbolt.org/z/xqx3o4hW6)
-
-## Links
-
-- [Previous Page : IO](/content/chapter2/tasks/io.md)
-- [Next Page : Conditional Expressions](/content/chapter2/tasks/condexpr.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

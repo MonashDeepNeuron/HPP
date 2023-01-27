@@ -6,7 +6,7 @@
 
 This repository contains the information, resources and links to help guide you through this series. Each directory will have a corresponding `README.md` file which is displayed when viewing that directory on GitHub. These files will give a synopsis of everything to do with that directory. The weekly content can be found in the `content/` directory, which has been broken down by week.
 
-Each week has directories for the tasks, examples and meetup slides for that week. Any other helpful information brought during meetups will be added to the `README.md` of each week. Read the information carefully and follow each step as listed. If you need help, don't hesitate to read out.
+Each week has directories for the sections, examples and meetup slides for that week. Any other helpful information brought during meetups will be added to the `README.md` of each week. Read the information carefully and follow each step as listed. If you need help, don't hesitate to read out.
 
 The links below can help direct you to the relevant pages.
 

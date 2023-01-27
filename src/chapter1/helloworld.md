@@ -2,19 +2,7 @@
 
 If you've never programmed before, a "Hello World" program is a simplest program and is often used to introduce a language. The first Hello World was created in Brian Kernighan's 1972 "A Tutorial Introduction to the Language B".
 
-## Contents
-
-- [Hello World!](#hello-world)
-  - [Contents](#contents)
-  - [Task 6](#task-6)
-    - [6.1 : Introducing C++](#61--introducing-c)
-    - [6.2 : First C++](#62--first-c)
-    - [6.3 : Build and Run](#63--build-and-run)
-    - [6.4 : Debugging](#64--debugging)
-    - [6.5 : Hello World - bpt](#65--hello-world---bpt)
-  - [Links](#links)
-
-## Task 6
+## Section 6
 
 ### 6.1 : Introducing C++
 
@@ -82,7 +70,7 @@ auto main () -> int
 }
 ```
 
-[Example](/content/chapter1/examples/hello/hello.cxx)
+[Example](./examples/hello/hello.cxx)
 
 Don't worry too much about the details as we will discuss in greater detail during the meetup.
 
@@ -158,11 +146,4 @@ $ ./build/hello
 Hello World!
 ```
 
-[Example](/content/chapter1/examples/hello-bpt)
-
-## Links
-
-- [Previous Page : VSCode](/content/chapter1/tasks/vscode.md)
-- [Next Page : Compiler Explorer](/content/chapter1/tasks/godbolt.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)
+[Example](./examples/hello-bpt/src/hello.main.cxx)

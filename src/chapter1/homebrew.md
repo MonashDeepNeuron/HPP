@@ -2,19 +2,7 @@
 
 Homebrew is a system package manager similar to `apt` however, it is cross platform allowing us to install packages on Linux and MacOS.
 
-## Contents
-
-- [Homebrew](#homebrew)
-  - [Contents](#contents)
-  - [Task 3](#task-3)
-    - [3.1 : Installing Homebrew](#31--installing-homebrew)
-      - [Note](#note)
-    - [3.2 : Packages from Homebrew](#32--packages-from-homebrew)
-    - [3.3 : Installing Git (MacOS only)](#33--installing-git-macos-only)
-    - [3.4 : Authenticating Git](#34--authenticating-git)
-  - [Links](#links)
-
-## Task 3
+## Section 3
 
 ### 3.1 : Installing Homebrew
 
@@ -80,7 +68,7 @@ gcc version 12.2.0 (Homebrew GCC 12.2.0)
 
 ### 3.3 : Installing Git (MacOS only)
 
-In the last couple tasks Linux and WSL users have installed Git however, Git is a bit awkward on MacOS. To check if Git is already installed run.
+In the last couple sections Linux and WSL users have installed Git however, Git is a bit awkward on MacOS. To check if Git is already installed run.
 
 ```sh
 git --version
@@ -109,10 +97,3 @@ Now that any machine you could be working on has Git, we can authenticate its us
 git config --global user.name "<github-username>"
 git config --global user.email "<github-email>"
 ```
-
-## Links
-
-- [Previous Page : WSL](/content/chapter1/tasks/wsl.md)
-- [Next Page : bpt](/content/chapter1/tasks/bpt.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

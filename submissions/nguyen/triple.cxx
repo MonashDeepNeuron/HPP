@@ -5,7 +5,7 @@
 
 /// To run this in VS code: 
 /// Check if g++ is available: g++ --version
-/// Go to Terminal -> Run Build Task -> Choose C/C++: g++ build active file
+/// Go to Terminal -> Run Build Section -> Choose C/C++: g++ build active file
 /// When the file is executing, there will be output at the end asking for some input which must be in number, and can be whole or decimal number
 
 #include <iostream>

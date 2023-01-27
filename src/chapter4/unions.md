@@ -1,20 +1,8 @@
 # Unions
 
-## Contents
+## Section 4
 
-- [Unions](#unions)
-  - [Contents](#contents)
-  - [Task 4](#task-4)
-    - [Task 4.1 : Unions](#task-41--unions)
-    - [Task 4.2 : Limitations](#task-42--limitations)
-    - [Task 4.3 : Type Safe Algebraic Data Types](#task-43--type-safe-algebraic-data-types)
-      - [Task 4.3.1 : Option](#task-431--option)
-      - [Task 4.3.2 : Variant](#task-432--variant)
-  - [Links](#links)
-
-## Task 4
-
-### Task 4.1 : Unions
+### Section 4.1 : Unions
 
 Unions are a special kind of type known as an algebraic data type. This means the type of a union object can vary between a small list of possible types. This allows for a single type to be one of many possible types that can change throughout the lifetime of the program. The members of a union occupy the same memory space, thus the size of a union is the size of the largest possible member. Constructing a union object will always need to construct the first variant. Accessing the non-activate member is UB.
 
@@ -47,7 +35,7 @@ auto main() -> int
 
 [Unions : cppreference](https://en.cppreference.com/w/cpp/language/union)
 
-### Task 4.2 : Limitations
+### Section 4.2 : Limitations
 
 Unions are quite powerful but have a few limitations.
 
@@ -88,11 +76,11 @@ int main()
 
 [Example](https://www.godbolt.org/z/rqPz5hK45)
 
-### Task 4.3 : Type Safe Algebraic Data Types
+### Section 4.3 : Type Safe Algebraic Data Types
 
 While unions are powerful, they are very error prone and can lead to hard to diagnose bugs. Instead, in C++17 type-safe algebraic types that more intuitive to use and far safer.
 
-#### Task 4.3.1 : Option
+#### Section 4.3.1 : Option
 
 One of the most common uses of algebraic data types is `std::optional` which can represent a type that may _optionally_ contain some value or non at all. `std::optional` is often used as the return type if a function that might expectedly fail. `std::optional` can contain any type or has the type of `std::nullopt`.
 
@@ -134,7 +122,7 @@ auto main() -> int
 
 [`std::optional<T>` : cppreference](https://en.cppreference.com/w/cpp/utility/optional)
 
-#### Task 4.3.2 : Variant
+#### Section 4.3.2 : Variant
 
 The is also a more generic algebraic data type in C++ called `std::variant` which is implemented as a tagged union; that is, you are able to inspect which type is currently active, validate the state of the variant and perform a simply form of pattern matching. Empty variants can be simulated by using the `std::monospace` type variant.
 
@@ -171,10 +159,3 @@ auto main() -> int
 [`std::variant<Ts..>` : cppreference](https://en.cppreference.com/w/cpp/utility/variant)
 
 [`std::visit()` : cppreference](https://en.cppreference.com/w/cpp/utility/variant/visit)
-
-## Links
-
-- [Previous Page : Enumerations](/content/chapter4/tasks/enums.md)
-- [Next Page : Unions](/content/chapter4/tasks/structs.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

@@ -1,33 +1,14 @@
 # Introduction to the Standard Library
 
-## Contents
+## Section 5
 
-- [Introduction to the Standard Library](#introduction-to-the-standard-library)
-  - [Contents](#contents)
-  - [Task 5](#task-5)
-    - [Task 5.1 : What is the Standard Library](#task-51--what-is-the-standard-library)
-    - [Task 5.2 : Initializer Lists](#task-52--initializer-lists)
-    - [Task 5.3 : Arrays](#task-53--arrays)
-    - [Task 5.3.1 : Member Access](#task-531--member-access)
-    - [Task 5.4 : Spans](#task-54--spans)
-    - [Task 5.5 : Strings](#task-55--strings)
-      - [Task 5.5.1 : String Views](#task-551--string-views)
-      - [Task 5.5.2 : Literal Operators](#task-552--literal-operators)
-    - [Task 5.6 : Smart Pointers](#task-56--smart-pointers)
-      - [Task 5.6.1 : Unique Pointer](#task-561--unique-pointer)
-      - [Task 5.6.2 : Shared Pointer](#task-562--shared-pointer)
-      - [Task 5.6.3 : Weak Pointer](#task-563--weak-pointer)
-  - [Links](#links)
-
-## Task 5
-
-### Task 5.1 : What is the Standard Library
+### Section 5.1 : What is the Standard Library
 
 The Standard Library is the full set of features in C++ that are available outside the pure language. These include mathematical functions, IO facilities, containers, algorithms and much more. These are tools that abstract a lot of the useful mechanics of C++ into safe, efficient and fast facilities that are easier to use, more consistent and far superior in functionality. The C++ Standard Library is included using headers. These are the files we have been importing using the `#include` preprocessor directive.
 
 This week you will learn about the most useful and bare-bones features in the Standard Library that will make working with C++ much easier, more idiomatic and faster.
 
-### Task 5.2 : Initializer Lists
+### Section 5.2 : Initializer Lists
 
 Throughout the last few weeks we have been using _brace-init-lists_ to initialise objects. This is super useful for _slice-like_ types to be initialised without using for loops. In C++ these brace-init-lists are converted to `std::initializer_list` (where `T` is the element type). This is a useful construct for building user-defined containers that are initialised using a brace-init-list. There is not much use for you in `std::initializer_list` now but it is useful to know about later. One important thing to know about `std::initializer_list` is that is is a construction only type. That is it is only used to create object, you cannot return a `std::initializer_list` from a function.
 
@@ -36,7 +17,7 @@ Throughout the last few weeks we have been using _brace-init-lists_ to initialis
   - `E` - element type
 - [`std::initializer_list` : cppreference](https://en.cppreference.com/w/cpp/utility/initializer_list)
 
-### Task 5.3 : Arrays
+### Section 5.3 : Arrays
 
 Slices are useful for packing contiguous data into a single object but because of the implicit nature of decaying into pointers they can be error prone. This is where C++'s array type come in.
 
@@ -74,11 +55,11 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/dbcKqx53f)
 
-### Task 5.3.1 : Member Access
+### Section 5.3.1 : Member Access
 
 Because we are know looking at some custom types from C++'s standard library it is important to point out how to access member functions and variables of both objects and pointers. For an object `T t();` with a member variable you access it using the `.` operator like `t.foo`. If `t::foo` is a member function you postfix parentheses to call the function like `t.foo()`. If the object is a pointer say `T* tp = &t` then the `->` operator is used instead of `.`.
 
-### Task 5.4 : Spans
+### Section 5.4 : Spans
 
 Another useful _slice-like_ structure is a `std::span`. Remember the `print()` function in [Task 2.2-2.3](/content//chapter3/tasks/slices.md#task-22--syntax) that took a slice and a size. This is common place in many old C and C++ libraries that used pointer for all buffers. `std::span` removes the need for pointers altogether. `std::span` is a non-owning view of any object that has some contiguous data and a size. This allows libraries to accept a multitude of different intpu types that resemble the shape and work seamlessly with them all.
 
@@ -115,7 +96,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/4Yo93e7Tr)
 
-### Task 5.5 : Strings
+### Section 5.5 : Strings
 
 Now that we have a much more powerful array type at out disposal it might be tempting to use it as a character array for strings and while this is viable we often want to form a very different set of operations on strings compared to arrays. For this we have `std::string`. `std::string` is a specialised type that has a much larger interface of string operations.
 
@@ -143,7 +124,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/hqT44PM7M)
 
-#### Task 5.5.1 : String Views
+#### Section 5.5.1 : String Views
 
 There are also span like views for strings. This is called `std::string_view`. Like span it doesn't own its string but can be used to access its value. This is designed to be a replacement for character slices.
 
@@ -168,7 +149,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/cbb95YWWj)
 
-#### Task 5.5.2 : Literal Operators
+#### Section 5.5.2 : Literal Operators
 
 In C++ the is a cool operator called the literal operator `""`. This is used to construct literals from string literals. The are string literal operators for `std::string` and `std::string_view` which are `""s` and `""sv` respectively.
 
@@ -198,13 +179,13 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/jcMfrG76c)
 
-### Task 5.6 : Smart Pointers
+### Section 5.6 : Smart Pointers
 
 The final facility we will look at is C++'s smart pointers. Smart pointers allow for automatic lifetime management of heap allocated memory resources. It is highly recommended to only use smart pointers for for any kind of head resource.
 
 All smart pointers are in the `<memory>` header.
 
-#### Task 5.6.1 : Unique Pointer
+#### Section 5.6.1 : Unique Pointer
 
 `std::unique_ptr` is a pointer to a uniquely owned resource. It cannot be copied, only moved. When a `std::unique_ptr` goes out of scope it automatically deletes the allocated resource. Because `std::unique_ptr` is a complete object you can pass a reference of a `std::unique_ptr` and modify the underlying value like a pointer. It also offers a safer `std::unique_ptr::get()` method that returns `nullptr` if the `std::unique_ptr` points to nothing.
 
@@ -247,7 +228,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/G1T1j84nE)
 
-#### Task 5.6.2 : Shared Pointer
+#### Section 5.6.2 : Shared Pointer
 
 Sometimes it useful to have multiple pointers refer to the same dynamic memory resource. However, one issue of this is there is know way to know if the memory resource is still needed but another pointer meaning a memory resource can be released accidently leaving all other pointers to the now deleted resource a dangling pointer. This is where `std::shared_ptr` comes in handy. This pointer will maintain a count or how many pointers refer to it. Only when this count reaches zero, indicating no more pointers are using the resource will the resource get deleted. This gives the behavior of many garbage collected languages without the massive overhead of a global gabage collecting program.
 
@@ -285,7 +266,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/39dPYooTW)
 
-#### Task 5.6.3 : Weak Pointer
+#### Section 5.6.3 : Weak Pointer
 
 Sometimes it is useful to observe an existing resource that is managed by `std::shared_ptr` and only assume temporary ownership if the object still exists. This is where `std::weak_ptr` is used. It is constructed from an existing `std::shared_ptr` and observes the memory resource and is able to be converted to a `std::shared_ptr` when it needs to access the resource. This is useful for breaking reference cycles of `std::shared_ptr`'s and extend the lifetime of a memory resource to the scope of a `std::weak_ptr`. It is also able to check if the resource has been deleted already.
 
@@ -324,10 +305,3 @@ auto main () -> int
 ```
 
 [Example](https://www.godbolt.org/z/PaonscnEG)
-
-## Links
-
-- [Previous Page : References](/content/chapter3/tasks/references.md)
-- [Back to Chapter 3](/content/chapter3/README.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

@@ -1,23 +1,12 @@
 # Streams
 
-## Contents
+## Section 5
 
-- [Streams](#streams)
-  - [Contents](#contents)
-  - [Task 5](#task-5)
-    - [Task 5.1 : What is a stream?](#task-51--what-is-a-stream)
-    - [Task 5.2 : C Standard Streams](#task-52--c-standard-streams)
-      - [Task 5.2.1 : Input](#task-521--input)
-    - [Task 5.3 : IO Manipulators](#task-53--io-manipulators)
-  - [Links](#links)
-
-## Task 5
-
-### Task 5.1 : What is a stream?
+### Section 5.1 : What is a stream?
 
 What is a stream. A stream is a sequence of an indeterminate amount of data connecting a source to a destination. In C++, streams are used to connect a perform a variety of IO operations. You have already used on of these streams in C++, this is of course `std::cout`.
 
-### Task 5.2 : C Standard Streams
+### Section 5.2 : C Standard Streams
 
 In C++ there are a few pre-defined stream objects. This are mounted to the the C languages `stdout`, `stdin` and `stderr`. These output devices are how C (and these stream objects) connect to the terminal screen and keyboard of your device.
 
@@ -32,7 +21,7 @@ All stream objects and types are found in the `<iostream>` header.
 
 [IO Library](https://en.cppreference.com/w/cpp/io)
 
-#### Task 5.2.1 : Input
+#### Section 5.2.1 : Input
 
 We have seen how to print stuff to the console but how do we get input? There are two ways. One uses the stream directly with the `>>` operator while the other defers using a function call. We will only look at the direct usage for now.
 
@@ -57,7 +46,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/3zoz1517r)
 
-### Task 5.3 : IO Manipulators
+### Section 5.3 : IO Manipulators
 
 Because streams are used for IO operations in C++, they are naturally composable, allowing for the streams manipulation mid-stream. The C++ standard library has a variety of manipulators that allow you to change a streams format. Manipulators are found in the `<iomanip>` header.
 
@@ -84,10 +73,3 @@ auto main () -> int
 ```
 
 [Example](https://www.godbolt.org/z/s8rGc4heM)
-
-## Links
-
-- [Previous Page : Operators](/content/chapter2/tasks/operators.md)
-- [Next Page : Equality, Ordering & Logical Operators](/content/chapter2/tasks/eqordlogic.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

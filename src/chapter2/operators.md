@@ -1,19 +1,6 @@
 # Operators
 
-## Contents
-
-- [Operators](#operators)
-  - [Contents](#contents)
-  - [Task 4](#task-4)
-    - [4.1 : Basic Arithmetic](#41--basic-arithmetic)
-    - [4.2 : Casts](#42--casts)
-    - [4.3 : Bitwise Operations](#43--bitwise-operations)
-      - [4.3.1 : A bit about shift operations](#431--a-bit-about-shift-operations)
-    - [4.4 : Arithmetic Assignment](#44--arithmetic-assignment)
-    - [4.5 : Size Operator](#45--size-operator)
-  - [Links](#links)
-
-## Task 4
+## Section 4
 
 ### 4.1 : Basic Arithmetic
 
@@ -286,10 +273,3 @@ auto main () -> int
 ```
 
 [Example](https://www.godbolt.org/z/8E4vTdPbc)
-
-## Links
-
-- [Previous Page : Variables](/content/chapter2/tasks/variables.md)
-- [Next Page : IO](/content/chapter2/tasks/io.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

@@ -6,7 +6,7 @@ Types, Variables, Qualifiers, Operators and Streams
 
 This week you will be introduced to C++ type system, how it differs from other languages and how types reflect machine architecture. You will also learn about variable declarations, type qualifiers and a few of the key operators and IO facilities in C++. You will also be exposed to the concept of ordering, equality and the logical operators in C++. You will also learn about conditional logic and how it can be used to create structure and control the flow of a program. You will also learn about C++ looping facilities and how it can be used to perform iterative programming. Finally, you will learn the basics of functions in C++. This chapter of the course is designed to span two weeks with only a single meetup towards the end of the two week period.
 
-## Tasks
+## Sections
 
 1. [The C++ Type System](/content/chapter2/tasks/typesystem.md)
 2. [Primitive Types](/content/chapter2/tasks/types.md)
@@ -21,10 +21,3 @@ This week you will be introduced to C++ type system, how it differs from other l
 ## Weekly Meetup
 
 This weeks meetup will be on 09/12/22 in Room: 135B, Building: LTB (Learning and Teaching Building), Location: 19 Ancora Imparo Way, Clayton.
-
-## Links
-
-- [Task 1 : The C++ Type System](/content/chapter2/tasks/typesystem.md)
-- [Slides](/content/chapter2/slides/README.md)
-- [Content](/content/README.md)
-- [Home](/README.md)

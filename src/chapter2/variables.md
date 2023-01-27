@@ -1,31 +1,6 @@
 # Variables
 
-## Contents
-
-- [Variables](#variables)
-  - [Contents](#contents)
-  - [Task 3](#task-3)
-    - [3.1 : Variables](#31--variables)
-    - [3.2 : Initialisation](#32--initialisation)
-      - [3.2.1 : Default Initialisation](#321--default-initialisation)
-      - [3.2.2 : Value Initialisation](#322--value-initialisation)
-      - [3.2.3 : Copy Initialisation](#323--copy-initialisation)
-      - [3.2.4 : Direct Initialisation](#324--direct-initialisation)
-      - [3.2.5 : Aggregate Initialisation](#325--aggregate-initialisation)
-      - [3.2.6 : List Initialisation](#326--list-initialisation)
-    - [3.3 : Qualifiers](#33--qualifiers)
-      - [3.3.1 : Signed-ness](#331--signed-ness)
-      - [3.3.2 : Size](#332--size)
-      - [3.3.3 : Storage](#333--storage)
-      - [3.3.4 : Mutability](#334--mutability)
-    - [3.4 : Automatic Types](#34--automatic-types)
-    - [3.5 : Value Categories](#35--value-categories)
-      - [3.5.2 : lvalues](#352--lvalues)
-      - [3.5.3 : rvalues](#353--rvalues)
-      - [3.5.1 : Literals](#351--literals)
-  - [Links](#links)
-
-## Task 3
+## Section 3
 
 ### 3.1 : Variables
 
@@ -235,10 +210,3 @@ rvalues are; as the name suggests, variables or values found on the right-hand-s
 #### 3.5.1 : Literals
 
 Literals are types that have a explicit value to them. The literal `0` has the value of `int{0}` and type `int`. Literals allow the to be common code-point to define values into a specific character or character sequence. Essentially, literals hold the value and type they indicate.
-
-## Links
-
-- [Previous Page : Primitive Types](/content/chapter2/tasks/types.md)
-- [Next Page : Operators](/content/chapter2/tasks/operators.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

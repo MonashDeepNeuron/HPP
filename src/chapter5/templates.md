@@ -1,33 +1,18 @@
 # Templates
 
-## Contents
+## Section 2
 
-- [Templates](#templates)
-  - [Contents](#contents)
-  - [Task 2](#task-2)
-    - [Task 2.1 : Why templates?](#task-21--why-templates)
-    - [Task 2.2 : What are templates?](#task-22--what-are-templates)
-    - [Task 2.3 : Template Parameters](#task-23--template-parameters)
-    - [Task 2.4 : Template Functions](#task-24--template-functions)
-    - [Task 2.5 : Template Classes](#task-25--template-classes)
-    - [Task 2.5.1 : Class Template Methods](#task-251--class-template-methods)
-    - [Task 2.6: Template Variables](#task-26-template-variables)
-    - [Task 2.7 : Template Metaprogramming Basics](#task-27--template-metaprogramming-basics)
-  - [Links](#links)
+### Section 2.1 : Why templates?
 
-## Task 2
+Everything we have learnt about C++ relies on the fact the type of any object must be known at compile time. This can be quite constricting on the kinds of programs we are able to right. Just think back to Assignment 1 where you were sectioned with creating a class called `Triple` with a single underlying type (either `int`, `float` or `double`). Imagine you create `TripleInt` but now had to create a class with the same interface but for the other underlying types (`float` and `double` in this case) that you did not implement (well some of you may have). This can dramatically increase code duplication. One might think to solve this through class inheritance. Somehow define a common abstract interface that derived classes could inherit from and then override the methods in order to implement the interface for each underlying type. However, this requires more work still as anyone that wants to implement `Triple` would have to inherit from it and implement the same interface and logic for there own underlying type. Another caveat is this requires every `Triple` object to have a vtable to there underlying methods resulting in dynamic dispatch of method calling which, is something that has a lot of runtime overhead. The real solution is to have a single interface that can working for any desired type. This is where templates come in.
 
-### Task 2.1 : Why templates?
-
-Everything we have learnt about C++ relies on the fact the type of any object must be known at compile time. This can be quite constricting on the kinds of programs we are able to right. Just think back to Assignment 1 where you were tasked with creating a class called `Triple` with a single underlying type (either `int`, `float` or `double`). Imagine you create `TripleInt` but now had to create a class with the same interface but for the other underlying types (`float` and `double` in this case) that you did not implement (well some of you may have). This can dramatically increase code duplication. One might think to solve this through class inheritance. Somehow define a common abstract interface that derived classes could inherit from and then override the methods in order to implement the interface for each underlying type. However, this requires more work still as anyone that wants to implement `Triple` would have to inherit from it and implement the same interface and logic for there own underlying type. Another caveat is this requires every `Triple` object to have a vtable to there underlying methods resulting in dynamic dispatch of method calling which, is something that has a lot of runtime overhead. The real solution is to have a single interface that can working for any desired type. This is where templates come in.
-
-### Task 2.2 : What are templates?
+### Section 2.2 : What are templates?
 
 Templates can be thought of as blueprints for function, variable or class. They allow for defining interfaces in terms of template parameters which can be types or compile-time variables. Templates can then be instantiated for a given set of valid template parameters which results in the function, variable or class being fully defined meaning they can now be instantiated themselves. Templates are created by using a `template<>` declaration above the definition of a function, variable or class with the template parameters being specified within the angle brackets (`<>`).
 
 [Templates : cppreference](https://en.cppreference.com/w/cpp/language/templates)
 
-### Task 2.3 : Template Parameters
+### Section 2.3 : Template Parameters
 
 There are three categories of template parameters; type, non-type and template-template. We wont cover template-template parameters as they are used for advanced specialisation. Type template parameters are template parameters that accept a type as an argument. These are used to create generic functions, variables and classes that can be defined in terms of many different types. These are the most common use of templates. Type arguments are declared as `template<typename T>` with T being the name of the type argument and will be an alias to the type we later instantiate the template with. Non-type arguments are used to pass values at compile time to a function, variable or class. The type of a non-type template argument must be explicitly declared eg. `template<int N>`, Non-type template arguments are constant and thus cannot be mutated. Here is an example of a template declaration that takes type and non-type template arguments.
 
@@ -40,7 +25,7 @@ This is the template signature of `std::array`.
 
 [Template Arguments : cppreference](https://en.cppreference.com/w/cpp/language/template_parameters)
 
-### Task 2.4 : Template Functions
+### Section 2.4 : Template Functions
 
 To begin, we will look at defining template functions. Template functions are defined identically to regular functions except that before the functions signature we use a template declaration. As we can see below, regardless of the type of the array or the its size we can call `print<>()`. Also, thanks to C++17 we don't have to call it with specific template arguments as the can be deduced from the array itself.
 
@@ -81,9 +66,9 @@ auto main() -> int
 
 [Function template : cppreference](https://en.cppreference.com/w/cpp/language/function_template)
 
-### Task 2.5 : Template Classes
+### Section 2.5 : Template Classes
 
-Template classes allow us to define generic types. Almost all of C++ standard library types are template classes, even `std::cout` which is a static instance of the class `std::basic_ostream<char>`. Template classes allow us to create a blueprint of a class and then instantiate the class definition which a chaptericular type. We can see this with out `Point` class from the previous task section. Now we define `Point` in terms of a template type `T` which we will specify later. This allows us to create `Point` objects of `float` and `double` as well while still only defining a single interface.
+Template classes allow us to define generic types. Almost all of C++ standard library types are template classes, even `std::cout` which is a static instance of the class `std::basic_ostream<char>`. Template classes allow us to create a blueprint of a class and then instantiate the class definition which a chaptericular type. We can see this with out `Point` class from the previous section section. Now we define `Point` in terms of a template type `T` which we will specify later. This allows us to create `Point` objects of `float` and `double` as well while still only defining a single interface.
 
 > Note: For copy and move constructors, the template type parameters can be elided as copy and move semantics must preserve the type. Converting constructors (a type of explicit constructor) are used to convert between template types.
 
@@ -201,7 +186,7 @@ auto main() -> int
 
 [Class Template : cppreference](https://en.cppreference.com/w/cpp/language/class_template)
 
-### Task 2.5.1 : Class Template Methods
+### Section 2.5.1 : Class Template Methods
 
 Just like how free functions can be templated, we can also specify methods of classes to be templated. This allows use to customize classes methods not just in terms of its template types and parameters but also in terms of templates of objects that we may need to pass to the method of a class. This useful for creating overloaded methods that are not just customized by type but also the template signature pattern they have.
 
@@ -253,7 +238,7 @@ private:
 - [`std::common_type` : cppreference](https://en.cppreference.com/w/cpp/types/common_type)
 - [Version 2 of `Point<T>`](/content/chapter5/examples/point-v2.hxx)
 
-### Task 2.6: Template Variables
+### Section 2.6: Template Variables
 
 Is is also possible to define variables as templates. This allows for variables to take on different forms depending on the underlying type. Template variables are typically `static` or `constexpr` free variables or `static` members of a class. A common use of template variables is mathematical constants that have different underlying types. We can see this in use with `e<T>` and `std::numeric_limits<T>` members.
 
@@ -286,7 +271,7 @@ auto main() -> int
 - [Variable Templates : cppreference](https://en.cppreference.com/w/cpp/language/variable_template)
 - [`std::numeric_limits` : cppreference](https://en.cppreference.com/w/cpp/types/numeric_limits)
 
-### Task 2.7 : Template Metaprogramming Basics
+### Section 2.7 : Template Metaprogramming Basics
 
 We've seen a bit of metaprogramming in C++ already. Metaprogramming is the ability to influence the structure of your code at compile time using the language itself. Templates are a simple form of metaprogramming and allow us to change the behaviour of our code based on the types and values we instantiate our templates with. Using templates, the C++ standard library has many metaprogramming objects that allow us to customize our code even more. Most of the standard  libraries metaprogramming objects are in the form of type analysis from the `<type_traits>` header. These allow us to inspect the properties of any type (template or known) and customize based on the results. There is much more to metaprogramming that is beyond the scope of this course.
 
@@ -295,10 +280,3 @@ We've seen a bit of metaprogramming in C++ already. Metaprogramming is the abili
 - [SFINAE : cppreference](https://en.cppreference.com/w/cpp/language/sfinae)
 - [`<type_traits>` : cppreference](https://en.cppreference.com/w/cpp/header/type_traits)
 - [`std::integer_sequence` : cppreference](https://en.cppreference.com/w/cpp/utility/integer_sequence)
-
-## Links
-
-- [Previous Page : Classes](/content/chapter5/tasks/classes.md)
-- [Next Page : Generics](/content/chapter5/tasks/generics.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

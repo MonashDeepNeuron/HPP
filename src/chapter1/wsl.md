@@ -1,35 +1,14 @@
 # WSL
 
-## Contents
-
-- [WSL](#wsl)
-  - [Contents](#contents)
-  - [Operating System](#operating-system)
-    - [Note](#note)
-  - [Task 2](#task-2)
-    - [2.1 : Update Windows and Virtualization Check](#21--update-windows-and-virtualization-check)
-    - [2.2 : Windows Terminal](#22--windows-terminal)
-    - [2.3 : WSL](#23--wsl)
-    - [2.4 : APT & Packages](#24--apt--packages)
-  - [Links](#links)
-
-## Operating System
-
-Developing C++ on Windows can be a bit of a hassle to setup and use beyond Windows. Instead, Microsoft offers virtualized OS called Windows Subsystem for Linux or WSL. WSL is a native Linux kernel running alongside your Windows OS but unlike dual booting, they share the same filesystem, allowing you to work on Linux inside Windows. Using Linux is much easier to develop C++ code.
-
-### Note
-
-> If you currently are running MacOS or Linux already (including WSL) you can skip this tasks and move onto the next one.
-
-## Task 2
+## Section 2
 
 ### 2.1 : Update Windows and Virtualization Check
 
 Before we begin, it is best to ensure we have the most recent Windows update available. Go to **Settings > Updates** and install any updates to your system.
 
-Secondly, you will want to ensure that virtualization is enabled on your device. To do this open 'Task Manager', click more details, open the performance tab and make sure you are on the CPU performance section. In the details below the CPU's graph there should be an option called 'virtualization'. This should have the value 'Enabled' next to it. If it doesn't, you will need to enable a feature called SVM in your computers BIOS. If you are comfortable doing this; go for it but if you do not want to do this yourself do not worry. We will ensure everyone is setup correctly in the first meetup. Continue reading through as there will be a way you can start coding at the end of the tasks.
+Secondly, you will want to ensure that virtualization is enabled on your device. To do this open 'Task Manager', click more details, open the performance tab and make sure you are on the CPU performance section. In the details below the CPU's graph there should be an option called 'virtualization'. This should have the value 'Enabled' next to it. If it doesn't, you will need to enable a feature called SVM in your computers BIOS. If you are comfortable doing this; go for it but if you do not want to do this yourself do not worry. We will ensure everyone is setup correctly in the first meetup. Continue reading through as there will be a way you can start coding at the end of the sections.
 
-![Task Manager Example](/content/chapter1/tasks/imgs/taskmanager.png)
+![Task Manager Example](./imgs/taskmanager.png)
 
 ### 2.2 : Windows Terminal
 
@@ -37,7 +16,7 @@ To get started with WSL we will want a new terminal environment for the WSL shel
 
 ### 2.3 : WSL
 
-To install WSL, we need to open PowerShell terminal with administrative privileges. Click on the Windows Start button (bottom left icon on the taskbar) and type "PowerShell", select "Run as Administrator". This will open a new shell. Now run:
+To install WSL, we need to open PowerShell terminal with administrative privileges. Click on the Windows Start button (bottom left icon on the sectionbar) and type "PowerShell", select "Run as Administrator". This will open a new shell. Now run:
 
 ```ps
 wsl --install -d Ubuntu-20.04
@@ -71,10 +50,3 @@ sudo apt install git curl wget ca-certificates build-essential
 ```
 
 WSL should be installed and ready to go.
-
-## Links
-
-- [Previous Page : Git & Github](/content/chapter1/tasks/github.md)
-- [Next Page : Homebrew](/content/chapter1/tasks/homebrew.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

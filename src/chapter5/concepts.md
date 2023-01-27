@@ -1,28 +1,10 @@
 # Concepts
 
-## Contents
+## Section 4
 
-- [Concepts](#concepts)
-  - [Contents](#contents)
-  - [Task 4](#task-4)
-    - [Task 4.1 : Limitations to templates](#task-41--limitations-to-templates)
-    - [Task 4.2 : What is a Concept?](#task-42--what-is-a-concept)
-    - [Task 4.3 : Constrained templates](#task-43--constrained-templates)
-    - [Task 4.4 : Requires expressions](#task-44--requires-expressions)
-      - [Task 4.4.1 : Requires expression](#task-441--requires-expression)
-      - [Task 4.4.2 : Compound requirements](#task-442--compound-requirements)
-    - [Task 4.5 : Constrained variables](#task-45--constrained-variables)
-  - [Assignment 2](#assignment-2)
-    - [Requirements](#requirements)
-    - [Bonus](#bonus)
-    - [Submitting](#submitting)
-  - [Links](#links)
+### Section 4.1 : Limitations to templates
 
-## Task 4
-
-### Task 4.1 : Limitations to templates
-
-Templates are extremely powerful allow us to create reusable and extendible code however there is a caveat to this. Take for example our `Point` class from Tasks 1-2. `Point` just takes a single type `T`. This can be absolutely any type. This can become a problem though later for the user. Say we have a `Point<std::string>`. This will cause an error for the user of our `Point` class if they try to take two `Point<std::string>` because `-` is not supported by `std::string`. This can be a major problem as the error produced can be ambiguous to the user and require looking at the source code in depth to diagnose.
+Templates are extremely powerful allow us to create reusable and extendible code however there is a caveat to this. Take for example our `Point` class from Sections 1-2. `Point` just takes a single type `T`. This can be absolutely any type. This can become a problem though later for the user. Say we have a `Point<std::string>`. This will cause an error for the user of our `Point` class if they try to take two `Point<std::string>` because `-` is not supported by `std::string`. This can be a major problem as the error produced can be ambiguous to the user and require looking at the source code in depth to diagnose.
 
 ```cxx
 /// ... Point implementation
@@ -177,7 +159,7 @@ Execution build compiler returned: 1
 
 To address this C++20 introduced concepts. A mechanism for imposing constraints on types.
 
-### Task 4.2 : What is a Concept?
+### Section 4.2 : What is a Concept?
 
 A concepts is a set of conditions and requirements imposed on a type that is checked at compile time and evaluates as a Boolean. Before C++20, template metaprogramming and SFINAE where used to statically impose constraints on types but they had limitations and were highly verbose. Concepts allow us to define syntactic constraints on a template type and then impose those constraints on other types. Concepts are introduced using a template declaration followed by a concept declaration (similar to a class declaration but replace the keyword `class` with `concept`). Concepts can be composed of other concepts using `||` and `&&` (holding similar semantics to there Boolean equivalents). It is difficult to create meaningful concepts as one, they are very new to both C++ but also programming in general, instead try and use the concepts defined by the standard library; from the `<concepts>` header, first and impose them on a case by case basis using the techniques we are going to learn below.
 
@@ -217,7 +199,7 @@ auto main() -> int
 - [`<concepts>` : cppreference](https://en.cppreference.com/w/cpp/concepts)
 - [Constraints and concepts : cppreference](https://en.cppreference.com/w/cpp/language/constraints)
 
-### Task 4.3 : Constrained templates
+### Section 4.3 : Constrained templates
 
 Concepts are easiest to use when constraining templates type parameters. Instead of the using the keyword `typename` when can instead use a concept. This will impose the rules on the template type at the point of instantiation. We can see this best with our `Point` class. Being that a 'point' is a numerical value in a field; say coordinates on a cartesian plane we might want to restrict the type parameter `T` of `Point` to a number type. C++'s concepts library already has a concept for this called `std::integral`. Lets impose this new template type parameter constraint on `T`.
 
@@ -262,7 +244,7 @@ In file included from <source>:1:
 
 [`std::integral` : cppreference](https://en.cppreference.com/w/cpp/concepts/integral)
 
-### Task 4.4 : Requires expressions
+### Section 4.4 : Requires expressions
 
 The is a slight problem with our reformed `Point` class. It no longer can accept floating point types as they are not considered integrals in C++. Instead we need to constraint `Point` to a type `T` by creating a conjunction (`&&`) or disjunction (`||`) of multiple concepts. To do this we use a requires clause. Requires clause are introduced just after (often syntactically below) a template declaration and consist of a list of requirements in the form of a Boolean concept expression. We can create a disjunction of the `std::integral` and `std::floating_point` allowing floating point types and integral types to be valid `T` for `Point`.
 
@@ -293,7 +275,7 @@ auto main() -> int
 - [`std::floating_point` : cppreference](https://en.cppreference.com/w/cpp/concepts/floating_point)
 - [`requires` clause : cppreference](https://en.cppreference.com/w/cpp/language/constraints#:~:text=on%20constraint%20normalization.-,Requires%20clauses,-The%20keyword)
 
-#### Task 4.4.1 : Requires expression
+#### Section 4.4.1 : Requires expression
 
 Sometimes more complicated requirements need to be specified in order to fine the allowed behaviour of the program. Require expressions allow for mock values of template types to bne created and specify patterns that a value of the type parameter must provide. In the case of our `Point` class, we may want to also allow other types that support `+` and `-` binary operator overloads. Because this check depends on the type parameter of another `Point` we can't declare it at the requires clause at the template declaration of `Point`. Instead we need to create a requires clause at the operator overloads template declaration. We then declare our requires expression, enforcing the semantic and syntactic rules on the type. We can declare as many of these rules in a requires expression as we like. For `Point` we will ensure that for a value of type `T` called `a` and for a value of type `U` of name `b`, `a + b` and `a - b` is valid.
 
@@ -329,7 +311,7 @@ operator- (const Point<U>& p)
 
 [`requires` expression : cppreference](https://en.cppreference.com/w/cpp/language/requires)
 
-#### Task 4.4.2 : Compound requirements
+#### Section 4.4.2 : Compound requirements
 
 We can also apply constraints on the expressions within a requires expression, ensuring the types or properties these expressions will have. These are called compound expressions, which we create by wrapping our individual rules from a requires expression in braces and use a `->` followed by a constraint on the return type of the expression.
 
@@ -365,7 +347,7 @@ operator- (const Point<U>& p)
 
 [Version 3 of `Point`](/content/chapter5/tasks/concepts.md)
 
-### Task 4.5 : Constrained variables
+### Section 4.5 : Constrained variables
 
 We can also use concepts to constrain variables declared with the `auto` specifier. Gives a more robust option for constraining function and method parameters without the need for template declarations or requires clauses.
 
@@ -442,10 +424,3 @@ You can use Godbolt or bpt to build and test your struct. Once you have created 
 > Note: If you created a GodBolt instance, put the link in a comment at the top of the file (under your copy comments). This is generated by clicking the `share` button in the top-right-most corner of the webpage and clicking the 'short link' option.
 
 This, ideally should be submitted before our meetup on 18/01/2023. Please note that I will be asking each of you a few questions about how you went and your thought processes in throughout the implementation.
-
-## Links
-
-- [Previous Page : Generics](/content/chapter5/tasks/generics.md)
-- [Back to Chapter 5](/content/chapter5/README.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

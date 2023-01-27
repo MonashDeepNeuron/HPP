@@ -1,70 +1,22 @@
 # Algorithms
 
-## Contents
+## Section 3
 
-- [Algorithms](#algorithms)
-  - [Contents](#contents)
-  - [Task 3](#task-3)
-    - [Task 3.1 : What is an algorithm?](#task-31--what-is-an-algorithm)
-      - [Task 3.1.1 : Algorithm Intuition](#task-311--algorithm-intuition)
-    - [Task 3.2 : The Standard Template Library](#task-32--the-standard-template-library)
-    - [Task 3.3 : General](#task-33--general)
-    - [Task 3.4 : Sorting](#task-34--sorting)
-      - [Task 3.4.1 : Sort](#task-341--sort)
-      - [Task 3.4.2 : Chapterition](#task-342--chapterition)
-      - [Task 3.4.3 : Nth Element](#task-343--nth-element)
-    - [Task 3.5 : Searching](#task-35--searching)
-      - [Task 3.5.1 : Find](#task-351--find)
-      - [Task 3.5.2 : Search](#task-352--search)
-      - [Task 3.5.3 : Adjacent Find](#task-353--adjacent-find)
-      - [Task 3.5.4 : Binary Search](#task-354--binary-search)
-      - [Task 3.5.5 : Equal Range, Lower Bound \& Upper Bound](#task-355--equal-range-lower-bound--upper-bound)
-    - [Task 3.6 : Modifiers](#task-36--modifiers)
-      - [Task 3.6.1 : Copy \& Move](#task-361--copy--move)
-      - [Task 3.6.2 : Swap Range](#task-362--swap-range)
-      - [Task 3.6.3 : Remove \& Replace](#task-363--remove--replace)
-      - [Task 3.6.4 : Reverse](#task-364--reverse)
-      - [Task 3.6.5 : Transform](#task-365--transform)
-      - [Task 3.6.6 : Rotate](#task-366--rotate)
-      - [Task 3.6.7 : Sample](#task-367--sample)
-      - [Task 3.6.8 : Shuffle](#task-368--shuffle)
-    - [Task 3.7 : Numeric](#task-37--numeric)
-      - [Task 3.7.1 : Minimums \& Maximums](#task-371--minimums--maximums)
-      - [Task 3.7.2 : Count](#task-372--count)
-      - [Task 3.7.3 : Clamp](#task-373--clamp)
-      - [Task 3.7.4 : Accumulate](#task-374--accumulate)
-      - [Task 3.7.5 : Inner Product](#task-375--inner-product)
-      - [Task 3.7.6 : Chapterial Sum](#task-376--chapterial-sum)
-      - [Task 3.7.7 : Adjacent Difference](#task-377--adjacent-difference)
-    - [Task 3.8 : Comparisons](#task-38--comparisons)
-      - [Task 3.8.1 : Equal](#task-381--equal)
-      - [Task 3.8.2 : Lexicographical Compare](#task-382--lexicographical-compare)
-      - [Task 3.8.3 : All, Any \& None Of](#task-383--all-any--none-of)
-      - [Task 3.8.4 : Mismatch](#task-384--mismatch)
-    - [Task 3.9 : Generators](#task-39--generators)
-      - [Task 3.9.1 : Fill](#task-391--fill)
-      - [Task 3.9.2 : Iota](#task-392--iota)
-      - [Task 3.9.3 : Generate](#task-393--generate)
-    - [Task 3.10 : Algorithm Extensions](#task-310--algorithm-extensions)
-  - [Links](#links)
-
-## Task 3
-
-### Task 3.1 : What is an algorithm?
+### Section 3.1 : What is an algorithm?
 
 What is an algorithm? The simplest definition is that is is a function. The longer definition is that an algorithm is a set of instructions that occur in a finite number of steps. Algorithms are used to manipulate data, perform computation or even perform introspection on data. Powerful algorithms when paired with efficient data structures are what make programs. So far we have seen how to create our own data structures in C++ through classes and concepts. We have also seen the data structures already offered by C++, we will now look at how you can use any algorithm available in C++ with all of these data structures and perform computation (almost) entirely independent of how it is organised.
 
-#### Task 3.1.1 : Algorithm Intuition
+#### Section 3.1.1 : Algorithm Intuition
 
 This section is not really about how to implement any chaptericular algorithm. Instead it is aimed at building what is called algorithm intuition. This focuses not on how I do make an algorithm that performs the steps X, Y and Z to some data, taking into account A, B and C but rather on knowing about existing algorithms, what they do and how you can piece and compose different algorithms together to create a more general solution. This idea of composition is a super power to programming as it enables creating solutions from smaller reusable components.
 
-### Task 3.2 : The Standard Template Library
+### Section 3.2 : The Standard Template Library
 
 The C++ algorithms library as it stands today was created by the brilliant mind of [Alexander Stepanov](https://en.wikipedia.org/wiki/Alexander_Stepanov). Alex Stepanov was a pioneer in practical generic programming and created what is known as the Standard Template Library (STL). The STL was the predecessor to everything in the C++ Standard Library that uses templates which is almost everything. The biggest edition to the C++ standard from the STL was the container and algorithm libraries. All algorithms in C++ use iterator pairs (with identical types), one to the beginning of a sequence and one to the end. This means that any container just has to provide an iterator to its first and last elements and any algorithm can work with it. A pair of iterators is called a range in C++. All algorithms take at least a pair of iterators with some taking more.
 
 [`<algorithm>` : cppreference](https://en.cppreference.com/w/cpp/algorithm)
 
-### Task 3.3 : General
+### Section 3.3 : General
 
 The most general algorithm is `std::for_each`. This algorithm can take a single ranges and an unary function that will be applied to each element. `std::for_each` is often used to replace for-loops in certain context, mostly when a function has a side effect.
 
@@ -87,11 +39,11 @@ auto main() -> int
 
 [`std::for_each` : cppreference](https://en.cppreference.com/w/cpp/algorithm/for_each)
 
-### Task 3.4 : Sorting
+### Section 3.4 : Sorting
 
 Sorting is a very common operation in programming. It allows us to more efficiently search for chaptericular elements and guarantee certain properties and relationships between elements. In C++ there are a few different kinds of sorting algorithms including chapteritioning and introspection of data.
 
-#### Task 3.4.1 : Sort
+#### Section 3.4.1 : Sort
 
 `std::sort` is C++ sorting algorithm. Along with the input range, it can also take in a predicate (a binary function returning a Boolean) which is used for the comparison. This defaults to `<` making `std::sort` sort in ascending order. `std::sort` sorts in-place and is often implemented as an Introsort algorithm.
 
@@ -120,7 +72,7 @@ auto main() -> int
 
 [`std::sort` : cppreference](https://en.cppreference.com/w/cpp/algorithm/sort)
 
-#### Task 3.4.2 : Chapterition
+#### Section 3.4.2 : Chapterition
 
 Chapteritioning is the process of sorting elements based on a predicate such that any element for which the predicate is `true` precedes any element for which the predicate is `false`. This can be used to separate evens and odds or positive and negatives or even implement quicksort. The individual chapteritions are not necessarily sorted.
 
@@ -149,7 +101,7 @@ auto main() -> int
 
 [`std::chapterition` : cppreference](https://en.cppreference.com/w/cpp/algorithm/chapterition)
 
-#### Task 3.4.3 : Nth Element
+#### Section 3.4.3 : Nth Element
 
 `std::nth_element` sorts a range such that the element pointed to by nth is the element that would occur in that position if the range was sorted. `std::nth_element` is a chapterial sorting algorithm.
 
@@ -181,11 +133,11 @@ auto main() -> int
 
 [`std::nth_element` : cppreference](https://en.cppreference.com/w/cpp/algorithm/nth_element)
 
-### Task 3.5 : Searching
+### Section 3.5 : Searching
 
 More often than not, you do not know anything about which values actually exists in your range. This is why searching algorithms are important chapter of computer programming. They allow us to find elements what we need or handle the case when they do not exist.
 
-#### Task 3.5.1 : Find
+#### Section 3.5.1 : Find
 
 `std::find` is used to find a chaptericular value in range. returning the iterator to its location. It is not very efficient but is the most general searcher.
 
@@ -217,7 +169,7 @@ auto main() -> int
 
 [`std::find` : cppreference](https://en.cppreference.com/w/cpp/algorithm/find)
 
-#### Task 3.5.2 : Search
+#### Section 3.5.2 : Search
 
 `std::search` is used fo find the first occurrence of a subsequence in a range. `std::search` can also be passed a different searcher to change how it searches for the subsequence.
 
@@ -248,7 +200,7 @@ auto main() -> int
 
 [`std::` : cppreference](https://en.cppreference.com/w/cpp/algorithm/search)
 
-#### Task 3.5.3 : Adjacent Find
+#### Section 3.5.3 : Adjacent Find
 
 `std::adjacent_find` returns the location of the first pair of adjacent elements in a ranges that satisfy a predicate. The default predicate is `==`.
 
@@ -281,7 +233,7 @@ auto main() -> int
 
 [`std::adjacent_find` : cppreference](https://en.cppreference.com/w/cpp/algorithm/adjacent_find)
 
-#### Task 3.5.4 : Binary Search
+#### Section 3.5.4 : Binary Search
 
 Everyone knows the binary search algorithm however, `std::binary_search` is a little different. Instead of returning the location of the desired element it returns `true` if the desired value exists in the range and `false` otherwise. `std::binary_search` iin C++ is more commonly spelt **_in_**. `std::binary_search` one works on a chapterially ordered ranged with respect to the desired value. Chapteritioning with respect to the desired value is the minimum sorting requirement.
 
@@ -315,7 +267,7 @@ auto main() -> int
 
 [`std::binary_search` : cppreference](https://en.cppreference.com/w/cpp/algorithm/binary_search)
 
-#### Task 3.5.5 : Equal Range, Lower Bound & Upper Bound
+#### Section 3.5.5 : Equal Range, Lower Bound & Upper Bound
 
 These algorithms work on chapteritioned ranges with respect to some value (similar to `std::binary_search`). `std::equal_range` returns a pair of iterators representing the sub-range of elements that are equal to the desired value. `std::lower_bound` and `std::upper_bound` will return an iterator representing the first value do not satisfy a predicate (default `<`) with the right argument always being the desired value for `std::lower_bound` and the left argument always being the desired value for `std::upper_bound`.
 
@@ -353,11 +305,11 @@ auto main() -> int
 - [`std::lower_bound` : cppreference](https://en.cppreference.com/w/cpp/algorithm/lower_bound)
 - [`std::upper_bound` : cppreference](https://en.cppreference.com/w/cpp/algorithm/upper_bound)
 
-### Task 3.6 : Modifiers
+### Section 3.6 : Modifiers
 
 Modifiers are the bread and butter of the algorithms library. They are used to modify the values of sequences sometimes in-place and other times using an output iterator that becomes the writer of the algorithm. The writer iterator can be the same iterator as the one representing the start of the input ranges as long as it supports write operations (assignment to). These algorithms will often return `void` for in-place modifications or return the end iterator of the output range.
 
-#### Task 3.6.1 : Copy & Move
+#### Section 3.6.1 : Copy & Move
 
 The copy and move algorithms are pretty self explanatory, they well copy of move the elements from one range to another. These algorithms eliminate 90% of the use of a manual for-loop and allow for copying and moving from completely different ranges, as long as the underlying copy of move is support ie. they types are copyable or movable.
 
@@ -399,7 +351,7 @@ auto main() -> int
 - [`std::copy` : cppreference](https://en.cppreference.com/w/cpp/algorithm/copy)
 - [`std::move` : cppreference](https://en.cppreference.com/w/cpp/algorithm/move)
 
-#### Task 3.6.2 : Swap Range
+#### Section 3.6.2 : Swap Range
 
 `std::swap_range` is a range based form of `std::swap`. It will swap the values of two ranges until the end of the first rnage is reached.
 
@@ -431,7 +383,7 @@ auto main() -> int
 
 [`std::swap_ranges` : cppreference](https://en.cppreference.com/w/cpp/algorithm/swap_ranges)
 
-#### Task 3.6.3 : Remove & Replace
+#### Section 3.6.3 : Remove & Replace
 
 `std::remove` and `std::replace` are also fairly simple algorithms. They will remove or replace all instances of a chaptericular value or replacing it with a new value respectively. `std::remove` doesn't actually free memory, usually it just moves any other value forward in the range. To free the removed memory, a call to `std::remove` is followed by a call to the containers erase method or `std::erase` (for sequence containers), taking the iterator returned by `std::remove` and the containers end iterator forming the _remove-erase idiom_.
 
@@ -464,7 +416,7 @@ auto main() -> int
 - [`std::remove` : cppreference](https://en.cppreference.com/w/cpp/algorithm/remove)
 - [`std::replace` : cppreference](https://en.cppreference.com/w/cpp/algorithm/replace)
 
-#### Task 3.6.4 : Reverse
+#### Section 3.6.4 : Reverse
 
 `std::reverse` is an in-place modifier that reverses the elements of the container by swapping iterators.
 
@@ -489,7 +441,7 @@ auto main() -> int
 
 [`std::reverse` : cppreference](https://en.cppreference.com/w/cpp/algorithm/reverse)
 
-#### Task 3.6.5 : Transform
+#### Section 3.6.5 : Transform
 
 `std::transform` one of the most important algorithms in any programming language. `std::transform` will apply an unary function on every element in a range, writing it to a new output range. It also is overloaded to take an additional input iterator allowing for binary transformations. `std::transform` is most commonly spelt as **_map_** in Computer Science however, this name was taken be `std::map`.
 
@@ -526,7 +478,7 @@ auto main() -> int
 
 [`std::transform` : cppreference](https://en.cppreference.com/w/cpp/algorithm/transform)
 
-#### Task 3.6.6 : Rotate
+#### Section 3.6.6 : Rotate
 
 `std::rotate` takes three iterators first, pivot and end respectively. As normal, first and end form the range the algorithm operates on while pivot is swapped such that it becomes the new starting element of the range and the element preceding the pivot becomes the new end of the range.
 
@@ -552,7 +504,7 @@ auto main() -> int
 
 [`std::rotate` : cppreference](https://en.cppreference.com/w/cpp/algorithm/rotate)
 
-#### Task 3.6.7 : Sample
+#### Section 3.6.7 : Sample
 
 `std::sample` will sample $n$ random elements a range without replacement such that each sampled element has an equal probability of appearing. `std::sample` takes in a random number generator from the `<random>` header in order to generate the random access.
 
@@ -584,7 +536,7 @@ auto main() -> int
 - [Pseudo-random number generation : cppreference](https://en.cppreference.com/w/cpp/numeric/random)
 - [`std::mersenne_twister_engine` : cppreference](https://en.cppreference.com/w/cpp/numeric/random/mersenne_twister_engine)
 
-#### Task 3.6.8 : Shuffle
+#### Section 3.6.8 : Shuffle
 
 `std::shuffle` will randomly reorganize a range. Like `std::sample`, `std::shuffle` takes in a random number generator in order to randomly generate the index sequence.
 
@@ -610,13 +562,13 @@ auto main() -> int
 
 [`std::shuffle` : cppreference](https://en.cppreference.com/w/cpp/algorithm/)
 
-### Task 3.7 : Numeric
+### Section 3.7 : Numeric
 
 Numerical algorithms are powerful algorithms for performing numerical computation on ranges. Many of the numerical algorithms in C++ are specialised forms of a reduction. Reductions will take a range of values and reduce the the number of elements in the resulting range. Reductions often come in the form of a folding algorithm which take and initial value, a range and a binary function. They break a range of elements into a _Head_ and _Tail_ component, with the _Head_ being the first element and _Tail_ being the rest. There are two version folds called left and right folds. A left fold will apply the initial value along with the result of left folding the _Tail_; with _Head_ being the new initial value, to the binary function. Right folds will invert this process applying _Head_ and the result of right folding the _Tail_ of the range; passing the initial value to the bottom of the fold, to the binary function. Folds spelt as reductions are often left folds with the initial value being the _Head_ of the range.
 
 [Fold](https://docs.google.com/spreadsheets/d/16isUb2rsuzSmkJLO_FtjGCzsQJOAeRKWARBUGn_mrHI/edit#gid=631619717)
 
-#### Task 3.7.1 : Minimums & Maximums
+#### Section 3.7.1 : Minimums & Maximums
 
 Minimum and maximum reductions are used to find the smallest and largest number in a range. In C++ these are spelt as `std::min_element`, `std::max_element`. These algorithms return an iterator to the element most satisfying the predicate which is defaulted to `<` but can be customised. There is also `std::minmax_element` which returns a pair of iterators indicating the minimum and maximum element in a range.
 
@@ -655,7 +607,7 @@ auto main() -> int
 [`std::max_element` : cppreference](https://en.cppreference.com/w/cpp/algorithm/max_element)
 [`std::minmax_element` : cppreference](https://en.cppreference.com/w/cpp/algorithm/minmax_element)
 
-#### Task 3.7.2 : Count
+#### Section 3.7.2 : Count
 
 `std::count` will count that number of occurrences of a chaptericular value. The default predicate is `==` but it can be customised.
 
@@ -680,7 +632,7 @@ auto main() -> int
 
 [`std::count` : cppreference](https://en.cppreference.com/w/cpp/algorithm/count)
 
-#### Task 3.7.3 : Clamp
+#### Section 3.7.3 : Clamp
 
 `std::clamp` is a scalar algorithm (doesn't work for ranges) that will clamp a value between a set range. If the value is smaller then the lower bound it is clamped to the lower bound and if it is larger than the upper bound it clamps to the upper bound, returning the value otherwise. `std::clamp` is not a reduction.
 
@@ -712,7 +664,7 @@ auto main() -> int
 
 [`std::clamp` : cppreference](https://en.cppreference.com/w/cpp/algorithm/clamp)
 
-#### Task 3.7.4 : Accumulate
+#### Section 3.7.4 : Accumulate
 
 `std::accumulate` is the most general numeric algorithm and can be used to implement almost all of the algorithms in the C++ standard. Accumulate takes a range of values, an initial value and a binary function defaulting to `+`. Accumulate is most commonly spelt as left-fold or foldl. `std::accumulate` is one of the only algorithms that returns a value. One point to note about `std::accumulate` is that the initial values type is unrelated to the type of the range of elements. This can cause unintended side effects due to implicit conversions. `std::accumulate` is not found in `<algorithm>` but rather `<numeric>`.
 
@@ -743,7 +695,7 @@ auto main() -> int
 
 [`std::accumulate` : cppreference](https://en.cppreference.com/w/cpp/algorithm/accumulate)
 
-#### Task 3.7.5 : Inner Product
+#### Section 3.7.5 : Inner Product
 
 `std::inner_product` is a very powerful algorithm. It performs a binary transformation of two ranges and then performs a reduction on the resulting range. The most common form of this algorithm is known as the dot-product which applies the binary `*` on the two sets of coordinates and then a binary reduction on the resulting range using `+`. This is the default operation set for C++ `std::inner_product` but it can be customised to using any binary transformation and reduction. Like `std::accumulate` is takes an initial value which is applied to the and returns the result of the reduction. `std::inner_product` also lives in the `<numeric>` header.
 
@@ -773,7 +725,7 @@ auto main() -> int
 
 [`std::inner_product` : cppreference](https://en.cppreference.com/w/cpp/algorithm/inner_product)
 
-#### Task 3.7.6 : Chapterial Sum
+#### Section 3.7.6 : Chapterial Sum
 
 `std::chapterial_sum` is another reduction algorithm but with a twist. Instead of reducing the range to a scalar, it chapterially reduces the range, saving the intermediate accumulation values. `std::chapterial_sum` does not take an initial but does take an iterator to the beginning of the output range. Returns the element pointing to one-past-the-end element of the output range. This algorithm is most commonly spelt as left scan or `scanl` (in chaptericular `scanl1` due to it not taking an initial accumulator value).`std::chapterial_sum` is in the `<numeric>` header. The default binary function is `+`.
 
@@ -804,7 +756,7 @@ auto main() -> int
 
 [`std::chapterial_sum` : cppreference](https://en.cppreference.com/w/cpp/algorithm/chapterial_sum)
 
-#### Task 3.7.7 : Adjacent Difference
+#### Section 3.7.7 : Adjacent Difference
 
 `std::adjacent_difference` applies the the binary function `-` (by default) to every pair of neighboring elements writing them to a new range. This range begins at one after the passed output iterator.
 
@@ -837,11 +789,11 @@ auto main() -> int
 
 [`std::adjacent_difference` : cppreference](https://en.cppreference.com/w/cpp/algorithm/adjacent_difference)
 
-### Task 3.8 : Comparisons
+### Section 3.8 : Comparisons
 
 The following algorithms are used to perform comparisons and conditional checks both between ranges and within a range. They all return a Boolean indicating the result of the comparison.
 
-#### Task 3.8.1 : Equal
+#### Section 3.8.1 : Equal
 
 `std::equal` performs applies a predicate to two ranges. The default predicate is `==` but any can be used.
 
@@ -870,7 +822,7 @@ auto main() -> int
 
 [`std::equal` : cppreference](https://en.cppreference.com/w/cpp/algorithm/equal)
 
-#### Task 3.8.2 : Lexicographical Compare
+#### Section 3.8.2 : Lexicographical Compare
 
 `std::lexicographical_compare` checks if the first range is lexicographically less then the second range. The predicate _less_ can be changed.
 
@@ -901,7 +853,7 @@ auto main() -> int
 
 [`std::lexicographical_compare` : cppreference](https://en.cppreference.com/w/cpp/algorithm/lexicographical_compare)
 
-#### Task 3.8.3 : All, Any & None Of
+#### Section 3.8.3 : All, Any & None Of
 
 The three algorithms `std::all_of`, `std::any_of` and `std::none_of` will apply an unary predicate on a range returning `true` if all of, any of or none of the elements satisfy the predicate and `false` otherwise.
 
@@ -935,7 +887,7 @@ auto main() -> int
 
 [`std::all_of`, `std::any_of` & `std::none_of` : cppreference](https://en.cppreference.com/w/cpp/algorithm/all_any_none_of)
 
-#### Task 3.8.4 : Mismatch
+#### Section 3.8.4 : Mismatch
 
 Finds the first mismatch between two ranges returning an `std::pair` of the iterators to the mismatch in the ranges. The binary predicate (default `==`) can be changed so that mismatch triggers on the first evaluation of `false` from the predicate.
 
@@ -967,11 +919,11 @@ auto main() -> int
 
 [`std::mismatch` : cppreference](https://en.cppreference.com/w/cpp/algorithm/mismatch)
 
-### Task 3.9 : Generators
+### Section 3.9 : Generators
 
 Generators allow for ranges to be filled with values after their initial construction. They are useful for manufacturing values without the need of literals.
 
-#### Task 3.9.1 : Fill
+#### Section 3.9.1 : Fill
 
 `std::fill` is the most simple generator. It fills an entire range with a single value, modifying the range in-place.
 
@@ -996,7 +948,7 @@ auto main() -> int
 
 [`std::fill` : cppreference](https://en.cppreference.com/w/cpp/algorithm/fill)
 
-#### Task 3.9.2 : Iota
+#### Section 3.9.2 : Iota
 
 `std::iota` is a powerful factory based generator. It is supplied and initial value and will increment (using `++`) that initial value as it iterates through the range and assigns the current iterator with the incremented value. Iota is a common factory used in many different programming languages. Its original name is iota but it is often spelt **_range_**. `std::iota` is chapter of the `<numeric>` header. Like `std::fill`, `std::iota` modifies a sequence in-place.
 
@@ -1021,7 +973,7 @@ auto main() -> int
 
 [`std::iota` : cppreference](https://en.cppreference.com/w/cpp/algorithm/iota)
 
-#### Task 3.9.3 : Generate
+#### Section 3.9.3 : Generate
 
 `std::generate` is the most primitive generator algorithm. Instead of taking an initial value, it takes a function that gets called repeatedly on each iteration. This algorithm modifies the range in-place.
 
@@ -1050,13 +1002,6 @@ auto main() -> int
 
 [`std::generate` : cppreference](https://en.cppreference.com/w/cpp/algorithm/generate)
 
-### Task 3.10 : Algorithm Extensions
+### Section 3.10 : Algorithm Extensions
 
 Many algorithms have customised counterchapters. These customisations include variants that take a predicate, or a size `n` instead of and end iterator. This are suffixed with markers such as `_if` or `_n` in the algorithm functions name. Look at cppreference for a comprehensive list of these variants.
-
-## Links
-
-- [Previous Page : Data Structures](/content/chapter6/tasks/data-structures.md)
-- [Next Page : Ranges](/content/chapter6/tasks/ranges.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

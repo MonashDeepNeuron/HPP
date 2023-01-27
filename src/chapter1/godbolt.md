@@ -4,16 +4,7 @@ Compiler Explorer; sometimes referred to as Godbolt (after its creator Matthew G
 
 It also displays the assembly output allowing you to have a closer look at what goes on under the hood in C++. It also allows sharing permalinks to instances of Godbolt with specific code and configuration running so you xan distribute working code to anyone as long as they got a browser.
 
-## Contents
-
-- [Compiler Explorer](#compiler-explorer)
-  - [Contents](#contents)
-  - [Task 7](#task-7)
-    - [7.1 Godbolt ⚡](#71-godbolt-)
-  - [Final Words](#final-words)
-  - [Links](#links)
-
-## Task 7
+## Section 7
 
 ### 7.1 Godbolt ⚡
 
@@ -28,10 +19,3 @@ Well done! You just finished your first week of High Performance Programming. I 
 All the best and see you at the meetup.
 
 \- Tyler
-
-## Links
-
-- [Previous Page : Hello World](/content/chapter1/tasks/helloworld.md)
-- [Back to Chapter 1](/content/chapter1/README.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)
