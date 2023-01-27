@@ -12,7 +12,7 @@ The idea is that you will use this repository as your guide for the series, read
 - [Part 4](/content/part4/README.md) - Functional Programming, Namespaces, Enumerations, Unions, Structures
 - [Part 5](/content/part5/README.md) - Classes, Templates, Generics and Concepts
 - [Part 6](/content/part6/README.md) - Iterators, Data Structures, Algorithms, Ranges and Views
-- [Part 7](/content/part7/README.md) - Parallel Algorithms, Atomics, Threads, Mutexes & Locks and Async/Await
+- [Part 7](/content/part7/README.md) - Parallel Algorithms, Atomics, Threads, Mutexes & Locks and Async
 
 ## Home
 
