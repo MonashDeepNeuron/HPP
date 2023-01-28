@@ -2,9 +2,7 @@
 
 If you've never programmed before, a "Hello World" program is a simplest program and is often used to introduce a language. The first Hello World was created in Brian Kernighan's 1972 "A Tutorial Introduction to the Language B".
 
-## Section 6
-
-### 6.1 : Introducing C++
+## Introducing C++
 
 Before you write you first C++ program I will cover a basic synopsis of the language's features.
 
@@ -18,28 +16,28 @@ Because of C++ ability to run on baremetal, many people claim it is a "low-level
 
 But C++ can style more directly interact with the hardware, how can that be if it isn't a low level language. Two things give C++ its power over hardware, first is its _memory model_. Many languages have little or no notion of memory. Data is data and it is as big or small as it is. How big is `int` in Python? To many this doesn't cross their minds when writing Python because you don't need to and that is one of the many benefits of Python. However, there is limits to resources you can use in some circumstances and sometimes you need to be able to guarantee certain memory usages from your software. C++ is one of the language that has a "conscious" notion of memory usage and gives you control over these resources. There is one problem with this, not all computer architectures are the same and don't have the same notion of memory. To tackle this, C++ uses the notion of a universal abstract machine. This is C++ second power over hardware. It has mechanisms for interacting with the underlying hardware through the OS but how it gets there is not to the concern of the developer (unless developing in kernel-space as opposed to user-space). You can use standardized features to access these resources effectively.
 
-I mentioned above that C++ is strongly typed with a static type system. What does this mean? A strong typing basically means that types will not be implicitly cast (converted) to a different type (there are some exceptions to this but we'll cover this in [week 1](/content/chapter2/README.md)). A static type system means that all data must have an explicit type that must be known at compile time.
+I mentioned above that C++ is strongly typed with a static type system. What does this mean? A strong typing basically means that types will not be implicitly cast (converted) to a different type (there are some exceptions to this but we'll cover this in chapter 2). A static type system means that all data must have an explicit type that must be known at compile time.
 
 To wrap it off I'll briefly discuss the paradigms and styles you can write C++ in. The most obvious is procedural, similar to C. This paradigm simply uses free functions that operate on free data, performing instructions according to a procedure or set of instructions. Paired with procedural programming, C++ also allows for imperative programming style programming which consists of functions changing the systems state. This style centers mostly on telling the computer what exactly what you want done. C++ also support object-oriented-programming (OOP) with its primary IO library using many OOP patterns to create runtime polymorphism. The most popular paradigm used in C++ today is generic programming. C++ has many features that allows you to write code for generic types as opposed to creating new functions for every possible combination of types. Finally, C++ also supports functional programming patterns that allow for for creating general purpose algorithms that are composed create more specific data manipulation.
 
-Hopefully this gives you an idea into the kind of language C++ is and how powerful of a language it is.
+Hopefully this gives you an idea into the kind of language C++.
 
-### 6.2 : First C++
+## Hello C++
 
-To begin we are going to open a new terminal window. We car going to create a directory called "hello", enter it and create some files and open VSCode there.
+To begin we are going to open a new terminal window. We are going to create a directory called "hello", enter it and create some files and open VSCode there.
 
 ```sh
 # Makes new directory
-mkdir hello
+$ mkdir hello
 
 # Enter `hello`
-cd hello
+$ cd hello
 
 # Create files `hello.cxx` and `README.md`
-touch hello.cxx README.md
+$ touch hello.cxx README.md
 
 # Open VSCode
-code .
+$ code .
 ```
 
 Open the `hello.cxx` file by clicking it on the left file view.
@@ -72,9 +70,7 @@ auto main () -> int
 
 [Example](./examples/hello/hello.cxx)
 
-Don't worry too much about the details as we will discuss in greater detail during the meetup.
-
-### 6.3 : Build and Run
+## Build and Run
 
 Press `` ctrl + ` `` to open an integrated terminal window in VSCode. Make a new directory called `build` and run the following command to compile the code.
 
@@ -96,7 +92,7 @@ Let's break this command down.
 - `-o build/hello` - The `-o` flag indicates and output file name. Because we wrote it with a path in front of it (`build/*`), it will output to that path.
 - `hello.cxx` - The source file we want to compile.
 
-### 6.4 : Debugging
+## Debugging
 
 Debugging is the crux of fixing issues in code. Debuggers allow us to step through the running code and diagnose any issues that are occurring as they occur. Debugging a single executable is pretty trivial but a sufficiently large codebase can become quite complex.
 
@@ -104,17 +100,17 @@ For that reason we are going to go into debugging a little bit more at the meetu
 
 If you know how a debugger works, you can have a play with VSCode and see if you can get it to work.
 
-### 6.5 : Hello World - bpt
+## Hello World using bpt
 
-`make` is a useful tool and paired with Cmake you can configure and build very large and complex code bases, but these configuration files are hard to read, tedious to write and error prone. Cmake is also a good and pretty standard in industry for C and C++ developers, but this standard is pretty outdated. So for the majority of this series we're going to be using a new tool called `bpt`. bpt is a lot like `pip` (Python), `gem` (Ruby), `hackage` (Haskell) and `cargo` (Rust) allow near seamless control over control over dependencies, testing and distribution of our software.
+`make` is a useful tool and paired with `cmake` you can configure and build very large and complex code bases, but these configuration files are hard to read, tedious to write and error prone. Cmake is also a good and pretty standard in industry for C and C++ developers, but this standard is pretty outdated. So for the majority of this series we're going to be using a new tool called `bpt`. bpt is a lot like `pip` (Python), `gem` (Ruby), `hackage` (Haskell) and `cargo` (Rust) allow near seamless control over control over dependencies, testing and distribution of our software.
 
-One thing to note is bpt experimental, robust enough to handle most cases but has a few caveats, however, beyond a few libraries to ease utility, we won't need many dependencies as we are mostly look at the C++ language and C++ standard library and tus dependencies won't be a major issue. However, we using bpt as it has a pretty robust, plug-and-play testing framework and more intuitive build procedures.
+> Note: bpt is experimental but robust enough to handle most cases. bpt only has a few libraries however, we won't need any dependencies as we are mostly look at the C++ language and C++ Standard Library.
 
 To start off open a new terminal window and run the following command. Keep the default options by pressing enter for each instruction.
 
 ```sh
-bpt new hello-bpt
-code hello-bpt
+$ bpt new hello-bpt
+$ code hello-bpt
 ```
 
 The directory structure should look like this:
@@ -129,14 +125,14 @@ hello-bpt
         └── hello-bpt.hpp
 ```
 
-You can delete the `hello-bpt` directory and its contents in the `src/` directory as these are just temporaries. Create a file in `src/` called `hello.main.cxx`. Copy the "Hello World" program from your other directory (or above again) and past into the newly created file.
+You can delete the `hello-bpt` directory that is within the `src/` directory as these are just template files. Create a file in `src/` called `hello.main.cxx`. Copy the "Hello World" program from your other directory (or above again) and past into the newly created file.
 
-> bpt uses 'stem-leaf' file extensions to determine the purpose of a file. e.g. the `*.main.*` middle stem indicates to bpt that this is a executable that is run (as opposed to a library). You'll learn more about these as we go along.
+> Note: bpt uses 'stem-leaf' file extensions to determine the purpose of a file. e.g. the `*.main.*` middle stem indicates to bpt that this is a executable that is run (as opposed to a library). You'll learn more about these as we go along.
 
 Now simply run the following command to build the bpt project.
 
 ```sh
-bpt build -t :c++20:gcc-12 -o build
+$ bpt build -t :c++20:gcc-12 -o build
 ```
 
 This will spit out the binary into `build/`, dropping both file extensions. To run the program, simply call.

@@ -2,16 +2,12 @@
 
 [Home](./home.md)
 [Foreword]()
-[Introduction](./introduction.md)
 
 ## Chapter 1
 
-- [Setup](./chapter1/chapter1.md)
-  - [Git & GitHub](./chapter1/github.md)
+- [Getting Started](./chapter1/chapter1.md)
   - [WSL](./chapter1/wsl.md)
-  - [Homebrew](./chapter1/homebrew.md)
-  - [bpt](./chapter1/bpt.md)
-  - [vscode](./chapter1/vscode.md)
+  - [Installing Software](./chapter1/software.md)
   - [Hello World](./chapter1/helloworld.md)
   - [Compiler Explorer](./chapter1/godbolt.md)
   - [Slides](./chapter1/slides1.md)
