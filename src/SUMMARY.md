@@ -2,7 +2,6 @@
 
 [Home](./home.md)
 [Foreword]()
-[Planned Content Additions]()
 
 ## Chapter 1
 
@@ -82,3 +81,5 @@
 ## Appendix
 
 [Godbolt Examples](./GODBOLT.md)
+
+[Planned Additions](./planned.md)
