@@ -2,6 +2,7 @@
 
 [Home](./home.md)
 [Foreword]()
+[Planned Content Additions]()
 
 ## Chapter 1
 
@@ -38,12 +39,13 @@
 
 ## Chapter 4
 
-- [Intermediate C++](./chapter4/chapter4.md)
+- [Intermediate C++ Features](./chapter4/chapter4.md)
   - [Advanced Function Concepts](./chapter4/advfunc.md)
   - [Namespaces](./chapter4/namespaces.md)
   - [Enumerations](./chapter4/enums.md)
   - [Unions](./chapter4/unions.md)
   - [Structures](./chapter4/structs.md)
+  - [Task 1](./chapter4/task1.md)
   - [Slides](./chapter4/slides4.md)
 
 ## Chapter 5
@@ -53,6 +55,7 @@
   - [Templates](./chapter5/templates.md)
   - [Generics](./chapter5/generics.md)
   - [Concepts](./chapter5/concepts.md)
+  - [Task 2](./chapter5/task2.md)
   - [Slides](./chapter5/slides5.md)
 
 ## Chapter 6
@@ -63,16 +66,17 @@
   - [Algorithms](./chapter6/algorithms.md)
   - [Ranges](./chapter6/ranges.md)
   - [Views](./chapter6/views.md)
+  - [Task 3](./chapter6/task3.md)
   - [Slides](./chapter6/slides6.md)
 
 ## Chapter 7
 
-- [Parallel Computing](./chapter7/chapter7.md)
+- [Concurrent Computing](./chapter7/chapter7.md)
   - [Parallel Algorithms](./chapter7/parallel-alg.md)
   - [Atomics](./chapter7/atomics.md)
   - [Threads](./chapter7/threads.md)
   - [Mutexes](./chapter7/mutexes.md)
-  - [Async](./chapter7/async.md)
+  - [Asynchronous Programming](./chapter7/async.md)
   - [Slides](./chapter7/slides7.md)
 
 ## Appendix

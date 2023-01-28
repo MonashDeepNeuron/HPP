@@ -1,10 +1,8 @@
 # Ranges
 
-## Section 4
+## What is a range?
 
-### Section 4.1 : What is a range?
-
-What is a range? So far we have considered a range as a pair of iterators pointing to the beginning and end of a collection of elements. C++ formalised this idea by defining a range as an iterator and sentinel pair. This allowed for C++ to introduced the Ranges Library. One problem with the main C++ standard algorithms library is that is was made in the 1990's. As such the algorithms were designed with implicit constraints but had no way to enforce them. Because of backwards compatibility the standard library algorithms could not be updated to use concepts, instead C++ introduces new overloads for the standard library algorithms in the nested `std::ranges` namespace. Along with the original iterator (now iterator and sentinel design) interface, these algorithms accept a range object as an input sequence (output ranges are still modelled using an output iterator). This allowed for algorithm calls to be much simpler while also enforcing constraints on ranges. Almost all of the original algorithms have a `std::ranges` counterchapter. If you can use the range version, even with the iterator interfaces as they impose stricter but safer requirements on the iterators to ensure that algorithms behave correctly. Range algorithms also support projections, allowing for in-place temporary transformations of data. This is defaulted to `std::identity`. All containers in the C++ standard library are considered valid ranges.
+What is a range? So far we have considered a range as a pair of iterators pointing to the beginning and end of a collection of elements. C++ formalised this idea by defining a range as an iterator and sentinel pair. This allowed for C++ to introduced the Ranges Library. One problem with the main C++ standard algorithms library is that is was made in the 1990's. As such the algorithms were designed with implicit constraints but had no way to enforce them. Because of backwards compatibility the standard library algorithms could not be updated to use concepts, instead C++ introduces new overloads for the standard library algorithms in the nested `std::ranges` namespace. Along with the original iterator (now iterator and sentinel design) interface, these algorithms accept a range object as an input sequence (output ranges are still modelled using an output iterator). This allowed for algorithm calls to be much simpler while also enforcing constraints on ranges. Almost all of the original algorithms have a `std::ranges` counterpart. If you can use the range version, even with the iterator interfaces as they impose stricter but safer requirements on the iterators to ensure that algorithms behave correctly. Range algorithms also support projections, allowing for in-place temporary transformations of data. This is defaulted to `std::identity`. All containers in the C++ standard library are considered valid ranges.
 
 ```cxx
 #include <algorithm>
@@ -25,10 +23,10 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/6bdKa63j4)
 
-- [Constrained Algorithms : cppreference](https://en.cppreference.com/w/cpp/algorithm/ranges)
-- [`std::ranges::transform` : cppreference](https://en.cppreference.com/w/cpp/algorithm/ranges/transform)
+- [Constrained Algorithms](https://en.cppreference.com/w/cpp/algorithm/ranges)
+- [`std::ranges::transform`](https://en.cppreference.com/w/cpp/algorithm/ranges/transform)
 
-### Section 4.2 : Range Concepts & Categories
+## Range Concepts & Categories
 
 Like iterators, there are different categories describing the requirements of a range type. These categories have concept definitions so you can constrain your own algorithms. Here is a table of different sequence containers and how they match up against the different range concepts.
 

@@ -1,20 +1,16 @@
 # Variables
 
-## Section 3
-
-### 3.1 : Variables
-
 Variables are the first form of abstraction in any mathematical and logical system and computers are no exception. In C++ a variable is an owner of some value. You can use variables to store the value of something and use it in different places throughout your software. Variables can only be of one type, this is the type of the value they hold.
 
 To declare a variable in C++ is super simple and follows the following pattern `<type> <name> <initialiser>;`. That's it, pretty simple. However, like many things in C++ there is a slight catch. How does a variable acquire a value. In C++ there is a concept known as Resource Acquisition Is Initialisation (RAII). This essentially means that when a type obtains a resource; or rather, obtains all its necessary resources it can be considered initialised.
 
 So what does this all mean? This means that C++ has strict rules about how values can be given to variables and that certain requirements need to be made by the constructor of a type and the variable receiving the newly constructed value of that type. However, this is mostly technical speak but seeing a bit of it now can give you a better foundation to understand some weird quirks C++ has that you will most likely encounter in the future. We will cover constructors at a later date and focus on how to initialise a variable.
 
-### 3.2 : Initialisation
+## Initialisation
 
-To begin open a new file or compiler explorer window so we can start writing. Make sure to have the main function so the program can run. Look in [/resources/blueprint.cxx](/resources/blueprint.cxx) for a copy of main.
+To begin, open a new file or compiler explorer window so we can start writing. Make sure to have the main function so the program can run. Look in [/resources/blueprint.cxx](../../resources/blueprint.cxx) for a copy of main.
 
-#### 3.2.1 : Default Initialisation
+### Default Initialisation
 
 Before we saw that creating a variable has the pattern `<type> <name> <initialiser>`. `<type>` can be any type we've seen so far or the `auto` keyword. `<name>` can be any alphanumeric (plus _) combination of characters (as long as the first character is not a number). For example an `int` called `i` would be.
 
@@ -42,7 +38,7 @@ auto a = {1};  ///< must have initialiser for type deduction.
 
 [Default Initialisation](https://en.cppreference.com/w/cpp/language/default_initialization)
 
-#### 3.2.2 : Value Initialisation
+### Value Initialisation
 
 Value initialisation is used to zero-initialise a scalar variable (eg. `int` etc.) or default initialise a user defined type such as a `class`. The syntax for value initialisation varies but it typically uses `<type> <name> {}` or `<type> ()`. This is the preferred and recommended way to to initialise variables without giving them an explicit value.
 
@@ -52,10 +48,10 @@ int();                  ///< zero-initialises a temporary to `0`.
 T t{};                  ///< Default initialises `t` using `T` default constructor
 ```
 
-[Value Initialisation](https://en.cppreference.com/w/cpp/language/value_initialization)
-[Zero Initialisation](https://en.cppreference.com/w/cpp/language/zero_initialization)
+- [Value Initialisation](https://en.cppreference.com/w/cpp/language/value_initialization)
+- [Zero Initialisation](https://en.cppreference.com/w/cpp/language/zero_initialization)
 
-#### 3.2.3 : Copy Initialisation
+### Copy Initialisation
 
 Copy initialisation is the most common type of initialisation found in C++ as it is the method originally derived from C. Copy initialisation revolves around the assignment operator `=` but is not exclusive to it. By default, most operations in C++ use copies and thus are initialised using copy initialisation. Copy initialisation copies any expression on the right-hand-side of the `=`, provided the type is correct.
 
@@ -70,7 +66,7 @@ Up until now, we haven't been able to give our variables custom values. With cop
 
 [Copy Initialisation](https://en.cppreference.com/w/cpp/language/copy_initialization)
 
-#### 3.2.4 : Direct Initialisation
+### Direct Initialisation
 
 Direct initialisation allows you to initialise a variable with an explicit set of constructor arguments. This is mostly useful for custom constructor beyond the trivial ones the compiler can provide.
 
@@ -84,7 +80,7 @@ Y(4, 6, 5);        ///< Direct initialisation of temporary of type `Y` with lite
 
 [Direct Initialisation](https://en.cppreference.com/w/cpp/language/direct_initialization)
 
-#### 3.2.5 : Aggregate Initialisation
+### Aggregate Initialisation
 
 Aggregate initialisation is special list initialisation for aggregate types. These are slice, `struct`, `class` or `union` types with (for the formers) no private data-members or user-defined constructors. This allows them to be initialised with a list.
 
@@ -99,7 +95,7 @@ We want use this directly all to much as list initialisation generally applies i
 
 [Aggregate Initialisation](https://en.cppreference.com/w/cpp/language/aggregate_initialization)
 
-#### 3.2.6 : List Initialisation
+### List Initialisation
 
 List initialisation is a generalisation of aggregate initialisation but can be applied to user-defined types. This allows you to specify a list of values to be used as arguments for a constructor.
 
@@ -115,15 +111,15 @@ Have a play with with these and see what works with the compiler. In general, st
 
 [List Initialisation](https://en.cppreference.com/w/cpp/language/list_initialization)
 
-### 3.3 : Qualifiers
+## Qualifiers
 
 Types can have different qualifiers that change how a type behaves from its size to mutability. Qualifiers go before the type declaration.
 
-#### 3.3.1 : Signed-ness
+### Signed-ness
 
 The `signed` and `unsigned` qualifiers are used to indicate whether the first bit of the integral type is used for the sign of a number or not. All integral types are implicitly `signed` (`char` can vary). `unsigned` increases the maximum number an integral can be but disallows negative values. `unsigned` only works on integer types and not floating point types.
 
-#### 3.3.2 : Size
+### Size
 
 Size qualifiers are used to indicate the number of bits (which is platform specific) an `int` type must have at least.
 
@@ -145,7 +141,7 @@ You can also combined size qualifiers with the `unsigned` (and `signed` though n
 
 [Fundamental Types](https://en.cppreference.com/w/cpp/language/types)
 
-#### 3.3.3 : Storage
+### Storage
 
 Storage qualifiers allow you to specify the lifetime of variables. All variables implicitly have automatic storage duration. The exist only in a certain scope, are created when the program enters that scope and dropped at the end of that scope. `static` (and implicitly global variables) are created at the beginning of the program and are dropped only at the end of the program. Only one variable of the same name can be declared static in a given translation unit.
 
@@ -159,7 +155,7 @@ static int si = {1};  ///< static variables
 
 `inline` is more of a hint to the compiler for functions and methods. It indicates to the compiler that a function call should be inlined at call, ie. the functions definition gets moved to the call site. This qualifier is mostly used in OOP classes hierarchies as its more general use has be dropped in favour of a different qualifier.
 
-#### 3.3.4 : Mutability
+### Mutability
 
 In C++, variables are mutable by default. There are various ways to limit the mutability of variables as well as constrain the optimisations a compiler can apply.
 
@@ -184,7 +180,7 @@ cv = 10;    ///< Error
 
 > Note: The usage of `volatile` is highly discouraged.
 
-### 3.4 : Automatic Types
+## Automatic Types
 
 The final type we look at is an automatic type. As we will see later, declaring the type of variables can get cumbersome. Since C++11, a new type introducer was create with the keyword `auto`. Variables with type `auto` will have there true type deduced at compile time based on the initialiser.
 
@@ -195,18 +191,18 @@ auto ac {'c'};                  ///< `ac` deduced to have the type `char`
 auto as = "hello";              ///< `as` deduced to have the type `const char*` (more on these later)
 ```
 
-### 3.5 : Value Categories
+## Value Categories
 
 In C++, there are different categories of values. These determine the operations that can be performed on them. There are a few value categories in C++ but we will focus on only two of them, lvalues and rvalues.
 
-#### 3.5.2 : lvalues
+### lvalues
 
 In C++ and lvalue is kind of value that you would find on the left-hand-side of the `=`, hence the name lvalue or 'left-value'. You can also find lvalues on the right-hand-side of `=`. This is the semantics of a copy (may or may not be an initialisation). Typically, a variable that has an assigned value is an lvalue.
 
-#### 3.5.3 : rvalues
+### rvalues
 
 rvalues are; as the name suggests, variables or values found on the right-hand-side of `=`. This includes literals, temporaries and moves. For example the literal `3` is an rvalue. rvalues are also used to indicate move-semantics (more on this later on).
 
-#### 3.5.1 : Literals
+### Literals
 
 Literals are types that have a explicit value to them. The literal `0` has the value of `int{0}` and type `int`. Literals allow the to be common code-point to define values into a specific character or character sequence. Essentially, literals hold the value and type they indicate.

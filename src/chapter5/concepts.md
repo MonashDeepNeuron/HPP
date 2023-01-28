@@ -1,8 +1,6 @@
 # Concepts
 
-## Section 4
-
-### Section 4.1 : Limitations to templates
+## Limitations to templates
 
 Templates are extremely powerful allow us to create reusable and extendible code however there is a caveat to this. Take for example our `Point` class from Sections 1-2. `Point` just takes a single type `T`. This can be absolutely any type. This can become a problem though later for the user. Say we have a `Point<std::string>`. This will cause an error for the user of our `Point` class if they try to take two `Point<std::string>` because `-` is not supported by `std::string`. This can be a major problem as the error produced can be ambiguous to the user and require looking at the source code in depth to diagnose.
 
@@ -159,7 +157,7 @@ Execution build compiler returned: 1
 
 To address this C++20 introduced concepts. A mechanism for imposing constraints on types.
 
-### Section 4.2 : What is a Concept?
+## What is a Concept?
 
 A concepts is a set of conditions and requirements imposed on a type that is checked at compile time and evaluates as a Boolean. Before C++20, template metaprogramming and SFINAE where used to statically impose constraints on types but they had limitations and were highly verbose. Concepts allow us to define syntactic constraints on a template type and then impose those constraints on other types. Concepts are introduced using a template declaration followed by a concept declaration (similar to a class declaration but replace the keyword `class` with `concept`). Concepts can be composed of other concepts using `||` and `&&` (holding similar semantics to there Boolean equivalents). It is difficult to create meaningful concepts as one, they are very new to both C++ but also programming in general, instead try and use the concepts defined by the standard library; from the `<concepts>` header, first and impose them on a case by case basis using the techniques we are going to learn below.
 
@@ -196,10 +194,10 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/Px75v8ssf)
 
-- [`<concepts>` : cppreference](https://en.cppreference.com/w/cpp/concepts)
-- [Constraints and concepts : cppreference](https://en.cppreference.com/w/cpp/language/constraints)
+- [`<concepts>`](https://en.cppreference.com/w/cpp/concepts)
+- [Constraints and concepts](https://en.cppreference.com/w/cpp/language/constraints)
 
-### Section 4.3 : Constrained templates
+## Constrained templates
 
 Concepts are easiest to use when constraining templates type parameters. Instead of the using the keyword `typename` when can instead use a concept. This will impose the rules on the template type at the point of instantiation. We can see this best with our `Point` class. Being that a 'point' is a numerical value in a field; say coordinates on a cartesian plane we might want to restrict the type parameter `T` of `Point` to a number type. C++'s concepts library already has a concept for this called `std::integral`. Lets impose this new template type parameter constraint on `T`.
 
@@ -242,9 +240,9 @@ In file included from <source>:1:
 
 [Example](https://www.godbolt.org/z/1f1x8MTer)
 
-[`std::integral` : cppreference](https://en.cppreference.com/w/cpp/concepts/integral)
+[`std::integral`](https://en.cppreference.com/w/cpp/concepts/integral)
 
-### Section 4.4 : Requires expressions
+## Requires expressions
 
 The is a slight problem with our reformed `Point` class. It no longer can accept floating point types as they are not considered integrals in C++. Instead we need to constraint `Point` to a type `T` by creating a conjunction (`&&`) or disjunction (`||`) of multiple concepts. To do this we use a requires clause. Requires clause are introduced just after (often syntactically below) a template declaration and consist of a list of requirements in the form of a Boolean concept expression. We can create a disjunction of the `std::integral` and `std::floating_point` allowing floating point types and integral types to be valid `T` for `Point`.
 
@@ -272,10 +270,10 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/55dhT6W6j)
 
-- [`std::floating_point` : cppreference](https://en.cppreference.com/w/cpp/concepts/floating_point)
-- [`requires` clause : cppreference](https://en.cppreference.com/w/cpp/language/constraints#:~:text=on%20constraint%20normalization.-,Requires%20clauses,-The%20keyword)
+- [`std::floating_point`](https://en.cppreference.com/w/cpp/concepts/floating_point)
+- [`requires` clause](https://en.cppreference.com/w/cpp/language/constraints#:~:text=on%20constraint%20normalization.-,Requires%20clauses,-The%20keyword)
 
-#### Section 4.4.1 : Requires expression
+### Requires expression
 
 Sometimes more complicated requirements need to be specified in order to fine the allowed behaviour of the program. Require expressions allow for mock values of template types to bne created and specify patterns that a value of the type parameter must provide. In the case of our `Point` class, we may want to also allow other types that support `+` and `-` binary operator overloads. Because this check depends on the type parameter of another `Point` we can't declare it at the requires clause at the template declaration of `Point`. Instead we need to create a requires clause at the operator overloads template declaration. We then declare our requires expression, enforcing the semantic and syntactic rules on the type. We can declare as many of these rules in a requires expression as we like. For `Point` we will ensure that for a value of type `T` called `a` and for a value of type `U` of name `b`, `a + b` and `a - b` is valid.
 
@@ -309,9 +307,9 @@ operator- (const Point<U>& p)
 
 [Example](https://www.godbolt.org/z/763Y6fjjc)
 
-[`requires` expression : cppreference](https://en.cppreference.com/w/cpp/language/requires)
+[`requires` expression](https://en.cppreference.com/w/cpp/language/requires)
 
-#### Section 4.4.2 : Compound requirements
+### Compound requirements
 
 We can also apply constraints on the expressions within a requires expression, ensuring the types or properties these expressions will have. These are called compound expressions, which we create by wrapping our individual rules from a requires expression in braces and use a `->` followed by a constraint on the return type of the expression.
 
@@ -343,11 +341,11 @@ operator- (const Point<U>& p)
 
 [Example](https://www.godbolt.org/z/nqxoE7466)
 
-[Compound requirements : cppreference](https://en.cppreference.com/w/cpp/language/requires#:~:text=%3B%20%0A%7D%3B-,Compound%20Requirements,-A%20compound%20requirement)
+[Compound requirements](https://en.cppreference.com/w/cpp/language/requires#:~:text=%3B%20%0A%7D%3B-,Compound%20Requirements,-A%20compound%20requirement)
 
 [Version 3 of `Point`](/content/chapter5/tasks/concepts.md)
 
-### Section 4.5 : Constrained variables
+## Constrained variables
 
 We can also use concepts to constrain variables declared with the `auto` specifier. Gives a more robust option for constraining function and method parameters without the need for template declarations or requires clauses.
 
@@ -370,57 +368,3 @@ auto main() -> int
 [Example](https://www.godbolt.org/z/vcGW1qPY9)
 
 > Note: We've applied concepts at the user definition level for classes. These concepts [ideas] can be applied to template functions as well. They are also the basic for defining your own concepts.
-
-## Assignment 2
-
-Having learnt about classes, templates and concepts I want you to reimplement your `Triple` class so that it behaves more like a standard type and has a more sophisticated implementation and interface. Similar to Assignment 1, you will submit using a pull request on GitHub to this repo.
-
-### Requirements
-
-- Must be templated for a single type `T`
-- A way to add two points of different `T`
-- A way to subtract two points of different `T`
-- A way to multiply a point by a scalar of different `T`
-- A way to divide a point by a scalar of different `T`
-- A way to be print a formatted output using `std::cout`
-- Using concepts ensure that `T` satisfies only:
-  - `std::integral`
-- or
-  - `std::floating_point`
-- or
-  - `T` and `U` support
-    - `T + U`
-    - `T - U`
-    - `U * T`
-    - `T / U`
-  - and doesn't support
-    - `is_pointer`
-    - `is_reference`
-    - `is_enum` etc.
-- and
-  - `T` supports `<<` to an `std::ostream`
-
-> Note: Let me know if the concept requirements are confusing
-
-### Bonus
-
-- A way to be created using input from `std::cin`
-- Allow three different type parameter; say `T`, `U` and `V` for the member variables while still maintaining the base requirements [hard]
-
-### Submitting
-
-You can use Godbolt or bpt to build and test your struct. Once you have created your implementation:
-
-- clone this repo using `git clone https://github.com/MonashDeepNeuron/HPP.git`.
-- create a new branch using `git checkout -b triple/<your-name>`.
-- create a folder in the `/content/chapter5` directory called `submissions/<your-name>`.
-- Copy your mini project into this directory (bpt setup, cmake scripts etc.) with a `README.md` or comment in the code on how to run the program (verify it still works). There is a sample header file in `/templates` that you can use.
-- Go to <https://github.com/MonashDeepNeuron/HPP/pulls> and click 'New pull request'.
-- Change the branches in the drop down so that your branch is going into `main` and `Create new pull request.
-- Give the pull request a title and briefly describe what you were able to implement and any struggles you had.
-- On the right side-panel, under the 'Assignees' section, click the cog and assign me.
-- Click 'Create pull request' and I'll take it from there.
-
-> Note: If you created a GodBolt instance, put the link in a comment at the top of the file (under your copy comments). This is generated by clicking the `share` button in the top-right-most corner of the webpage and clicking the 'short link' option.
-
-This, ideally should be submitted before our meetup on 18/01/2023. Please note that I will be asking each of you a few questions about how you went and your thought processes in throughout the implementation.

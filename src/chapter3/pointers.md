@@ -1,12 +1,10 @@
 # Pointers
 
-## Section 1
-
-### Section 1.1 : What is a pointer?
+## What is a pointer?
 
 Many people seem to struggle with the concept of a pointer. This is mostly due to either, bad teaching or that someone learning C++ (or C or Rust) do not have a concise understanding of memory. Memory can be thought of as a cell that has some value and lives at some address or location in the physical memory. Cells can be as small as a byte and as large a single machine register, typically 8-bytes.
 
-> Note: Registers are the circuit components that hold some value in the CPU that is be operated on.
+> Note: Registers are the circuit components that hold some value in the CPU that is be operated on. It can be an instruction or some data.
 
 The following data can be mapped to a memory layout below it.
 
@@ -22,30 +20,32 @@ int b {37365};
 | 0x00007fff59ae6e94 |     0x000091f5     |
 | 0x00007fff59ae6e90 |         ...        |
 
-> - Note: `...` means garbage values.
-> - Note: `0x...` is just an indicator that the value is a hexadecimal value
-> - Note: We jump backwards because the stack (local memory of your program) starts from the largest address and goes down. This is because the code when stored in memory (as instructions) starts from the lowest value and increases. This prevents overwrites between instructions and data, if managed correctly.
-> - Note: The memory addresses here are just random, it differs on every computer and every run of the program, usually.
+> ### Notes:
+>
+> - `...` means garbage values.
+> - `0x...` is just an indicator that the value is a hexadecimal value
+> - We jump backwards because the stack (local memory of your program) starts from the largest address and goes down. This is because the code when stored in memory (as instructions) starts from the lowest value and increases. This prevents overwrites between instructions and data, if managed correctly.
+> - The memory addresses here are just random, it differs on every computer and every run of the program, usually.
 
-We can see that the value of `a` is stored at address `0x00007fff59ae6e94` and `b` is stored at address `0x00007fff59ae6e9c`. The reason the memory address jumps by four is because each memory address stores a single byte, thus to store a 32-bit value (`int`) you need for bytes thus the next memory address will be four addresses away, in this case the value for `b`.
+We can see that the value of `a` is stored at address `0x00007fff59ae6e99` and `b` is stored at address `0x00007fff59ae6e94`. The reason the memory address jumps by four is because each memory address stores a single byte, thus to store a 32-bit value (`int`) you need for bytes thus the next memory address will be four addresses away, in this case the value for `b`.
 
 But lets say we wanted to refer to the value already stored in `a`. We don't want a copy but we wanted some way to _point_ to the value at that address. Well we could store the address of `a` in another location in memory like so.
 
 |       Address      |        Value       |
 |:------------------:|:------------------:|
-| 0x00007fff59ae6ea4 |         ...        |
-| 0x00007fff59ae6e9d |     0x00000004     |
-| 0x00007fff59ae6e99 |     0x000091f5     |
-| 0x00007fff59ae6e94 | 0x00007fff59ae6e94 |
-| 0x00007fff59ae6e90 |         ...        |
+| 0x00007fff59ae6e9d |         ...        |
+| 0x00007fff59ae6e99 |     0x00000004     |
+| 0x00007fff59ae6e94 |     0x000091f5     |
+| 0x00007fff59ae6e90 | 0x00007fff59ae6e99 |
+| 0x00007fff59ae6e88 |         ...        |
 
 > Notes: We jump 8-bytes in the address space for the stored address as addresses (in the example at least) are 64-bit in size.
 
-As we can see, address `0x00007fff59ae6e9d` stores the value `0x00007fff59ae6e94` which happens to be the number indicating the address where `a` is stored.
+As we can see, address `0x00007fff59ae6e90` stores the value `0x00007fff59ae6e94` which happens to be the number indicating the address where `a` is stored.
 
 This is the premise of a pointer. It is a numerical value that holds some address in memory. This is address of another value in a program.
 
-### Section 1.2 : Syntax
+## Syntax
 
 To create a pointer in C++ is super simple. Given some type `T` the type of a pointer to a value of that type is `T*`.
 
@@ -77,9 +77,10 @@ auto main () -> int
 ```
 
 [Example](https://www.godbolt.org/z/aaf33YEYW)
-[`std::addressof` : cppreference](https://en.cppreference.com/w/cpp/memory/addressof)
 
-### Section 1.3 : const qualifications
+[`std::addressof`](https://en.cppreference.com/w/cpp/memory/addressof)
+
+## const qualifications
 
 Because pointers are an independent type, they are able to have to have `const` (among other) qualifications however, the ordering of the qualifications can matter.
 
@@ -113,7 +114,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/sed7Wcf7s)
 
-### Section 1.4 : void pointers
+## void pointers
 
 Because of C++'s static type system, the type of a pointer must be declared however you can circumvent the type system using `void`. A pointer can be a `void*`, meaning that the type it points to is unbound. When you need to use the type you can then use `static_cast<>()` to create the type that you need. This is actually how C's `malloc()` function works. It returns a `void*` and it is up to the user to cast it to the desired type.
 
@@ -137,7 +138,7 @@ auto main () -> int
 
 [C's `malloc()`](https://en.cppreference.com/w/c/memory/malloc)
 
-### Section 1.5 : Pointer Arithmetic
+## Pointer Arithmetic
 
 Because pointers are just numbers (addresses) we can add and subtract from then as if they were integral types. We can use the increment, decrement, addition, subtraction and subscript (index) operators on pointers (`+`, `-`, `++`, `--` and `[]` respectively).
 
@@ -176,7 +177,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/qdx6csE7x)
 
-### Section 1.6 : Dereferencing nullptr
+## Dereferencing nullptr
 
 In C++, any assignment and initialisation is is copy by default even when passed to functions. This can be really costly for objects that have a large amount of data stored in them. Pointers make it cheap to pass the data around as you now just have to pass a pointer to it instead of all the data. However, there is a catch to pointers. Pointers can point to nothing, this nothing value is actually the literal `nullptr` we saw in week 0. And you cannot dereference a pointer to `nullptr` as `nullptr` is nothing. This can be really dangerous as this is considered UB which may work, may not compile, may crash the entire program or do something entirely unexpected.
 
@@ -198,7 +199,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/594hMbcz6)
 
-### Section 1.7 : Pointers to Pointers
+## Pointers to Pointers
 
 It is also possible in C++ to have a pointer to a pointer. This mostly a feature inherited from C and remains in for C++ to interoperate with C and for completeness. Pointers to pointers may seem daunting but are straight forward if you apply the concept of a pointer again. The pointer-to-pointer object points to the address of the pointer object that holds the address of some other object. Pointer-to-pointers have the type `T**` and can be dereferenced to the their value, ie. the address the nested pointer points to or again to get the bottom value.
 

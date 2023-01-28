@@ -1,5 +1,6 @@
 [book]
-authors = ["oraqlle"]
+authors = ["Tyler Swann"]
+description = "Monash DeepNeuron's High Performance Programming Curriculum"
 language = "en"
 multilingual = false
 src = "src"

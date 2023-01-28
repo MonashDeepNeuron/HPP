@@ -1,12 +1,10 @@
 # Iterators
 
-## Section 1
-
-### Section 1.1 : What is an iterator?
+## What is an iterator?
 
 An iterator is an abstraction for representing an item, element, value etc. in a collection or container of values that also has some notion how to get to a obtain or yield a new item from the container. In C++ iterators a lot like pointers in the sense that they hold some value, usually the location of it and has a means of either yielding the value for reading or allows for writing to that value.
 
-### Section 1.2 : Iterator Categories
+## Iterator Categories
 
 There are 6 main iterator categories considered in C++. Each subsequent iterator category builds upon the previous categories requirements with increasingly more requirements.
 
@@ -39,7 +37,7 @@ There are 6 main iterator categories considered in C++. Each subsequent iterator
   </tr>
   <tr>
     <td>Input</td>
-    <td>❓(might support writing)</td>
+    <td>might support writing</td>
     <td>✅</td>
     <td>✅</td>
     <td></td>
@@ -49,7 +47,7 @@ There are 6 main iterator categories considered in C++. Each subsequent iterator
   </tr>
   <tr>
     <td>Forward<br>(Satisfies Input)</td>
-    <td></td>
+    <td>✅</td>
     <td>✅</td>
     <td>✅</td>
     <td>✅</td>
@@ -59,7 +57,7 @@ There are 6 main iterator categories considered in C++. Each subsequent iterator
   </tr>
   <tr>
     <td>Bidirectional<br>(Satisfies Forward)</td>
-    <td></td>
+    <td>✅</td>
     <td>✅</td>
     <td>✅</td>
     <td>✅</td>
@@ -69,7 +67,7 @@ There are 6 main iterator categories considered in C++. Each subsequent iterator
   </tr>
   <tr>
     <td>Random Access<br>(Satisfies Bidirectional)</td>
-    <td></td>
+    <td>✅</td>
     <td>✅</td>
     <td>✅</td>
     <td>✅</td>
@@ -79,7 +77,7 @@ There are 6 main iterator categories considered in C++. Each subsequent iterator
   </tr>
   <tr>
     <td>Contiguous<br>(Satisfies Random Access)</td>
-    <td></td>
+    <td>✅</td>
     <td>✅</td>
     <td>✅</td>
     <td>✅</td>
@@ -94,7 +92,7 @@ There are 6 main iterator categories considered in C++. Each subsequent iterator
 
 Before C++20, there were empty structs used as tags to help categorise an iterator into its respective category. Since C++ there have been concepts introduces to perform this check more elegantly along with other iterator-related concepts to all for anything modelling an iterator to satisfy the constraints.
 
-### Section 1.3 : Obtaining Iterators
+## Obtaining Iterators
 
 Almost all collections or containers have iterators to their first and last element. To obtain these iterator from any container kinds we call the `std::begin()` and `std::end` functions from the `<iterator>` header respectively. There are also constant and reverse and constant reverse versions of the functions.
 
@@ -118,17 +116,17 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/MG7q3d63a)
 
-- [`<iterator>` : cppreference](https://en.cppreference.com/w/cpp/header/iterator)
-- [`std::begin()` & `std::cbegin()` : cppreference](https://en.cppreference.com/w/cpp/iterator/begin)
-- [`std::end()` & std::cend()` : cppreference](https://en.cppreference.com/w/cpp/iterator/end)
-- [`std::rbegin()` & std::crbegin()` : cppreference](https://en.cppreference.com/w/cpp/iterator/rbegin)
-- [`std::rend()` & std::crend()` : cppreference](https://en.cppreference.com/w/cpp/iterator/rend)
+- [`<iterator>`](https://en.cppreference.com/w/cpp/header/iterator)
+- [`std::begin()` & `std::cbegin()`](https://en.cppreference.com/w/cpp/iterator/begin)
+- [`std::end()` & std::cend()`](https://en.cppreference.com/w/cpp/iterator/end)
+- [`std::rbegin()` & std::crbegin()`](https://en.cppreference.com/w/cpp/iterator/rbegin)
+- [`std::rend()` & std::crend()`](https://en.cppreference.com/w/cpp/iterator/rend)
 
-### Section 1.4 : Iterator Functionalities
+## Iterator Functionalities
 
 There are a few ways to interact with an iterator directly. One is to use the overloaded operators for the iterator object. Most iterators implement and overload the same operator set that is used by pointers. The other way is to use functions to interact with iterators, allowing for a more generic interface if a iterator doesn't support the common operator overload set and the implementer preferred to overload the functions. The only way to yield or write to the item held by an iterator is to use the dereference operator `*`.
 
-#### Section 1.4.1 : Common Operator Interface
+### Common Operator Interface
 
 |  Operation  |         |          |          |
 |:-----------:|:-------:|:--------:|:--------:|
@@ -139,7 +137,7 @@ There are a few ways to interact with an iterator directly. One is to use the ov
 |   advance   | `i + n` |  `i - n` |          |
 |    index    |  `i[n]` |          |          |
 
-> Where `i` is an iterator object
+> Note: Where `i` is an iterator object
 
 ```cxx
 #include <array>
@@ -171,7 +169,7 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/jeGjnrWvn)
 
-#### Section 1.4.2 : Iterator Functions
+### Iterator Functions
 
 There are four functions involved in manipulating an object of iterator kind. These are used to move an iterator between elements.
 
@@ -210,12 +208,12 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/P17PEnsaE)
 
-- [`std::next()` : cppreference](https://en.cppreference.com/w/cpp/iterator/next)
-- [`std::prev()` : cppreference](https://en.cppreference.com/w/cpp/iterator/prev)
-- [`std::distance()` : cppreference](https://en.cppreference.com/w/cpp/iterator/distance)
-- [`std::advance()` : cppreference](https://en.cppreference.com/w/cpp/iterator/advance)
+- [`std::next()`](https://en.cppreference.com/w/cpp/iterator/next)
+- [`std::prev()`](https://en.cppreference.com/w/cpp/iterator/prev)
+- [`std::distance()`](https://en.cppreference.com/w/cpp/iterator/distance)
+- [`std::advance()`](https://en.cppreference.com/w/cpp/iterator/advance)
 
-### Section 1.5 : Sentinels
+## Sentinels
 
 Iterators are able to move through a container indefinitely however this can lead to iterators being dereferenced for a value that doesn't belong to the container. To fix this, we need some notion of the end of a container. Sentinels are a kind that behaves like a marker representing the end of a container. There are many different things you can use as a sentinel from specific values that appear in a container (`\0` is used as a sentinel for char slices in C), to iterators. Before C++20, the 'end' iterator was the most common sentinel kind used. The iterator holds the item that is one-past-the-end of a container. When another iterator reaches it the container has been exhausted. Since C++20, the notion of the end of a container has been formalised to be sentinels over 'end' iterators. This allows for containers to be infinite with an unreachable sentinel type or have regular bounds.
 
@@ -238,22 +236,22 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/9dzsjn1eM)
 
-- [`std::default_sentinel_t` : cppreference](https://en.cppreference.com/w/cpp/iterator/default_sentinel_t)
-- [`std::unreachable_sentinel_t` : cppreference](https://en.cppreference.com/w/cpp/iterator/unreachable_sentinel_t)
-- [`std::move_sentinel<S>` : cppreference](https://en.cppreference.com/w/cpp/iterator/move_sentinel)
+- [`std::default_sentinel_t`](https://en.cppreference.com/w/cpp/iterator/default_sentinel_t)
+- [`std::unreachable_sentinel_t`](https://en.cppreference.com/w/cpp/iterator/unreachable_sentinel_t)
+- [`std::move_sentinel<S>`](https://en.cppreference.com/w/cpp/iterator/move_sentinel)
 
-### Section 1.6 : Iterator Adaptors
+## Iterator Adaptors
 
 There are a few iterator adaptors in the C++ standard library allowing for regular iterators, often supplied by container kind types have certain operational semantics. This include a reverse, inserter, counted and move iterators. This allows for efficient operations between containers and containers to be implemented through iterators. Many of these iterators come with a factory function (often prefixed with `make_`) that can make the desired iterator and perform the necessary argument type deductions.
 
-- [`std::reverse_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/reverse_iterator)
-- [`std::move_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/move_iterator)
-- [`std::common_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/common_iterator)
-- [`std::counted_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/counted_iterator)
-- [`std::back_insert_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/back_insert_iterator)
-- [`std::front_insert_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/front_insert_iterator)
-- [`std::insert_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/insert_iterator)
-- [`std::istream_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/istream_iterator)
-- [`std::ostream_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/ostream_iterator)
-- [`std::istreambuf_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/istreambuf_iterator)
-- [`std::ostreambuf_iterator` : cppreference](https://en.cppreference.com/w/cpp/iterator/ostreambuf_iterator)
+- [`std::reverse_iterator`](https://en.cppreference.com/w/cpp/iterator/reverse_iterator)
+- [`std::move_iterator`](https://en.cppreference.com/w/cpp/iterator/move_iterator)
+- [`std::common_iterator`](https://en.cppreference.com/w/cpp/iterator/common_iterator)
+- [`std::counted_iterator`](https://en.cppreference.com/w/cpp/iterator/counted_iterator)
+- [`std::back_insert_iterator`](https://en.cppreference.com/w/cpp/iterator/back_insert_iterator)
+- [`std::front_insert_iterator`](https://en.cppreference.com/w/cpp/iterator/front_insert_iterator)
+- [`std::insert_iterator`](https://en.cppreference.com/w/cpp/iterator/insert_iterator)
+- [`std::istream_iterator`](https://en.cppreference.com/w/cpp/iterator/istream_iterator)
+- [`std::ostream_iterator`](https://en.cppreference.com/w/cpp/iterator/ostream_iterator)
+- [`std::istreambuf_iterator`](https://en.cppreference.com/w/cpp/iterator/istreambuf_iterator)
+- [`std::ostreambuf_iterator`](https://en.cppreference.com/w/cpp/iterator/ostreambuf_iterator)

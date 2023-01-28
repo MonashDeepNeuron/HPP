@@ -1,8 +1,8 @@
 # Operators
 
-## Section 4
+Operators are unique symbols that are used to perform changes to data. They often have infix notation with some having prefix or postfix notation. In C++, all operators are functions however, they are built into the language fpr primitive data types.
 
-### 4.1 : Basic Arithmetic
+## Basic Arithmetic
 
 So enough about types and values. Lets write some code that does something. In C++ there are a lot, and I mean a lot of operators but we will only cover the arithmetic based one this week. The first ones we will look at are the basic arithmetic operators. These include your standard:
 
@@ -34,7 +34,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/xKMooTb4s)
 
-> Note: for those unaware, `%` returns the remained of the division of $\frac{a}{b}$
+> Note: for those unaware, `%` returns the remained of the division of \\( \frac{a}{b} \\)
 
 But hold up, why does `a / b` return `3`, should it not be `3.33...`? This correct.. sorta. In C++ when two integers divide it performs integer division, thus throwing away any remainder after the maximum even divisions. This is the same as Pythons `//` operator. To perform floating point division, either the numerator or denominator needs to be of a floating point type. This is so the alternate one (if it is an integer type) can be promoted to a floating point type to perform the floating point division.
 
@@ -106,7 +106,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/5Ps5ezhaT)
 
-### 4.2 : Casts
+## Casts
 
 In C++ you can change the type of an object via casting. There are quite a few different casting operators.
 
@@ -136,7 +136,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/E6GTExxEj)
 
-### 4.3 : Bitwise Operations
+## Bitwise Operations
 
 In C++ there is another category of operators called bitwise operators. These operators only apply to integer types but allow for you to individually control the bits of an integer.
 
@@ -195,11 +195,11 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/37b58aTjf)
 
-#### 4.3.1 : A bit about shift operations
+### A bit about shift operations
 
 For the shift operations, the general pattern is as follows `<shifted> <shift-op> <additive>`. This means the value that is being shifted is always on the left-hand-side and is always shifted by the number indicated on the right-hand-side. For left-shifts, the bit pattern is moved `N` spot to the left, pushing zeros at the end of the right side and popping any bit off the left end. For right shifts, the opposite occurs. The bit pattern is move right by `N` spots, popping any bit off the right end and push the same bit as the sign bit of the number being shifted (1's if negative and 0's if positive).
 
-### 4.4 : Arithmetic Assignment
+## Arithmetic Assignment
 
 There is one final set of arithmetic operators in C++. These are the arithmetic assignment operators. These will perform the operation between two points and assign the result to the left point.
 
@@ -251,7 +251,7 @@ auto main () -> int
 
 Have a play with these operators and try and perform some computations that you might do in another languages.
 
-### 4.5 : Size Operator
+## Size Operator
 
 Another useful operator is the `sizeof` and `sizeof...` operator. It returns the number of bytes if a type parameter pack (more on parameter packs later).
 

@@ -1,8 +1,8 @@
-# Async
+# Asynchronous Programming
 
-## Section 5
+Asynchronous programming is the ability to run functions an computations simultaneously while being able to communicate the results between different functions and execution paths.
 
-### Section 5.1 : Futures and Promises
+## Futures and Promises
 
 A promise; represented by the class `std::promise`, is a object that stores a value or exception that is retrieved by a `std::future` object. Semantically, this means that a; generally asynchronous function has promised a value to the caller of the asynchronous function but however, does not yet have the value. The future of a promised value is obtained directly from the `std::promise` object. The caller of the promised value can query, wait for or extract the value from the corresponding `std::future` object however, these may block if the result is not yet ready. The timeout methods will return a `std::future_status` object which is an enum indicating if the wait timed out, if the future is deferred (_lazy_ loading) or ready. The value of a promise is communicated via a shared memory state between the `std::future` and `std::promise` objects. This shared state cannot be shared between different threads meaning that only one `std::future` can be used to obtain the result of a promised value. To enforce this `std::future` is move-only. A shared future can be obtained by called `std::future::share` to create a `std::shared_future` which claims ownership of the shared state such that the future can be copied between different threads. Promises and futures are found in the `<future>` header.
 
@@ -59,12 +59,12 @@ Took: 3000 ms
 
 [Example](./examples/async/src/futures.main.cxx)
 
-- [`std::future` : cppreference](https://en.cppreference.com/w/cpp/thread/future)
-- [`std::shared_future` : cppreference](https://en.cppreference.com/w/cpp/thread/shared_future)
-- [`std::future` : cppreference](https://en.cppreference.com/w/cpp/thread/shared_future)
-- [`std::promise` : cppreference](https://en.cppreference.com/w/cpp/thread/promise)
+- [`std::future`](https://en.cppreference.com/w/cpp/thread/future)
+- [`std::shared_future`](https://en.cppreference.com/w/cpp/thread/shared_future)
+- [`std::future`](https://en.cppreference.com/w/cpp/thread/shared_future)
+- [`std::promise`](https://en.cppreference.com/w/cpp/thread/promise)
 
-### Section 5.2 : Async
+## Async
 
 Another way to create asynchronous functions without having to deal with threads directly is to use `std::async`. This function will create an asynchronous section that will run according to a launch policy. The standard only defines two policies, this being `std::launch::async`; which will run a function a separate thread, or `std::launch::deferred` which will run the function lazily on the calling thread the first time the value is requested. `std::async` returns a `std::future` object that is used to query, wait for or extract the result of the asynchronous function. `std::async` is found in the `<future>` header.
 
@@ -182,10 +182,10 @@ Result: 10000000.68113
 
 [Example](./examples/async/src/async.main.cxx)
 
-- [`std::async` : cppreference](https://en.cppreference.com/w/cpp/thread/async)
-- [`std::launch` : cppreference](https://en.cppreference.com/w/cpp/thread/launch)
+- [`std::async`](https://en.cppreference.com/w/cpp/thread/async)
+- [`std::launch`](https://en.cppreference.com/w/cpp/thread/launch)
 
-### Section 5.3 : Packaged Sections
+## Packaged Sections
 
 The final way to create a future value is the use of `std::packaged_task`. This wraps a callable such that its result type is held in a shared state that can be accesses by a `std::future` object created from the section. `std::packaged_task` objects can be moved to `std::thread` and `std::jthread` objects so that the return value of a section can be acquired from a thread (which usually discards it). `std::packaged_task` is move-only and is found in the `<future>` header.
 
@@ -241,4 +241,4 @@ Took: 300 ms
 
 [Example](./examples/async/src/packaged_task.main.cxx)
 
-[`std::packaged_task` : cppreference](https://en.cppreference.com/w/cpp/thread/packaged_task)
+[`std::packaged_task`](https://en.cppreference.com/w/cpp/thread/packaged_task)

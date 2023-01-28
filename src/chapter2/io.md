@@ -1,27 +1,27 @@
-# Streams
+# IO
 
-## Section 5
+IO means input and output. IO operations are used to consume or emit data at the boundary of a program. This allows for a program to interact with the outside would, including writing or reading from the console, displaying graphics, capturing images etc. In C++, almost all of the IO is performed through streams.
 
-### Section 5.1 : What is a stream?
+## What is a stream?
 
 What is a stream. A stream is a sequence of an indeterminate amount of data connecting a source to a destination. In C++, streams are used to connect a perform a variety of IO operations. You have already used on of these streams in C++, this is of course `std::cout`.
 
-### Section 5.2 : C Standard Streams
+## C Standard Streams
 
 In C++ there are a few pre-defined stream objects. This are mounted to the the C languages `stdout`, `stdin` and `stderr`. These output devices are how C (and these stream objects) connect to the terminal screen and keyboard of your device.
 
-- `std::cin`  - Output stream to C's `stdin`
+- `std::cin` - Output stream to C's `stdin`
 - `std::cout` - Output stream to C's `stdout`
-- `std::cerr` - Output stream to C's `stderr`
+- `std::cerr` - Output stream to C's `stderr` (dependent on `stdout`)
 - `std::clog` - Output stream to C's `stderr` (not dependent on `stdout`)
 
-These are pre-existing objects of the type `std::istream` and `std::ostream` respectively. The use of streams allows for C++ developer to have a uniform way of addressing different IO devices. In chaptericular the `<<` operator is available to all streams types allowing for similar usage of streams that may be mounted to alternative IO devices, eg. files, graphics card, cameras etc.
+These are pre-existing objects of the type `std::istream` and `std::ostream` respectively. The use of streams allows for C++ developer to have a uniform way of addressing different IO devices. In particular the `<<` operator is available to all streams types allowing for similar usage of streams that may be mounted to alternative IO devices, eg. files, graphics card, cameras etc.
 
 All stream objects and types are found in the `<iostream>` header.
 
 [IO Library](https://en.cppreference.com/w/cpp/io)
 
-#### Section 5.2.1 : Input
+## Input
 
 We have seen how to print stuff to the console but how do we get input? There are two ways. One uses the stream directly with the `>>` operator while the other defers using a function call. We will only look at the direct usage for now.
 
@@ -46,7 +46,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/3zoz1517r)
 
-### Section 5.3 : IO Manipulators
+## IO Manipulators
 
 Because streams are used for IO operations in C++, they are naturally composable, allowing for the streams manipulation mid-stream. The C++ standard library has a variety of manipulators that allow you to change a streams format. Manipulators are found in the `<iomanip>` header.
 

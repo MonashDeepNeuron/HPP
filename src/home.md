@@ -12,7 +12,7 @@ This book is designed to be read cover-to-cover. Concepts in later chapters will
 
 ## Synopsis
 
-- [Chapter 1 - Setup](./chapter1/chapter1.md) - Setup & Introduction to C++
+- [Chapter 1 - Getting Started](./chapter1/chapter1.md) - Setup & Introduction to C++
 - [Chapter 2 - Basics of C++](./chapter2/chapter2.md) - Types, Variables, Operators, IO, Conditionals, Loops and Functions
 - [Chapter 3 - Memory](./chapter3/chapter3.md) - Pointers, Slices, References, Dynamic Memory and The Standard Library
 - [Chapter 4 - Intermediate C++](./chapter4/chapter4.md) - Functional Programming, Namespaces, Enumerations, Unions, Structures
@@ -20,16 +20,20 @@ This book is designed to be read cover-to-cover. Concepts in later chapters will
 - [Chapter 6 - Algorithms & Data Structures](./chapter6/chapter6.md) - Iterators, Data Structures, Algorithms, Ranges and Views
 - [Chapter 7 - Parallel Programming](./chapter7/chapter7.md) - Parallel Algorithms, Atomics, Threads, Mutexes & Locks and Async
 
-<!-- ## Weekly Meetups
+## Suggestions, Fixes and Contributions
 
-Each week, the team will meet at Monash Clayton Campus (location, day, time etc. are TBD) were we will go through the content, tackle any issues and misunderstandings, experiment, discuss ideas and showcase things people have built.
-
-It is expected that all team members show up for the meetups in person unless previously discussed with the management team. There will be online access and we have plans to record it for future reference but again, ideally everyone is present for the meetups.
-
-Each week I will make an announcement containing any information regarding the weekly meetup. Meetup times and locations are expected to remain relatively consistent throughout the series. Any clashes will be dealt with in the meetup the week before and announced to all members. -->
+Refer to the [source code](https://github.com/MonashDeepNeuron/HPP) of this book for details on how to contribute changes, fix typos or create new content for this book.
 
 ## External Resources
 
 - [cppreference](https://en.cppreference.com/w/Main_Page)
 - [Compiler Explorer](https://www.godbolt.org/)
 - [bpt docs](https://bpt.pizza/docs/latest/index.html)
+
+<div style="font-size: 0.75em;">
+  <center>
+    <code>
+      {{ #include ./version.md }}
+    </code>
+  </center>
+</div>

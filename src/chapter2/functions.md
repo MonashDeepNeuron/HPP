@@ -1,14 +1,12 @@
 # Functions
 
-## Section 4
-
-### Section 9.1 : What is a functions?
+## What is a functions?
 
 A function is the most basic form of abstraction in programming. They allow software to be broken down into more simple pieces of code and compose and reuse them as we please.
 
 Much like functions in mathematics, functions in C++ (an every programming language) take in some input parameters (aka arguments or points) and return a single output value. This creates a transformation or mapping between input values and types to output values and types.
 
-### Section 9.2 : Function Syntax
+## Function Syntax
 
 Functions in C++ consist of a declaration and definition. A declaration is the functions signature which consists of the functions name, its points and its return type. The definition is a code block with at least on `return` expression.
 
@@ -82,7 +80,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/radjo93bx)
 
-#### Section 9.2.3 : Void Functions
+### Void Functions
 
 Functions can also return nothing. This is often the case when functions have side effects. Side effects are operations that occur outside the input and outputs domains of a function. Printing with `std::cout` (or rather the underlying function that `std::cout calls) is an example of a function with side effects. It takes the string literal as input and returns, nothing but the effect of the text printing still occurs.
 

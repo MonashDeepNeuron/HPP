@@ -1,10 +1,8 @@
 # Loops
 
-## Section 8
-
 Along with conditional expressions another powerful language facility is loops. Loops allow for programs to run in an iterative manner, that is a block will be executed in series. This is powerful feature that enables us to repeat a set of instructions effectively and efficiently.
 
-### Section 8.1 : While Loop
+## While Loop
 
 A `while` loop is the most basic kind of loop. `while` loops will repeat its code block as long as its condition is met.
 
@@ -27,7 +25,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/Pxa3G8T4o)
 
-### Section 8.2 : Do-While Loop
+## Do-While Loop
 
 There is another kind of `while` loop in C++ called a `do-while` loop. This works the exact same way a regular `while` loop works except that the condition is checked at the end of each loop rather than the start. This means that the code block will be executed at least once.
 
@@ -52,7 +50,7 @@ auto main () -> int
 
 > Note: You can break out of a `while` or `do-while` loop with `break` or a `return`-expression.
 
-### Section 8.3 : For Loop
+## For Loop
 
 Another common loop in C++ is the `for` loop. `for` loops will generate an initial value, validate it meets a condition and proceed through the sequences.
 
@@ -72,7 +70,7 @@ auto main () -> int
 
 As we can see, loops  through the power of conditional checking make programs much smaller and allow us to abstract repeated actions into a single statement.
 
-### Section 8.4 : Range For
+## Range For
 
 There is one other loop in C++. This is the `range-for`. This is a special `for` loop that is able to iterate through a sequence of values, yielding a single value from the sequence each loop. It automatically knows the size of the sequence and when to stop.
 

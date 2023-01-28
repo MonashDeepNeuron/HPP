@@ -1,8 +1,6 @@
 # Mutexes & Locks
 
-## Section 4
-
-### Section 4.1 : What is a Mutex?
+## What is a Mutex?
 
 A mutex is a _mutually-exclusive-object_. It is used to synchronize access to shared memory resources across multiple threads. C++ mutex type is called `std::mutex` from the `<mutex>` header. Threads can own a `std::mutex` by locking it. Other threads will block when they try to lock a `std::mutex` owned by another thread. `std::mutex` also implement a try-lock that returns a Boolean indicating the result off the lock attempt. A thread cannot own a `std::mutex` before it tries to lock it. Mutexes are generally implemented as a OS primitive. Because `std::mutex` (and C++ other mutex types) use locking and unlocking methods to control access, these types are not considered to be RAII types. Instead there are locking types that will lock a mutex on construction and unlock it on destruction (more below).
 
@@ -71,9 +69,9 @@ bpt build -t build.yaml -o build
 
 [Example](./examples/mutex/src/mutex.main.cxx)
 
-[`std::mutex` : cppreference](https://en.cppreference.com/w/cpp/thread/mutex)
+[`std::mutex`](https://en.cppreference.com/w/cpp/thread/mutex)
 
-### Section 4.2 : Other Mutex Types
+## Other Mutex Types
 
 - `std::timed_mutex` - Mutex that offers timeout based locking methods. Locking will be attempted for a certain duration.
 - `std::recursive_mutex` - Mutex that can be repeatedly locked by the same thread multiple times. Must be unlocked the same number of times to become fully unlocked.
@@ -81,17 +79,17 @@ bpt build -t build.yaml -o build
 - `std::shared_mutex` - A mutex that offers to levels of access, _shared_ or _exclusive_. Shared locking allows for multiple threads to share a mutex and read the shared memory resources while exclusive only allows one thread to access the shared resources with write privileges. If one thread has a shared lock an a mutex other threads can only gain a shared lock on it as well prohibiting the ability to gain exclusive access from another thread until all threads have unlocked the shared lock. Similarly, a thread with an exclusive lock on a thread disallows other threads from gaining any lock on the mutex until it has been unlocked.
 - `std::shared_timed_mutex` - Same as a `std::shared_mutex` but offers timeout based exclusive and shared locking.
 
-- [`std::timed_mutex` : cppreference](https://en.cppreference.com/w/cpp/thread/timed_mutex)
-- [`std::recursive_mutex` : cppreference](https://en.cppreference.com/w/cpp/thread/recursive_mutex)
-- [`std::recursive_timed_mutex` : cppreference](https://en.cppreference.com/w/cpp/thread/recursive_timed_mutex)
-- [`std::shared_mutex` : cppreference](https://en.cppreference.com/w/cpp/thread/shared_mutex)
-- [`std::shared_timed_mutex` : cppreference](https://en.cppreference.com/w/cpp/thread/shared_timed_mutex)
+- [`std::timed_mutex`](https://en.cppreference.com/w/cpp/thread/timed_mutex)
+- [`std::recursive_mutex`](https://en.cppreference.com/w/cpp/thread/recursive_mutex)
+- [`std::recursive_timed_mutex`](https://en.cppreference.com/w/cpp/thread/recursive_timed_mutex)
+- [`std::shared_mutex`](https://en.cppreference.com/w/cpp/thread/shared_mutex)
+- [`std::shared_timed_mutex`](https://en.cppreference.com/w/cpp/thread/shared_timed_mutex)
 
-### Section 4.3 : What is a lock?
+## What is a lock?
 
 A lock is another kind of synchronization primitive. Locks can be used to wrap other synchronization primitives like mutexes and bind the locking and unlocking if the mutex to the lifetime of the lock using RAII or can themselves be synchronization primitives that must be acquires and released. Most locks in C++ perform the former which allow for mutex locking to be scoped ensuring proper releasing of resources even if exceptions are thrown. Locks however, can also be used erroneously creating _deadlocks_ for which two threads rely on the releasing of each others locks in order to release their respective locks. They also have a little more overhead as you have to create and destroy locks. Locks will often be created in an unnamed scope to ensure that it only lives as long as it needs.
 
-### Section 4.4 : Semaphores
+## Semaphores
 
 The most simple type of lock is a semaphore. Semaphores allow multiple threads to access the same resource. The number of accessors is dictated by a count which decrements when the semaphore is acquires and blocks for any acquisitions for which the count is zero. C++ semaphore type which supports arbitrary size counts is called `std::counting_semaphore`. There is also a specialisation for which only a single accessor is allowed, called `std::binary_semaphore`. Both of these live in the `semaphore` header.
 
@@ -146,9 +144,9 @@ $ ./build/semaphores
 
 [Example](./examples/mutex/src/semaphores.main.cxx)
 
-[`std::counting_semaphore` & `std::binary_semaphore` : cppreference](https://en.cppreference.com/w/cpp/thread/counting_semaphore)
+[`std::counting_semaphore` & `std::binary_semaphore`](https://en.cppreference.com/w/cpp/thread/counting_semaphore)
 
-### Section 4.5 : Lock Types
+## Lock Types
 
 - `std::lock_guard` - The most basic kind of mutex locking wrapper. It binds the locking lifetime of a mutex to the lifetime of the lock. It takes a template type parameter of the mutex type and a mutex as a constructor argument. It can also adopt the ownership of a mutex by passing a second constructor argument `std::adopt_lock` which does not lock the mutex but ensuring the calling thread will unlock it. `std::lock_guard` is non-copyable.
 - `std::scoped_lock` - A lock for acquiring ownership of zero or more mutexes for the duration of a scope block. When constructed and given ownership of multiple mutexes, the locking and unlocking of mutexes uses a deadlock avoidance algorithm.
@@ -221,13 +219,13 @@ $ ./build/locks
 
 [Example](./examples/mutex/src/locks.main.cxx)
 
-- [`std::lock_guard` : cppreference](https://en.cppreference.com/w/cpp/thread/lock_guard)
-- [`std:scoped_lock` : cppreference](https://en.cppreference.com/w/cpp/thread/scoped_lock)
-- [`std::unique_lock` : cppreference](https://en.cppreference.com/w/cpp/thread/unique_lock)
-- [`std::shared_lock` : cppreference](https://en.cppreference.com/w/cpp/thread/shared_lock)
-- [Locking Strategies : cppreference](https://en.cppreference.com/w/cpp/thread/lock_tag)
+- [`std::lock_guard`](https://en.cppreference.com/w/cpp/thread/lock_guard)
+- [`std:scoped_lock`](https://en.cppreference.com/w/cpp/thread/scoped_lock)
+- [`std::unique_lock`](https://en.cppreference.com/w/cpp/thread/unique_lock)
+- [`std::shared_lock`](https://en.cppreference.com/w/cpp/thread/shared_lock)
+- [Locking Strategies](https://en.cppreference.com/w/cpp/thread/lock_tag)
 
-### Section 4.6 : Latches
+## Latches
 
 A `std::latch` is count-down synchronization primitive with the count is initialized on construction. Threads can wait at a `std::latch` until the count reaches zero. Once this happens, all the threads waiting on the latch are released. `std::latch` cannot increment or reset its counter after construction making it a single use barrier. `std::latch` is non-copyable and lives in the `<latch>` header.
 
@@ -325,9 +323,9 @@ All jobs cleaned up.
 
 [Example](./examples/mutex/src/latch.main.cxx)
 
-[`std::latch` : cppreference](https://en.cppreference.com/w/cpp/thread/latch)
+[`std::latch`](https://en.cppreference.com/w/cpp/thread/latch)
 
-### Section 4.7 : Barriers
+## Barriers
 
 `std::barrier` is a more general version of `std::latch`. The lifetime of a `std::barrier` consists of one or more phases. The first is a synchronization phase for which threads will block where once the counter has reach zero for the `std::barrier` the threads will unblock. Right before unblocking, a completion function will run which is optionally supplied at the `std::barrier` construction. After this the `std::barrier` will reset its counter and can be reused. The overall count can be reduced on arrival by a thread. `std::barrier` is non-copyable and lives in the `<barrier>` header.
 
@@ -427,4 +425,4 @@ All cleaned up.
 
 [Example](./examples/mutex/src/barrier.main.cxx)
 
-[`std::barrier` : cppreference](https://en.cppreference.com/w/cpp/thread/barrier)
+[`std::barrier`](https://en.cppreference.com/w/cpp/thread/barrier)

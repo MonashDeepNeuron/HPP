@@ -1,8 +1,8 @@
 # Equality, Ordering and Logical Operators
 
-## Section 6
+The notion of equality and ordering is a common principle in Computer Science. It allows for data to be verified, organised and sorted. This fundamental principles underpin a lot of programming. C++ has many facilities not just for testing equality or ordering of types, value and other entities but also for customizing the behaviour.
 
-### Section 6.1 : Equality
+## Equality
 
 A common operation in all of programming is to test for equality. In C++ primitive types are compared as arithmetic types, that is the systems ALU (Arithmetic and Logic Unit) will compare the bits of a value and return to the system whether the result is `true` or `false`.
 
@@ -33,7 +33,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/EK14h6fhd)
 
-### Section 6.2 : Ordering
+## Ordering
 
 Checking for equality is pretty straight forward. Some more interesting operations are the ordering operators. What is ordering? Ordering is a relationship of different values of the same type. Ordering is what gives numbers their sequence (`2 < 3`). Ordering operators allow use to check if some ordering condition is met.
 
@@ -67,7 +67,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/v4EYf1n3j)
 
-### Section 6.3 : Spaceships and Ordering Types
+## Spaceships and Ordering Types
 
 As of C++20 there as a new ordering operator introduced called the three-way-comparison operator or, the spaceship operator `<=>`. The spaceship operator different ordering types based on the strictness of the ordering.
 
@@ -81,15 +81,15 @@ As of C++20 there as a new ordering operator introduced called the three-way-com
 |:-----------------------:|:-----------------------:|:-------------------------:|
 |  `std::strong_ordering` |    indistinguishable    |        not allowed        |
 |   `std::weak_ordering`  |     distinguishable     |        not allowed        |
-| `std::chapterial_ordering` |     distinguishable     |          allowed          |
+| `std::partial_ordering` |     distinguishable     |          allowed          |
 
 - indistinguishable : if `a == b` then `f(a) == f(b)`
 - distinguishable : if `a == b` then `f(a) != f(b)`
-- `std::chapterial_ordering` can return `std::chapterial_ordering::unordered` eg. `/* anything */ <=> NaN == std::chapterial_ordering::unordered`.
+- `std::partial_ordering` can return `std::partial_ordering::unordered` eg. `/* anything */ <=> NaN == std::partial_ordering::unordered`.
 
-> Note: floating point comparisons return `std::chapterial_ordering`
+> Note: floating point comparisons return `std::partial_ordering`
 
-#### Section 6.3.1 : Strong Ordering
+### Strong Ordering
 
 `std::strong_ordering` can have the values:
 
@@ -98,9 +98,9 @@ As of C++20 there as a new ordering operator introduced called the three-way-com
 - `std::strong_ordering::equal`
 - `std::strong_ordering::greater`
 
-and can be implicitly converted into `std::chapterial_ordering` or `std::weak_ordering`.
+and can be implicitly converted into `std::partial_ordering` or `std::weak_ordering`.
 
-#### Section 6.3.2 : Weak Ordering
+### Weak Ordering
 
 `std::weak_ordering` can have the values:
 
@@ -108,11 +108,11 @@ and can be implicitly converted into `std::chapterial_ordering` or `std::weak_or
 - `std::weak_ordering::equivalent`
 - `std::weak_ordering::greater`
 
-and can be implicitly converted into `std::chapterial_ordering`.
+and can be implicitly converted into `std::partial_ordering`.
 
-#### Section 6.3.3 : Chapterial Ordering
+### Partial Ordering
 
-`std::chapterial_ordering` can have the values:
+`std::partial_ordering` can have the values:
 
 - `std::strong_ordering::less`
 - `std::strong_ordering::equivalent`
@@ -147,7 +147,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/asKsxKc1W)
 
-### Section 6.4 : Logical Operators
+## Logical Operators
 
 In programming, it is useful to be able to check a multitude of Boolean expression. This allows programs to have more complex conditional logic structures.
 

@@ -96,7 +96,7 @@ Let's break this command down.
 
 Debugging is the crux of fixing issues in code. Debuggers allow us to step through the running code and diagnose any issues that are occurring as they occur. Debugging a single executable is pretty trivial but a sufficiently large codebase can become quite complex.
 
-For that reason we are going to go into debugging a little bit more at the meetup as configuring VSCode is a bit tricky. The debugging also doesn't show anything chaptericularly interesting for a simple "Hello World" program.
+For that reason we are going to go into debugging a little bit more at the meetup as configuring VSCode is a bit tricky. The debugging also doesn't show anything particularly interesting for a simple "Hello World" program.
 
 If you know how a debugger works, you can have a play with VSCode and see if you can get it to work.
 

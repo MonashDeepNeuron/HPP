@@ -1,9 +1,5 @@
 # Namespaces
 
-## Section 2
-
-### Section 2.1 : Namespaces
-
 Namespaces create separation of symbols and names in C++. This allows for types, functions and variables to have the same name without causing collisions and ambiguity. We have already been using a namespace throughout this series, this being the `std` namespace. Namespaces a named scopes whose members can be accessed using the scope resolution operator `::`. To create a namespace you use the `namespace` keyword followed by the namespace name and a new scope. To use a namespace without having to go through scope resolution you can declare a namespaces use by `using namespace /* name */`.
 
 > Note: Using `::` with no name looks in the global namespace eg. `::a`.
@@ -34,9 +30,9 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/9oon3r944)
 
-[Namespaces : cppreference](https://en.cppreference.com/w/cpp/language/namespace)
+[Namespaces](https://en.cppreference.com/w/cpp/language/namespace)
 
-### Section 2.2 : Duplicate Namespaces
+## Duplicate Namespaces
 
 Two namespaces with the same name will logically be merged, members and symbols from both can be looked up using the same namespace name given both headers containing the namespace symbols is available to be searched. This is how the `std` namespace can have all its components across different headers but be looked up using `std::`.
 
@@ -68,7 +64,7 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/r9PPxbYh5)
 
-### Section 2.3 : Nested Namespaces
+## Nested Namespaces
 
 Namespaces can also be declared to be nested. We saw this in the previous set of sections with the `std::placeholders` namespace. To access a nested namespace you use a double scope resolution operator `::`.
 

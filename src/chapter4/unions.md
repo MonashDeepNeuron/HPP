@@ -1,9 +1,5 @@
 # Unions
 
-## Section 4
-
-### Section 4.1 : Unions
-
 Unions are a special kind of type known as an algebraic data type. This means the type of a union object can vary between a small list of possible types. This allows for a single type to be one of many possible types that can change throughout the lifetime of the program. The members of a union occupy the same memory space, thus the size of a union is the size of the largest possible member. Constructing a union object will always need to construct the first variant. Accessing the non-activate member is UB.
 
 ```cxx
@@ -33,14 +29,14 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/zGeTs8ozn)
 
-[Unions : cppreference](https://en.cppreference.com/w/cpp/language/union)
+[Unions](https://en.cppreference.com/w/cpp/language/union)
 
-### Section 4.2 : Limitations
+## Limitations
 
 Unions are quite powerful but have a few limitations.
 
 - There is no default mechanism for inspecting the current variant of a union.
-- They can have member functions including constructors and destructors but cannot have virtual functions (more in [Chapter 5](/content/chapter5/README.md)).
+- They can have member functions including constructors and destructors but cannot have virtual functions (more on this in chapter 5).
 - They cannot have base classes nor can be used as a base class.
 - They cannot have non-static members of reference types.
 - If any variant types have a non-trivial special member function it is deleted for the union and must be declared explicitly for the union type.
@@ -76,11 +72,11 @@ int main()
 
 [Example](https://www.godbolt.org/z/rqPz5hK45)
 
-### Section 4.3 : Type Safe Algebraic Data Types
+## Type Safe Algebraic Data Types
 
 While unions are powerful, they are very error prone and can lead to hard to diagnose bugs. Instead, in C++17 type-safe algebraic types that more intuitive to use and far safer.
 
-#### Section 4.3.1 : Option
+### Options
 
 One of the most common uses of algebraic data types is `std::optional` which can represent a type that may _optionally_ contain some value or non at all. `std::optional` is often used as the return type if a function that might expectedly fail. `std::optional` can contain any type or has the type of `std::nullopt`.
 
@@ -120,9 +116,9 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/aGvnrYPzn)
 
-[`std::optional<T>` : cppreference](https://en.cppreference.com/w/cpp/utility/optional)
+[`std::optional<T>`](https://en.cppreference.com/w/cpp/utility/optional)
 
-#### Section 4.3.2 : Variant
+### Variants
 
 The is also a more generic algebraic data type in C++ called `std::variant` which is implemented as a tagged union; that is, you are able to inspect which type is currently active, validate the state of the variant and perform a simply form of pattern matching. Empty variants can be simulated by using the `std::monospace` type variant.
 
@@ -156,6 +152,5 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/fzMKbjWW3)
 
-[`std::variant<Ts..>` : cppreference](https://en.cppreference.com/w/cpp/utility/variant)
-
-[`std::visit()` : cppreference](https://en.cppreference.com/w/cpp/utility/variant/visit)
+- [`std::variant<Ts..>`](https://en.cppreference.com/w/cpp/utility/variant)
+- [`std::visit()`](https://en.cppreference.com/w/cpp/utility/variant/visit)
