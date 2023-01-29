@@ -1,23 +1,27 @@
 # High Performance Programming
 
-~ <!-- What is HPP -->
+This repository contains the source code for "High Performance Programming" Book. All examples, slides and content are also found in this repository. This book is available online or can be built locally and served in your browser.
 
-## About this Repository
+## Building
 
-This repository contains the information, resources and links to help guide you through this series. Each directory will have a corresponding `README.md` file which is displayed when viewing that directory on GitHub. These files will give a synopsis of everything to do with that directory. The weekly content can be found in the `content/` directory, which has been broken down by week.
+To build this book you need [mdBook](https://rust-lang.github.io/mdBook/index.html) a tool for creating books with Markdown. mdBook can be installed using Cargo - Rust's package manager.
 
-Each week has directories for the sections, examples and meetup slides for that week. Any other helpful information brought during meetups will be added to the `README.md` of each week. Read the information carefully and follow each step as listed. If you need help, don't hesitate to read out.
+```sh
+$ cargo install mdbook
+```
 
-The links below can help direct you to the relevant pages.
+You can build this book you must clone this repository using Git. You can then build it and even serve it to localhost to view in your browser. The serve command will produce a localhost you can view.
 
-## Links and External Resources
+```sh
+$ git clone https://github.com/MonashDeepNeuron/HPP.git
+$ cd HPP
 
-- [Book]()
-- [Series Timeline](https://oraqlle.notion.site/4421929e24944bcfa4f3a771fb322a2b?v=d844b80fad784a7a9dcc273442b222a1)
-- [cppreference](https://en.cppreference.com/w/Main_Page)
-- [Compiler Explorer](https://www.godbolt.org/)
-- [bpt docs](https://bpt.pizza/docs/latest/index.html)
-- [Godbolt Examples](/GODBOLT.md)
+# Build ...
+$ mdbook build
+
+# ... or serve build and serve locally
+$ mdbook serve --open
+```
 
 ## Contributors
 
@@ -26,6 +30,4 @@ The links below can help direct you to the relevant pages.
 
 ## Code of Conduct, License & Contributing
 
-Refer to the [Code of Conduct](/CODE_OF_CONDUCT.md) and the [License](/LICENSE) for this repository for the expected behavior of contributors and users of the repository. If you have any concerns reach out to me (Tyler Swann) on Teams or follow standard MDN procedures for issues you are having within the team, branch or MDN.
-
-<!-- Contributing -->
+Refer to the [Code of Conduct](/CODE_OF_CONDUCT.md) and the [License](/LICENSE) for this repository for the expected behavior of contributors and users of the repository. If you have any concerns reach out to me (Tyler Swann) on Teams or follow standard M procedures for issues you are having within the team, branch or MDN. If you wish to contribute, follow the [contributing guide](/CONTRIBUTING.md).
