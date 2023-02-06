@@ -24,6 +24,6 @@ Meetups will be held on:
 ## Go To
 
 - [Task 1 : Parallel Algorithms](/content/part7/tasks/parallel-alg.md)
-- [Slides](/content/part/slides/README.md)
+- [Slides](/content/part7/slides/README.md)
 - [Content](/content/README.md)
 - [Home](/README.md)

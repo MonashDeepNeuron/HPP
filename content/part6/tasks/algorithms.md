@@ -608,7 +608,7 @@ auto main() -> int
 
 [Example](https://www.godbolt.org/z/cjY6W7cPe)
 
-[`std::shuffle` : cppreference](https://en.cppreference.com/w/cpp/algorithm/)
+[`std::shuffle` : cppreference](https://en.cppreference.com/w/cpp/algorithm/shuffle)
 
 ### Task 3.7 : Numeric
 

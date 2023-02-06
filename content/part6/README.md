@@ -24,6 +24,6 @@ This weeks meetup will be on 25/01/2023 from 1:30pm.
 
 - [Task 1 : Iterators](/content/part6/tasks/iterators.md)
 - [Examples](/content/part/examples/README.md)
-- [Slides](/content/part/slides/README.md)
+- [Slides](/content/part6/slides/README.md)
 - [Content](/content/README.md)
 - [Home](/README.md)
