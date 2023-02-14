@@ -37,5 +37,8 @@
 # Build Outputs
 **/build/*
 
+# Book Build
+book
+
 # Misc.
 *:Zone.Identifier

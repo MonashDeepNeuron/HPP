@@ -1,0 +1,3 @@
+# Concurrent Programming
+
+The focus of this chapter is parallelism and concurrency. Parallelism allows for large amount data to be broken into smaller chunks and processed at the same time. Even undergoing different transformations. Concurrency is the ability to run multiple jobs, sections or functions simultaneously and communicate data and transfer between the states of the jobs. Together, these allow programs to expand the amount of work they are able to do and separate a program into multiple moving pieces. C++ has many primitives that make parallel and concurrent programming simple and effective.

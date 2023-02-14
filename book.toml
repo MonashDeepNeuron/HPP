@@ -1,0 +1,12 @@
+[book]
+authors = ["Tyler Swann"]
+title = "High Performance Programming"
+description = "Monash DeepNeuron's High Performance Programming Curriculum"
+
+language = "en"
+multilingual = false
+
+src = "src"
+
+[output.html]
+mathjax-support = true

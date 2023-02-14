@@ -1,22 +1,7 @@
 # A
 
-## Contents
+## Section n
 
-- [A](#a)
-  - [Contents](#contents)
-  - [Task n](#task-n)
-    - [Task n.1 :](#task-n1-)
-  - [Links](#links)
-
-## Task n
-
-### Task n.1 : 
+### Section n.1 : 
 
 
-
-## Links
-
-- [Previous Page : Week 2](/content/part2/README.md)
-- [Next Page : Primitive Data Types](/content/part2/tasks/.md)
-- [Content](/content/README.md)
-- [HOME](/README.md)

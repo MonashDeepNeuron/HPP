@@ -1,0 +1,3 @@
+# Basics of C++
+
+In this chapter you will be introduced to C++ the type system, how it differs from other languages and how types reflect machine architecture. You will also learn about variable declarations, type qualifiers and a few of the key operators and IO facilities in C++. You will also be exposed to the concept of ordering, equality and the logical operators in C++. You will also learn about conditional logic and how it can be used to create structure and control the flow of a program. You will also learn about C++ looping facilities and how it can be used to perform iterative programming. Finally, you will learn the basics of functions in C++.
