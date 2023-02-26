@@ -1,6 +1,6 @@
 # High Performance Programming
 
-This repository contains the source code for "High Performance Programming" Book. All examples, slides and content are also found in this repository. This book is available online or can be built locally and served in your browser.
+This repository contains the source code for the "High Performance Programming" Book. All examples, slides and content are also found in this repository. This book is available online or can be built locally and served in your browser.
 
 ## Building
 
