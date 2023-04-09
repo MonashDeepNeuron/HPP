@@ -1,10 +1,10 @@
 # Operators
 
-Operators are unique symbols that are used to perform changes to data. They often have infix notation with some having prefix or postfix notation. In C++, all operators are functions however, they are built into the language fpr primitive data types.
+Operators are unique symbols that are used to perform changes to data. They often have infix notation with some having prefix or postfix notation. In C++, all operators are functions however, they are built into the language for primitive data types.
 
 ## Basic Arithmetic
 
-So enough about types and values. Lets write some code that does something. In C++ there are a lot, and I mean a lot of operators but we will only cover the arithmetic based one this week. The first ones we will look at are the basic arithmetic operators. These include your standard:
+So enough about types and values. Lets write some code that does something. In C++ there are a lot, and I mean a lot of operators but we will only cover the arithmetic based ones this week. The first ones we will look at are the basic arithmetic operators. These include your standard:
 
 - `+` - Addition
 - `-` - Subtraction
@@ -148,7 +148,7 @@ In C++ there is another category of operators called bitwise operators. These op
 
 > Note: We've seen `<<` before with `std::cout`. In the case of `std::cout` `<<` means 'put (to)'. It is simply an overloaded operator used for ease of use. It doesn't correlate to the bitwise meaning.
 
-Each of the bitwise operators perform their respective logical operations on each of the bits the the two values or points and returns the new value.
+Each of the bitwise operators perform their respective logical operations on each of the bits of the two values or points and returns the new value.
 
 ```cxx
 #include <bitset>
@@ -253,7 +253,7 @@ Have a play with these operators and try and perform some computations that you 
 
 ## Size Operator
 
-Another useful operator is the `sizeof` and `sizeof...` operator. It returns the number of bytes if a type parameter pack (more on parameter packs later).
+Another useful operator is the `sizeof` and `sizeof...` operator. It returns the number of bytes of a type parameter pack (more on parameter packs later).
 
 ```cxx
 #include <iostream>
