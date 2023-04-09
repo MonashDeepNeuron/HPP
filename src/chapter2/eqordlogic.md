@@ -35,7 +35,7 @@ auto main () -> int
 
 ## Ordering
 
-Checking for equality is pretty straight forward. Some more interesting operations are the ordering operators. What is ordering? Ordering is a relationship of different values of the same type. Ordering is what gives numbers their sequence (`2 < 3`). Ordering operators allow use to check if some ordering condition is met.
+Checking for equality is pretty straight forward. Some more interesting operations are the ordering operators. What is ordering? Ordering is a relationship of different values of the same type. Ordering is what gives numbers their sequence (`2 < 3`). Ordering operators allow us to check if some ordering condition is met.
 
 - `<`  - Less than
 - `>`  - Greater than
@@ -69,7 +69,7 @@ auto main () -> int
 
 ## Spaceships and Ordering Types
 
-As of C++20 there as a new ordering operator introduced called the three-way-comparison operator or, the spaceship operator `<=>`. The spaceship operator different ordering types based on the strictness of the ordering.
+As of C++20 there is a new ordering operator introduced called the three-way-comparison operator or, the spaceship operator `<=>`. The spaceship operator has different ordering types based on the strictness of the ordering.
 
 - `(a <=> b) < 0` if `a < b`
 - `(a <=> b) > 0` if `a > b`
@@ -155,7 +155,7 @@ In programming, it is useful to be able to check a multitude of Boolean expressi
 - `&&` - Logical And
 - `||` = Logical Or
 
-Logical And and Or have special short circuiting properties. This means that the outcome of a Boolean expressions can be evaluated early. For And, if one Boolean point is `false`, it doesn't matter what the second point evaluates to as the expression's condition has already failed, thus whole expression would `false`. Inversely for Or, if one Boolean point is `true` the whole expression is true
+Logical And and Or have special short circuiting properties. This means that the outcome of a Boolean expressions can be evaluated early. For And, if one Boolean point is `false`, it doesn't matter what the second point evaluates to as the expression's condition has already failed, thus the whole expression is `false`. Inversely for Or, if one Boolean point is `true` the whole expression is true
 
 > Note: There is no logical Xor. This is because Xor cannot short circuited as the result depends on the result of both points. However, we have already seen the logical Xor, it is the `!=`. If the two points of `!=` are either both `true` or both `false`, the inequality condition is not met and thus achieving the exclusivity properties of Xor. In C++ because `bool` can be implicitly converted to other integral types, it is best that logicalXor is used as: `!(a) != !(b)`.
 

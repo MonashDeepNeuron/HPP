@@ -4,11 +4,11 @@ IO means input and output. IO operations are used to consume or emit data at the
 
 ## What is a stream?
 
-What is a stream. A stream is a sequence of an indeterminate amount of data connecting a source to a destination. In C++, streams are used to connect a perform a variety of IO operations. You have already used on of these streams in C++, this is of course `std::cout`.
+What is a stream. A stream is a sequence of an indeterminate amount of data connecting a source to a destination. In C++, streams are used to connect and perform a variety of IO operations. You have already used on of these streams in C++, this is of course `std::cout`.
 
 ## C Standard Streams
 
-In C++ there are a few pre-defined stream objects. This are mounted to the the C languages `stdout`, `stdin` and `stderr`. These output devices are how C (and these stream objects) connect to the terminal screen and keyboard of your device.
+In C++ there are a few pre-defined stream objects. These are mounted to the C languages `stdout`, `stdin` and `stderr`. These output devices are how C (and these stream objects) connect to the terminal screen and keyboard of your device.
 
 - `std::cin` - Output stream to C's `stdin`
 - `std::cout` - Output stream to C's `stdout`
