@@ -1,0 +1,989 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Algorithms - High Performance Programming</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Monash DeepNeuron&#x27;s High Performance Programming Curriculum">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../home.html">Home</a></li><li class="chapter-item expanded affix "><div>Foreword</div></li><li class="chapter-item expanded "><a href="../chapter1/chapter1.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter1/wsl.html"><strong aria-hidden="true">1.1.</strong> WSL</a></li><li class="chapter-item expanded "><a href="../chapter1/software.html"><strong aria-hidden="true">1.2.</strong> Installing Software</a></li><li class="chapter-item expanded "><a href="../chapter1/helloworld.html"><strong aria-hidden="true">1.3.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../chapter1/godbolt.html"><strong aria-hidden="true">1.4.</strong> Compiler Explorer</a></li><li class="chapter-item expanded "><a href="../chapter1/slides1.html"><strong aria-hidden="true">1.5.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter2/chapter2.html"><strong aria-hidden="true">2.</strong> Basics of C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter2/typesystem.html"><strong aria-hidden="true">2.1.</strong> The C++ Type System</a></li><li class="chapter-item expanded "><a href="../chapter2/types.html"><strong aria-hidden="true">2.2.</strong> Primitive Types</a></li><li class="chapter-item expanded "><a href="../chapter2/variables.html"><strong aria-hidden="true">2.3.</strong> Variables</a></li><li class="chapter-item expanded "><a href="../chapter2/operators.html"><strong aria-hidden="true">2.4.</strong> Operators</a></li><li class="chapter-item expanded "><a href="../chapter2/io.html"><strong aria-hidden="true">2.5.</strong> IO</a></li><li class="chapter-item expanded "><a href="../chapter2/eqordlogic.html"><strong aria-hidden="true">2.6.</strong> Equality, Ordering &amp; Logical Operators</a></li><li class="chapter-item expanded "><a href="../chapter2/condexpr.html"><strong aria-hidden="true">2.7.</strong> Conditional Expressions</a></li><li class="chapter-item expanded "><a href="../chapter2/loops.html"><strong aria-hidden="true">2.8.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../chapter2/functions.html"><strong aria-hidden="true">2.9.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../chapter2/slides2.html"><strong aria-hidden="true">2.10.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter3/chapter3.html"><strong aria-hidden="true">3.</strong> Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter3/pointers.html"><strong aria-hidden="true">3.1.</strong> Pointers</a></li><li class="chapter-item expanded "><a href="../chapter3/slices.html"><strong aria-hidden="true">3.2.</strong> Slices</a></li><li class="chapter-item expanded "><a href="../chapter3/references.html"><strong aria-hidden="true">3.3.</strong> References</a></li><li class="chapter-item expanded "><a href="../chapter3/memory.html"><strong aria-hidden="true">3.4.</strong> Dynamic Memory</a></li><li class="chapter-item expanded "><a href="../chapter3/stdlib.html"><strong aria-hidden="true">3.5.</strong> The Standard Library</a></li><li class="chapter-item expanded "><a href="../chapter3/slides3.html"><strong aria-hidden="true">3.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter4/chapter4.html"><strong aria-hidden="true">4.</strong> Intermediate C++ Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter4/advfunc.html"><strong aria-hidden="true">4.1.</strong> Advanced Function Concepts</a></li><li class="chapter-item expanded "><a href="../chapter4/namespaces.html"><strong aria-hidden="true">4.2.</strong> Namespaces</a></li><li class="chapter-item expanded "><a href="../chapter4/enums.html"><strong aria-hidden="true">4.3.</strong> Enumerations</a></li><li class="chapter-item expanded "><a href="../chapter4/unions.html"><strong aria-hidden="true">4.4.</strong> Unions</a></li><li class="chapter-item expanded "><a href="../chapter4/structs.html"><strong aria-hidden="true">4.5.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../chapter4/task1.html"><strong aria-hidden="true">4.6.</strong> Task 1</a></li><li class="chapter-item expanded "><a href="../chapter4/slides4.html"><strong aria-hidden="true">4.7.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter5/chapter5.html"><strong aria-hidden="true">5.</strong> Generic Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter5/classes.html"><strong aria-hidden="true">5.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../chapter5/templates.html"><strong aria-hidden="true">5.2.</strong> Templates</a></li><li class="chapter-item expanded "><a href="../chapter5/generics.html"><strong aria-hidden="true">5.3.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../chapter5/concepts.html"><strong aria-hidden="true">5.4.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../chapter5/task2.html"><strong aria-hidden="true">5.5.</strong> Task 2</a></li><li class="chapter-item expanded "><a href="../chapter5/slides5.html"><strong aria-hidden="true">5.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter6/chapter6.html"><strong aria-hidden="true">6.</strong> Algorithms &amp; Data Structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter6/iterators.html"><strong aria-hidden="true">6.1.</strong> Iterators</a></li><li class="chapter-item expanded "><a href="../chapter6/data-structures.html"><strong aria-hidden="true">6.2.</strong> Data Structures</a></li><li class="chapter-item expanded "><a href="../chapter6/algorithms.html" class="active"><strong aria-hidden="true">6.3.</strong> Algorithms</a></li><li class="chapter-item expanded "><a href="../chapter6/ranges.html"><strong aria-hidden="true">6.4.</strong> Ranges</a></li><li class="chapter-item expanded "><a href="../chapter6/views.html"><strong aria-hidden="true">6.5.</strong> Views</a></li><li class="chapter-item expanded "><a href="../chapter6/task3.html"><strong aria-hidden="true">6.6.</strong> Task 3</a></li><li class="chapter-item expanded "><a href="../chapter6/slides6.html"><strong aria-hidden="true">6.7.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter7/chapter7.html"><strong aria-hidden="true">7.</strong> Concurrent Computing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter7/parallel-alg.html"><strong aria-hidden="true">7.1.</strong> Parallel Algorithms</a></li><li class="chapter-item expanded "><a href="../chapter7/atomics.html"><strong aria-hidden="true">7.2.</strong> Atomics</a></li><li class="chapter-item expanded "><a href="../chapter7/threads.html"><strong aria-hidden="true">7.3.</strong> Threads</a></li><li class="chapter-item expanded "><a href="../chapter7/mutexes.html"><strong aria-hidden="true">7.4.</strong> Mutexes</a></li><li class="chapter-item expanded "><a href="../chapter7/async.html"><strong aria-hidden="true">7.5.</strong> Asynchronous Programming</a></li><li class="chapter-item expanded "><a href="../chapter7/slides7.html"><strong aria-hidden="true">7.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../GODBOLT.html">Godbolt Examples</a></li><li class="chapter-item expanded affix "><a href="../planned.html">Planned Additions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">High Performance Programming</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/MonashDeepNeuron/HPP" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="algorithms"><a class="header" href="#algorithms">Algorithms</a></h1>
+<h2 id="what-is-an-algorithm"><a class="header" href="#what-is-an-algorithm">What is an algorithm?</a></h2>
+<p>What is an algorithm? The simplest definition is that is is a function. The longer definition is that an algorithm is a set of instructions that occur in a finite number of steps. Algorithms are used to manipulate data, perform computation or even perform introspection on data. Powerful algorithms when paired with efficient data structures are what make programs. So far we have seen how to create our own data structures in C++ through classes and concepts. We have also seen the data structures already offered by C++, we will now look at how you can use any algorithm available in C++ with all of these data structures and perform computation (almost) entirely independent of how it is organised.</p>
+<h3 id="algorithm-intuition"><a class="header" href="#algorithm-intuition">Algorithm Intuition</a></h3>
+<p>This section is not really about how to implement any particular algorithm. Instead it is aimed at building what is called algorithm intuition. This focuses not on how I do make an algorithm that performs the steps X, Y and Z to some data, taking into account A, B and C but rather on knowing about existing algorithms, what they do and how you can piece and compose different algorithms together to create a more general solution. This idea of composition is a super power to programming as it enables creating solutions from smaller reusable components.</p>
+<h2 id="the-standard-template-library"><a class="header" href="#the-standard-template-library">The Standard Template Library</a></h2>
+<p>The C++ algorithms library as it stands today was created by the brilliant mind of <a href="https://en.wikipedia.org/wiki/Alexander_Stepanov">Alexander Stepanov</a>. Alex Stepanov was a pioneer in practical generic programming and created what is known as the Standard Template Library (STL). The STL was the predecessor to everything in the C++ Standard Library that uses templates which is almost everything. The biggest edition to the C++ standard from the STL was the container and algorithm libraries. All algorithms in C++ use iterator pairs (with identical types), one to the beginning of a sequence and one to the end. This means that any container just has to provide an iterator to its first and last elements and any algorithm can work with it. A pair of iterators is called a range in C++. All algorithms take at least a pair of iterators with some taking more.</p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm"><code>&lt;algorithm&gt;</code></a></p>
+<h2 id="general"><a class="header" href="#general">General</a></h2>
+<p>The most general algorithm is <code>std::for_each</code>. This algorithm can take a single ranges and an unary function that will be applied to each element. <code>std::for_each</code> is often used to replace for-loops in certain context, mostly when a function has a side effect.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 1, 2, 3, 4, 5 };
+
+    std::for_each(v.begin(), v.end(), [](const auto&amp; e){ std::cout &lt;&lt; e &lt;&lt; ' '; });
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/W1croE686">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/for_each"><code>std::for_each</code></a></p>
+<h2 id="sorting"><a class="header" href="#sorting">Sorting</a></h2>
+<p>Sorting is a very common operation in programming. It allows us to more efficiently search for particular elements and guarantee certain properties and relationships between elements. In C++ there are a few different kinds of sorting algorithms including partitioning and introspection of data.</p>
+<h3 id="sort"><a class="header" href="#sort">Sort</a></h3>
+<p><code>std::sort</code> is C++ sorting algorithm. Along with the input range, it can also take in a predicate (a binary function returning a Boolean) which is used for the comparison. This defaults to <code>&lt;</code> making <code>std::sort</code> sort in ascending order. <code>std::sort</code> sorts in-place and is often implemented as an Introsort algorithm.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 2, 576, -3, 678, 3, -2543, 6 };
+
+    println(v);
+    std::sort(v.begin(), v.end());
+    println(v);
+
+    std::sort(v.begin(), v.end(), std::greater&lt;&gt;{});
+    println(v);
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/d9K618hhn">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/sort"><code>std::sort</code></a></p>
+<h3 id="partition"><a class="header" href="#partition">Partition</a></h3>
+<p>Partitioning is the process of sorting elements based on a predicate such that any element for which the predicate is <code>true</code> precedes any element for which the predicate is <code>false</code>. This can be used to separate evens and odds or positive and negatives or even implement quicksort. The individual partitions are not necessarily sorted.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ -1, 2, -3, -4, 5 };
+
+    println(v);
+    std::partition(v.begin(), v.end(), [](const auto&amp; e){ return e % 2 == 0; });
+    println(v);
+
+    std::partition(v.begin(), v.end(), [](const auto&amp; e){ return e &gt; 0; });
+    println(v);
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/48jfqqdcd">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/partition"><code>std::partition</code></a></p>
+<h3 id="nth-element"><a class="header" href="#nth-element">Nth Element</a></h3>
+<p><code>std::nth_element</code> sorts a range such that the element pointed to by nth is the element that would occur in that position if the range was sorted. <code>std::nth_element</code> is a partial sorting algorithm.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ -24, 573, -3, 677, 3, -2543, 6 };
+
+    println(v);
+    auto m = v.begin() + (v.size() / 2);
+    std::nth_element(v.begin(), m, v.end());
+    std::cout &lt;&lt; v[v.size() / 2] &lt;&lt; std::endl;
+    println(v);
+
+    std::nth_element(v.begin(), v.end() - 2, v.end(), std::greater&lt;&gt;{});
+    std::cout &lt;&lt; *(v.end() - 2) &lt;&lt; std::endl;
+    println(v);
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/GM1rrW68P">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/nth_element"><code>std::nth_element</code></a></p>
+<h2 id="searching"><a class="header" href="#searching">Searching</a></h2>
+<p>More often than not, you do not know anything about which values actually exists in your range. This is why searching algorithms are important chapter of computer programming. They allow us to find elements what we need or handle the case when they do not exist.</p>
+<h3 id="find"><a class="header" href="#find">Find</a></h3>
+<p><code>std::find</code> is used to find a particular value in range. returning the iterator to its location. It is not very efficient but is the most general searcher.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 1, 2, 3, 4, 5 };
+
+    println(v);
+    auto result1 = std::find(v.begin(), v.end(), 3);
+    auto result2 = std::find(v.begin(), v.end(), 68);
+    
+    (result1 == v.end() ? std::cout &lt;&lt; 3 &lt;&lt; &quot; not found&quot; &lt;&lt; std::endl
+                        : std::cout &lt;&lt; 3 &lt;&lt; &quot; found at &quot; &lt;&lt; std::distance(v.begin(), result1) &lt;&lt; std::endl);
+
+    (result2 == v.end() ? std::cout &lt;&lt; 68 &lt;&lt; &quot; not found&quot; &lt;&lt; std::endl
+                        : std::cout &lt;&lt; 68 &lt;&lt; &quot; found at &quot; &lt;&lt; std::distance(v.begin(), result2) &lt;&lt; std::endl);
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/KhqvGao43">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/find"><code>std::find</code></a></p>
+<h3 id="search"><a class="header" href="#search">Search</a></h3>
+<p><code>std::search</code> is used fo find the first occurrence of a subsequence in a range. <code>std::search</code> can also be passed a different searcher to change how it searches for the subsequence.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 1, 2, 3, 4, 5 };
+    auto s = std::vector&lt;int&gt;{ 2, 3, 4 };
+
+    println(v);
+    println(s);
+    auto result = std::search(v.begin(), v.end(), s.begin(), s.end());
+    
+    (result == v.end() ? std::cout &lt;&lt; &quot;sequence { 2, 3, 4 } not found&quot; &lt;&lt; std::endl
+                       : std::cout &lt;&lt; &quot;sequence { 2, 3, 4 } found at offset &quot; &lt;&lt; std::distance(v.begin(), result) &lt;&lt; std::endl);
+
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/51cqjG8Pb">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/search"><code>std::</code></a></p>
+<h3 id="adjacent-find"><a class="header" href="#adjacent-find">Adjacent Find</a></h3>
+<p><code>std::adjacent_find</code> returns the location of the first pair of adjacent elements in a ranges that satisfy a predicate. The default predicate is <code>==</code>.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 1, 2, 3, 3, 4, 5 };
+
+    println(v);
+    auto result = std::adjacent_find(v.begin(), v.end());
+    
+    (result == v.end() ? std::cout &lt;&lt; &quot;no equal adjacent elemnts&quot; &lt;&lt; std::endl
+                       : std::cout &lt;&lt; &quot;first equal adjacent elements occured at offset: &quot; 
+                                   &lt;&lt; std::distance(v.begin(), result) 
+                                   &lt;&lt; &quot; with *result = &quot;
+                                   &lt;&lt; *result
+                                   &lt;&lt; std::endl);
+
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/WMxqEezfn">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/adjacent_find"><code>std::adjacent_find</code></a></p>
+<h3 id="binary-search"><a class="header" href="#binary-search">Binary Search</a></h3>
+<p>Everyone knows the binary search algorithm however, <code>std::binary_search</code> is a little different. Instead of returning the location of the desired element it returns <code>true</code> if the desired value exists in the range and <code>false</code> otherwise. <code>std::binary_search</code> iin C++ is more commonly spelt <strong><em>in</em></strong>. <code>std::binary_search</code> one works on a partially ordered ranged with respect to the desired value. Partitioning with respect to the desired value is the minimum sorting requirement.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 1, 2, 3, 4, 5 };
+
+    println(v);
+    
+    std::cout &lt;&lt; std::boolalpha
+              &lt;&lt; &quot;Found 2? -- &quot; 
+              &lt;&lt; std::binary_search(v.begin(), v.end(), 2)
+              &lt;&lt; std::endl
+              &lt;&lt; &quot;Found 6? -- &quot;
+              &lt;&lt; std::binary_search(v.begin(), v.end(), 6)
+              &lt;&lt; std::noboolalpha
+              &lt;&lt; std::endl;
+
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/xq7cerxYf">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/binary_search"><code>std::binary_search</code></a></p>
+<h3 id="equal-range-lower-bound--upper-bound"><a class="header" href="#equal-range-lower-bound--upper-bound">Equal Range, Lower Bound &amp; Upper Bound</a></h3>
+<p>These algorithms work on partitioned ranges with respect to some value (similar to <code>std::binary_search</code>). <code>std::equal_range</code> returns a pair of iterators representing the sub-range of elements that are equal to the desired value. <code>std::lower_bound</code> and <code>std::upper_bound</code> will return an iterator representing the first value do not satisfy a predicate (default <code>&lt;</code>) with the right argument always being the desired value for <code>std::lower_bound</code> and the left argument always being the desired value for <code>std::upper_bound</code>.</p>
+<blockquote>
+<p>Note: These algorithms are also member functions of all associative containers and some of the unordered associative containers.</p>
+</blockquote>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 1, 2, 3, 4, 4, 4, 5 };
+
+    println(v);
+
+    auto [eq1, eq2] = std::equal_range(v.begin(), v.end(), 4);
+    auto lwbnd4 = std::lower_bound(v.begin(), v.end(), 4);
+    auto upbnd4 = std::upper_bound(v.begin(), v.end(), 4);
+    
+    std::cout &lt;&lt; &quot;Range containing 4:&quot; &lt;&lt; std::endl;
+    println(std::vector&lt;int&gt;(eq1, eq2));
+    std::cout &lt;&lt; &quot;Lower bound of 4: &quot; &lt;&lt; *lwbnd4 &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Upper bound of 4: &quot; &lt;&lt; *upbnd4 &lt;&lt; std::endl;
+
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/eTK3jaKb7">Example</a></p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/algorithm/equal_range"><code>std::equal_range</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/algorithm/lower_bound"><code>std::lower_bound</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/algorithm/upper_bound"><code>std::upper_bound</code></a></li>
+</ul>
+<h2 id="modifiers"><a class="header" href="#modifiers">Modifiers</a></h2>
+<p>Modifiers are the bread and butter of the algorithms library. They are used to modify the values of sequences sometimes in-place and other times using an output iterator that becomes the writer of the algorithm. The writer iterator can be the same iterator as the one representing the start of the input ranges as long as it supports write operations (assignment to). These algorithms will often return <code>void</code> for in-place modifications or return the end iterator of the output range.</p>
+<h3 id="copy--move"><a class="header" href="#copy--move">Copy &amp; Move</a></h3>
+<p>The copy and move algorithms are pretty self explanatory, they well copy of move the elements from one range to another. These algorithms eliminate 90% of the use of a manual for-loop and allow for copying and moving from completely different ranges, as long as the underlying copy of move is support ie. they types are copyable or movable.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v1 = std::vector&lt;std::string&gt;{ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
+    auto v2 = std::vector&lt;std::string&gt;{};       ///&lt; Empty vector
+    auto v3 = std::vector&lt;std::string&gt;(5, &quot;&quot;);  ///&lt; Preallocated memory
+
+    println(v1);
+    println(v2);
+    println(v3);
+
+    /// Use back inserted to push copies to the back 
+    /// of the vector as v2 has no allocated memory
+    std::copy(v1.begin(), v1.end(), std::back_inserter(v2));
+
+    /// Can us v3 iterator directly as it has
+    /// preallocated memory
+    std::move(v1.begin(), v1.end(), v3.begin());
+    std::cout &lt;&lt; std::endl;
+
+    println(v1);
+    println(v2);
+    println(v3);
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/jrhM39hz4">Example</a></p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/algorithm/copy"><code>std::copy</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/algorithm/move"><code>std::move</code></a></li>
+</ul>
+<h3 id="swap-range"><a class="header" href="#swap-range">Swap Range</a></h3>
+<p><code>std::swap_range</code> is a range based form of <code>std::swap</code>. It will swap the values of two ranges until the end of the first rnage is reached.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v1 = std::vector&lt;std::string&gt;{ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
+    auto v2 = std::vector&lt;std::string&gt;{ &quot;v&quot;, &quot;w&quot;, &quot;x&quot;, &quot;y&quot;, &quot;z&quot; };
+
+    println(v1);
+    println(v2);
+
+    std::swap_ranges(v1.begin(), v1.end(), v2.begin());
+    std::cout &lt;&lt; std::endl;
+
+    println(v1);
+    println(v2);
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/3eqcdfG4f">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/swap_ranges"><code>std::swap_ranges</code></a></p>
+<h3 id="remove--replace"><a class="header" href="#remove--replace">Remove &amp; Replace</a></h3>
+<p><code>std::remove</code> and <code>std::replace</code> are also fairly simple algorithms. They will remove or replace all instances of a particular value or replacing it with a new value respectively. <code>std::remove</code> doesn't actually free memory, usually it just moves any other value forward in the range. To free the removed memory, a call to <code>std::remove</code> is followed by a call to the containers erase method or <code>std::erase</code> (for sequence containers), taking the iterator returned by <code>std::remove</code> and the containers end iterator forming the <em>remove-erase idiom</em>.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 2, 3, 5, 1, 2, 2, 3, 4, 2, 5, 3 };
+
+    println(v);
+    auto r = std::remove(v.begin(), v.end(), 3);
+    std::cout &lt;&lt; std::endl;
+    println(v);
+    v.erase(r, v.end());
+    std::cout &lt;&lt; std::endl;
+    println(v);
+    std::replace(v.begin(), v.end(), 2, -2);
+    std::cout &lt;&lt; std::endl;
+    println(v);
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/Er64q3T3b">Example</a></p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/algorithm/remove"><code>std::remove</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/algorithm/replace"><code>std::replace</code></a></li>
+</ul>
+<h3 id="reverse"><a class="header" href="#reverse">Reverse</a></h3>
+<p><code>std::reverse</code> is an in-place modifier that reverses the elements of the container by swapping iterators.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 1, 2, 3, 4, 5 };
+
+    println(v);
+    std::reverse(v.begin(), v.end());
+    println(v);
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/cjT6vEd7M">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/reverse"><code>std::reverse</code></a></p>
+<h3 id="transform"><a class="header" href="#transform">Transform</a></h3>
+<p><code>std::transform</code> one of the most important algorithms in any programming language. <code>std::transform</code> will apply an unary function on every element in a range, writing it to a new output range. It also is overloaded to take an additional input iterator allowing for binary transformations. <code>std::transform</code> is most commonly spelt as <strong><em>map</em></strong> in Computer Science however, this name was taken be <code>std::map</code>.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v1 = std::vector&lt;int&gt;{ 0, 1, 2, 3, 4 };
+    auto v2 = std::vector&lt;int&gt;{ 9, 8, 7, 6, 5 };
+
+    println(v1);
+    std::transform(v1.begin(), v1.end(), v1.begin(), [](const auto&amp; x){ return x * x; });
+    println(v1);
+    std::cout &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;  &quot;;
+    println(v1);
+    std::cout &lt;&lt; &quot;+ &quot;;
+    println(v2);
+    std::transform(v1.begin(), v1.end(),
+                   v2.begin(), v1.begin(),
+                   [](const auto&amp; x, const auto&amp; y){ return x + y; });
+    std::cout &lt;&lt; &quot;= &quot;;
+    println(v1);
+
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/9n9WjerzG">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/transform"><code>std::transform</code></a></p>
+<h3 id="rotate"><a class="header" href="#rotate">Rotate</a></h3>
+<p><code>std::rotate</code> takes three iterators first, pivot and end respectively. As normal, first and end form the range the algorithm operates on while pivot is swapped such that it becomes the new starting element of the range and the element preceding the pivot becomes the new end of the range.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 0, 1, 2, 3, 4, 5, 6 };
+
+    println(v);
+    std::rotate(v.begin(), v.begin() + 3, v.end());
+    println(v);
+
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/YTnEn1o7d">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/rotate"><code>std::rotate</code></a></p>
+<h3 id="sample"><a class="header" href="#sample">Sample</a></h3>
+<p><code>std::sample</code> will sample \( n \) random elements a range without replacement such that each sampled element has an equal probability of appearing. <code>std::sample</code> takes in a random number generator from the <code>&lt;random&gt;</code> header in order to generate the random access.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;random&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    auto s = std::vector&lt;int&gt;(4);
+
+    println(v);
+    std::sample(v.begin(), v.end(),
+                s.begin(), s.size(),
+                std::mt19937{ std::random_device{}() });
+    println(s);
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/rr6PPbb8a">Example</a></p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/algorithm/sample"><code>std::sample</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/header/random"><code>&lt;random&gt;</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/numeric/random/mersenne_twister_engine"><code>std::mersenne_twister_engine</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/numeric/random">Pseudo-random number generation</a></li>
+</ul>
+<h3 id="shuffle"><a class="header" href="#shuffle">Shuffle</a></h3>
+<p><code>std::shuffle</code> will randomly reorganize a range. Like <code>std::sample</code>, <code>std::shuffle</code> takes in a random number generator in order to randomly generate the index sequence.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;random&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    println(v);
+    std::shuffle(v.begin(), v.end(), std::mt19937{ std::random_device{}() });
+    println(v);
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/cjY6W7cPe">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/"><code>std::shuffle</code></a></p>
+<h2 id="numeric"><a class="header" href="#numeric">Numeric</a></h2>
+<p>Numerical algorithms are powerful algorithms for performing numerical computation on ranges. Many of the numerical algorithms in C++ are specialised forms of a reduction. Reductions will take a range of values and reduce the the number of elements in the resulting range. Reductions often come in the form of a folding algorithm which take and initial value, a range and a binary function. They break a range of elements into a <em>Head</em> and <em>Tail</em> component, with the <em>Head</em> being the first element and <em>Tail</em> being the rest. There are two version folds called left and right folds. A left fold will apply the initial value along with the result of left folding the <em>Tail</em>; with <em>Head</em> being the new initial value, to the binary function. Right folds will invert this process applying <em>Head</em> and the result of right folding the <em>Tail</em> of the range; passing the initial value to the bottom of the fold, to the binary function. Folds spelt as reductions are often left folds with the initial value being the <em>Head</em> of the range.</p>
+<p><a href="https://docs.google.com/spreadsheets/d/16isUb2rsuzSmkJLO_FtjGCzsQJOAeRKWARBUGn_mrHI/edit#gid=631619717">Fold</a></p>
+<h3 id="minimums--maximums"><a class="header" href="#minimums--maximums">Minimums &amp; Maximums</a></h3>
+<p>Minimum and maximum reductions are used to find the smallest and largest number in a range. In C++ these are spelt as <code>std::min_element</code>, <code>std::max_element</code>. These algorithms return an iterator to the element most satisfying the predicate which is defaulted to <code>&lt;</code> but can be customised. There is also <code>std::minmax_element</code> which returns a pair of iterators indicating the minimum and maximum element in a range.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 1, 3, 5, 0, 2, 6 };
+
+    println(v);
+    auto min1 = std::min_element(v.begin(), v.end());
+    auto max1 = std::max_element(v.begin(), v.end());
+    auto [min2, max2] = std::minmax_element(v.begin(), v.end());
+    
+    std::cout &lt;&lt; &quot;Min: &quot; &lt;&lt; *min1 &lt;&lt; &quot; @ &quot; &lt;&lt; std::distance(v.begin(), min1) &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Max: &quot; &lt;&lt; *max1 &lt;&lt; &quot; @ &quot; &lt;&lt; std::distance(v.begin(), max1) &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Min, Max: [&quot; 
+              &lt;&lt; *min2 &lt;&lt; &quot;, &quot; &lt;&lt; *max2 
+              &lt;&lt; &quot;] @ [&quot; 
+              &lt;&lt; std::distance(v.begin(), min2)
+              &lt;&lt; &quot;, &quot;
+              &lt;&lt; std::distance(v.begin(), max2)
+              &lt;&lt; &quot;]&quot;
+              &lt;&lt; std::endl;
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/G8Y9dchEv">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/min_element"><code>std::min_element</code></a>
+<a href="https://en.cppreference.com/w/cpp/algorithm/max_element"><code>std::max_element</code></a>
+<a href="https://en.cppreference.com/w/cpp/algorithm/minmax_element"><code>std::minmax_element</code></a></p>
+<h3 id="count"><a class="header" href="#count">Count</a></h3>
+<p><code>std::count</code> will count that number of occurrences of a particular value. The default predicate is <code>==</code> but it can be customised.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 2, 1, 3, 5, 2, 2, 3, 0, 2, 6, 2 };
+    auto e = int{ 2 };
+
+    println(v);
+    std::cout &lt;&lt; &quot;Number of &quot; &lt;&lt; e &lt;&lt; &quot;'s = &quot; &lt;&lt; std::count(v.begin(), v.end(), e) &lt;&lt; std::endl;
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/5xejqWf6s">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/count"><code>std::count</code></a></p>
+<h3 id="clamp"><a class="header" href="#clamp">Clamp</a></h3>
+<p><code>std::clamp</code> is a scalar algorithm (doesn't work for ranges) that will clamp a value between a set range. If the value is smaller then the lower bound it is clamped to the lower bound and if it is larger than the upper bound it clamps to the upper bound, returning the value otherwise. <code>std::clamp</code> is not a reduction.</p>
+<blockquote>
+<p>Note: If the return value is bound to a reference and the value is a temporary to the call to <code>std::clamp</code> the reference is dangling.</p>
+</blockquote>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto low = int{ 2 };
+    auto high = int{ 3 };
+
+
+    auto v = std::vector&lt;int&gt;{ 0, 1, 2, 3, 4, 5, 6 };
+
+    println(v);
+    std::transform(v.begin(), v.end(), v.begin(),
+                   [&amp;](const auto&amp; x){ return std::clamp(x, low, high); });
+    println(v);
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/q5sWsrK1x">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/clamp"><code>std::clamp</code></a></p>
+<h3 id="accumulate"><a class="header" href="#accumulate">Accumulate</a></h3>
+<p><code>std::accumulate</code> is the most general numeric algorithm and can be used to implement almost all of the algorithms in the C++ standard. Accumulate takes a range of values, an initial value and a binary function defaulting to <code>+</code>. Accumulate is most commonly spelt as left-fold or foldl. <code>std::accumulate</code> is one of the only algorithms that returns a value. One point to note about <code>std::accumulate</code> is that the initial values type is unrelated to the type of the range of elements. This can cause unintended side effects due to implicit conversions. <code>std::accumulate</code> is not found in <code>&lt;algorithm&gt;</code> but rather <code>&lt;numeric&gt;</code>.</p>
+<blockquote>
+<p>One algorithm <code>std::accumulate</code> should not try and model is function application or maps (ie. <code>std::transform</code>).</p>
+</blockquote>
+<pre><code class="language-cxx">#include &lt;functional&gt;
+#include &lt;iostream&gt;
+#include &lt;numeric&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+    println(v);
+
+    auto sum     = std::accumulate(v.begin(), v.end(), 0);
+    auto product = std::accumulate(v.begin(), v.end(), 1, std::multiplies&lt;&gt;{});
+    std::cout &lt;&lt; &quot;Sum of v = &quot; &lt;&lt; sum &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Product of v = &quot; &lt;&lt; product &lt;&lt; std::endl;
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/v3jEMP4c1">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/accumulate"><code>std::accumulate</code></a></p>
+<h3 id="inner-product"><a class="header" href="#inner-product">Inner Product</a></h3>
+<p><code>std::inner_product</code> is a very powerful algorithm. It performs a binary transformation of two ranges and then performs a reduction on the resulting range. The most common form of this algorithm is known as the dot-product which applies the binary <code>*</code> on the two sets of coordinates and then a binary reduction on the resulting range using <code>+</code>. This is the default operation set for C++ <code>std::inner_product</code> but it can be customised to using any binary transformation and reduction. Like <code>std::accumulate</code> is takes an initial value which is applied to the and returns the result of the reduction. <code>std::inner_product</code> also lives in the <code>&lt;numeric&gt;</code> header.</p>
+<pre><code class="language-cxx">#include &lt;iostream&gt;
+#include &lt;numeric&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 1, 3, 5, 7, 9 };
+    auto u = std::vector&lt;int&gt;{ 0, 2, 4, 6, 8 };
+
+    auto r = std::inner_product(v.begin(), v.end(), u.begin(), 0);
+
+    std::cout &lt;&lt; &quot;v: &quot;;
+    println(v);
+    std::cout &lt;&lt; &quot;     x  x  x  x  x   + =&gt; &quot; &lt;&lt; r &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;u: &quot;;
+    println(u);
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/schxqWbo3">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/inner_product"><code>std::inner_product</code></a></p>
+<h3 id="partial-sum"><a class="header" href="#partial-sum">Partial Sum</a></h3>
+<p><code>std::partial_sum</code> is another reduction algorithm but with a twist. Instead of reducing the range to a scalar, it partially reduces the range, saving the intermediate accumulation values. <code>std::partial_sum</code> does not take an initial but does take an iterator to the beginning of the output range. Returns the element pointing to one-past-the-end element of the output range. This algorithm is most commonly spelt as left scan or <code>scanl</code> (in particular <code>scanl1</code> due to it not taking an initial accumulator value).<code>std::partial_sum</code> is in the <code>&lt;numeric&gt;</code> header. The default binary function is <code>+</code>.</p>
+<pre><code class="language-cxx">#include &lt;functional&gt;
+#include &lt;iostream&gt;
+#include &lt;numeric&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    auto u = std::vector&lt;int&gt;(v.size(), 0);
+    auto w = std::vector&lt;int&gt;(v.size() - 1, 0);
+
+    std::partial_sum(v.begin(), v.end(), u.begin());
+    std::partial_sum(v.begin() + 1, v.end(), w.begin(), std::multiplies&lt;&gt;{});
+
+    println(v);
+    println(u);
+    println(w);
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/YnWdvq1nv">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/partial_sum"><code>std::partial_sum</code></a></p>
+<h3 id="adjacent-difference"><a class="header" href="#adjacent-difference">Adjacent Difference</a></h3>
+<p><code>std::adjacent_difference</code> applies the the binary function <code>-</code> (by default) to every pair of neighboring elements writing them to a new range. This range begins at one after the passed output iterator.</p>
+<pre><code class="language-cxx">#include &lt;functional&gt;
+#include &lt;iostream&gt;
+#include &lt;numeric&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 4, 6, 9, 13, 18, 19, 19, 15, 10 };
+    auto u = std::vector&lt;int&gt;(v.size(), 0);
+    auto w = std::vector&lt;int&gt;(v.size(), 0);
+    w[0] = 1;
+
+    std::adjacent_difference(v.begin(), v.end(), u.begin());
+    std::adjacent_difference(w.begin(), std::prev(w.end()), std::next(w.begin()), std::plus&lt;&gt;{});
+
+    println(v);
+    println(u);
+    std::cout &lt;&lt; std::endl &lt;&lt; &quot;Fibonacci: &quot;;
+    println(w);
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/rbvK3P1ah">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/adjacent_difference"><code>std::adjacent_difference</code></a></p>
+<h2 id="comparisons"><a class="header" href="#comparisons">Comparisons</a></h2>
+<p>The following algorithms are used to perform comparisons and conditional checks both between ranges and within a range. They all return a Boolean indicating the result of the comparison.</p>
+<h3 id="equal"><a class="header" href="#equal">Equal</a></h3>
+<p><code>std::equal</code> performs applies a predicate to two ranges. The default predicate is <code>==</code> but any can be used.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v1 = std::vector&lt;int&gt;{ 0, 1, 2, 3, 4, 5 };
+    auto v2 = std::vector&lt;int&gt;{ 1, 2, 3, 4, 5, 6 };
+
+    println(v1);
+    println(v2);
+
+    std::cout &lt;&lt; std::boolalpha 
+              &lt;&lt; std::equal(v1.begin(), v1.end(), v2.begin(), std::less&lt;&gt;{})
+              &lt;&lt; std::endl;
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/fs1T64vq5">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/equal"><code>std::equal</code></a></p>
+<h3 id="lexicographical-compare"><a class="header" href="#lexicographical-compare">Lexicographical Compare</a></h3>
+<p><code>std::lexicographical_compare</code> checks if the first range is lexicographically less then the second range. The predicate <em>less</em> can be changed.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iomanip&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+auto main() -&gt; int
+{
+    auto s1 = std::string{ &quot;Hello&quot; };
+    auto s2 = std::string{ &quot;Hi&quot; };
+
+    std::cout &lt;&lt; std::quoted(s1) &lt;&lt; std::endl;
+    std::cout &lt;&lt; std::quoted(s2) &lt;&lt; std::endl;
+
+    std::cout &lt;&lt; std::boolalpha 
+              &lt;&lt; std::lexicographical_compare(s1.begin(), s1.end(),
+                                              s2.begin(), s2.end())
+              &lt;&lt; std::endl;
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/YqovzcTYM">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/lexicographical_compare"><code>std::lexicographical_compare</code></a></p>
+<h3 id="all-any--none-of"><a class="header" href="#all-any--none-of">All, Any &amp; None Of</a></h3>
+<p>The three algorithms <code>std::all_of</code>, <code>std::any_of</code> and <code>std::none_of</code> will apply an unary predicate on a range returning <code>true</code> if all of, any of or none of the elements satisfy the predicate and <code>false</code> otherwise.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 0, 1, 2, 3, 4, 5 };
+
+    println(v);
+
+    std::cout &lt;&lt; std::boolalpha 
+              &lt;&lt; &quot;All Odd? -- &quot;
+              &lt;&lt; std::all_of(v.begin(), v.end(), [](const auto&amp; e){ return !(e % 2 == 0); })
+              &lt;&lt; std::endl
+              &lt;&lt; &quot;Any Even? -- &quot;
+              &lt;&lt; std::any_of(v.begin(), v.end(), [](const auto&amp; e){ return e % 2 == 0; })
+              &lt;&lt; std::endl
+              &lt;&lt; &quot;None are 7? -- &quot;
+              &lt;&lt; std::none_of(v.begin(), v.end(), [](const auto&amp; e){ return e == 7; })
+              &lt;&lt; std::endl;
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/hddx535Wj">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/all_any_none_of"><code>std::all_of</code>, <code>std::any_of</code> &amp; <code>std::none_of</code></a></p>
+<h3 id="mismatch"><a class="header" href="#mismatch">Mismatch</a></h3>
+<p>Finds the first mismatch between two ranges returning an <code>std::pair</code> of the iterators to the mismatch in the ranges. The binary predicate (default <code>==</code>) can be changed so that mismatch triggers on the first evaluation of <code>false</code> from the predicate.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v1 = std::vector&lt;int&gt;{ 1, 2, 3, 4, 5 };
+    auto v2 = v1;
+    v2[3] = 465;
+
+    println(v1);
+    println(v2);
+    std::cout &lt;&lt; std::endl;
+
+    const auto [v1ms, v2ms] = std::mismatch(v1.begin(), v1.end(), v2.begin());
+    
+    std::cout &lt;&lt; &quot;v1: &quot; &lt;&lt; *v1ms &lt;&lt; &quot;, v2: &quot; &lt;&lt; *v2ms &lt;&lt; std::endl;    
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/jj69vr5qe">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/mismatch"><code>std::mismatch</code></a></p>
+<h2 id="generators"><a class="header" href="#generators">Generators</a></h2>
+<p>Generators allow for ranges to be filled with values after their initial construction. They are useful for manufacturing values without the need of literals.</p>
+<h3 id="fill"><a class="header" href="#fill">Fill</a></h3>
+<p><code>std::fill</code> is the most simple generator. It fills an entire range with a single value, modifying the range in-place.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 0, 1, 2, 3, 4, 5 };
+
+    println(v);
+    std::fill(v.begin(), v.end(), 8);
+    println(v);
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/57ssP7P36">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/fill"><code>std::fill</code></a></p>
+<h3 id="iota"><a class="header" href="#iota">Iota</a></h3>
+<p><code>std::iota</code> is a powerful factory based generator. It is supplied and initial value and will increment (using <code>++</code>) that initial value as it iterates through the range and assigns the current iterator with the incremented value. Iota is a common factory used in many different programming languages. Its original name is iota but it is often spelt <strong><em>range</em></strong>. <code>std::iota</code> is chapter of the <code>&lt;numeric&gt;</code> header. Like <code>std::fill</code>, <code>std::iota</code> modifies a sequence in-place.</p>
+<pre><code class="language-cxx">#include &lt;iostream&gt;
+#include &lt;numeric&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 0, 1, 2, 3, 4, 5 };
+
+    println(v);
+    std::iota(v.begin(), v.end(), -2);
+    println(v);
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/oz1179Gn6">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/iota"><code>std::iota</code></a></p>
+<h3 id="generate"><a class="header" href="#generate">Generate</a></h3>
+<p><code>std::generate</code> is the most primitive generator algorithm. Instead of taking an initial value, it takes a function that gets called repeatedly on each iteration. This algorithm modifies the range in-place.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;random&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v    = std::vector&lt;int&gt;(10);
+    auto rd   = std::random_device{};
+    auto gn   = std::mt19937{ rd() };
+    auto dist = std::uniform_int_distribution&lt;&gt;{ 0, 10 };
+
+    println(v);
+    std::generate(v.begin(), v.end(), [&amp;]() { return dist(gn); });
+    println(v);
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/s3GrYnv1a">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/algorithm/generate"><code>std::generate</code></a></p>
+<h2 id="algorithm-extensions"><a class="header" href="#algorithm-extensions">Algorithm Extensions</a></h2>
+<p>Many algorithms have customised counterparts. These customisations include variants that take a predicate, or a size <code>n</code> instead of and end iterator. This are suffixed with markers such as <code>_if</code> or <code>_n</code> in the algorithm functions name. Look at cppreference for a comprehensive list of these variants.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../chapter6/data-structures.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../chapter6/ranges.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../chapter6/data-structures.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../chapter6/ranges.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

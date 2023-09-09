@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Variables - High Performance Programming</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Monash DeepNeuron&#x27;s High Performance Programming Curriculum">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../home.html">Home</a></li><li class="chapter-item expanded affix "><div>Foreword</div></li><li class="chapter-item expanded "><a href="../chapter1/chapter1.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter1/wsl.html"><strong aria-hidden="true">1.1.</strong> WSL</a></li><li class="chapter-item expanded "><a href="../chapter1/software.html"><strong aria-hidden="true">1.2.</strong> Installing Software</a></li><li class="chapter-item expanded "><a href="../chapter1/helloworld.html"><strong aria-hidden="true">1.3.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../chapter1/godbolt.html"><strong aria-hidden="true">1.4.</strong> Compiler Explorer</a></li><li class="chapter-item expanded "><a href="../chapter1/slides1.html"><strong aria-hidden="true">1.5.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter2/chapter2.html"><strong aria-hidden="true">2.</strong> Basics of C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter2/typesystem.html"><strong aria-hidden="true">2.1.</strong> The C++ Type System</a></li><li class="chapter-item expanded "><a href="../chapter2/types.html"><strong aria-hidden="true">2.2.</strong> Primitive Types</a></li><li class="chapter-item expanded "><a href="../chapter2/variables.html" class="active"><strong aria-hidden="true">2.3.</strong> Variables</a></li><li class="chapter-item expanded "><a href="../chapter2/operators.html"><strong aria-hidden="true">2.4.</strong> Operators</a></li><li class="chapter-item expanded "><a href="../chapter2/io.html"><strong aria-hidden="true">2.5.</strong> IO</a></li><li class="chapter-item expanded "><a href="../chapter2/eqordlogic.html"><strong aria-hidden="true">2.6.</strong> Equality, Ordering &amp; Logical Operators</a></li><li class="chapter-item expanded "><a href="../chapter2/condexpr.html"><strong aria-hidden="true">2.7.</strong> Conditional Expressions</a></li><li class="chapter-item expanded "><a href="../chapter2/loops.html"><strong aria-hidden="true">2.8.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../chapter2/functions.html"><strong aria-hidden="true">2.9.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../chapter2/slides2.html"><strong aria-hidden="true">2.10.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter3/chapter3.html"><strong aria-hidden="true">3.</strong> Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter3/pointers.html"><strong aria-hidden="true">3.1.</strong> Pointers</a></li><li class="chapter-item expanded "><a href="../chapter3/slices.html"><strong aria-hidden="true">3.2.</strong> Slices</a></li><li class="chapter-item expanded "><a href="../chapter3/references.html"><strong aria-hidden="true">3.3.</strong> References</a></li><li class="chapter-item expanded "><a href="../chapter3/memory.html"><strong aria-hidden="true">3.4.</strong> Dynamic Memory</a></li><li class="chapter-item expanded "><a href="../chapter3/stdlib.html"><strong aria-hidden="true">3.5.</strong> The Standard Library</a></li><li class="chapter-item expanded "><a href="../chapter3/slides3.html"><strong aria-hidden="true">3.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter4/chapter4.html"><strong aria-hidden="true">4.</strong> Intermediate C++ Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter4/advfunc.html"><strong aria-hidden="true">4.1.</strong> Advanced Function Concepts</a></li><li class="chapter-item expanded "><a href="../chapter4/namespaces.html"><strong aria-hidden="true">4.2.</strong> Namespaces</a></li><li class="chapter-item expanded "><a href="../chapter4/enums.html"><strong aria-hidden="true">4.3.</strong> Enumerations</a></li><li class="chapter-item expanded "><a href="../chapter4/unions.html"><strong aria-hidden="true">4.4.</strong> Unions</a></li><li class="chapter-item expanded "><a href="../chapter4/structs.html"><strong aria-hidden="true">4.5.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../chapter4/task1.html"><strong aria-hidden="true">4.6.</strong> Task 1</a></li><li class="chapter-item expanded "><a href="../chapter4/slides4.html"><strong aria-hidden="true">4.7.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter5/chapter5.html"><strong aria-hidden="true">5.</strong> Generic Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter5/classes.html"><strong aria-hidden="true">5.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../chapter5/templates.html"><strong aria-hidden="true">5.2.</strong> Templates</a></li><li class="chapter-item expanded "><a href="../chapter5/generics.html"><strong aria-hidden="true">5.3.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../chapter5/concepts.html"><strong aria-hidden="true">5.4.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../chapter5/task2.html"><strong aria-hidden="true">5.5.</strong> Task 2</a></li><li class="chapter-item expanded "><a href="../chapter5/slides5.html"><strong aria-hidden="true">5.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter6/chapter6.html"><strong aria-hidden="true">6.</strong> Algorithms &amp; Data Structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter6/iterators.html"><strong aria-hidden="true">6.1.</strong> Iterators</a></li><li class="chapter-item expanded "><a href="../chapter6/data-structures.html"><strong aria-hidden="true">6.2.</strong> Data Structures</a></li><li class="chapter-item expanded "><a href="../chapter6/algorithms.html"><strong aria-hidden="true">6.3.</strong> Algorithms</a></li><li class="chapter-item expanded "><a href="../chapter6/ranges.html"><strong aria-hidden="true">6.4.</strong> Ranges</a></li><li class="chapter-item expanded "><a href="../chapter6/views.html"><strong aria-hidden="true">6.5.</strong> Views</a></li><li class="chapter-item expanded "><a href="../chapter6/task3.html"><strong aria-hidden="true">6.6.</strong> Task 3</a></li><li class="chapter-item expanded "><a href="../chapter6/slides6.html"><strong aria-hidden="true">6.7.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter7/chapter7.html"><strong aria-hidden="true">7.</strong> Concurrent Computing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter7/parallel-alg.html"><strong aria-hidden="true">7.1.</strong> Parallel Algorithms</a></li><li class="chapter-item expanded "><a href="../chapter7/atomics.html"><strong aria-hidden="true">7.2.</strong> Atomics</a></li><li class="chapter-item expanded "><a href="../chapter7/threads.html"><strong aria-hidden="true">7.3.</strong> Threads</a></li><li class="chapter-item expanded "><a href="../chapter7/mutexes.html"><strong aria-hidden="true">7.4.</strong> Mutexes</a></li><li class="chapter-item expanded "><a href="../chapter7/async.html"><strong aria-hidden="true">7.5.</strong> Asynchronous Programming</a></li><li class="chapter-item expanded "><a href="../chapter7/slides7.html"><strong aria-hidden="true">7.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../GODBOLT.html">Godbolt Examples</a></li><li class="chapter-item expanded affix "><a href="../planned.html">Planned Additions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">High Performance Programming</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/MonashDeepNeuron/HPP" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="variables"><a class="header" href="#variables">Variables</a></h1>
+<p>Variables are the first form of abstraction in any mathematical and logical system and computers are no exception. In C++ a variable is an owner of some value. You can use variables to store the value of something and use it in different places throughout your software. Variables can only be of one type, this is the type of the value they hold.</p>
+<p>To declare a variable in C++ is super simple and follows the following pattern <code>&lt;type&gt; &lt;name&gt; &lt;initialiser&gt;;</code>. That's it, pretty simple. However, like many things in C++ there is a slight catch. How does a variable acquire a value. In C++ there is a concept known as Resource Acquisition Is Initialisation (RAII). This essentially means that when a type obtains a resource; or rather, obtains all its necessary resources it can be considered initialised.</p>
+<p>So what does this all mean? This means that C++ has strict rules about how values can be given to variables and that certain requirements need to be made by the constructor of a type and the variable receiving the newly constructed value of that type. However, this is mostly technical speak but seeing a bit of it now can give you a better foundation to understand some weird quirks C++ has that you will most likely encounter in the future. We will cover constructors at a later date and focus on how to initialise a variable.</p>
+<h2 id="initialisation"><a class="header" href="#initialisation">Initialisation</a></h2>
+<p>To begin, open a new file or compiler explorer window so we can start writing. Make sure to have the main function so the program can run. Look in <a href="../../resources/blueprint.cxx">/resources/blueprint.cxx</a> for a copy of main.</p>
+<h3 id="default-initialisation"><a class="header" href="#default-initialisation">Default Initialisation</a></h3>
+<p>Before we saw that creating a variable has the pattern <code>&lt;type&gt; &lt;name&gt; &lt;initialiser&gt;</code>. <code>&lt;type&gt;</code> can be any type we've seen so far or the <code>auto</code> keyword. <code>&lt;name&gt;</code> can be any alphanumeric (plus _) combination of characters (as long as the first character is not a number). For example an <code>int</code> called <code>i</code> would be.</p>
+<pre><code class="language-cpp">int i /* &lt;initialiser&gt; */;
+</code></pre>
+<p>But what is an initialiser? This is something that creates a value for a variable. In fact we can remove the comment as <code>i</code> has already been initialised at this point. What you are seeing above is what is called default initialisation. This is when a type is in its default or empty state which is typically an undetermined state. For <code>int</code> and in fact for all builtin types, the default initialiser will leave the corresponding variable; <code>i</code> in this case` in what's called an indeterminate state, as in its value cannot be guaranteed. In accessing default initialised variable is undefined behavior (UB) so there is no telling what can happen if you do but most like and hopefully, it will fail to compile or the program will crash when it gets to the line accessing the default initialised variable.</p>
+<pre><code class="language-cxx">/// Primitive Data Types
+bool b = true
+int i;
+char c;
+wchar_t wc;
+float f;
+double d;
+void foo();
+std::nullptr_t;
+nullptr;
+std::size_t sz;
+std::ptrdiff_t pd;
+auto a = {1};  ///&lt; must have initialiser for type deduction.
+</code></pre>
+<p><a href="https://en.cppreference.com/w/cpp/language/default_initialization">Default Initialisation</a></p>
+<h3 id="value-initialisation"><a class="header" href="#value-initialisation">Value Initialisation</a></h3>
+<p>Value initialisation is used to zero-initialise a scalar variable (eg. <code>int</code> etc.) or default initialise a user defined type such as a <code>class</code>. The syntax for value initialisation varies but it typically uses <code>&lt;type&gt; &lt;name&gt; {}</code> or <code>&lt;type&gt; ()</code>. This is the preferred and recommended way to to initialise variables without giving them an explicit value.</p>
+<pre><code class="language-cxx">int a{};                ///&lt; zero-initialises `a` to `0`.
+int();                  ///&lt; zero-initialises a temporary to `0`.
+T t{};                  ///&lt; Default initialises `t` using `T` default constructor
+</code></pre>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/language/value_initialization">Value Initialisation</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/language/zero_initialization">Zero Initialisation</a></li>
+</ul>
+<h3 id="copy-initialisation"><a class="header" href="#copy-initialisation">Copy Initialisation</a></h3>
+<p>Copy initialisation is the most common type of initialisation found in C++ as it is the method originally derived from C. Copy initialisation revolves around the assignment operator <code>=</code> but is not exclusive to it. By default, most operations in C++ use copies and thus are initialised using copy initialisation. Copy initialisation copies any expression on the right-hand-side of the <code>=</code>, provided the type is correct.</p>
+<pre><code class="language-cxx">int a = 1;              ///&lt; Copies the value of the literal `1`.
+int b = {2};            ///&lt; List initialisation through copy. Narrowing conversions are prohibited.
+int c = foo();          ///&lt; Copies through `return` of `foo`.
+T t2(t1);               ///&lt; Copies `t1` to `t2` using `T` copy constructor.
+</code></pre>
+<p>Up until now, we haven't been able to give our variables custom values. With copy initialisation we can copy literals and values from other variables giving use access to any and all data. While <code>T t = v</code> is allowed for any correct value <code>v</code> of type <code>T</code>, it is preferred to use <code>T t = {v}</code> as this prevents implicit conversions.</p>
+<p><a href="https://en.cppreference.com/w/cpp/language/copy_initialization">Copy Initialisation</a></p>
+<h3 id="direct-initialisation"><a class="header" href="#direct-initialisation">Direct Initialisation</a></h3>
+<p>Direct initialisation allows you to initialise a variable with an explicit set of constructor arguments. This is mostly useful for custom constructor beyond the trivial ones the compiler can provide.</p>
+<pre><code class="language-cxx">int a{1};       ///&lt; Single element, brace-enclosed initialiser. Must be of the same type.
+T t(2, 3);      ///&lt; Direct initialisation of `t` with literals `2` and `3`.
+U u(v);         ///&lt; Direct initialisation of `u` with `v` which may be of a different type `V`.
+W(x);           ///&lt; Direct initialisation of temporary of type `W` with existing `x` of possible different type `X`.
+Y(4, 6, 5);        ///&lt; Direct initialisation of temporary of type `Y` with literals `4`, `5` and `6`.
+</code></pre>
+<p><a href="https://en.cppreference.com/w/cpp/language/direct_initialization">Direct Initialisation</a></p>
+<h3 id="aggregate-initialisation"><a class="header" href="#aggregate-initialisation">Aggregate Initialisation</a></h3>
+<p>Aggregate initialisation is special list initialisation for aggregate types. These are slice, <code>struct</code>, <code>class</code> or <code>union</code> types with (for the formers) no private data-members or user-defined constructors. This allows them to be initialised with a list.</p>
+<pre><code class="language-cxx">T t = {1, 2, 3};                ///&lt; Copy list initialisation of aggregate `t` of type `T`.
+U u{ 4, 5, 6};                  ///&lt; List initialisation of aggregate `u` of type `U`.
+V v = { .v1 = 7, .v2{8} };      ///&lt; Copy list initialisation of aggregate `v` of type `V` with designated initialisers for `v`'s members.
+W w{ .w1 = 9, .w2{10} };        ///&lt; List initialisation of aggregate `w` of type `W` with designated initialisers for `w`'s members.
+</code></pre>
+<p>We want use this directly all to much as list initialisation generally applies in more cases.</p>
+<p><a href="https://en.cppreference.com/w/cpp/language/aggregate_initialization">Aggregate Initialisation</a></p>
+<h3 id="list-initialisation"><a class="header" href="#list-initialisation">List Initialisation</a></h3>
+<p>List initialisation is a generalisation of aggregate initialisation but can be applied to user-defined types. This allows you to specify a list of values to be used as arguments for a constructor.</p>
+<pre><code class="language-cxx">T t {1, 2, 3, 4};           ///&lt; Direct-list initialisation.
+U u = {5, 6, 7, 8};         ///&lt; Copy-list initialisation.
+t = {4, 3, 2, 1};           ///&lt; Copy-list assignment.
+foo({1, 2, 3});             ///&lt; Argument copy-list initialisation.
+W w({4, 5, 6});             ///&lt; Direct constructor list initialisation.
+</code></pre>
+<p>Have a play with with these and see what works with the compiler. In general, stick to using copy and direct initialisation. It might be easier to play with on <a href="https://www.godbolt.org/z/Y34xxoahz">Example _</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/language/list_initialization">List Initialisation</a></p>
+<h2 id="qualifiers"><a class="header" href="#qualifiers">Qualifiers</a></h2>
+<p>Types can have different qualifiers that change how a type behaves from its size to mutability. Qualifiers go before the type declaration.</p>
+<h3 id="signed-ness"><a class="header" href="#signed-ness">Signed-ness</a></h3>
+<p>The <code>signed</code> and <code>unsigned</code> qualifiers are used to indicate whether the first bit of the integral type is used for the sign of a number or not. All integral types are implicitly <code>signed</code> (<code>char</code> can vary). <code>unsigned</code> increases the maximum number an integral can be but disallows negative values. <code>unsigned</code> only works on integer types and not floating point types.</p>
+<h3 id="size"><a class="header" href="#size">Size</a></h3>
+<p>Size qualifiers are used to indicate the number of bits (which is platform specific) an <code>int</code> type must have at least.</p>
+<ul>
+<li><code>short int</code> - 16-bits at least</li>
+<li><code>int</code> - 16-bits at least (typically 32-bits)</li>
+<li><code>long int</code> - 32-bits at least</li>
+<li><code>long long int</code> - 64-bits at least</li>
+</ul>
+<p>You can also combined size qualifiers with the <code>unsigned</code> (and <code>signed</code> though not strictly necessary) to allow much larger numbers. You are also able to drop the <code>int</code> type in favour of just the size qualifiers and C++ will infer it to be <code>int</code>. <code>long</code> can also be used with <code>double</code> to create a (on some systems) binary128 floating point number.</p>
+<table><thead><tr><th align="center">Size Qualifiers / Primitive Type</th><th align="center"><code>short</code></th><th align="center"><code>unsigned short</code></th><th align="center"><code>signed</code></th><th align="center"><code>unsigned</code></th><th align="center"><code>long</code></th><th align="center"><code>unsigned long</code></th><th align="center"><code>long long</code></th><th align="center"><code>unsigned long long</code></th></tr></thead><tbody>
+<tr><td align="center"><code>bool</code></td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td></tr>
+<tr><td align="center"><code>char</code></td><td align="center">❌</td><td align="center">❌</td><td align="center">✅</td><td align="center">✅</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td></tr>
+<tr><td align="center"><code>wchar_t</code></td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td></tr>
+<tr><td align="center"><code>int</code></td><td align="center">✅</td><td align="center">✅</td><td align="center">✅</td><td align="center">✅</td><td align="center">✅</td><td align="center">✅</td><td align="center">✅</td><td align="center">✅</td></tr>
+<tr><td align="center"><code>float</code></td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td></tr>
+<tr><td align="center"><code>double</code></td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td><td align="center">✅</td><td align="center">❌</td><td align="center">❌</td><td align="center">❌</td></tr>
+</tbody></table>
+<p><a href="https://en.cppreference.com/w/cpp/language/types">Fundamental Types</a></p>
+<h3 id="storage"><a class="header" href="#storage">Storage</a></h3>
+<p>Storage qualifiers allow you to specify the lifetime of variables. All variables implicitly have automatic storage duration. The exist only in a certain scope, are created when the program enters that scope and dropped at the end of that scope. <code>static</code> (and implicitly global variables) are created at the beginning of the program and are dropped only at the end of the program. Only one variable of the same name can be declared static in a given translation unit.</p>
+<pre><code class="language-cxx">static int si = {1};  ///&lt; static variables
+
+{
+    int li = {2};  ///&lt; local automatically dropped variable
+}
+</code></pre>
+<p><code>inline</code> is more of a hint to the compiler for functions and methods. It indicates to the compiler that a function call should be inlined at call, ie. the functions definition gets moved to the call site. This qualifier is mostly used in OOP classes hierarchies as its more general use has be dropped in favour of a different qualifier.</p>
+<h3 id="mutability"><a class="header" href="#mutability">Mutability</a></h3>
+<p>In C++, variables are mutable by default. There are various ways to limit the mutability of variables as well as constrain the optimisations a compiler can apply.</p>
+<ul>
+<li><code>const</code> - A <code>const</code> object is an immutable object, it cannot be changes. It must be initialised with a values.</li>
+<li><code>constexpr</code> - A <code>constexpr</code> is; as the names suggests, a constant expression. It is an expression that <em>may</em> be evaluated at compile time. Similar to <code>const</code>.</li>
+<li><code>volatile</code> - Indicates to the compiler that the variable may change in ways that it is unaware of and to avoid optimising this variables use in case of undesired behavior.</li>
+<li><code>mutable</code> - Indicates a member variable may be modified even through const-qualified methods (we'll see this in <a href="/content/week5/README.html">Week 5</a>).</li>
+</ul>
+<pre><code class="language-cxx">int i = {0};
+const int ci = {1};
+constexpr int cx = {2};
+volatile int vi = {3};
+const volatile int cv = {4};
+
+i = 6;      ///&lt; Ok
+ci = 7;     ///&lt; Error
+cx = 8;     ///&lt; Error
+vi = 9;     ///&lt; Ok
+cv = 10;    ///&lt; Error
+</code></pre>
+<blockquote>
+<p>Note: The usage of <code>volatile</code> is highly discouraged.</p>
+</blockquote>
+<h2 id="automatic-types"><a class="header" href="#automatic-types">Automatic Types</a></h2>
+<p>The final type we look at is an automatic type. As we will see later, declaring the type of variables can get cumbersome. Since C++11, a new type introducer was create with the keyword <code>auto</code>. Variables with type <code>auto</code> will have there true type deduced at compile time based on the initialiser.</p>
+<pre><code class="language-cxx">auto ai int{1};                 ///&lt; `ai` deduced to have the type `int`
+auto al = {2L};                 ///&lt; `al` deduced to have the type `long` or `long int` (uses 'L' literal)
+auto ac {'c'};                  ///&lt; `ac` deduced to have the type `char`
+auto as = &quot;hello&quot;;              ///&lt; `as` deduced to have the type `const char*` (more on these later)
+</code></pre>
+<h2 id="value-categories"><a class="header" href="#value-categories">Value Categories</a></h2>
+<p>In C++, there are different categories of values. These determine the operations that can be performed on them. There are a few value categories in C++ but we will focus on only two of them, lvalues and rvalues.</p>
+<h3 id="lvalues"><a class="header" href="#lvalues">lvalues</a></h3>
+<p>In C++ and lvalue is kind of value that you would find on the left-hand-side of the <code>=</code>, hence the name lvalue or 'left-value'. You can also find lvalues on the right-hand-side of <code>=</code>. This is the semantics of a copy (may or may not be an initialisation). Typically, a variable that has an assigned value is an lvalue.</p>
+<h3 id="rvalues"><a class="header" href="#rvalues">rvalues</a></h3>
+<p>rvalues are; as the name suggests, variables or values found on the right-hand-side of <code>=</code>. This includes literals, temporaries and moves. For example the literal <code>3</code> is an rvalue. rvalues are also used to indicate move-semantics (more on this later on).</p>
+<h3 id="literals"><a class="header" href="#literals">Literals</a></h3>
+<p>Literals are types that have a explicit value to them. The literal <code>0</code> has the value of <code>int{0}</code> and type <code>int</code>. Literals allow the to be common code-point to define values into a specific character or character sequence. Essentially, literals hold the value and type they indicate.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../chapter2/types.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../chapter2/operators.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../chapter2/types.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../chapter2/operators.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

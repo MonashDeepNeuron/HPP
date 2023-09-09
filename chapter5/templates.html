@@ -1,0 +1,432 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Templates - High Performance Programming</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Monash DeepNeuron&#x27;s High Performance Programming Curriculum">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../home.html">Home</a></li><li class="chapter-item expanded affix "><div>Foreword</div></li><li class="chapter-item expanded "><a href="../chapter1/chapter1.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter1/wsl.html"><strong aria-hidden="true">1.1.</strong> WSL</a></li><li class="chapter-item expanded "><a href="../chapter1/software.html"><strong aria-hidden="true">1.2.</strong> Installing Software</a></li><li class="chapter-item expanded "><a href="../chapter1/helloworld.html"><strong aria-hidden="true">1.3.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../chapter1/godbolt.html"><strong aria-hidden="true">1.4.</strong> Compiler Explorer</a></li><li class="chapter-item expanded "><a href="../chapter1/slides1.html"><strong aria-hidden="true">1.5.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter2/chapter2.html"><strong aria-hidden="true">2.</strong> Basics of C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter2/typesystem.html"><strong aria-hidden="true">2.1.</strong> The C++ Type System</a></li><li class="chapter-item expanded "><a href="../chapter2/types.html"><strong aria-hidden="true">2.2.</strong> Primitive Types</a></li><li class="chapter-item expanded "><a href="../chapter2/variables.html"><strong aria-hidden="true">2.3.</strong> Variables</a></li><li class="chapter-item expanded "><a href="../chapter2/operators.html"><strong aria-hidden="true">2.4.</strong> Operators</a></li><li class="chapter-item expanded "><a href="../chapter2/io.html"><strong aria-hidden="true">2.5.</strong> IO</a></li><li class="chapter-item expanded "><a href="../chapter2/eqordlogic.html"><strong aria-hidden="true">2.6.</strong> Equality, Ordering &amp; Logical Operators</a></li><li class="chapter-item expanded "><a href="../chapter2/condexpr.html"><strong aria-hidden="true">2.7.</strong> Conditional Expressions</a></li><li class="chapter-item expanded "><a href="../chapter2/loops.html"><strong aria-hidden="true">2.8.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../chapter2/functions.html"><strong aria-hidden="true">2.9.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../chapter2/slides2.html"><strong aria-hidden="true">2.10.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter3/chapter3.html"><strong aria-hidden="true">3.</strong> Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter3/pointers.html"><strong aria-hidden="true">3.1.</strong> Pointers</a></li><li class="chapter-item expanded "><a href="../chapter3/slices.html"><strong aria-hidden="true">3.2.</strong> Slices</a></li><li class="chapter-item expanded "><a href="../chapter3/references.html"><strong aria-hidden="true">3.3.</strong> References</a></li><li class="chapter-item expanded "><a href="../chapter3/memory.html"><strong aria-hidden="true">3.4.</strong> Dynamic Memory</a></li><li class="chapter-item expanded "><a href="../chapter3/stdlib.html"><strong aria-hidden="true">3.5.</strong> The Standard Library</a></li><li class="chapter-item expanded "><a href="../chapter3/slides3.html"><strong aria-hidden="true">3.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter4/chapter4.html"><strong aria-hidden="true">4.</strong> Intermediate C++ Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter4/advfunc.html"><strong aria-hidden="true">4.1.</strong> Advanced Function Concepts</a></li><li class="chapter-item expanded "><a href="../chapter4/namespaces.html"><strong aria-hidden="true">4.2.</strong> Namespaces</a></li><li class="chapter-item expanded "><a href="../chapter4/enums.html"><strong aria-hidden="true">4.3.</strong> Enumerations</a></li><li class="chapter-item expanded "><a href="../chapter4/unions.html"><strong aria-hidden="true">4.4.</strong> Unions</a></li><li class="chapter-item expanded "><a href="../chapter4/structs.html"><strong aria-hidden="true">4.5.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../chapter4/task1.html"><strong aria-hidden="true">4.6.</strong> Task 1</a></li><li class="chapter-item expanded "><a href="../chapter4/slides4.html"><strong aria-hidden="true">4.7.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter5/chapter5.html"><strong aria-hidden="true">5.</strong> Generic Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter5/classes.html"><strong aria-hidden="true">5.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../chapter5/templates.html" class="active"><strong aria-hidden="true">5.2.</strong> Templates</a></li><li class="chapter-item expanded "><a href="../chapter5/generics.html"><strong aria-hidden="true">5.3.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../chapter5/concepts.html"><strong aria-hidden="true">5.4.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../chapter5/task2.html"><strong aria-hidden="true">5.5.</strong> Task 2</a></li><li class="chapter-item expanded "><a href="../chapter5/slides5.html"><strong aria-hidden="true">5.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter6/chapter6.html"><strong aria-hidden="true">6.</strong> Algorithms &amp; Data Structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter6/iterators.html"><strong aria-hidden="true">6.1.</strong> Iterators</a></li><li class="chapter-item expanded "><a href="../chapter6/data-structures.html"><strong aria-hidden="true">6.2.</strong> Data Structures</a></li><li class="chapter-item expanded "><a href="../chapter6/algorithms.html"><strong aria-hidden="true">6.3.</strong> Algorithms</a></li><li class="chapter-item expanded "><a href="../chapter6/ranges.html"><strong aria-hidden="true">6.4.</strong> Ranges</a></li><li class="chapter-item expanded "><a href="../chapter6/views.html"><strong aria-hidden="true">6.5.</strong> Views</a></li><li class="chapter-item expanded "><a href="../chapter6/task3.html"><strong aria-hidden="true">6.6.</strong> Task 3</a></li><li class="chapter-item expanded "><a href="../chapter6/slides6.html"><strong aria-hidden="true">6.7.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter7/chapter7.html"><strong aria-hidden="true">7.</strong> Concurrent Computing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter7/parallel-alg.html"><strong aria-hidden="true">7.1.</strong> Parallel Algorithms</a></li><li class="chapter-item expanded "><a href="../chapter7/atomics.html"><strong aria-hidden="true">7.2.</strong> Atomics</a></li><li class="chapter-item expanded "><a href="../chapter7/threads.html"><strong aria-hidden="true">7.3.</strong> Threads</a></li><li class="chapter-item expanded "><a href="../chapter7/mutexes.html"><strong aria-hidden="true">7.4.</strong> Mutexes</a></li><li class="chapter-item expanded "><a href="../chapter7/async.html"><strong aria-hidden="true">7.5.</strong> Asynchronous Programming</a></li><li class="chapter-item expanded "><a href="../chapter7/slides7.html"><strong aria-hidden="true">7.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../GODBOLT.html">Godbolt Examples</a></li><li class="chapter-item expanded affix "><a href="../planned.html">Planned Additions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">High Performance Programming</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/MonashDeepNeuron/HPP" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="templates"><a class="header" href="#templates">Templates</a></h1>
+<h2 id="why-templates"><a class="header" href="#why-templates">Why templates?</a></h2>
+<p>Everything we have learnt about C++ relies on the fact the type of any object must be known at compile time. This can be quite constricting on the kinds of programs we are able to right. Just think back to Assignment 1 where you were sectioned with creating a class called <code>Triple</code> with a single underlying type (either <code>int</code>, <code>float</code> or <code>double</code>). Imagine you create <code>TripleInt</code> but now had to create a class with the same interface but for the other underlying types (<code>float</code> and <code>double</code> in this case) that you did not implement (well some of you may have). This can dramatically increase code duplication. One might think to solve this through class inheritance. Somehow define a common abstract interface that derived classes could inherit from and then override the methods in order to implement the interface for each underlying type. However, this requires more work still as anyone that wants to implement <code>Triple</code> would have to inherit from it and implement the same interface and logic for there own underlying type. Another caveat is this requires every <code>Triple</code> object to have a vtable to there underlying methods resulting in dynamic dispatch of method calling which, is something that has a lot of runtime overhead. The real solution is to have a single interface that can working for any desired type. This is where templates come in.</p>
+<h2 id="what-are-templates"><a class="header" href="#what-are-templates">What are templates?</a></h2>
+<p>Templates can be thought of as blueprints for function, variable or class. They allow for defining interfaces in terms of template parameters which can be types or compile-time variables. Templates can then be instantiated for a given set of valid template parameters which results in the function, variable or class being fully defined meaning they can now be instantiated themselves. Templates are created by using a <code>template&lt;&gt;</code> declaration above the definition of a function, variable or class with the template parameters being specified within the angle brackets (<code>&lt;&gt;</code>).</p>
+<p><a href="https://en.cppreference.com/w/cpp/language/templates">Templates</a></p>
+<h2 id="template-parameters"><a class="header" href="#template-parameters">Template Parameters</a></h2>
+<p>There are three categories of template parameters; type, non-type and template-template. We wont cover template-template parameters as they are used for advanced specialisation. Type template parameters are template parameters that accept a type as an argument. These are used to create generic functions, variables and classes that can be defined in terms of many different types. These are the most common use of templates. Type arguments are declared as <code>template&lt;typename T&gt;</code> with T being the name of the type argument and will be an alias to the type we later instantiate the template with. Non-type arguments are used to pass values at compile time to a function, variable or class. The type of a non-type template argument must be explicitly declared eg. <code>template&lt;int N&gt;</code>, Non-type template arguments are constant and thus cannot be mutated. Here is an example of a template declaration that takes type and non-type template arguments.</p>
+<pre><code class="language-cxx">template&lt;typename T, std::size_t N&gt;
+/// ... template entity details
+</code></pre>
+<p>This is the template signature of <code>std::array</code>.</p>
+<p><a href="https://en.cppreference.com/w/cpp/language/template_parameters">Template Arguments</a></p>
+<h2 id="template-functions"><a class="header" href="#template-functions">Template Functions</a></h2>
+<p>To begin, we will look at defining template functions. Template functions are defined identically to regular functions except that before the functions signature we use a template declaration. As we can see below, regardless of the type of the array or the its size we can call <code>print&lt;&gt;()</code>. Also, thanks to C++17 we don't have to call it with specific template arguments as the can be deduced from the array itself.</p>
+<pre><code class="language-cxx">#include &lt;array&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+template&lt;typename T, std::size_t N&gt;
+auto print(const std::array&lt;T, N&gt;&amp; arr) -&gt; void
+{
+    std::cout &lt;&lt; &quot;[ &quot;;
+
+    for (auto n { N }; const auto&amp; e : arr)
+        if (--n &gt; 0)
+            std::cout &lt;&lt; e &lt;&lt; &quot;, &quot;;
+        else
+            std::cout &lt;&lt; e;
+
+    std::cout &lt;&lt; &quot; ]&quot; &lt;&lt; std::endl;
+}
+
+auto main() -&gt; int
+{
+    auto a1 = std::to_array&lt;int&gt;({ 1, 2, 3, 4, 5 });
+    auto a2 = std::to_array&lt;double&gt;({ 1.576, 0.0002, 3756348.34646, 5e-14, 465.7657, 358.0, 237437.456756 });
+    auto a3 = std::to_array&lt;std::string&gt;({ &quot;John&quot;, &quot;Anna&quot;, &quot;Grace&quot;, &quot;Bob&quot; });
+
+    print&lt;int, 5&gt;(a1);  ///&lt; Explicit template argument instantiation
+    print(a2);          ///&lt; template argument deduction (same below)
+    print(a3);
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/WxsGsfna4">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/language/function_template">Function template</a></p>
+<h2 id="template-classes"><a class="header" href="#template-classes">Template Classes</a></h2>
+<p>Template classes allow us to define generic types. Almost all of C++ standard library types are template classes, even <code>std::cout</code> which is a static instance of the class <code>std::basic_ostream&lt;char&gt;</code>. Template classes allow us to create a blueprint of a class and then instantiate the class definition which a particular type. We can see this with out <code>Point</code> class from the previous section section. Now we define <code>Point</code> in terms of a template type <code>T</code> which we will specify later. This allows us to create <code>Point</code> objects of <code>float</code> and <code>double</code> as well while still only defining a single interface.</p>
+<blockquote>
+<p>Note: For copy and move constructors, the template type parameters can be elided as copy and move semantics must preserve the type. Converting constructors (a type of explicit constructor) are used to convert between template types.</p>
+</blockquote>
+<pre><code class="language-cxx">#include &lt;iostream&gt;
+#include &lt;utility&gt;
+
+template&lt;typename T&gt;
+class Point
+{
+public:
+    /// Default Constructor (Compiler Created)
+    constexpr Point() = default;
+
+    explicit constexpr
+    Point(T x, T y) noexcept
+        : x{ x }, y{ y }
+    { }
+
+    constexpr Point(const Point&amp; p) noexcept
+    : x{ p.x }, y{ p.y }
+    { }
+
+    constexpr Point(Point&amp;&amp; p) noexcept
+        : x{ std::move(p.x) }
+        , y{ std::move(p.y) }
+    { p = Point(); }
+
+    constexpr auto
+    operator= (const Point&amp; p) noexcept -&gt; Point&amp;
+    {
+        if (p != *this)
+        {
+            x = p.x;
+            y = p.y;
+        }
+
+        return *this;
+    }
+
+    constexpr auto
+    operator= (Point&amp;&amp; p) noexcept -&gt; Point&amp;
+    {
+        if (p != *this)
+        {
+            x = std::move(p.x);
+            y = std::move(p.y);
+        }
+
+        return *this;
+    }
+
+    ~Point() noexcept = default;
+
+    constexpr auto
+    operator+ (const Point&amp; p) noexcept -&gt; Point
+    { return Point{ x + p.x, y + p.y }; }
+
+    constexpr auto
+    operator- (const Point&amp; p) noexcept -&gt; Point
+    { return Point{ x - p.x, y - p.y }; }
+
+    constexpr auto
+    operator== (const Point&amp; p)
+        noexcept -&gt; bool
+    { return (x == p.x) &amp;&amp; (y == p.y); }
+
+    constexpr auto
+    operator!= (const Point&amp; p)
+    noexcept -&gt; bool
+    { return !(*this == p); }
+
+    friend auto
+    operator&lt;&lt; (std::ostream&amp; os, const Point&amp; p)
+        noexcept -&gt; std::ostream&amp;
+    { 
+        os &lt;&lt; &quot;( &quot;
+        &lt;&lt; p.x
+        &lt;&lt; &quot;, &quot;
+        &lt;&lt; p.y
+        &lt;&lt; &quot; )&quot;;
+
+        return os;
+    }
+
+private:
+    T x;
+    T y;
+};
+
+
+auto main() -&gt; int
+{
+    auto p1 = Point&lt;int&gt;{ 2, 5 };
+    auto p2 = Point{ 6, 7 };
+    auto p3 = p1 + p2;
+    auto p4 = Point&lt;double&gt;{ 5.6 , -0.007 };
+    auto p5 = Point{ 4.576 , 24.012 };
+    auto p6 = p4 - p5;
+
+    std::cout &lt;&lt; p1 &lt;&lt; std::endl;
+    std::cout &lt;&lt; p2 &lt;&lt; std::endl;
+    std::cout &lt;&lt; p3 &lt;&lt; std::endl;
+    std::cout &lt;&lt; p4 &lt;&lt; std::endl;
+    std::cout &lt;&lt; p5 &lt;&lt; std::endl;
+    std::cout &lt;&lt; p6 &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<blockquote>
+<p>Note: We could define <code>Point::x</code> and <code>Point::y</code> to be different types but this is unnecessary for now.</p>
+</blockquote>
+<p><a href="https://www.godbolt.org/z/nhbsbnE9b">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/language/class_template">Class Template</a></p>
+<h2 id="class-template-methods"><a class="header" href="#class-template-methods">Class Template Methods</a></h2>
+<p>Just like how free functions can be templated, we can also specify methods of classes to be templated. This allows use to customize classes methods not just in terms of its template types and parameters but also in terms of templates of objects that we may need to pass to the method of a class. This useful for creating overloaded methods that are not just customized by type but also the template signature pattern they have.</p>
+<p>You may have noticed that I did not add or subtract two <code>Point</code> of different type in the previous example. This is because <code>+</code> and <code>-</code> are only defined for <code>Point</code> of the same template. We can fix this with a templated method. There are a few other details we have to add in order for this to work. First we add the template specification for the other <code>Point&lt;U&gt;</code> argument (we can do the same for <code>==</code> and <code>!=</code>). We then us <code>std::common_type&lt;T...&gt;</code> to help deduce the arithmetic (an other) promotions between types. This is for promotions of say <code>int</code> to <code>double</code>. Finally, because the class <code>Point&lt;U&gt;</code> is a different instantiation of <code>Point</code> to <code>this</code> (ie. <code>Point&lt;T&gt;</code>), we have to specify all <code>Point&lt;U&gt;</code> of any <code>U</code> type as a friend class to <code>Point&lt;T&gt;</code>.</p>
+<pre><code class="language-cxx">/// ... Point details
+
+template&lt;typename U&gt;
+constexpr auto
+operator+ (const Point&lt;U&gt;&amp; p) 
+    noexcept -&gt; Point&lt;typename std::common_type&lt;T, U&gt;::type&gt;
+{ return Point&lt;typename std::common_type&lt;T, U&gt;::type&gt;{ x + p.x, y + p.y }; }
+
+template&lt;typename U&gt;
+constexpr auto
+operator- (const Point&lt;U&gt;&amp; p) 
+    noexcept -&gt; Point&lt;typename std::common_type&lt;T, U&gt;::type&gt;
+{ return Point&lt;typename std::common_type&lt;T, U&gt;::type&gt;{ x - p.x, y - p.y }; }
+
+template&lt;typename U&gt;
+constexpr auto
+operator== (const Point&lt;U&gt;&amp; p)
+    noexcept -&gt; bool
+{ return (x == p.x) &amp;&amp; (y == p.y); }
+
+template&lt;typename U&gt;
+constexpr auto
+operator!= (const Point&lt;U&gt;&amp; p)
+noexcept -&gt; bool
+{ return !(*this == p); }
+
+/// ... Point details
+
+private:
+
+    T x;
+    T y;
+
+    template&lt;typename U&gt;
+    friend class Point;
+</code></pre>
+<blockquote>
+<p>Note: The template argument names must be different then the outer template classes template argument names as this name (symbol) is still very much in scope.</p>
+</blockquote>
+<p><a href="https://www.godbolt.org/z/4WKKrMsqn">Example</a></p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/language/member_template">Member templates</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/types/common_type"><code>std::common_type</code></a></li>
+<li><a href="/content/chapter5/examples/point-v2.hxx">Version 2 of <code>Point&lt;T&gt;</code></a></li>
+</ul>
+<h3 id="section-26-template-variables"><a class="header" href="#section-26-template-variables">Section 2.6: Template Variables</a></h3>
+<p>Is is also possible to define variables as templates. This allows for variables to take on different forms depending on the underlying type. Template variables are typically <code>static</code> or <code>constexpr</code> free variables or <code>static</code> members of a class. A common use of template variables is mathematical constants that have different underlying types. We can see this in use with <code>e&lt;T&gt;</code> and <code>std::numeric_limits&lt;T&gt;</code> members.</p>
+<pre><code class="language-cxx">#include &lt;iomanip&gt;
+#include &lt;iostream&gt;
+#include &lt;numeric&gt;
+
+template&lt;typename T&gt;
+constexpr T e = T(2.7182818284590452353602874713527);
+
+auto main() -&gt; int
+{
+    std::cout &lt;&lt; std::setprecision(std::numeric_limits&lt;long double&gt;::max_digits10);
+    std::cout &lt;&lt; &quot;True e            = 2.7182818284590452353602874713527&quot; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;e&lt;long double&gt;    = &quot; &lt;&lt; e&lt;long double&gt; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;e&lt;double&gt;         = &quot; &lt;&lt; e&lt;double&gt; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;e&lt;float&gt;          = &quot; &lt;&lt; e&lt;float&gt; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;e&lt;int&gt;            = &quot; &lt;&lt; e&lt;int&gt; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;e&lt;char&gt;           = &quot; &lt;&lt; e&lt;char&gt; &lt;&lt; std::endl;
+    
+    return 0;
+}
+</code></pre>
+<blockquote>
+<p>Note: Consequently, this is a good showcase of how quickly <code>float</code> and <code>double</code> loose precision.</p>
+</blockquote>
+<p><a href="https://www.godbolt.org/z/4eqKcTT4s">Example</a></p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/language/variable_template">Variable Templates</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/types/numeric_limits"><code>std::numeric_limits</code></a></li>
+</ul>
+<h2 id="template-metaprogramming-basics"><a class="header" href="#template-metaprogramming-basics">Template Metaprogramming Basics</a></h2>
+<p>We've seen a bit of metaprogramming in C++ already. Metaprogramming is the ability to influence the structure of your code at compile time using the language itself. Templates are a simple form of metaprogramming and allow us to change the behaviour of our code based on the types and values we instantiate our templates with. Using templates, the C++ standard library has many metaprogramming objects that allow us to customize our code even more. Most of the standard  libraries metaprogramming objects are in the form of type analysis from the <code>&lt;type_traits&gt;</code> header. These allow us to inspect the properties of any type (template or known) and customize based on the results. There is much more to metaprogramming that is beyond the scope of this course.</p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/meta">Metaprogramming Library</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/numeric/ratio">Compile-time rational arithmetic</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/language/sfinae">SFINAE</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/header/type_traits"><code>&lt;type_traits&gt;</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/utility/integer_sequence"><code>std::integer_sequence</code></a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../chapter5/classes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../chapter5/generics.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../chapter5/classes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../chapter5/generics.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

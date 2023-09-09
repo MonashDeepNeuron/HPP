@@ -1,0 +1,316 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Unions - High Performance Programming</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Monash DeepNeuron&#x27;s High Performance Programming Curriculum">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../home.html">Home</a></li><li class="chapter-item expanded affix "><div>Foreword</div></li><li class="chapter-item expanded "><a href="../chapter1/chapter1.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter1/wsl.html"><strong aria-hidden="true">1.1.</strong> WSL</a></li><li class="chapter-item expanded "><a href="../chapter1/software.html"><strong aria-hidden="true">1.2.</strong> Installing Software</a></li><li class="chapter-item expanded "><a href="../chapter1/helloworld.html"><strong aria-hidden="true">1.3.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../chapter1/godbolt.html"><strong aria-hidden="true">1.4.</strong> Compiler Explorer</a></li><li class="chapter-item expanded "><a href="../chapter1/slides1.html"><strong aria-hidden="true">1.5.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter2/chapter2.html"><strong aria-hidden="true">2.</strong> Basics of C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter2/typesystem.html"><strong aria-hidden="true">2.1.</strong> The C++ Type System</a></li><li class="chapter-item expanded "><a href="../chapter2/types.html"><strong aria-hidden="true">2.2.</strong> Primitive Types</a></li><li class="chapter-item expanded "><a href="../chapter2/variables.html"><strong aria-hidden="true">2.3.</strong> Variables</a></li><li class="chapter-item expanded "><a href="../chapter2/operators.html"><strong aria-hidden="true">2.4.</strong> Operators</a></li><li class="chapter-item expanded "><a href="../chapter2/io.html"><strong aria-hidden="true">2.5.</strong> IO</a></li><li class="chapter-item expanded "><a href="../chapter2/eqordlogic.html"><strong aria-hidden="true">2.6.</strong> Equality, Ordering &amp; Logical Operators</a></li><li class="chapter-item expanded "><a href="../chapter2/condexpr.html"><strong aria-hidden="true">2.7.</strong> Conditional Expressions</a></li><li class="chapter-item expanded "><a href="../chapter2/loops.html"><strong aria-hidden="true">2.8.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../chapter2/functions.html"><strong aria-hidden="true">2.9.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../chapter2/slides2.html"><strong aria-hidden="true">2.10.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter3/chapter3.html"><strong aria-hidden="true">3.</strong> Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter3/pointers.html"><strong aria-hidden="true">3.1.</strong> Pointers</a></li><li class="chapter-item expanded "><a href="../chapter3/slices.html"><strong aria-hidden="true">3.2.</strong> Slices</a></li><li class="chapter-item expanded "><a href="../chapter3/references.html"><strong aria-hidden="true">3.3.</strong> References</a></li><li class="chapter-item expanded "><a href="../chapter3/memory.html"><strong aria-hidden="true">3.4.</strong> Dynamic Memory</a></li><li class="chapter-item expanded "><a href="../chapter3/stdlib.html"><strong aria-hidden="true">3.5.</strong> The Standard Library</a></li><li class="chapter-item expanded "><a href="../chapter3/slides3.html"><strong aria-hidden="true">3.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter4/chapter4.html"><strong aria-hidden="true">4.</strong> Intermediate C++ Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter4/advfunc.html"><strong aria-hidden="true">4.1.</strong> Advanced Function Concepts</a></li><li class="chapter-item expanded "><a href="../chapter4/namespaces.html"><strong aria-hidden="true">4.2.</strong> Namespaces</a></li><li class="chapter-item expanded "><a href="../chapter4/enums.html"><strong aria-hidden="true">4.3.</strong> Enumerations</a></li><li class="chapter-item expanded "><a href="../chapter4/unions.html" class="active"><strong aria-hidden="true">4.4.</strong> Unions</a></li><li class="chapter-item expanded "><a href="../chapter4/structs.html"><strong aria-hidden="true">4.5.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../chapter4/task1.html"><strong aria-hidden="true">4.6.</strong> Task 1</a></li><li class="chapter-item expanded "><a href="../chapter4/slides4.html"><strong aria-hidden="true">4.7.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter5/chapter5.html"><strong aria-hidden="true">5.</strong> Generic Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter5/classes.html"><strong aria-hidden="true">5.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../chapter5/templates.html"><strong aria-hidden="true">5.2.</strong> Templates</a></li><li class="chapter-item expanded "><a href="../chapter5/generics.html"><strong aria-hidden="true">5.3.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../chapter5/concepts.html"><strong aria-hidden="true">5.4.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../chapter5/task2.html"><strong aria-hidden="true">5.5.</strong> Task 2</a></li><li class="chapter-item expanded "><a href="../chapter5/slides5.html"><strong aria-hidden="true">5.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter6/chapter6.html"><strong aria-hidden="true">6.</strong> Algorithms &amp; Data Structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter6/iterators.html"><strong aria-hidden="true">6.1.</strong> Iterators</a></li><li class="chapter-item expanded "><a href="../chapter6/data-structures.html"><strong aria-hidden="true">6.2.</strong> Data Structures</a></li><li class="chapter-item expanded "><a href="../chapter6/algorithms.html"><strong aria-hidden="true">6.3.</strong> Algorithms</a></li><li class="chapter-item expanded "><a href="../chapter6/ranges.html"><strong aria-hidden="true">6.4.</strong> Ranges</a></li><li class="chapter-item expanded "><a href="../chapter6/views.html"><strong aria-hidden="true">6.5.</strong> Views</a></li><li class="chapter-item expanded "><a href="../chapter6/task3.html"><strong aria-hidden="true">6.6.</strong> Task 3</a></li><li class="chapter-item expanded "><a href="../chapter6/slides6.html"><strong aria-hidden="true">6.7.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter7/chapter7.html"><strong aria-hidden="true">7.</strong> Concurrent Computing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter7/parallel-alg.html"><strong aria-hidden="true">7.1.</strong> Parallel Algorithms</a></li><li class="chapter-item expanded "><a href="../chapter7/atomics.html"><strong aria-hidden="true">7.2.</strong> Atomics</a></li><li class="chapter-item expanded "><a href="../chapter7/threads.html"><strong aria-hidden="true">7.3.</strong> Threads</a></li><li class="chapter-item expanded "><a href="../chapter7/mutexes.html"><strong aria-hidden="true">7.4.</strong> Mutexes</a></li><li class="chapter-item expanded "><a href="../chapter7/async.html"><strong aria-hidden="true">7.5.</strong> Asynchronous Programming</a></li><li class="chapter-item expanded "><a href="../chapter7/slides7.html"><strong aria-hidden="true">7.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../GODBOLT.html">Godbolt Examples</a></li><li class="chapter-item expanded affix "><a href="../planned.html">Planned Additions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">High Performance Programming</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/MonashDeepNeuron/HPP" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="unions"><a class="header" href="#unions">Unions</a></h1>
+<p>Unions are a special kind of type known as an algebraic data type. This means the type of a union object can vary between a small list of possible types. This allows for a single type to be one of many possible types that can change throughout the lifetime of the program. The members of a union occupy the same memory space, thus the size of a union is the size of the largest possible member. Constructing a union object will always need to construct the first variant. Accessing the non-activate member is UB.</p>
+<pre><code class="language-cxx">#include &lt;iostream&gt;
+
+union Sym
+{
+    int num;
+    float float32;
+    const char* str;
+};
+
+auto main() -&gt; int
+{
+    Sym sym {8};
+    std::cout &lt;&lt; sym.num &lt;&lt; std::endl;
+
+    sym.float32 = 5.6f;
+    std::cout &lt;&lt; sym.float32 &lt;&lt; std::endl;
+
+    sym.str = &quot;Hello&quot;;
+    std::cout &lt;&lt; sym.str &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/zGeTs8ozn">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/language/union">Unions</a></p>
+<h2 id="limitations"><a class="header" href="#limitations">Limitations</a></h2>
+<p>Unions are quite powerful but have a few limitations.</p>
+<ul>
+<li>There is no default mechanism for inspecting the current variant of a union.</li>
+<li>They can have member functions including constructors and destructors but cannot have virtual functions (more on this in chapter 5).</li>
+<li>They cannot have base classes nor can be used as a base class.</li>
+<li>They cannot have non-static members of reference types.</li>
+<li>If any variant types have a non-trivial special member function it is deleted for the union and must be declared explicitly for the union type.</li>
+</ul>
+<pre><code class="language-cxx">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;array&gt;
+ 
+union S
+{
+    std::string str;
+    std::array&lt;int, 5&gt; arr;
+    ~S() {}                 ///&lt; Variant `str` has non-trivial destructor 
+};
+ 
+int main()
+{
+    S s = {&quot;Hello, world&quot;};
+
+    std::cout &lt;&lt; &quot;s.str = &quot; &lt;&lt; s.str &lt;&lt; '\n';
+    s.str.~basic_string();                      ///&lt; Explicity destroy string
+
+    s.arr = std::array&lt;int, 5&gt;{1, 2, 3, 4, 5};  ///&lt; Explicity create array
+    s.arr[1] = 5675;                            ///&lt; Assign 2nd element to 3
+
+    for (auto&amp; v : s.arr)
+        std::cout &lt;&lt; v &lt;&lt; ' ';
+    std::cout &lt;&lt; std::endl;
+    
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/rqPz5hK45">Example</a></p>
+<h2 id="type-safe-algebraic-data-types"><a class="header" href="#type-safe-algebraic-data-types">Type Safe Algebraic Data Types</a></h2>
+<p>While unions are powerful, they are very error prone and can lead to hard to diagnose bugs. Instead, in C++17 type-safe algebraic types that more intuitive to use and far safer.</p>
+<h3 id="options"><a class="header" href="#options">Options</a></h3>
+<p>One of the most common uses of algebraic data types is <code>std::optional</code> which can represent a type that may <em>optionally</em> contain some value or non at all. <code>std::optional</code> is often used as the return type if a function that might expectedly fail. <code>std::optional</code> can contain any type or has the type of <code>std::nullopt</code>.</p>
+<pre><code class="language-cxx">#include &lt;cmath&gt;
+#include &lt;limits&gt;
+#include &lt;iostream&gt;
+#include &lt;optional&gt;
+#include &lt;string&gt;
+
+auto divide(int x, int y)
+    -&gt; std::optional&lt;float&gt;
+{
+    if (y == 0)
+        return std::nullopt;
+    
+    return std::optional&lt;float&gt;{x / static_cast&lt;float&gt;(y)};
+}
+
+auto main() -&gt; int
+{
+
+    auto opt1 = divide(4, 5);
+    std::cout &lt;&lt; opt1.value() &lt;&lt; std::endl;
+
+    /// Given `opt2` and `opt3` have the value `std::nullopt`
+    /// the value passed to `.value_or()` is returned
+    auto opt2 = divide(2, 0);
+    std::cout &lt;&lt; opt2.value_or(std::numeric_limits&lt;float&gt;::quiet_NaN()) &lt;&lt; std::endl;
+
+    auto opt3 = divide(4656, 0);
+    std::cout &lt;&lt; opt3.value_or(0.1f) &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/aGvnrYPzn">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/utility/optional"><code>std::optional&lt;T&gt;</code></a></p>
+<h3 id="variants"><a class="header" href="#variants">Variants</a></h3>
+<p>The is also a more generic algebraic data type in C++ called <code>std::variant</code> which is implemented as a tagged union; that is, you are able to inspect which type is currently active, validate the state of the variant and perform a simply form of pattern matching. Empty variants can be simulated by using the <code>std::monospace</code> type variant.</p>
+<pre><code class="language-cxx">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;variant&gt;
+#include &lt;vector&gt;
+
+/// Used to perform pattern matching
+template&lt;class... Ts&gt; struct match : Ts... { using Ts::operator()...; };
+
+using Sym = std::variant&lt;int, float, std::string, long&gt;;
+
+auto main() -&gt; int
+{
+    std::vector&lt;Sym&gt; syms = {8, &quot;Hello&quot;, 6.8f, 4, &quot;Bye&quot;, 857565L};
+    for (auto&amp; var : syms)
+    {
+        std::visit(match{
+            [](int i){ std::cout &lt;&lt; &quot;Sym: &lt;Integer&gt; = &quot; &lt;&lt; i &lt;&lt; std::endl; },
+            [](float f){ std::cout &lt;&lt; &quot;Sym: &lt;Float&gt; = &quot; &lt;&lt; f &lt;&lt; std::endl; },
+            [](std::string s){ std::cout &lt;&lt; &quot;Sym: &lt;String&gt; = &quot; &lt;&lt; s &lt;&lt; std::endl; },
+            [](auto&amp;&amp; o){ std::cout &lt;&lt; &quot;Sym: &lt;Other&gt; = &quot; &lt;&lt; o &lt;&lt; std::endl; }
+        }, var);
+    }
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/fzMKbjWW3">Example</a></p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/utility/variant"><code>std::variant&lt;Ts..&gt;</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/utility/variant/visit"><code>std::visit()</code></a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../chapter4/enums.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../chapter4/structs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../chapter4/enums.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../chapter4/structs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

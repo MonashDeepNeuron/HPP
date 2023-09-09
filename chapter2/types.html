@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Primitive Types - High Performance Programming</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Monash DeepNeuron&#x27;s High Performance Programming Curriculum">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../home.html">Home</a></li><li class="chapter-item expanded affix "><div>Foreword</div></li><li class="chapter-item expanded "><a href="../chapter1/chapter1.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter1/wsl.html"><strong aria-hidden="true">1.1.</strong> WSL</a></li><li class="chapter-item expanded "><a href="../chapter1/software.html"><strong aria-hidden="true">1.2.</strong> Installing Software</a></li><li class="chapter-item expanded "><a href="../chapter1/helloworld.html"><strong aria-hidden="true">1.3.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../chapter1/godbolt.html"><strong aria-hidden="true">1.4.</strong> Compiler Explorer</a></li><li class="chapter-item expanded "><a href="../chapter1/slides1.html"><strong aria-hidden="true">1.5.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter2/chapter2.html"><strong aria-hidden="true">2.</strong> Basics of C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter2/typesystem.html"><strong aria-hidden="true">2.1.</strong> The C++ Type System</a></li><li class="chapter-item expanded "><a href="../chapter2/types.html" class="active"><strong aria-hidden="true">2.2.</strong> Primitive Types</a></li><li class="chapter-item expanded "><a href="../chapter2/variables.html"><strong aria-hidden="true">2.3.</strong> Variables</a></li><li class="chapter-item expanded "><a href="../chapter2/operators.html"><strong aria-hidden="true">2.4.</strong> Operators</a></li><li class="chapter-item expanded "><a href="../chapter2/io.html"><strong aria-hidden="true">2.5.</strong> IO</a></li><li class="chapter-item expanded "><a href="../chapter2/eqordlogic.html"><strong aria-hidden="true">2.6.</strong> Equality, Ordering &amp; Logical Operators</a></li><li class="chapter-item expanded "><a href="../chapter2/condexpr.html"><strong aria-hidden="true">2.7.</strong> Conditional Expressions</a></li><li class="chapter-item expanded "><a href="../chapter2/loops.html"><strong aria-hidden="true">2.8.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../chapter2/functions.html"><strong aria-hidden="true">2.9.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../chapter2/slides2.html"><strong aria-hidden="true">2.10.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter3/chapter3.html"><strong aria-hidden="true">3.</strong> Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter3/pointers.html"><strong aria-hidden="true">3.1.</strong> Pointers</a></li><li class="chapter-item expanded "><a href="../chapter3/slices.html"><strong aria-hidden="true">3.2.</strong> Slices</a></li><li class="chapter-item expanded "><a href="../chapter3/references.html"><strong aria-hidden="true">3.3.</strong> References</a></li><li class="chapter-item expanded "><a href="../chapter3/memory.html"><strong aria-hidden="true">3.4.</strong> Dynamic Memory</a></li><li class="chapter-item expanded "><a href="../chapter3/stdlib.html"><strong aria-hidden="true">3.5.</strong> The Standard Library</a></li><li class="chapter-item expanded "><a href="../chapter3/slides3.html"><strong aria-hidden="true">3.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter4/chapter4.html"><strong aria-hidden="true">4.</strong> Intermediate C++ Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter4/advfunc.html"><strong aria-hidden="true">4.1.</strong> Advanced Function Concepts</a></li><li class="chapter-item expanded "><a href="../chapter4/namespaces.html"><strong aria-hidden="true">4.2.</strong> Namespaces</a></li><li class="chapter-item expanded "><a href="../chapter4/enums.html"><strong aria-hidden="true">4.3.</strong> Enumerations</a></li><li class="chapter-item expanded "><a href="../chapter4/unions.html"><strong aria-hidden="true">4.4.</strong> Unions</a></li><li class="chapter-item expanded "><a href="../chapter4/structs.html"><strong aria-hidden="true">4.5.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../chapter4/task1.html"><strong aria-hidden="true">4.6.</strong> Task 1</a></li><li class="chapter-item expanded "><a href="../chapter4/slides4.html"><strong aria-hidden="true">4.7.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter5/chapter5.html"><strong aria-hidden="true">5.</strong> Generic Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter5/classes.html"><strong aria-hidden="true">5.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../chapter5/templates.html"><strong aria-hidden="true">5.2.</strong> Templates</a></li><li class="chapter-item expanded "><a href="../chapter5/generics.html"><strong aria-hidden="true">5.3.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../chapter5/concepts.html"><strong aria-hidden="true">5.4.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../chapter5/task2.html"><strong aria-hidden="true">5.5.</strong> Task 2</a></li><li class="chapter-item expanded "><a href="../chapter5/slides5.html"><strong aria-hidden="true">5.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter6/chapter6.html"><strong aria-hidden="true">6.</strong> Algorithms &amp; Data Structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter6/iterators.html"><strong aria-hidden="true">6.1.</strong> Iterators</a></li><li class="chapter-item expanded "><a href="../chapter6/data-structures.html"><strong aria-hidden="true">6.2.</strong> Data Structures</a></li><li class="chapter-item expanded "><a href="../chapter6/algorithms.html"><strong aria-hidden="true">6.3.</strong> Algorithms</a></li><li class="chapter-item expanded "><a href="../chapter6/ranges.html"><strong aria-hidden="true">6.4.</strong> Ranges</a></li><li class="chapter-item expanded "><a href="../chapter6/views.html"><strong aria-hidden="true">6.5.</strong> Views</a></li><li class="chapter-item expanded "><a href="../chapter6/task3.html"><strong aria-hidden="true">6.6.</strong> Task 3</a></li><li class="chapter-item expanded "><a href="../chapter6/slides6.html"><strong aria-hidden="true">6.7.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter7/chapter7.html"><strong aria-hidden="true">7.</strong> Concurrent Computing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter7/parallel-alg.html"><strong aria-hidden="true">7.1.</strong> Parallel Algorithms</a></li><li class="chapter-item expanded "><a href="../chapter7/atomics.html"><strong aria-hidden="true">7.2.</strong> Atomics</a></li><li class="chapter-item expanded "><a href="../chapter7/threads.html"><strong aria-hidden="true">7.3.</strong> Threads</a></li><li class="chapter-item expanded "><a href="../chapter7/mutexes.html"><strong aria-hidden="true">7.4.</strong> Mutexes</a></li><li class="chapter-item expanded "><a href="../chapter7/async.html"><strong aria-hidden="true">7.5.</strong> Asynchronous Programming</a></li><li class="chapter-item expanded "><a href="../chapter7/slides7.html"><strong aria-hidden="true">7.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../GODBOLT.html">Godbolt Examples</a></li><li class="chapter-item expanded affix "><a href="../planned.html">Planned Additions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">High Performance Programming</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/MonashDeepNeuron/HPP" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="primitive-types"><a class="header" href="#primitive-types">Primitive Types</a></h1>
+<p>Like most languages, C++ comes with a small set of types that are built into the language. Almost every other type created and used in the language is some combination or composition of these types.</p>
+<h2 id="size-and-width"><a class="header" href="#size-and-width">Size and Width</a></h2>
+<p>In C++, all types have an implicit property called width or size. This refers to how much memory; in bits or bytes, a given type maximally occupies. This leaves enough room for any value of the given type to fit in the allocated spot. The minimum size a type can occupy in C++ is 8-bits or a byte.</p>
+<h2 id="integral-types"><a class="header" href="#integral-types">Integral Types</a></h2>
+<p>Integral types are the most basic kind of type in C++. These types represent whole numerical values of varying sizes. Some are used to represent logical values, other character code point and some are just plain old number types.</p>
+<h3 id="boolean-type"><a class="header" href="#boolean-type">Boolean Type</a></h3>
+<p>The first type we will look at is <code>bool</code>. <code>bool</code> represents a Boolean value, meaning it is either <code>true</code> or <code>false</code>. This is a specialization of a unique type-function called a sum type. A sum type is a type that can hold one of its possible variants (also called 'appends' or 'injections'), in this case these are the type constructors <code>true</code> and <code>false</code>. However, in C++ <code>bool</code> is built-in to the language and thus these properties are hidden away.</p>
+<p><code>bool</code> occupies a memory space of 8-bits or a byte. It is also worth pointing out that <code>true</code> and <code>false</code> are literals (as they are built-in keywords) holding there respective values independently. Booleans are used to denote truthiness and logic in a programming language. In C++, <code>bool</code> can be implicitly promoted to another integral type such as <code>int</code> with <code>false</code> becoming <code>0</code> and <code>true</code> becoming <code>1</code>. Other integral types also can be narrowed to a <code>bool</code> with <code>0</code> becoming <code>false</code> and anything else becoming <code>true</code>.</p>
+<h3 id="character-types"><a class="header" href="#character-types">Character Types</a></h3>
+<p>The next type we will look is the <code>char</code>. This is C++ standard character type. These are values such as <code>'a'</code> or even escape characters like <code>'\n'</code>. It holds only a single byte (same as <code>bool</code>) allowing it to represent \( 2^8 = 256 \) different values. Depending on the system is is either <code>signed</code> or <code>unsigned</code>, meaning either the leading bit is dedicated to the sign of the value or is another number point. Depending on the representation, <code>char</code> can have a value between <code>0..255</code> (unsigned) or <code>-127..128</code> (signed). Character literals exclusively use single quotes in C++.</p>
+<p>There is another character type in C++ called <code>wchar_t</code>. This is a 'wide character' which can hold more bits than the <code>char</code> type. On Windows systems it is 16-bits (2-bytes) while on Unix based systems (Linux, macOS etc.) this is typically 32-bits (4-bytes). This allows for <code>wchar_t</code> to be to store many more different codepoints. A wide character literal also uses single quotes however, the quote pair is prefixed with a 'L' eg. 'a' as a <code>wchar_t</code> literal looks like <code>L'a'</code>.</p>
+<p>Like <code>bool</code>, <code>char</code> and <code>wchar_t</code> are integral types, this means that they are really numbers however, the system will treat them differently, eg. for IO.</p>
+<h3 id="number-types"><a class="header" href="#number-types">Number Types</a></h3>
+<p>There is only one primary number type in C++ called <code>int</code>. This represents a (typically) 32-bit (4-byte), signed number. It can store \( 2^{32} = 4,294,967,296 \) values has a value range of <code>-2'147'483'647..2'147'483'648</code>. <code>int</code> is probably the most basic type in terms of bit layout in C++ with every bit storing data from the number with only the first bit indicating the sign of the number.</p>
+<h2 id="float-point-types"><a class="header" href="#float-point-types">Float Point Types</a></h2>
+<p>C++ has two distinct floating point number types. These are <code>float</code> and <code>double</code>. <code>float</code> implements the IEEE-754 binary32 floating point format while <code>double</code> implements the IEEE-754 binary64 floating point format, hence the name <code>double</code> indicating double floating point precision.</p>
+<p>Floating point numbers are a unique problem in computing. It is impossible to represent all precisions a decimal number can have (number of decimal places) which still being able to compute large numbers with limited memory. To tackle this, floating point numbers break up the bit-space of the floating point into the sign, fraction and exponents chapters. The IEEE-754 binary32 format uses 1-bit for the sign, 8-bits (a byte) for the exponent and and 23-bits (3-bytes - 1-bit) for the fraction. The IEEE-754 binary64 format has; again 1-bit for the sign, 11-bits for the exponent and 52-bits for the fraction chapter. This gives you (greater than) double the number bits you can use represent your fraction chapter or \( 536,870,912 \) times more possible values for the fraction chapter of a <code>double</code> over a <code>float</code> (\( 2^{52}=4.5035996\cdot10^{15} \) vs \( 2^{23}=8,388,608 \)).</p>
+<h2 id="void"><a class="header" href="#void">Void</a></h2>
+<p>In C++ there is a unique type called called <code>void</code>. This is an incomplete and it can not be completed. It is a unique type of literal but it holds no value. <code>void</code> is used to indicate the absence of a return value (and input parameter value in C). It is different from the unit type (which is not explicitly present in C++) which has the type <code>()</code> and value <code>()</code>, <code>void</code> has the type of <code>void</code> but not the value of <code>void</code>. It has no value.</p>
+<h2 id="nullptr"><a class="header" href="#nullptr">Nullptr</a></h2>
+<p><code>nullptr</code> is a literal type which has type of <code>std::nullptr_t</code> and value of <code>nullptr</code>. This is a unique type used by pointers to indicate that they point to nothing.</p>
+<h2 id="other-types"><a class="header" href="#other-types">Other Types</a></h2>
+<p>There are two more types in C++ that are worth talking about. These are <code>std::size_t</code> and <code>std::ptrdiff_t</code>. <code>std::size_t</code> is a platform dependent type that indicates the maximum possible size of an unsigned integer in C++. This is typically a 32-bit or 64-bit number types.</p>
+<p><code>std::ptrdiff_t</code> is a signed number type that is returned by subtracting two pointers in C++.</p>
+<h2 id="auto"><a class="header" href="#auto">Auto</a></h2>
+<p>While C++ is a statically typed language, it is able to infer and deduce the types of many things at compile time. This is achieve with a non-type keyword called <code>auto</code>. While <code>auto</code> is used in many places that type specifiers are used (more on this in the next section), it is important to note that it itself is not a type but rather a automatic type, essentially a placeholder for the to-be deduced type.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../chapter2/typesystem.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../chapter2/variables.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../chapter2/typesystem.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../chapter2/variables.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

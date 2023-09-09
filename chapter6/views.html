@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Views - High Performance Programming</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Monash DeepNeuron&#x27;s High Performance Programming Curriculum">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../home.html">Home</a></li><li class="chapter-item expanded affix "><div>Foreword</div></li><li class="chapter-item expanded "><a href="../chapter1/chapter1.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter1/wsl.html"><strong aria-hidden="true">1.1.</strong> WSL</a></li><li class="chapter-item expanded "><a href="../chapter1/software.html"><strong aria-hidden="true">1.2.</strong> Installing Software</a></li><li class="chapter-item expanded "><a href="../chapter1/helloworld.html"><strong aria-hidden="true">1.3.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../chapter1/godbolt.html"><strong aria-hidden="true">1.4.</strong> Compiler Explorer</a></li><li class="chapter-item expanded "><a href="../chapter1/slides1.html"><strong aria-hidden="true">1.5.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter2/chapter2.html"><strong aria-hidden="true">2.</strong> Basics of C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter2/typesystem.html"><strong aria-hidden="true">2.1.</strong> The C++ Type System</a></li><li class="chapter-item expanded "><a href="../chapter2/types.html"><strong aria-hidden="true">2.2.</strong> Primitive Types</a></li><li class="chapter-item expanded "><a href="../chapter2/variables.html"><strong aria-hidden="true">2.3.</strong> Variables</a></li><li class="chapter-item expanded "><a href="../chapter2/operators.html"><strong aria-hidden="true">2.4.</strong> Operators</a></li><li class="chapter-item expanded "><a href="../chapter2/io.html"><strong aria-hidden="true">2.5.</strong> IO</a></li><li class="chapter-item expanded "><a href="../chapter2/eqordlogic.html"><strong aria-hidden="true">2.6.</strong> Equality, Ordering &amp; Logical Operators</a></li><li class="chapter-item expanded "><a href="../chapter2/condexpr.html"><strong aria-hidden="true">2.7.</strong> Conditional Expressions</a></li><li class="chapter-item expanded "><a href="../chapter2/loops.html"><strong aria-hidden="true">2.8.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../chapter2/functions.html"><strong aria-hidden="true">2.9.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../chapter2/slides2.html"><strong aria-hidden="true">2.10.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter3/chapter3.html"><strong aria-hidden="true">3.</strong> Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter3/pointers.html"><strong aria-hidden="true">3.1.</strong> Pointers</a></li><li class="chapter-item expanded "><a href="../chapter3/slices.html"><strong aria-hidden="true">3.2.</strong> Slices</a></li><li class="chapter-item expanded "><a href="../chapter3/references.html"><strong aria-hidden="true">3.3.</strong> References</a></li><li class="chapter-item expanded "><a href="../chapter3/memory.html"><strong aria-hidden="true">3.4.</strong> Dynamic Memory</a></li><li class="chapter-item expanded "><a href="../chapter3/stdlib.html"><strong aria-hidden="true">3.5.</strong> The Standard Library</a></li><li class="chapter-item expanded "><a href="../chapter3/slides3.html"><strong aria-hidden="true">3.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter4/chapter4.html"><strong aria-hidden="true">4.</strong> Intermediate C++ Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter4/advfunc.html"><strong aria-hidden="true">4.1.</strong> Advanced Function Concepts</a></li><li class="chapter-item expanded "><a href="../chapter4/namespaces.html"><strong aria-hidden="true">4.2.</strong> Namespaces</a></li><li class="chapter-item expanded "><a href="../chapter4/enums.html"><strong aria-hidden="true">4.3.</strong> Enumerations</a></li><li class="chapter-item expanded "><a href="../chapter4/unions.html"><strong aria-hidden="true">4.4.</strong> Unions</a></li><li class="chapter-item expanded "><a href="../chapter4/structs.html"><strong aria-hidden="true">4.5.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../chapter4/task1.html"><strong aria-hidden="true">4.6.</strong> Task 1</a></li><li class="chapter-item expanded "><a href="../chapter4/slides4.html"><strong aria-hidden="true">4.7.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter5/chapter5.html"><strong aria-hidden="true">5.</strong> Generic Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter5/classes.html"><strong aria-hidden="true">5.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../chapter5/templates.html"><strong aria-hidden="true">5.2.</strong> Templates</a></li><li class="chapter-item expanded "><a href="../chapter5/generics.html"><strong aria-hidden="true">5.3.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../chapter5/concepts.html"><strong aria-hidden="true">5.4.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../chapter5/task2.html"><strong aria-hidden="true">5.5.</strong> Task 2</a></li><li class="chapter-item expanded "><a href="../chapter5/slides5.html"><strong aria-hidden="true">5.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter6/chapter6.html"><strong aria-hidden="true">6.</strong> Algorithms &amp; Data Structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter6/iterators.html"><strong aria-hidden="true">6.1.</strong> Iterators</a></li><li class="chapter-item expanded "><a href="../chapter6/data-structures.html"><strong aria-hidden="true">6.2.</strong> Data Structures</a></li><li class="chapter-item expanded "><a href="../chapter6/algorithms.html"><strong aria-hidden="true">6.3.</strong> Algorithms</a></li><li class="chapter-item expanded "><a href="../chapter6/ranges.html"><strong aria-hidden="true">6.4.</strong> Ranges</a></li><li class="chapter-item expanded "><a href="../chapter6/views.html" class="active"><strong aria-hidden="true">6.5.</strong> Views</a></li><li class="chapter-item expanded "><a href="../chapter6/task3.html"><strong aria-hidden="true">6.6.</strong> Task 3</a></li><li class="chapter-item expanded "><a href="../chapter6/slides6.html"><strong aria-hidden="true">6.7.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter7/chapter7.html"><strong aria-hidden="true">7.</strong> Concurrent Computing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter7/parallel-alg.html"><strong aria-hidden="true">7.1.</strong> Parallel Algorithms</a></li><li class="chapter-item expanded "><a href="../chapter7/atomics.html"><strong aria-hidden="true">7.2.</strong> Atomics</a></li><li class="chapter-item expanded "><a href="../chapter7/threads.html"><strong aria-hidden="true">7.3.</strong> Threads</a></li><li class="chapter-item expanded "><a href="../chapter7/mutexes.html"><strong aria-hidden="true">7.4.</strong> Mutexes</a></li><li class="chapter-item expanded "><a href="../chapter7/async.html"><strong aria-hidden="true">7.5.</strong> Asynchronous Programming</a></li><li class="chapter-item expanded "><a href="../chapter7/slides7.html"><strong aria-hidden="true">7.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../GODBOLT.html">Godbolt Examples</a></li><li class="chapter-item expanded affix "><a href="../planned.html">Planned Additions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">High Performance Programming</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/MonashDeepNeuron/HPP" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="views"><a class="header" href="#views">Views</a></h1>
+<h2 id="what-is-a-view"><a class="header" href="#what-is-a-view">What is a View?</a></h2>
+<p>A view is a simple abstraction on a range. Views can be thought of as a reference or pointer to a range that is cheap to copy, move, assign and destroy. Views allow for a ranges to be used in a lazy evaluation contexts. Views are found in the <code>std::ranges</code> namespace from the <code>&lt;range&gt;</code> header, often with a '_view' suffix or can be found in the <code>std::views</code> namespace of the same header without the suffix. Views can be passed to range based algorithms or even used as the range evaluated in a range-for.</p>
+<p>Ranges can be created from an iterator and sentinel pair or a range using <code>std::subrange</code>.</p>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;ranges&gt;
+#include &lt;vector&gt;
+
+auto main() -&gt; int
+{
+    auto v = std::vector&lt;int&gt;{ 1, 2, 3, 4, 5 };
+
+    /// Note: This is unnecessary and is only a showcase 
+    for (const auto&amp; e : std::ranges::subrange(v.begin(), v.end()))
+        std::cout &lt;&lt; e &lt;&lt; &quot; &quot;;
+
+    std::cout &lt;&lt; std::endl;
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/sE5Eq5a3z">Example</a></p>
+<h2 id="lazy-evaluation"><a class="header" href="#lazy-evaluation">Lazy Evaluation</a></h2>
+<p>What is lazy evaluation? Lazy evaluation is the process of delaying evaluation of functions and expressions until the result of the evaluation is actually needed. This reduces the amount of memory, compute cycles and evaluations the function undergoes and allows for easier composition of functions.</p>
+<h2 id="factories"><a class="header" href="#factories">Factories</a></h2>
+<p>Some views are used convert ranges and scalars into views. These views are called factories as they generate a view from its arguments.</p>
+<ul>
+<li><code>std::views::empty</code> - A view containing no element. It still takes an unused template type parameter.</li>
+<li><code>std::views::single</code> - A owning view containing a single element.</li>
+<li><code>std::views::iota</code> - A range factory, generating a elements from a repeatedly incremented initial value. This view can be bound to a final value or unbounded, generating an infinite view. Bounded iota views are exclusive ie. the bound is excluded from the resulting range.</li>
+<li><code>std::views::istream</code> - A range factory, generating elements by repeated calls to <code>&gt;&gt;</code> on a input stream eg. <code>std::cin</code>.</li>
+</ul>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;ranges&gt;
+
+auto main() -&gt; int
+{
+    /// Prints &quot;0 1 2 3 4 5 6 7 8 9 10&quot;
+    std::ranges::copy(std::views::iota(0, 11), std::ostream_iterator&lt;int&gt;(std::cout, &quot; &quot;));
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/brff8rY5T">Example</a></p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/empty_view"><code>std::views::empty</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/single_view"><code>std::views::single</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/iota_view"><code>std::views::iota</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/basic_istream_view"><code>std::views::istream</code></a></li>
+</ul>
+<h2 id="range-adaptors-composition--the-pipe-operators"><a class="header" href="#range-adaptors-composition--the-pipe-operators">Range Adaptors, Composition &amp; The Pipe Operators</a></h2>
+<p>So far views aren't all that interesting. The true power of views comes from their ability to be composed. Composition allows for views to be combined to build more complex views over data while still adhering to lazy evaluation. Instead of evaluating each function one at a time a single function, which is the composition of all the view functions gets evaluated once for every access to the element. Views are composed using the pipe operator (<code>|</code>) and are read from left-to-right as opposed to inside-out. This makes function composition far more expressible and extensible. Range (including containers) or view object are 'piped' to the range adaptor with the resulting view; when evaluated, applying the range adaptor on the every element.</p>
+<h2 id="standard-view-range-adaptors"><a class="header" href="#standard-view-range-adaptors">Standard View Range Adaptors</a></h2>
+<ul>
+<li><code>std::views::transform</code> - a range adapter whose resulting view maps an unary function to the input range.</li>
+<li><code>std::views::filter</code> - a range adaptor that whose resulting view excludes any element that do not satisfy an unary predicate.</li>
+<li><code>std::views::reverse</code>  - a range adaptor returning a view of the input range as if its order was reversed.</li>
+<li><code>std::views::take</code> - a range adaptor whose resulting view take only \( n \) elements from the input range. Performs bound checks to ensure that it doesn't take more elements then the view can see.</li>
+<li><code>std::views::take_while</code> - a range adaptor whose resulting view contains every element until an unary predicate returns <code>false</code>.</li>
+<li><code>std::views::drop</code> - a range adapter whose resulting view skips the first \( n \) elements from a input range.</li>
+<li><code>std::views::drop_while</code> -  a range adaptor whose resulting view starts at the first element for which the unary predicate evaluates <code>false</code>.</li>
+<li><code>std::views::join</code> - a range adaptor whose resulting view will flatten nested range or view object a single view.</li>
+<li><code>std::views::split</code> - a range adaptor whose resulting view contains subranges split by a given deliminator. Is not entirely lazy and will eagerly move forward through the view at each iteration during evaluation.</li>
+<li><code>std::views::lazy_split</code> - a range adaptor whose resulting view contains subranges split by a given deliminator Is entirely lazy evaluated but is unable to model the subranges as a <a href="https://en.cppreference.com/w/cpp/ranges/common_range">common range</a>(a range with the same type for the iterator and sentinel) and cannot be used in algorithms expecting a bidirectional range (or higher).</li>
+<li><code>std::views::common</code> - a range adaptor whose resulting view adapts the input range to have the same type for its iterator and sentinels.</li>
+<li><code>std::views::element</code> - a range adaptor that accepts an input range with <em>Tuple-Like</em> elements and whose resulting view contains the \( Nth \) entry from every <em>Tuple-Like</em> element of the input range.</li>
+<li><code>std::views::keys</code> - a range adaptor who is a specialisations of <code>std::views::elements</code> taking the \( 0th \) entry of a view of <em>Tuple-Like</em> elements. This can be used to obtain a view of just the keys of an associative container.</li>
+<li><code>std::views::values</code> - a range adaptor who is a specialisations of <code>std::views::elements</code> taking the \( 1st \) entry of a view of <em>Tuple-Like</em> elements. This can be used to obtain a view of just the values of an associative container.</li>
+</ul>
+<pre><code class="language-cxx">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;ranges&gt;
+
+auto square = [](const auto&amp; x){ return x * x; };
+auto even = [](const auto&amp; x){ return x % 2 == 0; };
+
+auto main() -&gt; int
+{
+    auto nums = std::views::iota(0) 
+              | std::views::transform(square)
+              | std::views::filter(even)
+              | std::views::take(10);
+
+    std::ranges::copy(nums, std::ostream_iterator&lt;int&gt;(std::cout, &quot; &quot;));
+
+    std::cout &lt;&lt; std::endl;
+    
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/3fdW1P7hj">Example</a></p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/transform_view"><code>std::views::transform</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/filter_view"><code>std::views::filter</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/reverse_view"><code>std::views::reverse</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/take_view"><code>std::views::take</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/take_while_view"><code>std::views::take_while</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/drop_view"><code>std::views::drop</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/drop_while_view"><code>std::views::drop_while</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/join_view"><code>std::views::join</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/split_view"><code>std::views::split</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/lazy_split_view"><code>std::views::lazy_split</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/common_view"><code>std::views::common</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/elements_view"><code>std::views::elements</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/keys_view"><code>std::views::keys</code></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/ranges/values_view"><code>std::views::values</code></a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../chapter6/ranges.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../chapter6/task3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../chapter6/ranges.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../chapter6/task3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

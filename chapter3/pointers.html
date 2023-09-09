@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Pointers - High Performance Programming</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Monash DeepNeuron&#x27;s High Performance Programming Curriculum">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../home.html">Home</a></li><li class="chapter-item expanded affix "><div>Foreword</div></li><li class="chapter-item expanded "><a href="../chapter1/chapter1.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter1/wsl.html"><strong aria-hidden="true">1.1.</strong> WSL</a></li><li class="chapter-item expanded "><a href="../chapter1/software.html"><strong aria-hidden="true">1.2.</strong> Installing Software</a></li><li class="chapter-item expanded "><a href="../chapter1/helloworld.html"><strong aria-hidden="true">1.3.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../chapter1/godbolt.html"><strong aria-hidden="true">1.4.</strong> Compiler Explorer</a></li><li class="chapter-item expanded "><a href="../chapter1/slides1.html"><strong aria-hidden="true">1.5.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter2/chapter2.html"><strong aria-hidden="true">2.</strong> Basics of C++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter2/typesystem.html"><strong aria-hidden="true">2.1.</strong> The C++ Type System</a></li><li class="chapter-item expanded "><a href="../chapter2/types.html"><strong aria-hidden="true">2.2.</strong> Primitive Types</a></li><li class="chapter-item expanded "><a href="../chapter2/variables.html"><strong aria-hidden="true">2.3.</strong> Variables</a></li><li class="chapter-item expanded "><a href="../chapter2/operators.html"><strong aria-hidden="true">2.4.</strong> Operators</a></li><li class="chapter-item expanded "><a href="../chapter2/io.html"><strong aria-hidden="true">2.5.</strong> IO</a></li><li class="chapter-item expanded "><a href="../chapter2/eqordlogic.html"><strong aria-hidden="true">2.6.</strong> Equality, Ordering &amp; Logical Operators</a></li><li class="chapter-item expanded "><a href="../chapter2/condexpr.html"><strong aria-hidden="true">2.7.</strong> Conditional Expressions</a></li><li class="chapter-item expanded "><a href="../chapter2/loops.html"><strong aria-hidden="true">2.8.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../chapter2/functions.html"><strong aria-hidden="true">2.9.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../chapter2/slides2.html"><strong aria-hidden="true">2.10.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter3/chapter3.html"><strong aria-hidden="true">3.</strong> Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter3/pointers.html" class="active"><strong aria-hidden="true">3.1.</strong> Pointers</a></li><li class="chapter-item expanded "><a href="../chapter3/slices.html"><strong aria-hidden="true">3.2.</strong> Slices</a></li><li class="chapter-item expanded "><a href="../chapter3/references.html"><strong aria-hidden="true">3.3.</strong> References</a></li><li class="chapter-item expanded "><a href="../chapter3/memory.html"><strong aria-hidden="true">3.4.</strong> Dynamic Memory</a></li><li class="chapter-item expanded "><a href="../chapter3/stdlib.html"><strong aria-hidden="true">3.5.</strong> The Standard Library</a></li><li class="chapter-item expanded "><a href="../chapter3/slides3.html"><strong aria-hidden="true">3.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter4/chapter4.html"><strong aria-hidden="true">4.</strong> Intermediate C++ Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter4/advfunc.html"><strong aria-hidden="true">4.1.</strong> Advanced Function Concepts</a></li><li class="chapter-item expanded "><a href="../chapter4/namespaces.html"><strong aria-hidden="true">4.2.</strong> Namespaces</a></li><li class="chapter-item expanded "><a href="../chapter4/enums.html"><strong aria-hidden="true">4.3.</strong> Enumerations</a></li><li class="chapter-item expanded "><a href="../chapter4/unions.html"><strong aria-hidden="true">4.4.</strong> Unions</a></li><li class="chapter-item expanded "><a href="../chapter4/structs.html"><strong aria-hidden="true">4.5.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../chapter4/task1.html"><strong aria-hidden="true">4.6.</strong> Task 1</a></li><li class="chapter-item expanded "><a href="../chapter4/slides4.html"><strong aria-hidden="true">4.7.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter5/chapter5.html"><strong aria-hidden="true">5.</strong> Generic Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter5/classes.html"><strong aria-hidden="true">5.1.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../chapter5/templates.html"><strong aria-hidden="true">5.2.</strong> Templates</a></li><li class="chapter-item expanded "><a href="../chapter5/generics.html"><strong aria-hidden="true">5.3.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../chapter5/concepts.html"><strong aria-hidden="true">5.4.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="../chapter5/task2.html"><strong aria-hidden="true">5.5.</strong> Task 2</a></li><li class="chapter-item expanded "><a href="../chapter5/slides5.html"><strong aria-hidden="true">5.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter6/chapter6.html"><strong aria-hidden="true">6.</strong> Algorithms &amp; Data Structures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter6/iterators.html"><strong aria-hidden="true">6.1.</strong> Iterators</a></li><li class="chapter-item expanded "><a href="../chapter6/data-structures.html"><strong aria-hidden="true">6.2.</strong> Data Structures</a></li><li class="chapter-item expanded "><a href="../chapter6/algorithms.html"><strong aria-hidden="true">6.3.</strong> Algorithms</a></li><li class="chapter-item expanded "><a href="../chapter6/ranges.html"><strong aria-hidden="true">6.4.</strong> Ranges</a></li><li class="chapter-item expanded "><a href="../chapter6/views.html"><strong aria-hidden="true">6.5.</strong> Views</a></li><li class="chapter-item expanded "><a href="../chapter6/task3.html"><strong aria-hidden="true">6.6.</strong> Task 3</a></li><li class="chapter-item expanded "><a href="../chapter6/slides6.html"><strong aria-hidden="true">6.7.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter7/chapter7.html"><strong aria-hidden="true">7.</strong> Concurrent Computing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter7/parallel-alg.html"><strong aria-hidden="true">7.1.</strong> Parallel Algorithms</a></li><li class="chapter-item expanded "><a href="../chapter7/atomics.html"><strong aria-hidden="true">7.2.</strong> Atomics</a></li><li class="chapter-item expanded "><a href="../chapter7/threads.html"><strong aria-hidden="true">7.3.</strong> Threads</a></li><li class="chapter-item expanded "><a href="../chapter7/mutexes.html"><strong aria-hidden="true">7.4.</strong> Mutexes</a></li><li class="chapter-item expanded "><a href="../chapter7/async.html"><strong aria-hidden="true">7.5.</strong> Asynchronous Programming</a></li><li class="chapter-item expanded "><a href="../chapter7/slides7.html"><strong aria-hidden="true">7.6.</strong> Slides</a></li></ol></li><li class="chapter-item expanded "><a href="../GODBOLT.html">Godbolt Examples</a></li><li class="chapter-item expanded affix "><a href="../planned.html">Planned Additions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">High Performance Programming</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/MonashDeepNeuron/HPP" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="pointers"><a class="header" href="#pointers">Pointers</a></h1>
+<h2 id="what-is-a-pointer"><a class="header" href="#what-is-a-pointer">What is a pointer?</a></h2>
+<p>Many people seem to struggle with the concept of a pointer. This is mostly due to either, bad teaching or that someone learning C++ (or C or Rust) do not have a concise understanding of memory. Memory can be thought of as a cell that has some value and lives at some address or location in the physical memory. Cells can be as small as a byte and as large a single machine register, typically 8-bytes.</p>
+<blockquote>
+<p>Note: Registers are the circuit components that hold some value in the CPU that is be operated on. It can be an instruction or some data.</p>
+</blockquote>
+<p>The following data can be mapped to a memory layout below it.</p>
+<pre><code class="language-cxx">int a {4};
+int b {37365};
+</code></pre>
+<table><thead><tr><th align="center">Address</th><th align="center">Value</th></tr></thead><tbody>
+<tr><td align="center">0x00007fff59ae6e9d</td><td align="center">...</td></tr>
+<tr><td align="center">0x00007fff59ae6e99</td><td align="center">0x00000004</td></tr>
+<tr><td align="center">0x00007fff59ae6e94</td><td align="center">0x000091f5</td></tr>
+<tr><td align="center">0x00007fff59ae6e90</td><td align="center">...</td></tr>
+</tbody></table>
+<blockquote>
+<h3 id="notes"><a class="header" href="#notes">Notes:</a></h3>
+<ul>
+<li><code>...</code> means garbage values.</li>
+<li><code>0x...</code> is just an indicator that the value is a hexadecimal value</li>
+<li>We jump backwards because the stack (local memory of your program) starts from the largest address and goes down. This is because the code when stored in memory (as instructions) starts from the lowest value and increases. This prevents overwrites between instructions and data, if managed correctly.</li>
+<li>The memory addresses here are just random, it differs on every computer and every run of the program, usually.</li>
+</ul>
+</blockquote>
+<p>We can see that the value of <code>a</code> is stored at address <code>0x00007fff59ae6e99</code> and <code>b</code> is stored at address <code>0x00007fff59ae6e94</code>. The reason the memory address jumps by four is because each memory address stores a single byte, thus to store a 32-bit value (<code>int</code>) you need for bytes thus the next memory address will be four addresses away, in this case the value for <code>b</code>.</p>
+<p>But lets say we wanted to refer to the value already stored in <code>a</code>. We don't want a copy but we wanted some way to <em>point</em> to the value at that address. Well we could store the address of <code>a</code> in another location in memory like so.</p>
+<table><thead><tr><th align="center">Address</th><th align="center">Value</th></tr></thead><tbody>
+<tr><td align="center">0x00007fff59ae6e9d</td><td align="center">...</td></tr>
+<tr><td align="center">0x00007fff59ae6e99</td><td align="center">0x00000004</td></tr>
+<tr><td align="center">0x00007fff59ae6e94</td><td align="center">0x000091f5</td></tr>
+<tr><td align="center">0x00007fff59ae6e90</td><td align="center">0x00007fff59ae6e99</td></tr>
+<tr><td align="center">0x00007fff59ae6e88</td><td align="center">...</td></tr>
+</tbody></table>
+<blockquote>
+<p>Notes: We jump 8-bytes in the address space for the stored address as addresses (in the example at least) are 64-bit in size.</p>
+</blockquote>
+<p>As we can see, address <code>0x00007fff59ae6e90</code> stores the value <code>0x00007fff59ae6e94</code> which happens to be the number indicating the address where <code>a</code> is stored.</p>
+<p>This is the premise of a pointer. It is a numerical value that holds some address in memory. This is address of another value in a program.</p>
+<h2 id="syntax"><a class="header" href="#syntax">Syntax</a></h2>
+<p>To create a pointer in C++ is super simple. Given some type <code>T</code> the type of a pointer to a value of that type is <code>T*</code>.</p>
+<p>We can store the address in an object like any other value in C++. To obtain the address of an object you can use the unary <code>&amp;</code> operator prefixed to an objects name or use the <code>std::addressof()</code> function found in the header <code>&lt;memory&gt;</code>. Using the function is highly recommended as it is more consistent with more complex types.</p>
+<p>To obtain the value pointed to by a pointer, we use the unary indirection operator (often called the dereference operator) <code>*</code> prefixed to an object name.</p>
+<pre><code class="language-cxx">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+auto main () -&gt; int
+{
+    int a {4};
+    int b {37365};
+    int* pa {&amp;a};
+    int* pb {std::addressof(b)};
+
+    std::cout &lt;&lt; &quot;a = &quot; &lt;&lt; a &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;pa = &quot; &lt;&lt; pa &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;*pa = &quot; &lt;&lt; *pa &lt;&lt; std::endl;
+
+    std::cout &lt;&lt; &quot;b = &quot; &lt;&lt; b &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;pb = &quot; &lt;&lt; pb &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;*pb = &quot; &lt;&lt; *pb &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/aaf33YEYW">Example</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/memory/addressof"><code>std::addressof</code></a></p>
+<h2 id="const-qualifications"><a class="header" href="#const-qualifications">const qualifications</a></h2>
+<p>Because pointers are an independent type, they are able to have to have <code>const</code> (among other) qualifications however, the ordering of the qualifications can matter.</p>
+<ul>
+<li><code>const T*</code> - Pointer to constant data. The data cannot be changed but the pointer can point to a new location. (<code>T const*</code> is identical)</li>
+<li><code>T* const</code> - Constant pointer to data. The data can be modified but the pointer can only point to the original value (address).</li>
+</ul>
+<pre><code class="language-cxx">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+auto main () -&gt; int
+{
+    int a {4};
+    int b {37365};
+    const int* pa {&amp;a};
+    int* const pb {std::addressof(b)};
+
+    std::cout &lt;&lt; &quot;*pa = &quot; &lt;&lt; *pa &lt;&lt; std::endl;
+    *pa += 3;  ///&lt; Fails, comment out to run
+    pa = std::addressof(b);
+    std::cout &lt;&lt; &quot;*pa = &quot; &lt;&lt; *pa &lt;&lt; std::endl;
+
+    std::cout &lt;&lt; &quot;*pb = &quot; &lt;&lt; *pb &lt;&lt; std::endl;
+    *pb += 3;
+    pb = std::addressof(a);  ///&lt; Fails, comment out to run
+    std::cout &lt;&lt; &quot;*pb = &quot; &lt;&lt; *pb &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/sed7Wcf7s">Example</a></p>
+<h2 id="void-pointers"><a class="header" href="#void-pointers">void pointers</a></h2>
+<p>Because of C++'s static type system, the type of a pointer must be declared however you can circumvent the type system using <code>void</code>. A pointer can be a <code>void*</code>, meaning that the type it points to is unbound. When you need to use the type you can then use <code>static_cast&lt;&gt;()</code> to create the type that you need. This is actually how C's <code>malloc()</code> function works. It returns a <code>void*</code> and it is up to the user to cast it to the desired type.</p>
+<pre><code class="language-cxx">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+auto main () -&gt; int
+{
+    int a {4};
+    void* pa {std::addressof(a)};
+
+    std::cout &lt;&lt; &quot;*pa = &quot; &lt;&lt; *static_cast&lt;int*&gt;(pa) &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;*pa = &quot; &lt;&lt; *pa &lt;&lt; std::endl;  ///&lt; This will fail, comment out to run
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/n9Ynd7fYq">Example</a></p>
+<p><a href="https://en.cppreference.com/w/c/memory/malloc">C's <code>malloc()</code></a></p>
+<h2 id="pointer-arithmetic"><a class="header" href="#pointer-arithmetic">Pointer Arithmetic</a></h2>
+<p>Because pointers are just numbers (addresses) we can add and subtract from then as if they were integral types. We can use the increment, decrement, addition, subtraction and subscript (index) operators on pointers (<code>+</code>, <code>-</code>, <code>++</code>, <code>--</code> and <code>[]</code> respectively).</p>
+<p>This can used to create and access a sequence or memory. This is how a string literal (<code>&quot;&quot;</code>) works in C++, they are really sequence of <code>char</code> that exist in your program statically. C++ then decays them into the type <code>const char*</code> so functions can refer to them such as <code>std::cout &lt;&lt;</code>.</p>
+<p>However, pointer arithmetic is very error prone. and leads to low readability and maintainability, but is useful to understand and for highly controlled manipulation of data.</p>
+<pre><code class="language-cxx">#include &lt;iostream&gt;
+
+auto main () -&gt; int
+{
+    auto greeting {&quot;Hello!&quot;};
+    const char* response {&quot;Hi!!!&quot;};
+
+    for (auto i {0}; i &lt; 7; ++i)
+        std::cout &lt;&lt; greeting[i];
+    std::cout &lt;&lt; std::endl;
+
+    for (auto i {0}; i &lt; 6; ++i)
+        std::cout &lt;&lt; *(response + i);
+    std::cout &lt;&lt; std::endl;
+
+    /// These will have the same type
+    std::cout &lt;&lt; &quot;typeid(greeting).name() = &quot; &lt;&lt; typeid(greeting).name() &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;typeid(response).name() = &quot; &lt;&lt; typeid(response).name() &lt;&lt; std::endl;
+
+    for (auto i {0}; i &lt; 6; ++i)
+        std::cout &lt;&lt; *(response++) &lt;&lt; std::endl;
+
+    std::cout &lt;&lt; &quot;response = &quot; &lt;&lt; response &lt;&lt; std::endl;  ///&lt; This now points to whatever is stored after `response`.
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/qdx6csE7x">Example</a></p>
+<h2 id="dereferencing-nullptr"><a class="header" href="#dereferencing-nullptr">Dereferencing nullptr</a></h2>
+<p>In C++, any assignment and initialisation is is copy by default even when passed to functions. This can be really costly for objects that have a large amount of data stored in them. Pointers make it cheap to pass the data around as you now just have to pass a pointer to it instead of all the data. However, there is a catch to pointers. Pointers can point to nothing, this nothing value is actually the literal <code>nullptr</code> we saw in week 0. And you cannot dereference a pointer to <code>nullptr</code> as <code>nullptr</code> is nothing. This can be really dangerous as this is considered UB which may work, may not compile, may crash the entire program or do something entirely unexpected.</p>
+<pre><code class="language-cxx">#include &lt;iostream&gt;
+
+auto main () -&gt; int
+{
+    int* p {nullptr};
+
+    std::cout &lt;&lt; &quot;p = &quot; &lt;&lt; p &lt;&lt; std::endl;      ///&lt; p = 0
+
+    /// Compiles (on Godbolt) but throws a runtime error (see return of program is not zero)
+    std::cout &lt;&lt; &quot;*p = &quot; &lt;&lt; *p &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/594hMbcz6">Example</a></p>
+<h2 id="pointers-to-pointers"><a class="header" href="#pointers-to-pointers">Pointers to Pointers</a></h2>
+<p>It is also possible in C++ to have a pointer to a pointer. This mostly a feature inherited from C and remains in for C++ to interoperate with C and for completeness. Pointers to pointers may seem daunting but are straight forward if you apply the concept of a pointer again. The pointer-to-pointer object points to the address of the pointer object that holds the address of some other object. Pointer-to-pointers have the type <code>T**</code> and can be dereferenced to the their value, ie. the address the nested pointer points to or again to get the bottom value.</p>
+<pre><code class="language-cxx">#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+auto main () -&gt; int
+{
+    int a {6};
+    int* p {std::addressof(a)};
+    int** pp {std::addressof(p)};
+
+    std::cout &lt;&lt; &quot;pp = &quot; &lt;&lt; pp &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;*pp = &quot; &lt;&lt; *pp &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;**pp = &quot; &lt;&lt; **pp &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<p><a href="https://www.godbolt.org/z/MPPczrWzd">Example</a></p>
+<blockquote>
+<p>Note: <code>auto</code> is able to deduce the type if the right-hand-side is a rvalue however, the <code>const</code> qualifications cannot be specified. ie. <code>T* -&gt; auto</code> and <code>T** -&gt; auto</code>.</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../chapter3/chapter3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../chapter3/slices.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../chapter3/chapter3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../chapter3/slices.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
