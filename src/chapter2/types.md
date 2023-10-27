@@ -18,9 +18,9 @@ The first type we will look at is `bool`. `bool` represents a Boolean value, mea
 
 ### Character Types
 
-The next type we will look is the `char`. This is C++ standard character type. These are values such as `'a'` or even escape characters like `'\n'`. It holds only a single byte (same as `bool`) allowing it to represent \\( 2^8 = 256 \\) different values. Depending on the system is is either `signed` or `unsigned`, meaning either the leading bit is dedicated to the sign of the value or is another number point. Depending on the representation, `char` can have a value between `0..255` (unsigned) or `-127..128` (signed). Character literals exclusively use single quotes in C++.
+The next type we will look is the `char`. This is C++ standard character type. These are values such as `'a'` or even escape characters like `'\n'`. It holds only a single byte (same as `bool`) allowing it to represent \\( 2^8 = 256 \\) different values. Depending on the system it is either `signed` or `unsigned`, meaning either the leading bit is dedicated to the sign of the value or is another number point. Depending on the representation, `char` can have a value between `0..255` (unsigned) or `-127..128` (signed). Character literals exclusively use single quotes in C++.
 
-There is another character type in C++ called `wchar_t`. This is a 'wide character' which can hold more bits than the `char` type. On Windows systems it is 16-bits (2-bytes) while on Unix based systems (Linux, macOS etc.) this is typically 32-bits (4-bytes). This allows for `wchar_t` to be to store many more different codepoints. A wide character literal also uses single quotes however, the quote pair is prefixed with a 'L' eg. 'a' as a `wchar_t` literal looks like `L'a'`.
+There is another character type in C++ called `wchar_t`. This is a 'wide character' which can hold more bits than the `char` type. On Windows systems it is 16-bits (2-bytes) while on Unix based systems (Linux, macOS etc.) this is typically 32-bits (4-bytes). This allows for `wchar_t` to store many more different codepoints. A wide character literal also uses single quotes however, the quote pair is prefixed with a 'L' eg. 'a' as a `wchar_t` literal looks like `L'a'`.
 
 Like `bool`, `char` and `wchar_t` are integral types, this means that they are really numbers however, the system will treat them differently, eg. for IO.
 
@@ -50,4 +50,4 @@ There are two more types in C++ that are worth talking about. These are `std::si
 
 ## Auto
 
-While C++ is a statically typed language, it is able to infer and deduce the types of many things at compile time. This is achieve with a non-type keyword called `auto`. While `auto` is used in many places that type specifiers are used (more on this in the next section), it is important to note that it itself is not a type but rather a automatic type, essentially a placeholder for the to-be deduced type.
+While C++ is a statically typed language, it is able to infer and deduce the types of many things at compile time. This is achieved with a non-type keyword called `auto`. While `auto` is used in many places that type specifiers are used (more on this in the next section), it is important to note that it itself is not a type but rather an automatic type, essentially a placeholder for the to-be deduced type.

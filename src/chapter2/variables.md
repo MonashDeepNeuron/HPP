@@ -2,7 +2,7 @@
 
 Variables are the first form of abstraction in any mathematical and logical system and computers are no exception. In C++ a variable is an owner of some value. You can use variables to store the value of something and use it in different places throughout your software. Variables can only be of one type, this is the type of the value they hold.
 
-To declare a variable in C++ is super simple and follows the following pattern `<type> <name> <initialiser>;`. That's it, pretty simple. However, like many things in C++ there is a slight catch. How does a variable acquire a value. In C++ there is a concept known as Resource Acquisition Is Initialisation (RAII). This essentially means that when a type obtains a resource; or rather, obtains all its necessary resources it can be considered initialised.
+Declaring a variable in C++ is super simple and follows the following pattern `<type> <name> <initialiser>;`. That's it, pretty simple. However, like many things in C++ there is a slight catch. How does a variable acquire a value. In C++ there is a concept known as Resource Acquisition Is Initialisation (RAII). This essentially means that when a type obtains a resource; or rather, obtains all its necessary resources it can be considered initialised.
 
 So what does this all mean? This means that C++ has strict rules about how values can be given to variables and that certain requirements need to be made by the constructor of a type and the variable receiving the newly constructed value of that type. However, this is mostly technical speak but seeing a bit of it now can give you a better foundation to understand some weird quirks C++ has that you will most likely encounter in the future. We will cover constructors at a later date and focus on how to initialise a variable.
 
@@ -40,7 +40,7 @@ auto a = {1};  ///< must have initialiser for type deduction.
 
 ### Value Initialisation
 
-Value initialisation is used to zero-initialise a scalar variable (eg. `int` etc.) or default initialise a user defined type such as a `class`. The syntax for value initialisation varies but it typically uses `<type> <name> {}` or `<type> ()`. This is the preferred and recommended way to to initialise variables without giving them an explicit value.
+Value initialisation is used to zero-initialise a scalar variable (eg. `int` etc.) or default initialise a user defined type such as a `class`. The syntax for value initialisation varies but it typically uses `<type> <name> {}` or `<type> ()`. This is the preferred and recommended way to initialise variables without giving them an explicit value.
 
 ```cxx
 int a{};                ///< zero-initialises `a` to `0`.
@@ -62,7 +62,7 @@ int c = foo();          ///< Copies through `return` of `foo`.
 T t2(t1);               ///< Copies `t1` to `t2` using `T` copy constructor.
 ```
 
-Up until now, we haven't been able to give our variables custom values. With copy initialisation we can copy literals and values from other variables giving use access to any and all data. While `T t = v` is allowed for any correct value `v` of type `T`, it is preferred to use `T t = {v}` as this prevents implicit conversions.
+Up until now, we haven't been able to give our variables custom values. With copy initialisation we can copy literals and values from other variables giving us access to any and all data. While `T t = v` is allowed for any correct value `v` of type `T`, it is preferred to use `T t = {v}` as this prevents implicit conversions.
 
 [Copy Initialisation](https://en.cppreference.com/w/cpp/language/copy_initialization)
 
@@ -107,7 +107,7 @@ foo({1, 2, 3});             ///< Argument copy-list initialisation.
 W w({4, 5, 6});             ///< Direct constructor list initialisation.
 ```
 
-Have a play with with these and see what works with the compiler. In general, stick to using copy and direct initialisation. It might be easier to play with on [Example _](https://www.godbolt.org/z/Y34xxoahz)
+Have a play with with these and see what works with the compiler. In general, stick to using copy and direct initialisation. It might be easier to play with an [Example](https://www.godbolt.org/z/Y34xxoahz)
 
 [List Initialisation](https://en.cppreference.com/w/cpp/language/list_initialization)
 
@@ -143,7 +143,7 @@ You can also combined size qualifiers with the `unsigned` (and `signed` though n
 
 ### Storage
 
-Storage qualifiers allow you to specify the lifetime of variables. All variables implicitly have automatic storage duration. The exist only in a certain scope, are created when the program enters that scope and dropped at the end of that scope. `static` (and implicitly global variables) are created at the beginning of the program and are dropped only at the end of the program. Only one variable of the same name can be declared static in a given translation unit.
+Storage qualifiers allow you to specify the lifetime of variables. All variables implicitly have automatic storage duration. They exist only in a certain scope, are created when the program enters that scope and dropped at the end of that scope. `static` (and implicitly global variables) are created at the beginning of the program and are dropped only at the end of the program. Only one variable of the same name can be declared static in a given translation unit.
 
 ```cxx
 static int si = {1};  ///< static variables
@@ -153,13 +153,13 @@ static int si = {1};  ///< static variables
 }
 ```
 
-`inline` is more of a hint to the compiler for functions and methods. It indicates to the compiler that a function call should be inlined at call, ie. the functions definition gets moved to the call site. This qualifier is mostly used in OOP classes hierarchies as its more general use has be dropped in favour of a different qualifier.
+`inline` is more of a hint to the compiler for functions and methods. It indicates to the compiler that a function call should be inlined at call, ie. the functions definition gets moved to the call site. This qualifier is mostly used in OOP classes hierarchies as its more general use has been dropped in favour of a different qualifier.
 
 ### Mutability
 
 In C++, variables are mutable by default. There are various ways to limit the mutability of variables as well as constrain the optimisations a compiler can apply.
 
-- `const` - A `const` object is an immutable object, it cannot be changes. It must be initialised with a values.
+- `const` - A `const` object is an immutable object, it cannot be changed. It must be initialised with a value.
 - `constexpr` - A `constexpr` is; as the names suggests, a constant expression. It is an expression that _may_ be evaluated at compile time. Similar to `const`.
 - `volatile` - Indicates to the compiler that the variable may change in ways that it is unaware of and to avoid optimising this variables use in case of undesired behavior.
 - `mutable` - Indicates a member variable may be modified even through const-qualified methods (we'll see this in [Week 5](/content/week5/README.md)).
@@ -182,7 +182,7 @@ cv = 10;    ///< Error
 
 ## Automatic Types
 
-The final type we look at is an automatic type. As we will see later, declaring the type of variables can get cumbersome. Since C++11, a new type introducer was create with the keyword `auto`. Variables with type `auto` will have there true type deduced at compile time based on the initialiser.
+The final type we look at is an automatic type. As we will see later, declaring the type of variables can get cumbersome. Since C++11, a new type introducer was create with the keyword `auto`. Variables with type `auto` will have their true type deduced at compile time based on the initialiser.
 
 ```cxx
 auto ai int{1};                 ///< `ai` deduced to have the type `int`

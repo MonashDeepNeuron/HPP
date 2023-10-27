@@ -4,7 +4,7 @@ Conditional expressions use the concepts of equality and ordering to allow progr
 
 ## Scope
 
-One important concept in programming is the idea of scope. In C++, scope is very important as it can have an important impact on the design, performance in the safety of a program. Currently we have been running a program purely in the scope of the `main()` function. What denotes a scope in C++ is a pair of braces `{}`. Anything introduced within the braces is now in a new scope separate from the outside program. Objects from outside the new scope can be captured but anything created in a new scope is dropped at the end of the scope.
+One important concept in programming is the idea of scope. In C++, scope is very important as it can have an important impact on the design, performance and the safety of a program. Currently we have been running a program purely in the scope of the `main()` function. What denotes a scope in C++ is a pair of braces `{}`. Anything introduced within the braces is now in a new scope separate from the outside program. Objects from outside the new scope can be captured but anything created in a new scope is dropped at the end of the scope.
 
 ```cxx
 #include <iostream>
@@ -63,7 +63,7 @@ auto main () -> int
 
 [Example](https://www.godbolt.org/z/4dK3P17ax)
 
-We can also use an `else` clause at the end. This indicates that if and `if` expression fails, the `else` clause will execute instead.
+We can also use an `else` clause at the end. This indicates that if an `if` expression fails, the `else` clause will execute instead.
 
 ```cxx
 #include <iostream>
