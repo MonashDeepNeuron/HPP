@@ -28,7 +28,6 @@ Refer to the [source code](https://github.com/MonashDeepNeuron/HPP) of this book
 
 - [cppreference](https://en.cppreference.com/w/Main_Page)
 - [Compiler Explorer](https://www.godbolt.org/)
-- [bpt docs](https://bpt.pizza/docs/latest/index.html)
 
 <div style="font-size: 0.75em;">
   <center>

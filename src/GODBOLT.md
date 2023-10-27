@@ -7,7 +7,7 @@ format: <chapter.task.subsections~unnamed>
 ---
 
 1. [Example : 1.6.2](/content/chapter1/examples/hello/hello.cxx)
-2. [Example : 1.6.5](/content/chapter1/examples/hello-bpt)
+2. [Example : 1.6.5](/content/chapter1/examples/hello-cmake)
 3. [Example : 1.7.1](https://www.godbolt.org/z/GKxzfees6)
 4. [Example : 2.4.1~1](https://www.godbolt.org/z/xKMooTb4s)
 5. [Example : 2.4.1~2](https://www.godbolt.org/z/eeYqPbcaT)

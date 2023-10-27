@@ -1,8 +1,0 @@
-# Project 'hello-bpt' created by 'bpt new'
-name: hello-bpt
-version: 0.1.0
-
-readme: README.md
-
-description: |
-  The is the hello-bpt project. Hello

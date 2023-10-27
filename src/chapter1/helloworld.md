@@ -1,4 +1,4 @@
-# Hello World!
+# Hello World
 
 If you've never programmed before, a "Hello World" program is a simplest program and is often used to introduce a language. The first Hello World was created in Brian Kernighan's 1972 "A Tutorial Introduction to the Language B".
 
@@ -24,25 +24,22 @@ Hopefully this gives you an idea into the kind of language C++.
 
 ## Hello C++
 
-To begin we are going to open a new terminal window. We are going to create a directory called "hello", enter it and create some files and open VSCode there.
+To begin open a new terminal window, create a directory called 'hello', change to the newly created directory and open it in your text editor of choice.
 
 ```sh
 # Makes new directory
-$ mkdir hello
+mkdir hello
 
 # Enter `hello`
-$ cd hello
+cd hello
 
-# Create files `hello.cxx` and `README.md`
-$ touch hello.cxx README.md
+# Create files `hello.cxx`
+touch hello.cxx
 
-# Open VSCode
-$ code .
+# Open text editor of choice
 ```
 
-Open the `hello.cxx` file by clicking it on the left file view.
-
-Here is "Hello World" in C++.
+Open the `hello.cxx` file, copying and pasting the program below into the file.
 
 ```cxx
 // This is a comment, these are ignored by the compiler
@@ -72,14 +69,14 @@ auto main () -> int
 
 ## Build and Run
 
-Press `` ctrl + ` `` to open an integrated terminal window in VSCode. Make a new directory called `build` and run the following command to compile the code.
+Reopen your terminal at the 'hello' directory and make a new directory called `build`. You can then run the following command to compile the code.
 
 ```sh
 # Make `build` directory
 $ mkdir build
 
 # Compile with GCC
-$ g++-12 -std=c++20 -o build/hello hello.cxx
+$ g++ -std=c++20 -o build/hello hello.cxx
 
 $ ./build/hello
 Hello World!
@@ -92,15 +89,7 @@ Let's break this command down.
 - `-o build/hello` - The `-o` flag indicates and output file name. Because we wrote it with a path in front of it (`build/*`), it will output to that path.
 - `hello.cxx` - The source file we want to compile.
 
-## Debugging
-
-Debugging is the crux of fixing issues in code. Debuggers allow us to step through the running code and diagnose any issues that are occurring as they occur. Debugging a single executable is pretty trivial but a sufficiently large codebase can become quite complex.
-
-For that reason we are going to go into debugging a little bit more at the meetup as configuring VSCode is a bit tricky. The debugging also doesn't show anything particularly interesting for a simple "Hello World" program.
-
-If you know how a debugger works, you can have a play with VSCode and see if you can get it to work.
-
-## Hello World using bpt
+## Hello World CMake
 
 `make` is a useful tool and paired with `cmake` you can configure and build very large and complex code bases, but these configuration files are hard to read, tedious to write and error prone. Cmake is also a good and pretty standard in industry for C and C++ developers, but this standard is pretty outdated. So for the majority of this series we're going to be using a new tool called `bpt`. bpt is a lot like `pip` (Python), `gem` (Ruby), `hackage` (Haskell) and `cargo` (Rust) allow near seamless control over control over dependencies, testing and distribution of our software.
 
@@ -109,8 +98,7 @@ If you know how a debugger works, you can have a play with VSCode and see if you
 To start off open a new terminal window and run the following command. Keep the default options by pressing enter for each instruction.
 
 ```sh
-$ bpt new hello-bpt
-$ code hello-bpt
+bpt new hello-bpt
 ```
 
 The directory structure should look like this:
@@ -132,7 +120,7 @@ You can delete the `hello-bpt` directory that is within the `src/` directory as 
 Now simply run the following command to build the bpt project.
 
 ```sh
-$ bpt build -t :c++20:gcc-12 -o build
+bpt build -t :c++20:gcc-12 -o build
 ```
 
 This will spit out the binary into `build/`, dropping both file extensions. To run the program, simply call.

@@ -36,13 +36,13 @@ Having learnt about classes, templates and concepts I want you to reimplement yo
 
 ### Submitting
 
-You can use Godbolt or bpt to build and test your struct. Once you have created your implementation:
+You can use Godbolt or CMake to build and test your struct. Once you have created your implementation:
 
 - Clone this repo using `git clone https://github.com/MonashDeepNeuron/HPP.git`.
 - Create a new branch using `git checkout -b triple/<your-name>`.
 - Create a folder in the `/submissions` directory with your name.
 - Create a folder with the name of this task.
-- Copy your mini project into this directory (bpt setup, cmake scripts etc.) with a `README.md` or comment in the code on how to run the program (verify it still works). There is a sample header file in `/templates` that you can use.
+- Copy your mini project into this directory (cmake scripts etc.) with a `README.md` or comment in the code on how to run the program (verify it still works). There is a sample header file in `/templates` that you can use.
 - Go to <https://github.com/MonashDeepNeuron/HPP/pulls> and click 'New pull request'.
 - Change the branches in the drop down so that your branch is going into `main` and `Create new pull request.
 - Give the pull request a title and briefly describe what you were able to implement and any struggles you had.
