@@ -41,33 +41,13 @@ touch hello.cxx
 
 Open the `hello.cxx` file, copying and pasting the program below into the file.
 
+<span>Filename: hello.cxx</span>
+
 ```cxx
-// This is a comment, these are ignored by the compiler
-
-/// Preprocessor statement using `#` symbol
-/// The preprocessor runs at compile time before the code is compiled
-/// `#include` copies the header `iostream` into the current file
-#include <iostream>
-
-/// Main function
-/// Entry point of the executable.
-/// Takes no arguments and returns an `int`.
-auto main () -> int
-{
-    /// From the namespace `std`.
-    /// Use `cout` (character out).
-    /// Put (<<) the string literal to stream.
-    /// From `std` put a `endl` specifier. 
-    std::cout << "Hello World!" << std::endl;
-
-    /// Return 0 on successful termination.
-    return 0;
-}
+{{#include examples/hello/hello.cxx}}
 ```
 
-[Example](./examples/hello/hello.cxx)
-
-## Build and Run
+## Building and Running
 
 Reopen your terminal at the 'hello' directory and make a new directory called `build`. You can then run the following command to compile the code.
 
@@ -84,50 +64,63 @@ Hello World!
 
 Let's break this command down.
 
-- `g++-12` - This is the GNU C++ compiler from the GCC package. The `-12` just indicates that this is version twelve of GCC.
+- `g++` - This is the GNU C++ compiler from the GCC package. The `-12` just indicates that this is version twelve of GCC.
 - `-std=c++20` - This sets the C++ standard. The C++ standard is like the version of the language. C++20 is the most recent version.
 - `-o build/hello` - The `-o` flag indicates and output file name. Because we wrote it with a path in front of it (`build/*`), it will output to that path.
 - `hello.cxx` - The source file we want to compile.
 
-## Hello World CMake
+## Hello World w/ Make
 
-`make` is a useful tool and paired with `cmake` you can configure and build very large and complex code bases, but these configuration files are hard to read, tedious to write and error prone. Cmake is also a good and pretty standard in industry for C and C++ developers, but this standard is pretty outdated. So for the majority of this series we're going to be using a new tool called `bpt`. bpt is a lot like `pip` (Python), `gem` (Ruby), `hackage` (Haskell) and `cargo` (Rust) allow near seamless control over control over dependencies, testing and distribution of our software.
+While building this program is relatively simple, much larger programs become super cumbersome to write out every time and trying to remember each flag and command is a difficult task. Throw in the fact that there are many different compilers available to build a particular C++ project in but not all of them are available on every platform. This can make the task of compiling C++ programs difficult and intricate. Luckily there are tools make compiling much easier. One such tool is GNU `make` tool. `make` uses a 'Makefile' as an input which describes various build recipes. A recipe can be used as an action for `make` to complete or used as a dependency of another recipe. For out simple 'Hello, world!' program we can create a `Makefile` like the one below alongside our source file. This sample `Makefile` has some basic recipes for building with or without debug symbols (commonly known as debug and release modes) and even cleanup to ensure a clean build directory.
 
-> Note: bpt is experimental but robust enough to handle most cases. bpt only has a few libraries however, we won't need any dependencies as we are mostly look at the C++ language and C++ Standard Library.
+> Note: Windows users skip ahead.
 
-To start off open a new terminal window and run the following command. Keep the default options by pressing enter for each instruction.
+<span>Filename: Makefile</span>
 
-```sh
-bpt new hello-bpt
+```markdown
+{{#include examples/hello/Makefile}}
 ```
 
-The directory structure should look like this:
+We can build our project using one of the many build recipes. This will output our program into a directory defined the `Makefile`. We can then run the generated executable.
 
 ```sh
-hello-bpt
-├── README.md
-├── bpt.yaml
-└── src
-    └── hello-bpt
-        ├── hello-bpt.cpp
-        └── hello-bpt.hpp
+make debug
+./build/debug/hello
 ```
 
-You can delete the `hello-bpt` directory that is within the `src/` directory as these are just template files. Create a file in `src/` called `hello.main.cxx`. Copy the "Hello World" program from your other directory (or above again) and past into the newly created file.
+## Hello World w/ CMake
 
-> Note: bpt uses 'stem-leaf' file extensions to determine the purpose of a file. e.g. the `*.main.*` middle stem indicates to bpt that this is a executable that is run (as opposed to a library). You'll learn more about these as we go along.
+`make` is a useful tool but it can be fairly obscure what is happening with all of the defined variables. It is also hard to change parts of the configuration which often leads to many different `Makefile`s existing for different configurations which can be difficult to maintain. `make` is also only available on UNIX based platforms meaning if you are Windows you can't use `make` to build your project and instead must use something like Visual Studio project files. So how do we handle all of these different configurations and build systems? We can use another tool CMake. CMake is a metabuild system which is used to configure your project and generate different build scripts from one configuration so the same project cna be built for both `make`, Visual Studio, Xcode and many other build systems. For our 'Hello, world!' program we just need a single CMake configuration file (called `CMakeLists.txt` files) in the same directory as our source file.
 
-Now simply run the following command to build the bpt project.
+```CMakeLists.txt
+{{#include examples/hello-cmake/CMakeLists.txt}}
+```
+
+Using this we can generate a different builds for different platforms. You cna do so by running the following commands in a terminal at the same directory the source file is in.
+
+### Configure
 
 ```sh
-bpt build -t :c++20:gcc-12 -o build
+# Generate a Makefile
+cmake -S . -B build -G "Unix Makefiles"
+
+# Generate Xcode project files
+cmake -S . -B build -G Xcode
+
+# Generate Visual Studio project files
+# `-A` flag used to specify architecture for VS project files
+cmake -S . -B build -G "Visual Studio 19 2022" -A x64
 ```
 
-This will spit out the binary into `build/`, dropping both file extensions. To run the program, simply call.
+### Build
 
 ```sh
-$ ./build/hello
-Hello World!
+cmake --build build --target HelloCMake
 ```
 
-[Example](./examples/hello-bpt/src/hello.main.cxx)
+### Run
+
+```sh
+$ ./build/HelloCMake
+Hello, CMake!
+```

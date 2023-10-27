@@ -31,8 +31,6 @@ Refer to the [source code](https://github.com/MonashDeepNeuron/HPP) of this book
 
 <div style="font-size: 0.75em;">
   <center>
-    <code>
-      {{ #include ./version.md }}
-    </code>
+    <img src="https://img.shields.io/github/v/release/MonashDeepNeuron/HPP?include_prereleases" alt="Current Release">
   </center>
 </div>

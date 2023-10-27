@@ -1,7 +1,7 @@
 # Variables
 
 # C++ compiler
-CXX = g++-12
+CXX = g++
 
 # C++ standard
 STDCXX = -std=c++20
@@ -26,34 +26,33 @@ run: all run-release
 
 # Cleans output files
 clean:
-    @echo "Cleaning..."
-    rm $(BUILDDIR)/**/*.o
-    rm $(BUILDDIR)/**/$(EXE)
-    @echo "Done!"
+	@echo "Cleaning..."
+	rm $(BUILDDIR)/**/$(EXE)
+	@echo "Done!"
 
 # Runs the release build
 run-release: release
-    $(BUILDDIR)/release/$(EXE)
+	$(BUILDDIR)/release/$(EXE)
 
 # Builds release config
 release: dirs
-    @echo "Compiling Release..."
-    $(CXX) $(STDCXX) -o $(BUILDDIR)/release/$(EXE) $(SRC)
-    @echo  "Done!"
+	@echo "Compiling Release..."
+	$(CXX) $(STDCXX) -o $(BUILDDIR)/release/$(EXE) $(SRC)
+	@echo  "Done!"
 
 # Runs debug build
 run-debug: debug
-    $(BUILDDIR)/debug/$(EXE)
+	$(BUILDDIR)/debug/$(EXE)
 
 # Build debug config
 debug: dirs
-    @echo "Compiling Debug..."
-    $(CXX) -g $(STDCXX) -o $(BUILDDIR)/debug/$(EXE) $(SRC)
-    @echo  "Done!"
+	@echo "Compiling Debug..."
+	$(CXX) -g $(STDCXX) -o $(BUILDDIR)/debug/$(EXE) $(SRC)
+	@echo  "Done!"
 
 # Create need directories
 dirs:
-    @echo "Making output directories..."
-    mkdir -p $(BUILDDIR)/debug
-    mkdir -p $(BUILDDIR)/release
-    @echo "Done!"
+	@echo "Making output directories..."
+	mkdir -p $(BUILDDIR)/debug
+	mkdir -p $(BUILDDIR)/release
+	@echo "Done!"
