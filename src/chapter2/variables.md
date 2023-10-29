@@ -185,8 +185,8 @@ cv = 10;    ///< Error
 The final type we look at is an automatic type. As we will see later, declaring the type of variables can get cumbersome. Since C++11, a new type introducer was create with the keyword `auto`. Variables with type `auto` will have there true type deduced at compile time based on the initialiser.
 
 ```cxx
-auto ai int{1};                 ///< `ai` deduced to have the type `int`
-auto al = {2L};                 ///< `al` deduced to have the type `long` or `long int` (uses 'L' literal)
+auto ai = int{1};               ///< `ai` deduced to have the type `int`
+auto al {2L};                   ///< `al` deduced to have the type `long` or `long int` (uses 'L' literal)
 auto ac {'c'};                  ///< `ac` deduced to have the type `char`
 auto as = "hello";              ///< `as` deduced to have the type `const char*` (more on these later)
 ```
