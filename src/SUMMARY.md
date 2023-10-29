@@ -10,7 +10,6 @@
   - [Installing Software](./chapter1/software.md)
   - [Hello World](./chapter1/helloworld.md)
   - [Compiler Explorer](./chapter1/godbolt.md)
-  - [Slides](./chapter1/slides1.md)
 
 ## Chapter 2
 
@@ -24,7 +23,6 @@
   - [Conditional Expressions](./chapter2/condexpr.md)
   - [Loops](./chapter2/loops.md)
   - [Functions](./chapter2/functions.md)
-  - [Slides](./chapter2/slides2.md)
 
 ## Chapter 3
 
@@ -34,7 +32,6 @@
   - [References](./chapter3/references.md)
   - [Dynamic Memory](./chapter3/memory.md)
   - [The Standard Library](./chapter3/stdlib.md)
-  - [Slides](./chapter3/slides3.md)
 
 ## Chapter 4
 
@@ -45,7 +42,6 @@
   - [Unions](./chapter4/unions.md)
   - [Structures](./chapter4/structs.md)
   - [Task 1](./chapter4/task1.md)
-  - [Slides](./chapter4/slides4.md)
 
 ## Chapter 5
 
@@ -55,7 +51,6 @@
   - [Generics](./chapter5/generics.md)
   - [Concepts](./chapter5/concepts.md)
   - [Task 2](./chapter5/task2.md)
-  - [Slides](./chapter5/slides5.md)
 
 ## Chapter 6
 
@@ -66,7 +61,6 @@
   - [Ranges](./chapter6/ranges.md)
   - [Views](./chapter6/views.md)
   - [Task 3](./chapter6/task3.md)
-  - [Slides](./chapter6/slides6.md)
 
 ## Chapter 7
 
@@ -76,7 +70,6 @@
   - [Threads](./chapter7/threads.md)
   - [Mutexes](./chapter7/mutexes.md)
   - [Asynchronous Programming](./chapter7/async.md)
-  - [Slides](./chapter7/slides7.md)
 
 ## Appendix
 
